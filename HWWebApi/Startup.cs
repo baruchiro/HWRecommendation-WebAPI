@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using HWWebApi.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace HWWebApi
 {
     public class Startup
@@ -26,6 +29,10 @@ namespace HWWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // ToDo: connectionString
+            var connection = "Data Source=hardware.db";
+            services.AddDbContext<HardwareContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
