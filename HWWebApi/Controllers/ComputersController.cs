@@ -13,8 +13,23 @@ namespace HWWebApi.Controllers
     {
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] Computer computer)
+        public long Post([FromBody] Computer computer)
         {
+            using (var context = new HardwareContext())
+            {
+                context.Computers.Add(computer);
+                context.SaveChanges();
+            }
+            return computer.Id;
+        }
+
+        [HttpGet]
+        public Computer Get(long id)
+        {
+            using (var context = new HardwareContext())
+            {
+                return context.Computers.First(c => c.Id == id);
+            }
         }
     }
 }
