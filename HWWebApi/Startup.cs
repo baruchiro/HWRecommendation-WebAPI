@@ -21,6 +21,7 @@ namespace HWWebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -31,7 +32,7 @@ namespace HWWebApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // ToDo: connectionString
-            var connection = "Data Source=hardware.db";
+            var connection = Configuration.GetConnectionString("HWConnectionString");
             services.AddDbContext<HardwareContext>(options => options.UseSqlServer(connection));
         }
 
