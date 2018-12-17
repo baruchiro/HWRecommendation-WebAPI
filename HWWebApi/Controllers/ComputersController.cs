@@ -11,20 +11,21 @@ namespace HWWebApi.Controllers
     [ApiController]
     public class ComputersController : ControllerBase
     {
-        private HardwareContext context;
+        private HardwareContext context = new HardwareContext();
 
         public ComputersController(HardwareContext context)
         {
             this.context = context;
         }
+
         // POST api/values
         [HttpPost]
-        public long Post([FromBody] Computer computer)
+        public ActionResult Post([FromBody] Computer computer)
         {
             context.Computers.Add(computer);
             context.SaveChanges();
 
-            return computer.Id;
+            return CreatedAtAction("Get", new { id = computer.Id }, computer);
         }
 
         // GET api/values/5
