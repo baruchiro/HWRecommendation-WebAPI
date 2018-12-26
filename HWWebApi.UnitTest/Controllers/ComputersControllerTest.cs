@@ -5,19 +5,18 @@ using HWWebApi.Controllers;
 using HWWebApi.Models;
 using FakeItEasy;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace HWWebApi.UnitTest.Controllers
 {
     public class ComputersControllerTest
     {
-        private ComputersController computersController;
+        private DbContextOptions<HardwareContext> options;
         public ComputersControllerTest()
         {
-            var options = new DbContextOptionsBuilder<HardwareContext>()
+            options = new DbContextOptionsBuilder<HardwareContext>()
                 .UseInMemoryDatabase(databaseName: "Add_writes_to_database")
                 .Options;
-
-            this.computersController = new ComputersController(new HardwareContext(options));
         }
 
         [Fact]
@@ -58,10 +57,18 @@ namespace HWWebApi.UnitTest.Controllers
                 motherBoard = mobo,
                 gpus = new[] { gpu }
             };
-            var id = computersController.Post(expectedComputer);
-            // var actualComputer = computersController.Get(id);
 
-            // Assert.Equal(expectedComputer, actualComputer);
+            using (var context = new HardwareContext(options))
+            {
+                var computersController = new ComputersController(context);
+                computersController.Post(expectedComputer);
+            }
+
+            using (var context = new HardwareContext(options))
+            {
+                Assert.Equal(1, context.Computers.Count());
+                Assert.Equal(expectedComputer, context.Computers.Single());
+            }
         }
     }
 }
