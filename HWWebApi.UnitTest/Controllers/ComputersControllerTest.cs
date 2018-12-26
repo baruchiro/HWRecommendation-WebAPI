@@ -49,11 +49,11 @@ namespace HWWebApi.UnitTest.Controllers
 
             computer = new Computer()
             {
-                memories = new[] { memory },
-                disks = new[] { disk },
-                processor = proccesor,
-                motherBoard = mobo,
-                gpus = new[] { gpu }
+                Memories = new[] { memory },
+                Disks = new[] { disk },
+                Processor = proccesor,
+                MotherBoard = mobo,
+                GPUs = new[] { gpu }
             };
 
         }
@@ -78,6 +78,7 @@ namespace HWWebApi.UnitTest.Controllers
             {
                 var computersController = new ComputersController(context);
                 var actualComputer = computersController.Get(computer.Id).Value;
+                Assert.True(computer.Equals(actualComputer));
                 Assert.Equal(computer, actualComputer);
             }
         }
