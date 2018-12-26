@@ -6,5 +6,17 @@ namespace HWWebApi.Models
         public int Capacity { get; set; }
         public RAMType type { get; set; }
         public long ghz { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var he = obj as Memory;
+
+            return
+                he != null &&
+                this.Id.Equals(he.Id) &&
+                this.Capacity.Equals(he.Capacity) &&
+                this.type.Equals(he.type) &&
+                this.ghz.Equals(he.ghz);
+        }
     }
 }
