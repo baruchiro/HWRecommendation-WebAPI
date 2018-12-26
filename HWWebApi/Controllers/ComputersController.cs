@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HWWebApi.Controllers
 {
@@ -32,7 +33,13 @@ namespace HWWebApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<Computer> Get(long id)
         {
-            return context.Computers.First(c => c.Id == id);
+            return context.Computers
+            .Include(c => c.Disks)
+            .Include(c => c.GPUs)
+            .Include(c => c.Memories)
+            .Include(c => c.MotherBoard)
+            .Include(c => c.Processor)
+            .First(c => c.Id == id);
         }
     }
 }
