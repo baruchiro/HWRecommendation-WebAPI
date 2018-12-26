@@ -25,12 +25,12 @@ namespace HWWebApi.Controllers
             context.Computers.Add(computer);
             context.SaveChanges();
 
-            return CreatedAtAction("Get", new { id = computer.Id }, computer);
+            return CreatedAtAction("Get", new { id = computer.Id });
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Computer Get(long id)
+        public ActionResult<Computer> Get(long id)
         {
             return context.Computers.First(c => c.Id == id);
         }

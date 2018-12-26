@@ -12,16 +12,13 @@ namespace HWWebApi.UnitTest.Controllers
     public class ComputersControllerTest
     {
         private DbContextOptions<HardwareContext> options;
+        private Computer computer;
         public ComputersControllerTest()
         {
             options = new DbContextOptionsBuilder<HardwareContext>()
                 .UseInMemoryDatabase(databaseName: "Add_writes_to_database")
                 .Options;
-        }
 
-        [Fact]
-        public void Test_Post_ValidateID()
-        {
             var memory = new Memory()
             {
                 Capacity = 300,
@@ -49,7 +46,8 @@ namespace HWWebApi.UnitTest.Controllers
                 architacture = Architacture.x64
             };
             var gpu = new GPU() { cores = 2 };
-            Computer expectedComputer = new Computer()
+
+            computer = new Computer()
             {
                 memories = new[] { memory },
                 disks = new[] { disk },
@@ -58,16 +56,46 @@ namespace HWWebApi.UnitTest.Controllers
                 gpus = new[] { gpu }
             };
 
+        }
+
+        [Fact]
+        public void Get_GetComputer_ValidateReturn()
+        {
+            //Given
+            using (var context = new HardwareContext(options))
+            {
+                context.Computers.Add(computer);
+                context.SaveChanges();
+            }
+
+            //When
+            using (var context = new HardwareContext(options))
+            {
+                Assert.Equal(1, context.Computers.Count());
+            }
+            //Then
             using (var context = new HardwareContext(options))
             {
                 var computersController = new ComputersController(context);
-                computersController.Post(expectedComputer);
+                var actualComputer = computersController.Get(computer.Id).Value;
+                Assert.Equal(computer, actualComputer);
+            }
+        }
+
+        [Fact]
+        public void Post_InsertComputer_ValidateExists()
+        {
+
+            using (var context = new HardwareContext(options))
+            {
+                var computersController = new ComputersController(context);
+                computersController.Post(computer);
             }
 
             using (var context = new HardwareContext(options))
             {
                 Assert.Equal(1, context.Computers.Count());
-                Assert.Equal(expectedComputer, context.Computers.Single());
+                Assert.Equal(computer, context.Computers.Single());
             }
         }
     }
