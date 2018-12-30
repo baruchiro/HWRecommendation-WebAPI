@@ -6,16 +6,17 @@ namespace HWWebApi.Models
     public class GPU
     {
         public long Id { get; set; }
-        public int cores { get; set; }
+        public int? Cores { get; set; }
 
         public override bool Equals(object obj)
         {
-            var he = obj as GPU;
+            return obj is GPU gpu &&
+                   Cores == gpu.Cores;
+        }
 
-            return
-                he != null &&
-                this.Id.Equals(he.Id) &&
-                this.cores.Equals(he.cores);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Cores);
         }
     }
 }

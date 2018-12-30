@@ -19,41 +19,41 @@ namespace HWWebApi.UnitTest.Controllers
                 .UseInMemoryDatabase(databaseName: "Add_writes_to_database")
                 .Options;
 
-            var memory = new Memory()
+            var memory = new Memory
             {
                 Capacity = 300,
-                type = RAMType.DDR3,
-                ghz = 5000004
+                Type = RamType.DDR3,
+                Ghz = 5000004
             };
             var disk = new Disk()
             {
-                type = DiskType.HDD,
-                rpm = 5000,
-                capacity = 1000000
+                Type = DiskType.HDD,
+                Rpm = 5000,
+                Capacity = 1000000
             };
-            var proccesor = new Processor()
+            var processor = new Processor
             {
                 Name = "Intel core i6",
-                ghz = 500045546,
-                numOfCores = 4,
-                architacture = Architacture.x64
+                GHz = 500045546,
+                NumOfCores = 4,
+                Architecture = Architecture.X64
             };
-            var mobo = new MotherBoard()
+            var motherBoard = new MotherBoard
             {
-                ddrSockets = 2,
-                maxRam = 400000,
-                sataConnections = 2,
-                architacture = Architacture.x64
+                DdrSockets = 2,
+                MaxRam = 400000,
+                SataConnections = 2,
+                Architecture = Architecture.X64
             };
-            var gpu = new GPU() { cores = 2 };
+            var gpu = new GPU { Cores = 2 };
 
-            computer = new Computer()
+            computer = new Computer
             {
-                Memories = new[] { memory },
-                Disks = new[] { disk },
-                Processor = proccesor,
-                MotherBoard = mobo,
-                GPUs = new[] { gpu }
+                Memories = new [] { memory },
+                Disks = new []{ disk },
+                Processor = processor,
+                MotherBoard = motherBoard,
+                GPUs = new []{ gpu }
             };
 
         }
@@ -73,12 +73,12 @@ namespace HWWebApi.UnitTest.Controllers
             {
                 Assert.Equal(1, context.Computers.Count());
             }
+
             //Then
             using (var context = new HardwareContext(options))
             {
                 var computersController = new ComputersController(context);
                 var actualComputer = computersController.Get(computer.Id).Value;
-                Assert.True(computer.Equals(actualComputer));
                 Assert.Equal(computer, actualComputer);
             }
         }
@@ -99,5 +99,9 @@ namespace HWWebApi.UnitTest.Controllers
                 Assert.Equal(computer, context.Computers.Single());
             }
         }
+
+        // Test for data laked computer
+
+        // Test for add components?
     }
 }

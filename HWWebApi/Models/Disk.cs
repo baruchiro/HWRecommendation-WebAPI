@@ -6,20 +6,21 @@ namespace HWWebApi.Models
     public class Disk
     {
         public long Id { get; set; }
-        public DiskType type { get; set; }
-        public int rpm { get; set; }
-        public long capacity { get; set; }
+        public DiskType? Type { get; set; }
+        public int? Rpm { get; set; } 
+        public long? Capacity { get; set; } 
 
         public override bool Equals(object obj)
         {
-            var he = obj as Disk;
+            return obj is Disk disk &&
+                   Type == disk.Type &&
+                   Rpm == disk.Rpm &&
+                   Capacity == disk.Capacity;
+        }
 
-            return
-                he != null &&
-                this.Id.Equals(he.Id) &&
-                this.type.Equals(he.type) &&
-                this.rpm.Equals(he.rpm) &&
-                this.capacity.Equals(he.capacity);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Type, Rpm, Capacity);
         }
     }
 }
