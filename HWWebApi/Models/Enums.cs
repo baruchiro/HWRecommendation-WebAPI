@@ -1,11 +1,11 @@
 namespace HWWebApi.Models
 {
-    public enum Architacture
+    public enum Architecture
     {
-        x32, x64
+        X32, X64
     }
 
-    public enum RAMType
+    public enum RamType
     {
         DDR3, DDR4
     }
