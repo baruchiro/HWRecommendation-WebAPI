@@ -16,7 +16,7 @@ namespace HWWebApi.UnitTest.Controllers
         public ComputersControllerTest()
         {
             options = new DbContextOptionsBuilder<HardwareContext>()
-                .UseInMemoryDatabase(databaseName: "Add_writes_to_database")
+                .UseInMemoryDatabase(databaseName: DateTime.Now.ToString())
                 .Options;
 
             var memory = new Memory
@@ -49,11 +49,11 @@ namespace HWWebApi.UnitTest.Controllers
 
             computer = new Computer
             {
-                Memories = new [] { memory },
-                Disks = new []{ disk },
+                Memories = new[] { memory },
+                Disks = new[] { disk },
                 Processor = processor,
                 MotherBoard = motherBoard,
-                GPUs = new []{ gpu }
+                GPUs = new[] { gpu }
             };
 
         }
@@ -96,7 +96,12 @@ namespace HWWebApi.UnitTest.Controllers
             using (var context = new HardwareContext(options))
             {
                 Assert.Equal(1, context.Computers.Count());
-                Assert.Equal(computer, context.Computers.Single());
+                Assert.Equal(computer, context.Computers.Include(c => c.Disks)
+                    .Include(c => c.GPUs)
+                    .Include(c => c.Memories)
+                    .Include(c => c.MotherBoard)
+                    .Include(c => c.Processor)
+                    .Single());
             }
         }
 
