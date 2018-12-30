@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HWWebApi.Controllers
 {
@@ -11,27 +12,34 @@ namespace HWWebApi.Controllers
     [ApiController]
     public class ComputersController : ControllerBase
     {
-        private HardwareContext context;
+        private HardwareContext context = new HardwareContext();
 
         public ComputersController(HardwareContext context)
         {
             this.context = context;
         }
+
         // POST api/values
         [HttpPost]
-        public long Post([FromBody] Computer computer)
+        public ActionResult Post([FromBody] Computer computer)
         {
             context.Computers.Add(computer);
             context.SaveChanges();
 
-            return computer.Id;
+            return CreatedAtAction("Get", new { id = computer.Id });
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Computer Get(long id)
+        public ActionResult<Computer> Get(long id)
         {
-            return context.Computers.First(c => c.Id == id);
+            return context.Computers
+            .Include(c => c.Disks)
+            .Include(c => c.GPUs)
+            .Include(c => c.Memories)
+            .Include(c => c.MotherBoard)
+            .Include(c => c.Processor)
+            .First(c => c.Id == id);
         }
     }
 }
