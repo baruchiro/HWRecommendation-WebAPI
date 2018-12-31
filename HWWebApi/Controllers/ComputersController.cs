@@ -33,13 +33,17 @@ namespace HWWebApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<Computer> Get(long id)
         {
-            return context.Computers
-            .Include(c => c.Disks)
-            .Include(c => c.GPUs)
-            .Include(c => c.Memories)
-            .Include(c => c.MotherBoard)
-            .Include(c => c.Processor)
-            .First(c => c.Id == id);
+            if (context.Computers.Any(c => c.Id == id))
+            {
+                return Ok(context.Computers
+                .Include(c => c.Disks)
+                .Include(c => c.GPUs)
+                .Include(c => c.Memories)
+                .Include(c => c.MotherBoard)
+                .Include(c => c.Processor)
+                .Single(c => c.Id == id));
+            }
+            return NotFound();
         }
     }
 }
