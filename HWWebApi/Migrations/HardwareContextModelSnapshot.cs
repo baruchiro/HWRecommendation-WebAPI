@@ -25,15 +25,15 @@ namespace HWWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("motherBoardId");
+                    b.Property<long?>("MotherBoardId");
 
-                    b.Property<long?>("processorId");
+                    b.Property<long?>("ProcessorId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("motherBoardId");
+                    b.HasIndex("MotherBoardId");
 
-                    b.HasIndex("processorId");
+                    b.HasIndex("ProcessorId");
 
                     b.ToTable("Computers");
                 });
@@ -44,13 +44,13 @@ namespace HWWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long?>("Capacity");
+
                     b.Property<long?>("ComputerId");
 
-                    b.Property<long>("capacity");
+                    b.Property<int?>("Rpm");
 
-                    b.Property<int>("rpm");
-
-                    b.Property<int>("type");
+                    b.Property<int?>("Type");
 
                     b.HasKey("Id");
 
@@ -67,7 +67,7 @@ namespace HWWebApi.Migrations
 
                     b.Property<long?>("ComputerId");
 
-                    b.Property<int>("cores");
+                    b.Property<int?>("Cores");
 
                     b.HasKey("Id");
 
@@ -86,9 +86,9 @@ namespace HWWebApi.Migrations
 
                     b.Property<long?>("ComputerId");
 
-                    b.Property<long>("ghz");
+                    b.Property<long>("Ghz");
 
-                    b.Property<int>("type");
+                    b.Property<int>("Type");
 
                     b.HasKey("Id");
 
@@ -103,13 +103,13 @@ namespace HWWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("architacture");
+                    b.Property<int?>("Architecture");
 
-                    b.Property<int>("ddrSockets");
+                    b.Property<int?>("DdrSockets");
 
-                    b.Property<long>("maxRam");
+                    b.Property<long?>("MaxRam");
 
-                    b.Property<int>("sataConnections");
+                    b.Property<int?>("SataConnections");
 
                     b.HasKey("Id");
 
@@ -122,13 +122,13 @@ namespace HWWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Architecture");
+
+                    b.Property<long?>("GHz");
+
                     b.Property<string>("Name");
 
-                    b.Property<int>("architacture");
-
-                    b.Property<long>("ghz");
-
-                    b.Property<int>("numOfCores");
+                    b.Property<int?>("NumOfCores");
 
                     b.HasKey("Id");
 
@@ -137,33 +137,33 @@ namespace HWWebApi.Migrations
 
             modelBuilder.Entity("HWWebApi.Models.Computer", b =>
                 {
-                    b.HasOne("HWWebApi.Models.MotherBoard", "motherBoard")
+                    b.HasOne("HWWebApi.Models.MotherBoard", "MotherBoard")
                         .WithMany()
-                        .HasForeignKey("motherBoardId");
+                        .HasForeignKey("MotherBoardId");
 
-                    b.HasOne("HWWebApi.Models.Processor", "processor")
+                    b.HasOne("HWWebApi.Models.Processor", "Processor")
                         .WithMany()
-                        .HasForeignKey("processorId");
+                        .HasForeignKey("ProcessorId");
                 });
 
             modelBuilder.Entity("HWWebApi.Models.Disk", b =>
                 {
                     b.HasOne("HWWebApi.Models.Computer")
-                        .WithMany("disks")
+                        .WithMany("Disks")
                         .HasForeignKey("ComputerId");
                 });
 
             modelBuilder.Entity("HWWebApi.Models.GPU", b =>
                 {
                     b.HasOne("HWWebApi.Models.Computer")
-                        .WithMany("gpus")
+                        .WithMany("GPUs")
                         .HasForeignKey("ComputerId");
                 });
 
             modelBuilder.Entity("HWWebApi.Models.Memory", b =>
                 {
                     b.HasOne("HWWebApi.Models.Computer")
-                        .WithMany("memories")
+                        .WithMany("Memories")
                         .HasForeignKey("ComputerId");
                 });
 #pragma warning restore 612, 618

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HWWebApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +13,10 @@ namespace HWWebApi.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ddrSockets = table.Column<int>(nullable: false),
-                    maxRam = table.Column<long>(nullable: false),
-                    sataConnections = table.Column<int>(nullable: false),
-                    architacture = table.Column<int>(nullable: false)
+                    DdrSockets = table.Column<int>(nullable: true),
+                    MaxRam = table.Column<long>(nullable: true),
+                    SataConnections = table.Column<int>(nullable: true),
+                    Architecture = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,9 +30,9 @@ namespace HWWebApi.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    ghz = table.Column<long>(nullable: false),
-                    numOfCores = table.Column<int>(nullable: false),
-                    architacture = table.Column<int>(nullable: false)
+                    GHz = table.Column<long>(nullable: true),
+                    NumOfCores = table.Column<int>(nullable: true),
+                    Architecture = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -45,21 +45,21 @@ namespace HWWebApi.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    processorId = table.Column<long>(nullable: true),
-                    motherBoardId = table.Column<long>(nullable: true)
+                    ProcessorId = table.Column<long>(nullable: true),
+                    MotherBoardId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Computers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Computers_MotherBoards_motherBoardId",
-                        column: x => x.motherBoardId,
+                        name: "FK_Computers_MotherBoards_MotherBoardId",
+                        column: x => x.MotherBoardId,
                         principalTable: "MotherBoards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computers_Processors_processorId",
-                        column: x => x.processorId,
+                        name: "FK_Computers_Processors_ProcessorId",
+                        column: x => x.ProcessorId,
                         principalTable: "Processors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -71,9 +71,9 @@ namespace HWWebApi.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    type = table.Column<int>(nullable: false),
-                    rpm = table.Column<int>(nullable: false),
-                    capacity = table.Column<long>(nullable: false),
+                    Type = table.Column<int>(nullable: true),
+                    Rpm = table.Column<int>(nullable: true),
+                    Capacity = table.Column<long>(nullable: true),
                     ComputerId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
@@ -93,7 +93,7 @@ namespace HWWebApi.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    cores = table.Column<int>(nullable: false),
+                    Cores = table.Column<int>(nullable: true),
                     ComputerId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
@@ -114,8 +114,8 @@ namespace HWWebApi.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Capacity = table.Column<int>(nullable: false),
-                    type = table.Column<int>(nullable: false),
-                    ghz = table.Column<long>(nullable: false),
+                    Type = table.Column<int>(nullable: false),
+                    Ghz = table.Column<long>(nullable: false),
                     ComputerId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
@@ -130,14 +130,14 @@ namespace HWWebApi.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computers_motherBoardId",
+                name: "IX_Computers_MotherBoardId",
                 table: "Computers",
-                column: "motherBoardId");
+                column: "MotherBoardId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computers_processorId",
+                name: "IX_Computers_ProcessorId",
                 table: "Computers",
-                column: "processorId");
+                column: "ProcessorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Disks_ComputerId",
