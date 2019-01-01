@@ -49,18 +49,19 @@ namespace HWWebApi
             }
             else
             {
-                app.UseExceptionHandler(options =>
-                {
-                    options.Run(async context =>
-                    {
-                        var error = context.Features.Get<IExceptionHandlerFeature>();
+                // app.UseExceptionHandler(options =>
+                // {
+                //     options.Run(async context =>
+                //     {
+                //         var error = context.Features.Get<IExceptionHandlerFeature>();
 
-                        if (error != null)
-                        {
-                            MailHelper.Send("ERROR", $"Message: {error.Error.Message}\n\n\nStack:\n{error.Error.StackTrace}");
-                        }
-                    });
-                });
+                //         if (error != null)
+                //         {
+                //             MailHelper.Send("ERROR", $"Message: {error.Error.Message}\n\n\nStack:\n{error.Error.StackTrace}");
+                //         }
+                //     });
+                // });
+                app.UseDeveloperExceptionPage();
                 app.UseHsts();
             }
 
