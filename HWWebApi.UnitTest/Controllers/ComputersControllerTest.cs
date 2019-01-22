@@ -95,7 +95,7 @@ namespace HWWebApi.UnitTest.Controllers
             using (var context = new HardwareContext(options))
             {
                 var computersController = new ComputersController(context);
-                computersController.Post(computer);
+                computersController.PostBody(computer);
             }
 
             using (var context = new HardwareContext(options))
