@@ -14,5 +14,6 @@ namespace HWWebApi.Models
         public DbSet<Memory> Memories { get; set; }
         public DbSet<MotherBoard> MotherBoards { get; set; }
         public DbSet<GPU> GPUs { get; set; }
+        public DbSet<TestString> TestStrings { get; set; }
     }
 }
