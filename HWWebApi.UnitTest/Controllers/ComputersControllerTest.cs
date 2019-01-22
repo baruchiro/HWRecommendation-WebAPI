@@ -6,6 +6,7 @@ using HWWebApi.Models;
 using FakeItEasy;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HWWebApi.UnitTest.Controllers
 {
@@ -74,13 +75,17 @@ namespace HWWebApi.UnitTest.Controllers
                 Assert.Equal(1, context.Computers.Count());
             }
 
+            ActionResult<Computer> result;
             //Then
             using (var context = new HardwareContext(options))
             {
                 var computersController = new ComputersController(context);
-                var actualComputer = computersController.Get(computer.Id).Value;
-                Assert.Equal(computer, actualComputer);
+                result = computersController.Get(computer.Id);     
             }
+
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var value = Assert.IsType<Computer>(okResult.Value);
+            Assert.Equal(computer, value);
         }
 
         [Fact]
