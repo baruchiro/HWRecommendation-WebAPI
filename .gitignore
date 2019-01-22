@@ -39,3 +39,4 @@ msbuild.wrn
 *.Development.json
 *.sln.DotSettings
 *.pubxml
+launchSettings.json

@@ -12,7 +12,7 @@ namespace HWWebApi.Controllers
     [ApiController]
     public class ComputersController : ControllerBase
     {
-        private HardwareContext context = new HardwareContext();
+        private HardwareContext context;
 
         public ComputersController(HardwareContext context)
         {
