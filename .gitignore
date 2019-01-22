@@ -38,3 +38,4 @@ msbuild.wrn
 # appsettings
 *.Development.json
 *.sln.DotSettings
+*.pubxml
