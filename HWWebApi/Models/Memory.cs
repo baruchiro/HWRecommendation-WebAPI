@@ -5,7 +5,7 @@ namespace HWWebApi.Models
     public class Memory
     {
         public long Id { get; set; }
-        public int Capacity { get; set; }
+        public long Capacity { get; set; }
         public RamType Type { get; set; } 
         public long Ghz { get; set; }
 
