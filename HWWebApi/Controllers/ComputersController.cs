@@ -30,12 +30,13 @@ namespace HWWebApi.Controllers
         }
         // POST api/values
         [HttpPost("Body")]
+        [ProducesResponseType(201, Type = typeof(Computer))]
         public ActionResult PostBody([FromBody] Computer computer)
         {
             context.Computers.Add(computer);
             context.SaveChanges();
 
-            return CreatedAtAction("Get", new { id = computer.Id });
+            return CreatedAtAction("Get", new { id = computer.Id }, computer);
         }
         // GET api/values/5
         [HttpGet("{id}")]
