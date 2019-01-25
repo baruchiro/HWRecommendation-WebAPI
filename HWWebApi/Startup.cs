@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using HWWebApi.Bot;
@@ -43,7 +44,17 @@ namespace HWWebApi
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "HWRecommendation - Web API", Version = "v1" });
+                if (File.Exists("HWWebApi.xml"))
+                {
+                    c.IncludeXmlComments("HWWebApi.xml");
+                }
+                else if (File.Exists(Path.Combine("..","HWWebApi.xml")))
+                {
+                    c.IncludeXmlComments(Path.Combine("..", "HWWebApi.xml"));
+
+                }
+                
             });
 
             /* services.AddBot<RecommendationBot>(options =>
@@ -71,7 +82,8 @@ namespace HWWebApi
                 // specifying the Swagger JSON endpoint.
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "HWRecommendation - Web API V1");
+                    c.DocumentTitle = "HWRecommendation - Web API";
                 });
             }
             else
