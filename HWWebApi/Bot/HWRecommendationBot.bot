@@ -1,0 +1,16 @@
+{
+    "name": "HWRecommendationBot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:5000/api/messages",
+            "id": "2",
+            "name": "development"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0"
+}
