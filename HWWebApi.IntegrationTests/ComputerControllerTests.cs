@@ -42,7 +42,7 @@ namespace HWWebApi.IntegrationTests
             Assert.Equal(computer, actual);
 
             response = await client.GetAsync($"api/computers/{actual.Id}");
-            Assert.True(response.IsSuccessStatusCode);
+            Assert.True(response.IsSuccessStatusCode, $"Response is {response.StatusCode}");
 
             actual = await response.Content.ReadAsAsync<Computer>();
             Assert.Equal(computer, actual);
