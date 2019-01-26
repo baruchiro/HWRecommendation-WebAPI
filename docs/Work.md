@@ -4,11 +4,9 @@
 
 - Name : String
 
-### Data
+### Entities
 
-- סטודנט
-- שכיר
-- עצמאי
-- חייל
-- פנסיה
-- תלמיד
+- Name=Student
+- Name=School-Student
+- Name=Employee
+- Name=Self-employee
