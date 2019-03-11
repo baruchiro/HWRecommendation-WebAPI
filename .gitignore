@@ -38,3 +38,9 @@ msbuild.wrn
 # appsettings
 *.Development.json
 *.sln.DotSettings
+*.pubxml
+launchSettings.json
+
+# docs
+node_modules
+bower_components

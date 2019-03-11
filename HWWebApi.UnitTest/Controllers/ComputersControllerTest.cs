@@ -6,6 +6,10 @@ using HWWebApi.Models;
 using FakeItEasy;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using HWWebApi.Models.ModelEqualityComparer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using TestUtils;
 
 namespace HWWebApi.UnitTest.Controllers
 {
@@ -15,46 +19,9 @@ namespace HWWebApi.UnitTest.Controllers
         private Computer computer;
         public ComputersControllerTest()
         {
-            options = new DbContextOptionsBuilder<HardwareContext>()
-                .UseInMemoryDatabase(databaseName: DateTime.Now.ToString())
-                .Options;
+            options = TestUtils.TestUtils.GetInMemoryDbContextOptions().Options;
 
-            var memory = new Memory
-            {
-                Capacity = 300,
-                Type = RamType.DDR3,
-                Ghz = 5000004
-            };
-            var disk = new Disk()
-            {
-                Type = DiskType.HDD,
-                Rpm = 5000,
-                Capacity = 1000000
-            };
-            var processor = new Processor
-            {
-                Name = "Intel core i6",
-                GHz = 500045546,
-                NumOfCores = 4,
-                Architecture = Architecture.X64
-            };
-            var motherBoard = new MotherBoard
-            {
-                DdrSockets = 2,
-                MaxRam = 400000,
-                SataConnections = 2,
-                Architecture = Architecture.X64
-            };
-            var gpu = new GPU { Cores = 2 };
-
-            computer = new Computer
-            {
-                Memories = new[] { memory },
-                Disks = new[] { disk },
-                Processor = processor,
-                MotherBoard = motherBoard,
-                GPUs = new[] { gpu }
-            };
+            computer = TestUtils.TestUtils.GenerateComputer();
 
         }
 
@@ -74,13 +41,17 @@ namespace HWWebApi.UnitTest.Controllers
                 Assert.Equal(1, context.Computers.Count());
             }
 
+            ActionResult<Computer> result;
             //Then
             using (var context = new HardwareContext(options))
             {
                 var computersController = new ComputersController(context);
-                var actualComputer = computersController.Get(computer.Id).Value;
-                Assert.Equal(computer, actualComputer);
+                result = computersController.Get(computer.Id);     
             }
+
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var value = Assert.IsType<Computer>(okResult.Value);
+            Assert.Equal(computer, value, new ModelEqualityComparer<Computer>());
         }
 
         [Fact]
@@ -90,7 +61,7 @@ namespace HWWebApi.UnitTest.Controllers
             using (var context = new HardwareContext(options))
             {
                 var computersController = new ComputersController(context);
-                computersController.Post(computer);
+                computersController.PostBody(computer);
             }
 
             using (var context = new HardwareContext(options))
@@ -101,7 +72,7 @@ namespace HWWebApi.UnitTest.Controllers
                     .Include(c => c.Memories)
                     .Include(c => c.MotherBoard)
                     .Include(c => c.Processor)
-                    .Single());
+                    .Single(), new ModelEqualityComparer<Computer>());
             }
         }
 

@@ -2,7 +2,7 @@ using System;
 
 namespace HWWebApi.Models
 {
-    public class Processor
+    public class Processor : IModel<Processor>
     {
 
         public long Id { get; set; }
@@ -11,15 +11,25 @@ namespace HWWebApi.Models
         public int? NumOfCores { get; set; }
         public Architecture? Architecture { get; set; } 
 
-        public override bool Equals(object obj)
+        public bool EqualByMembers(Processor processor)
         {
-            return obj is Processor processor &&
-                   Name == processor.Name &&
+            return string.Equals(Name, processor.Name) &&
                    GHz == processor.GHz &&
                    NumOfCores == processor.NumOfCores &&
                    Architecture == processor.Architecture;
         }
 
-        public override int GetHashCode() => HashCode.Combine(Name, GHz, NumOfCores, Architecture);
+        public int GetHashCodeWithMembers()
+        {
+            unchecked
+            {
+                var hashCode = 397;
+                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ GHz.GetHashCode();
+                hashCode = (hashCode * 397) ^ NumOfCores.GetHashCode();
+                hashCode = (hashCode * 397) ^ Architecture.GetHashCode();
+                return hashCode;
+            }
+        }
     }
 }
