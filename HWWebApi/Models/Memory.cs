@@ -2,24 +2,30 @@ using System;
 
 namespace HWWebApi.Models
 {
-    public class Memory
+    public class Memory : IModel<Memory>
     {
         public long Id { get; set; }
         public long Capacity { get; set; }
         public RamType Type { get; set; } 
         public long Ghz { get; set; }
 
-        public override bool Equals(object obj)
+        public bool EqualByMembers(Memory memory)
         {
-            return obj is Memory memory &&
-                   Capacity == memory.Capacity &&
+            return Capacity == memory.Capacity &&
                    Type == memory.Type &&
                    Ghz == memory.Ghz;
         }
 
-        public override int GetHashCode()
+        public int GetHashCodeWithMembers()
         {
-            return HashCode.Combine(Capacity, Type, Ghz);
+            unchecked
+            {
+                var hashCode = 397;
+                hashCode = (hashCode * 397) ^ Capacity.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int) Type;
+                hashCode = (hashCode * 397) ^ Ghz.GetHashCode();
+                return hashCode;
+            }
         }
     }
 }

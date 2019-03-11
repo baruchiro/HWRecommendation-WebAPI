@@ -6,7 +6,9 @@ using HWWebApi.Models;
 using FakeItEasy;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TestUtils;
 
 namespace HWWebApi.UnitTest.Controllers
@@ -49,7 +51,7 @@ namespace HWWebApi.UnitTest.Controllers
 
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var value = Assert.IsType<Computer>(okResult.Value);
-            Assert.Equal(computer, value);
+            Assert.Equal(computer, value, new ModelEqualityComparer<Computer>());
         }
 
         [Fact]
@@ -70,7 +72,7 @@ namespace HWWebApi.UnitTest.Controllers
                     .Include(c => c.Memories)
                     .Include(c => c.MotherBoard)
                     .Include(c => c.Processor)
-                    .Single());
+                    .Single(), new ModelEqualityComparer<Computer>());
             }
         }
 
