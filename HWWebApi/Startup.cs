@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using HWWebApi.Bot;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +18,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Diagnostics;
 
 using HWWebApi.Helpers;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+using Microsoft.Bot.Configuration;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace HWWebApi
 {
@@ -33,40 +38,63 @@ namespace HWWebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            // ToDo: connectionString
             var connection = Configuration.GetConnectionString("HWConnectionString");
             services.AddDbContext<HardwareContext>(options => options.UseSqlServer(connection));
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "HWRecommendation - Web API", Version = "v1" });
+                if (File.Exists("HWWebApi.xml"))
+                {
+                    c.IncludeXmlComments("HWWebApi.xml");
+                }
+                else if (File.Exists(Path.Combine("..","HWWebApi.xml")))
+                {
+                    c.IncludeXmlComments(Path.Combine("..", "HWWebApi.xml"));
+
+                }
+                
+            });
+
+            /* services.AddBot<RecommendationBot>(options =>
+            {
+                var botConfig = BotConfiguration.Load("Bot\\HWRecommendationBot.bot");
+                services.AddSingleton(sp => botConfig);
+            }); */
+            
+            
+            //services.AddSingleton(()=>new BotConf)
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, HardwareContext hardwareContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            hardwareContext.Database.Migrate();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // Enable middleware to serve generated Swagger as a JSON endpoint.
+                app.UseSwagger();
+
+                // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+                // specifying the Swagger JSON endpoint.
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "HWRecommendation - Web API V1");
+                    c.DocumentTitle = "HWRecommendation - Web API";
+                });
             }
             else
             {
-                // app.UseExceptionHandler(options =>
-                // {
-                //     options.Run(async context =>
-                //     {
-                //         var error = context.Features.Get<IExceptionHandlerFeature>();
-
-                //         if (error != null)
-                //         {
-                //             MailHelper.Send("ERROR", $"Message: {error.Error.Message}\n\n\nStack:\n{error.Error.StackTrace}");
-                //         }
-                //     });
-                // });
                 app.UseDeveloperExceptionPage();
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
+                // .UseBotFramework();
         }
     }
 }

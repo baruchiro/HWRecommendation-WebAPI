@@ -15,7 +15,7 @@ namespace HWWebApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -82,7 +82,7 @@ namespace HWWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Capacity");
+                    b.Property<long>("Capacity");
 
                     b.Property<long?>("ComputerId");
 
@@ -133,6 +133,19 @@ namespace HWWebApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Processors");
+                });
+
+            modelBuilder.Entity("HWWebApi.Models.TestString", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Data");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TestStrings");
                 });
 
             modelBuilder.Entity("HWWebApi.Models.Computer", b =>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HWWebApi.Models
 {
-    public class MotherBoard
+    public class MotherBoard : IModel<MotherBoard>
     {
         public long Id { get; set; }
         public int? DdrSockets { get; set; }
@@ -11,18 +11,25 @@ namespace HWWebApi.Models
         public int? SataConnections { get; set; } 
         public Architecture? Architecture { get; set; }
 
-        public override bool Equals(object obj)
+        public bool EqualByMembers(MotherBoard board)
         {
-            return obj is MotherBoard board &&
-                   DdrSockets == board.DdrSockets &&
+            return DdrSockets == board.DdrSockets &&
                    MaxRam == board.MaxRam &&
                    SataConnections == board.SataConnections &&
                    Architecture == board.Architecture;
         }
 
-        public override int GetHashCode()
+        public int GetHashCodeWithMembers()
         {
-            return HashCode.Combine(DdrSockets, MaxRam, SataConnections, Architecture);
+            unchecked
+            {
+                var hashCode = 397;
+                hashCode = (hashCode * 397) ^ DdrSockets.GetHashCode();
+                hashCode = (hashCode * 397) ^ MaxRam.GetHashCode();
+                hashCode = (hashCode * 397) ^ SataConnections.GetHashCode();
+                hashCode = (hashCode * 397) ^ Architecture.GetHashCode();
+                return hashCode;
+            }
         }
     }
 }
