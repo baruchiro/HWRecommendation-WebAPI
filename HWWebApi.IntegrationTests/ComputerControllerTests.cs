@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using HWWebApi.Models;
+using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
@@ -39,13 +40,13 @@ namespace HWWebApi.IntegrationTests
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
 
             var actual = await response.Content.ReadAsAsync<Computer>();
-            Assert.Equal(computer, actual);
+            Assert.Equal(computer, actual, new ModelEqualityByMembers<Computer>());
 
             response = await client.GetAsync($"api/computers/{actual.Id}");
             Assert.True(response.IsSuccessStatusCode, $"Response is {response.StatusCode}");
 
             actual = await response.Content.ReadAsAsync<Computer>();
-            Assert.Equal(computer, actual);
+            Assert.Equal(computer, actual, new ModelEqualityByMembers<Computer>());
         }
     }
 }

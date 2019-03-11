@@ -3,20 +3,22 @@ using System.Collections.Generic;
 
 namespace HWWebApi.Models
 {
-    public class GPU
+    public class GPU : IModel<GPU>
     {
         public long Id { get; set; }
         public int? Cores { get; set; }
 
-        public override bool Equals(object obj)
+        public bool EqualByMembers(GPU other)
         {
-            return obj is GPU gpu &&
-                   Cores == gpu.Cores;
+            return Cores == other.Cores;
         }
 
-        public override int GetHashCode()
+        public int GetHashCodeWithMembers()
         {
-            return HashCode.Combine(Cores);
+            unchecked
+            {
+                return 397 ^ Cores.GetHashCode();
+            }
         }
     }
 }

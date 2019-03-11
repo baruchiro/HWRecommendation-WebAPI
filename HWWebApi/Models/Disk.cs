@@ -3,24 +3,30 @@ using System.Collections.Generic;
 
 namespace HWWebApi.Models
 {
-    public class Disk
+    public class Disk : IModel<Disk>
     {
         public long Id { get; set; }
         public DiskType? Type { get; set; }
         public int? Rpm { get; set; } 
-        public long? Capacity { get; set; } 
+        public long? Capacity { get; set; }
 
-        public override bool Equals(object obj)
+        public bool EqualByMembers(Disk disk)
         {
-            return obj is Disk disk &&
-                   Type == disk.Type &&
+            return Type == disk.Type &&
                    Rpm == disk.Rpm &&
                    Capacity == disk.Capacity;
         }
 
-        public override int GetHashCode()
+        public int GetHashCodeWithMembers()
         {
-            return HashCode.Combine(Type, Rpm, Capacity);
+            unchecked
+            {
+                var hashCode = 397;
+                hashCode = (hashCode * 397) ^ Type.GetHashCode();
+                hashCode = (hashCode * 397) ^ Rpm.GetHashCode();
+                hashCode = (hashCode * 397) ^ Capacity.GetHashCode();
+                return hashCode;
+            }
         }
     }
 }
