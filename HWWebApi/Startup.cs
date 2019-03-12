@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using HWWebApi.Bot;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,8 +17,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Diagnostics;
 
 using HWWebApi.Helpers;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Configuration;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace HWWebApi
@@ -57,15 +54,6 @@ namespace HWWebApi
                 
             });
 
-            /* services.AddBot<RecommendationBot>(options =>
-            {
-                var botConfig = BotConfiguration.Load("Bot\\HWRecommendationBot.bot");
-                services.AddSingleton(sp => botConfig);
-            }); */
-            
-            
-            //services.AddSingleton(()=>new BotConf)
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,9 +80,7 @@ namespace HWWebApi
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
             app.UseMvc();
-                // .UseBotFramework();
         }
     }
 }
