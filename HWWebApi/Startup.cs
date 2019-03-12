@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using HWWebApi.Models;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.EntityFrameworkCore;
+using PersonalData.Bot;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace HWWebApi
@@ -45,6 +47,8 @@ namespace HWWebApi
                 
             });
 
+            services.AddPersonalDataBot(Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,7 +75,8 @@ namespace HWWebApi
                 app.UseHsts();
             }
 
-            app.UseMvc();
+            app.UseMvc()
+                .UseBotFramework();
         }
     }
 }
