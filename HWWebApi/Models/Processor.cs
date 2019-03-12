@@ -1,5 +1,3 @@
-using System;
-
 namespace HWWebApi.Models
 {
     public class Processor : IModel<Processor>
@@ -24,7 +22,7 @@ namespace HWWebApi.Models
             unchecked
             {
                 var hashCode = 397;
-                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Name?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ GHz.GetHashCode();
                 hashCode = (hashCode * 397) ^ NumOfCores.GetHashCode();
                 hashCode = (hashCode * 397) ^ Architecture.GetHashCode();

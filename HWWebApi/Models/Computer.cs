@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using HWWebApi.Helpers;
 using HWWebApi.Models.ModelEqualityComparer;
 
@@ -30,11 +27,11 @@ namespace HWWebApi.Models
             unchecked
             {
                 var hashCode = 397;
-                hashCode = (hashCode * 397) ^ (Processor != null ? Processor.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Memories != null ? Memories.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Disks != null ? Disks.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (MotherBoard != null ? MotherBoard.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (GPUs != null ? GPUs.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Processor?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Memories?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Disks?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (MotherBoard?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (GPUs?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
