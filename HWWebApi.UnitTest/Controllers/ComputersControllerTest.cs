@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Xunit;
+﻿using Xunit;
 using HWWebApi.Controllers;
 using HWWebApi.Models;
-using FakeItEasy;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using TestUtils;
 
 namespace HWWebApi.UnitTest.Controllers
 {
@@ -76,8 +71,8 @@ namespace HWWebApi.UnitTest.Controllers
             }
         }
 
-        // Test for data laked computer
+        //TODO: Test for data laked computer
 
-        // Test for add components?
+        //TODO: Test for add components?
     }
 }

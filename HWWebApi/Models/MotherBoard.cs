@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace HWWebApi.Models
 {
     public class MotherBoard : IModel<MotherBoard>

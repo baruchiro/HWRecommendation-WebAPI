@@ -1,5 +1,3 @@
-using System;
-
 namespace HWWebApi.Models
 {
     public class Memory : IModel<Memory>

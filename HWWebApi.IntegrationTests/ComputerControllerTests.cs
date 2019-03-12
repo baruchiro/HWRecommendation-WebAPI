@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 using HWWebApi.Models;
 using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using TestUtils;
 using Xunit;
 
-namespace HWWebApi.IntegrationTests
+namespace HWWebApi.IntegrationTest
 {
     public class ComputerControllerTests
     {
