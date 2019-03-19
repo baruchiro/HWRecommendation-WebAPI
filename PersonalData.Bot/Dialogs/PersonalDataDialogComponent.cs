@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -13,6 +14,7 @@ namespace PersonalData.Bot.Dialogs
 {
     public class PersonalDataDialogComponent : ComponentDialog
     {
+        private readonly IDbContext _dbContext;
         private const string WATERFALL_DIALOG = nameof(PersonalDataDialogComponent) + "waterfall";
         private const string NUMBER_DIALOG = nameof(PersonalDataDialogComponent) + "number";
         private const string CHOICE_DIALOG = nameof(PersonalDataDialogComponent) + "choice";
@@ -21,6 +23,7 @@ namespace PersonalData.Bot.Dialogs
 
         public PersonalDataDialogComponent(string dialogId, IDbContext dbContext) : base(dialogId)
         {
+            this._dbContext = dbContext;
             AddDialog(new WaterfallDialog(WATERFALL_DIALOG)
                 .AddStep(RequestGenderStep)
                 .AddStep(RequestAgeStep)
@@ -70,20 +73,44 @@ namespace PersonalData.Bot.Dialogs
             ((Model.PersonalData) stepcontext.Values[dataID]).Age = stepcontext.Result is int age ? age : -1;
 
             var activityPrompt = MessageFactory.Text("Select one of this works or write your own.");
-            activityPrompt.SuggestedActions = new SuggestedActions()
+            activityPrompt.SuggestedActions = new SuggestedActions
             {
-                //Actions = 
+                Actions = _dbContext.GetOrderedWorkList().Take(5)
+                    .Select(w=>new CardAction(ActionTypes.PostBack, w, value:w)).ToList()
             };
-            var options = new PromptOptions()
-            { Prompt = activityPrompt
+
+            var options = new PromptOptions
+            {
+                Prompt = activityPrompt
             };
 
             return await stepcontext.PromptAsync(TEXT_PROMPT, options, cancellationtoken);
         }
 
-        private Task<DialogTurnResult> PrintAllDetailsStep(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> PrintAllDetailsStep(WaterfallStepContext stepcontext,
+            CancellationToken cancellationtoken)
         {
-            throw new NotImplementedException();
+            ((Model.PersonalData) stepcontext.Values[dataID]).Work = stepcontext.Result as string;
+
+            var userDetails = (Model.PersonalData) stepcontext.Values[dataID];
+            await stepcontext.Context.SendActivityAsync(
+                MessageFactory.Text($"Saving your data:\n" +
+                                    $"Gender- {userDetails.Gender.ToString()}\n" +
+                                    $"Age- {userDetails.Age}\n" +
+                                    $"Work- {userDetails.Work}"),
+                cancellationtoken);
+
+            if (_dbContext.SavePersonalDetails(userDetails))
+            {
+                await stepcontext.Context.SendActivityAsync(MessageFactory.Text("Your data saved"),
+                    cancellationtoken);
+            }
+            else
+            {
+                await stepcontext.Context.SendActivityAsync(MessageFactory.Text("We can't save your data"),
+                    cancellationtoken);
+            }
+            return await stepcontext.EndDialogAsync(cancellationToken: cancellationtoken);
         }
     }
 }

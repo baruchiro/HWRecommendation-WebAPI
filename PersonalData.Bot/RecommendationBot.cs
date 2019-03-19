@@ -19,9 +19,13 @@ namespace PersonalData.Bot
         private readonly StateManager _accessors;
         private readonly DialogSet _dialogSet;
 
-        private readonly IDictionary<string, string> menuTextToDialogKey;
+        private readonly IDictionary<string, string> menuDialogKeyToTitle =
+            new Dictionary<string, string>
+            {
+                {DETAILS_DIALOG, "Get hardware recommendations for your current computer"}
+            };
 
-        private const string DETAILS_DIALOG = "detailes";
+        private const string DETAILS_DIALOG = "recommendations";
         private const string MENU_DIALOG = "menu";
         private const string CHOICE_DIALOG = "choice";
 
@@ -41,10 +45,6 @@ namespace PersonalData.Bot
 
             _dialogSet.Add(new PersonalDataDialogComponent(DETAILS_DIALOG, dbContext));
 
-            menuTextToDialogKey = new Dictionary<string, string>
-            {
-                {"Recommendations for current computer", DETAILS_DIALOG }
-            };
         }
 
         public async Task OnTurnAsync(ITurnContext turnContext,
@@ -71,11 +71,16 @@ namespace PersonalData.Bot
         }
 
         private async Task<DialogTurnResult> MenuStepAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
-        { 
+        {
             var options = new PromptOptions
             {
                 Prompt = MessageFactory.Text("Hi, select what you want"),
-                Choices = ChoiceFactory.ToChoices(menuTextToDialogKey.Keys.ToList())
+                Choices = menuDialogKeyToTitle.Select(v=>
+                    new Choice(v.Key)
+                    {
+                        Action = new CardAction(ActionTypes.ImBack, v.Value, value:v.Key)
+                    })
+                    .ToList()
             };
             return await stepcontext.PromptAsync(CHOICE_DIALOG, options, cancellationtoken);
         }
@@ -85,9 +90,9 @@ namespace PersonalData.Bot
         {
             switch (stepcontext.Result)
             {
-                case FoundChoice result 
-                    when menuTextToDialogKey.Keys.Contains(result.Value):
-                    return await stepcontext.BeginDialogAsync(menuTextToDialogKey[result.Value], cancellationToken: cancellationtoken);
+                case FoundChoice result
+                    when menuDialogKeyToTitle.Keys.Contains(result.Value):
+                    return await stepcontext.BeginDialogAsync(result.Value, cancellationToken: cancellationtoken);
 
                 case 1:
                     return await stepcontext.BeginDialogAsync(DETAILS_DIALOG, cancellationToken: cancellationtoken);
