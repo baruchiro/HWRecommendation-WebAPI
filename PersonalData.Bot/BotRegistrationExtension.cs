@@ -50,65 +50,10 @@ namespace PersonalData.Bot
                     logger.LogError($"Exception caught : {exception}");
                     await context.SendActivityAsync("Sorry, it looks like something went wrong.");
                 };
-
-                // The Memory Storage used here is for local bot debugging only. When the bot
-                // is restarted, everything stored in memory will be gone.
-                //IStorage dataStore = new MemoryStorage();
-
-                // For production bots use the Azure Blob or
-                // Azure CosmosDB storage providers. For the Azure
-                // based storage providers, add the Microsoft.Bot.Builder.Azure
-                // Nuget package to your solution. That package is found at:
-                // https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/
-                // Uncomment the following lines to use Azure Blob Storage
-                // Storage configuration name or ID from the .bot file.
-                // const string StorageConfigurationId = "<STORAGE-NAME-OR-ID-FROM-BOT-FILE>";
-                // var blobConfig = botConfig.FindServiceByNameOrId(StorageConfigurationId);
-                // if (!(blobConfig is BlobStorageService blobStorageConfig))
-                // {
-                //    throw new InvalidOperationException($"The .bot file does not contain an blob storage with name '{StorageConfigurationId}'.");
-                // }
-                // Default container name.
-                // const string DefaultBotContainer = "<DEFAULT-CONTAINER>";
-                // var storageContainer = string.IsNullOrWhiteSpace(blobStorageConfig.Container) ? DefaultBotContainer : blobStorageConfig.Container;
-                // IStorage dataStore = new Microsoft.Bot.Builder.Azure.AzureBlobStorage(blobStorageConfig.ConnectionString, storageContainer);
-
-                // Create Conversation State object.
-                // The Conversation State object is where we persist anything at the conversation-scope.
-                //var conversationState = new ConversationState(dataStore);
-                //options.State.Add(conversationState);
-
-                //// Create and add user state.
-                //var userState = new UserState(dataStore);
-                //options.State.Add(userState);
             });
 
-            services.AddSingleton(sp =>
-            {
-                // We need to grab the conversationState we added on the options in the previous step
-                var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
-                if (options == null)
-                {
-                    throw new InvalidOperationException("BotFrameworkOptions must be configured prior to setting up the State Accessors");
-                }
-
-                var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-                if (conversationState == null)
-                {
-                    throw new InvalidOperationException("ConversationState must be defined and added before adding conversation-scoped state accessors.");
-                }
-
-                var userState = options.State.OfType<UserState>().FirstOrDefault();
-                if (userState == null)
-                {
-                    throw new InvalidOperationException("UserState must be defined and added before adding user-scoped state accessors.");
-                }
-
-                // Create the custom state accessor.
-                // State accessors enable other components to read and write individual properties of state.
-                return new RecommendationBot();
-
-            });
+            services.AddSingleton<IStorage>(new MemoryStorage());
+            services.AddSingleton<StateManager>();
         }
     }
 }
