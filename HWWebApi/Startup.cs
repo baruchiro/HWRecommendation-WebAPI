@@ -1,4 +1,5 @@
 using System.IO;
+using HWWebApi.Bot;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,7 @@ namespace HWWebApi
                 
             });
 
-            services.AddPersonalDataBot(Configuration);
+            services.AddPersonalDataBot<BotDbContextAdapter>(Configuration);
 
         }
 

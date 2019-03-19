@@ -11,12 +11,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PersonalData.Bot.Interfaces;
 
 namespace PersonalData.Bot
 {
     public static class BotRegistrationExtension
     {
-        public static void AddPersonalDataBot(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersonalDataBot<T>(this IServiceCollection services, IConfiguration configuration)
+            where T : IDbContext
         {
             services.AddBot<RecommendationBot>(options =>
             {
@@ -52,6 +54,7 @@ namespace PersonalData.Bot
                 };
             });
 
+            services.AddScoped(typeof(IDbContext), typeof(T));
             services.AddSingleton<IStorage>(new MemoryStorage());
             services.AddSingleton<StateManager>();
         }
