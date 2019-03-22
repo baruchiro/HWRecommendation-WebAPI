@@ -94,16 +94,14 @@ namespace PersonalData.Bot
                     when menuDialogKeyToTitle.Keys.Contains(result.Value):
                     return await stepcontext.BeginDialogAsync(result.Value, cancellationToken: cancellationtoken);
 
-                case 1:
-                    return await stepcontext.BeginDialogAsync(DETAILS_DIALOG, cancellationToken: cancellationtoken);
                 default:
                     return await stepcontext.EndDialogAsync(cancellationToken: cancellationtoken);
             }
         }
 
-        private Task<DialogTurnResult> HandleResultAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> HandleResultAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            throw new NotImplementedException();
+            return await stepcontext.ReplaceDialogAsync(MENU_DIALOG, cancellationToken: cancellationtoken);
         }
     }
 }
