@@ -1,15 +1,15 @@
-using System;
-using System.Globalization;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using HWWebApi.Models;
 using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using System;
+using System.Globalization;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace HWWebApi.IntegrationTest
@@ -19,13 +19,14 @@ namespace HWWebApi.IntegrationTest
         [Fact]
         public async Task Post()
         {
+            var dbName = DateTime.Now.ToString(CultureInfo.CurrentCulture);
             var factory = new WebApplicationFactory<Startup>().WithWebHostBuilder(config =>
                 {
                     config.ConfigureServices(services =>
                     {
                         services.AddDbContext<HardwareContext>(options =>
                         {
-                            options.UseInMemoryDatabase(DateTime.Now.ToString(CultureInfo.CurrentCulture));
+                            options.UseInMemoryDatabase(dbName);
                         });
                     });
                 });
