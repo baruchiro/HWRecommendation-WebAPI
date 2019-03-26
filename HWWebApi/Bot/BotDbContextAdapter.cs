@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HWWebApi.Controllers;
 using HWWebApi.Models;
 using PersonalData.Bot.Interfaces;
 
@@ -13,7 +14,7 @@ namespace HWWebApi.Bot
 
         public BotDbContextAdapter(HardwareContext dbContext)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public IEnumerable<string> GetOrderedWorkList()
@@ -21,9 +22,19 @@ namespace HWWebApi.Bot
             return new[] {"Student", "Hi-Tech"};
         }
 
-        public bool SavePersonalDetails(Model.PersonalData personalData)
+        public bool SavePersonalDetails(string channelId, string userId, Model.PersonalData personalData)
         {
-            return true;
+            var worksController = new WorksController(_dbContext);
+            //if(worksController.Post(personalData.Work))
+            //var work = _dbContext.Works.FirstOrDefault(w =>
+            //    w.Name.Equals(personalData.Work, StringComparison.CurrentCultureIgnoreCase));
+
+            //if (string.IsNullOrEmpty(work.Name))
+            //{
+            //    work.Name = personalData.Work;
+            //    _dbContext.Works.Add(work);
+            //}
+            return false;
         }
     }
 }

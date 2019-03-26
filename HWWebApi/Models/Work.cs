@@ -3,6 +3,7 @@
     public class Work : IModel<Work>
     {
         public long Id { get; set; }
+        
         public string Name { get; set; }
 
         public bool EqualByMembers(Work model)

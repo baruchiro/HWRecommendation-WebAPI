@@ -7,6 +7,13 @@ namespace HWWebApi.Models
         public HardwareContext() : base() { }
         public HardwareContext(DbContextOptions<HardwareContext> options) : base(options) { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Work>()
+                .HasAlternateKey(w => w.Name)
+                .HasName("AlternateKey_Name");
+        }
+
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Processor> Processors { get; set; }
         public DbSet<Disk> Disks { get; set; }
