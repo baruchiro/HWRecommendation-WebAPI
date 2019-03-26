@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
+﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Bot.Schema;
 using Model;
 using PersonalData.Bot.Interfaces;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace PersonalData.Bot.Dialogs
 {
@@ -19,7 +18,7 @@ namespace PersonalData.Bot.Dialogs
         private const string NUMBER_DIALOG = nameof(PersonalDataDialogComponent) + "number";
         private const string CHOICE_DIALOG = nameof(PersonalDataDialogComponent) + "choice";
         private const string TEXT_PROMPT = nameof(PersonalDataDialogComponent) + "text";
-        private const string dataID = nameof(PersonalDataDialogComponent)+"data";
+        private const string dataID = nameof(PersonalDataDialogComponent) + "data";
 
         public PersonalDataDialogComponent(string dialogId, IDbContext dbContext) : base(dialogId)
         {
@@ -28,7 +27,7 @@ namespace PersonalData.Bot.Dialogs
                 .AddStep(RequestGenderStep)
                 .AddStep(RequestAgeStep)
                 .AddStep(RequestWorkStep)
-                .AddStep(PrintAllDetailsStep)
+                .AddStep(SaveAndPrintAllDetailsStep)
             );
 
             AddDialog(new NumberPrompt<int>(NUMBER_DIALOG));
@@ -70,13 +69,13 @@ namespace PersonalData.Bot.Dialogs
 
         private async Task<DialogTurnResult> RequestWorkStep(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            ((Model.PersonalData) stepcontext.Values[dataID]).Age = stepcontext.Result is int age ? age : -1;
+            ((Model.PersonalData)stepcontext.Values[dataID]).Age = stepcontext.Result is int age ? age : -1;
 
             var activityPrompt = MessageFactory.Text("Select one of this works or write your own.");
             activityPrompt.SuggestedActions = new SuggestedActions
             {
                 Actions = _dbContext.GetOrderedWorkList().Take(5)
-                    .Select(w=>new CardAction(ActionTypes.PostBack, w, value:w)).ToList()
+                    .Select(w => new CardAction(ActionTypes.PostBack, w, value: w)).ToList()
             };
 
             var options = new PromptOptions
@@ -87,12 +86,13 @@ namespace PersonalData.Bot.Dialogs
             return await stepcontext.PromptAsync(TEXT_PROMPT, options, cancellationtoken);
         }
 
-        private async Task<DialogTurnResult> PrintAllDetailsStep(WaterfallStepContext stepcontext,
+        private async Task<DialogTurnResult> SaveAndPrintAllDetailsStep(WaterfallStepContext stepcontext,
             CancellationToken cancellationtoken)
         {
-            ((Model.PersonalData) stepcontext.Values[dataID]).Work = stepcontext.Result as string;
+            ((Model.PersonalData)stepcontext.Values[dataID]).Work = stepcontext.Result as string;
 
-            var userDetails = (Model.PersonalData) stepcontext.Values[dataID];
+            var userDetails = (Model.PersonalData)stepcontext.Values[dataID];
+
             await stepcontext.Context.SendActivityAsync(
                 MessageFactory.Text($"Saving your data:\n" +
                                     $"Gender- {userDetails.Gender.ToString()}\n" +
@@ -100,7 +100,10 @@ namespace PersonalData.Bot.Dialogs
                                     $"Work- {userDetails.Work}"),
                 cancellationtoken);
 
-            if (_dbContext.SavePersonalDetails(userDetails))
+            var channelId = stepcontext.Context.Activity.ChannelId;
+            var userId = stepcontext.Context.Activity.From.Id;
+
+            if (_dbContext.SavePersonalDetails(channelId, userId, userDetails))
             {
                 await stepcontext.Context.SendActivityAsync(MessageFactory.Text("Your data saved"),
                     cancellationtoken);
