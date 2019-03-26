@@ -22,7 +22,7 @@ namespace HWWebApi.Bot
             return new[] {"Student", "Hi-Tech"};
         }
 
-        public bool SavePersonalDetails(string channelId, string userId, Model.PersonalData personalData)
+        public bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData)
         {
             var worksController = new WorksController(_dbContext);
             //if(worksController.Post(personalData.Work))

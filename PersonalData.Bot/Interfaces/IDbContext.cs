@@ -6,6 +6,6 @@ namespace PersonalData.Bot.Interfaces
     public interface IDbContext
     {
         IEnumerable<string> GetOrderedWorkList();
-        bool SavePersonalDetails(string channelId, string userId, Model.PersonalData personalData);
+        bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData);
     }
 }
