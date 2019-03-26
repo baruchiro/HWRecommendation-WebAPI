@@ -108,7 +108,7 @@ namespace PersonalData.Bot.Dialogs
         private async Task<DialogTurnResult> SaveAndPrintAllDetailsStep(WaterfallStepContext stepcontext,
             CancellationToken cancellationtoken)
         {
-            ((IPersonalData)stepcontext.Values[dataID]).Work = stepcontext.Result as string;
+            ((IPersonalData)stepcontext.Values[dataID]).WorkArea = stepcontext.Result as string;
 
             var userDetails = (IPersonalData)stepcontext.Values[dataID];
 
@@ -116,7 +116,7 @@ namespace PersonalData.Bot.Dialogs
                 MessageFactory.Text($"Saving your data:\n" +
                                     $"Gender- {userDetails.Gender.ToEnumDescription<Gender>()}\n" +
                                     $"Age- {userDetails.Age}\n" +
-                                    $"Work- {userDetails.Work}"),
+                                    $"WorkArea- {userDetails.WorkArea}"),
                 cancellationtoken);
 
             var channelId = stepcontext.Context.Activity.ChannelId;

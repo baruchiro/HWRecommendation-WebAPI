@@ -10,6 +10,6 @@ namespace PersonalData.Bot.Interfaces
         /// </summary>
         int Gender { get; set; }
         int Age { get; set; }
-        string Work { get; set; }
+        string WorkArea { get; set; }
     }
 }
