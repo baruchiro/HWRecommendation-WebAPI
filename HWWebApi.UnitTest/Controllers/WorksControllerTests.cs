@@ -33,7 +33,7 @@ namespace HWWebApi.UnitTest.Controllers
             using (var context = new HardwareContext(options))
             {
                 Assert.Equal(1, context.Works.Count());
-                Assert.Equal(work, context.Works.Single(), new ModelEqualityComparer<Work>());
+                Assert.Equal(work, context.Works.Single(), new ModelEqualityByMembers<Work>());
             }
         }
 
