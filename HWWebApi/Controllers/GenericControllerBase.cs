@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HWWebApi.Controllers
 {
     public abstract class GenericControllerBase<T> : ControllerBase
-        where T : IModel<T>
+        where T : class, IModel<T>
     {
         protected HardwareContext context;
 

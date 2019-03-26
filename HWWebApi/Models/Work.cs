@@ -1,9 +1,11 @@
-﻿namespace HWWebApi.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HWWebApi.Models
 {
     public class Work : IModel<Work>
     {
         public long Id { get; set; }
-        
+        [Required]
         public string Name { get; set; }
 
         public bool EqualByMembers(Work model)

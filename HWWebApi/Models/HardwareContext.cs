@@ -9,9 +9,9 @@ namespace HWWebApi.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Work>()
-                .HasAlternateKey(w => w.Name)
-                .HasName("AlternateKey_Name");
+            modelBuilder.Entity<Work>(entity =>
+                entity.HasIndex(e => e.Name).IsUnique()
+            );
         }
 
         public DbSet<Computer> Computers { get; set; }
