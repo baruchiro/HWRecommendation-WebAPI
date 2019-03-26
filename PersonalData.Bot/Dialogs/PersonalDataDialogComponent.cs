@@ -2,12 +2,14 @@
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Bot.Schema;
-using Model;
 using PersonalData.Bot.Interfaces;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using PersonalData.Bot.Extensions;
+using PersonalData.Bot.Model;
+using PersonalData = PersonalData.Bot.Model.PersonalData;
 
 namespace PersonalData.Bot.Dialogs
 {
@@ -40,11 +42,23 @@ namespace PersonalData.Bot.Dialogs
         {
             stepcontext.Context.Activity.CreateReply(
                 "First, we need some of your personal data to give you specific recommendations and to upgrade our system.");
-
+            
             stepcontext.Values[dataID] = new Model.PersonalData();
+
+            var choices = typeof(Gender).GetEnumValues().Cast<Gender>().Select(g=>
+                new Choice(g.ToString())
+                {
+                    Action = new CardAction(ActionTypes.ImBack,
+                        g.GetDescription(),
+                        text:g.GetDescription(),
+                        displayText:g.GetDescription(),
+                        value:g.ToString())
+                })
+                .ToArray();
+
             var promptOptions = new PromptOptions
             {
-                Choices = ChoiceFactory.ToChoices(Enum.GetNames(typeof(Gender))),
+                Choices = choices,// ChoiceFactory.ToChoices(typeof(Gender).GetDescriptions().ToArray()),
                 Prompt = MessageFactory.Text("Select your gender")
             };
             return await stepcontext.PromptAsync(CHOICE_DIALOG, promptOptions, cancellationtoken);
@@ -53,11 +67,16 @@ namespace PersonalData.Bot.Dialogs
         private async Task<DialogTurnResult> RequestAgeStep(WaterfallStepContext stepcontext,
             CancellationToken cancellationtoken)
         {
-            var personalData = stepcontext.Values[dataID] as Model.PersonalData ?? new Model.PersonalData();
-            personalData.Gender = Enum.TryParse<Gender>(stepcontext.Result as string, true, out var result)
-                ? result
-                : Gender.NotDefine;
-            stepcontext.Values[dataID] = personalData;
+            if (stepcontext.Result is FoundChoice foundChoice)
+            {
+                var personalData = stepcontext.Values[dataID] as IPersonalData ?? new Model.PersonalData();
+                personalData.Gender = (int)
+                    (Enum.TryParse<Gender>(foundChoice.Value, true, out var result)
+                        ? result
+                        : Gender.NOT_DEFINE);
+
+                stepcontext.Values[dataID] = personalData;
+            }
 
             var promptOptions = new PromptOptions
             {
@@ -69,7 +88,7 @@ namespace PersonalData.Bot.Dialogs
 
         private async Task<DialogTurnResult> RequestWorkStep(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            ((Model.PersonalData)stepcontext.Values[dataID]).Age = stepcontext.Result is int age ? age : -1;
+            ((IPersonalData)stepcontext.Values[dataID]).Age = stepcontext.Result is int age ? age : -1;
 
             var activityPrompt = MessageFactory.Text("Select one of this works or write your own.");
             activityPrompt.SuggestedActions = new SuggestedActions
@@ -89,13 +108,13 @@ namespace PersonalData.Bot.Dialogs
         private async Task<DialogTurnResult> SaveAndPrintAllDetailsStep(WaterfallStepContext stepcontext,
             CancellationToken cancellationtoken)
         {
-            ((Model.PersonalData)stepcontext.Values[dataID]).Work = stepcontext.Result as string;
+            ((IPersonalData)stepcontext.Values[dataID]).Work = stepcontext.Result as string;
 
-            var userDetails = (Model.PersonalData)stepcontext.Values[dataID];
+            var userDetails = (IPersonalData)stepcontext.Values[dataID];
 
             await stepcontext.Context.SendActivityAsync(
                 MessageFactory.Text($"Saving your data:\n" +
-                                    $"Gender- {userDetails.Gender.ToString()}\n" +
+                                    $"Gender- {userDetails.Gender.ToEnumDescription<Gender>()}\n" +
                                     $"Age- {userDetails.Age}\n" +
                                     $"Work- {userDetails.Work}"),
                 cancellationtoken);
