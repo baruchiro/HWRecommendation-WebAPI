@@ -78,11 +78,11 @@ namespace HWWebApi.UnitTest.Controllers
                 worksController.Post(work.Name);
             }
 
-            //using (var context = new HardwareContext(options))
-            //{
-            //    Assert.Equal(1, context.Works.Count());
-            //    //Assert.Equal(work, context.Works.Single(), new ModelEqualityByMembers<Work>());
-            //}
+            using (var context = new HardwareContext(options))
+            {
+                Assert.Equal(1, context.Works.Count());
+                //Assert.Equal(work, context.Works.Single(), new ModelEqualityByMembers<Work>());
+            }
         }
         // TODO: insert duplicate string
     }
