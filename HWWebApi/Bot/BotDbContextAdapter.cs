@@ -24,7 +24,6 @@ namespace HWWebApi.Bot
 
         public bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData)
         {
-            var worksController = new WorksController(_dbContext);
             //if(worksController.Post(personalData.Work))
             //var work = _dbContext.Works.FirstOrDefault(w =>
             //    w.Name.Equals(personalData.Work, StringComparison.CurrentCultureIgnoreCase));
