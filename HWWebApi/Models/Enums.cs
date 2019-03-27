@@ -65,4 +65,12 @@ namespace HWWebApi.Models
         /// </summary>
         [EnumMember] HDD
     }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Gender
+    {
+        NOT_DEFINED,
+        MALE,
+        FEMALE
+    }
 }
