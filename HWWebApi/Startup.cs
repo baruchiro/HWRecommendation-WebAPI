@@ -17,9 +17,11 @@ namespace HWWebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IHostingEnvironment _environment;
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            _environment = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -48,7 +50,7 @@ namespace HWWebApi
                 
             });
 
-            services.AddPersonalDataBot<BotDbContextAdapter>(Configuration);
+            services.AddPersonalDataBot<BotDbContextAdapter>(Configuration, _environment);
 
         }
 

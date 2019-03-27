@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Integration;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Configuration;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using PersonalData.Bot.Interfaces;
+using System;
+using System.Linq;
 
 namespace PersonalData.Bot
 {
     public static class BotRegistrationExtension
     {
-        public static void AddPersonalDataBot<T>(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersonalDataBot<T>(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
             where T : IDbContext
         {
             services.AddBot<RecommendationBot>(options =>
@@ -30,11 +27,11 @@ namespace PersonalData.Bot
                 services.AddSingleton(sp =>
                     botConfig ??
                     throw new InvalidOperationException(
-                        $"The .bot configuration file could not be loaded. ({botConfig})"));
+                        $"The .bot configuration file could not be loaded. ({botFilePath ?? @".\HWRecommendationBot.bot"})"));
 
                 // Retrieve current endpoint.
-                //var environment = _isProduction ? "production" : "development";
-                var service = botConfig.Services.FirstOrDefault(s => s.Type == "endpoint");
+                var environment = env.IsProduction() ? "production" : "development";
+                var service = botConfig.Services.FirstOrDefault(s => s.Type == "endpoint" && s.Name == environment);
                 if (!(service is EndpointService endpointService))
                 {
                     throw new InvalidOperationException($"The .bot file does not contain an endpoint.");
