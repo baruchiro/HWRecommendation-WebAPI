@@ -1,13 +1,13 @@
 namespace HWWebApi.Models
 {
-    public class GPU : IModel<GPU>
+    public class Gpu : IModel<Gpu>
     {
         public long Id { get; set; }
         public string Name { get; set; }
         public string Processor { get; set; }
         public int? Cores { get; set; }
 
-        public bool EqualByMembers(GPU other)
+        public bool EqualByMembers(Gpu other)
         {
             return Name == other.Name &&
                    Processor == other.Processor &&
