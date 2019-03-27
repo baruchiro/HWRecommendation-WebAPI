@@ -25,7 +25,7 @@ namespace HWWebApi.Models
             {
                 var hashCode = 397;
                 hashCode = (hashCode * 397) ^ Type.GetHashCode();
-                hashCode = (hashCode * 397) ^ Model.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Model?.GetHashCode()?? 0);
                 hashCode = (hashCode * 397) ^ Rpm.GetHashCode();
                 hashCode = (hashCode * 397) ^ Capacity.GetHashCode();
                 return hashCode;

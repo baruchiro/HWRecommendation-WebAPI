@@ -1,46 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HWWebApi.Models;
+﻿using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace HWWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ComputersController : ControllerBase
+    public class ComputersController : GenericControllerBase<Computer>
     {
-        private HardwareContext context;
-
-        public ComputersController(HardwareContext context)
-        {
-            this.context = context;
-        }
+        public ComputersController(HardwareContext context) : base(context) { }
 
         // POST api/values
         [HttpPost("Form")]
-        public ActionResult PostForm([FromForm] Computer computer)
+        public ActionResult<Computer> PostForm([FromForm] Computer computer)
         {
-            context.Computers.Add(computer);
-            context.SaveChanges();
-
-            return CreatedAtAction("Get", new { id = computer.Id });
+            return Post(computer);
         }
+
         // POST api/values
         [HttpPost("Body")]
         [ProducesResponseType(201, Type = typeof(Computer))]
-        public ActionResult PostBody([FromBody] Computer computer)
+        public ActionResult<Computer> PostBody([FromBody] Computer computer)
         {
-            context.Computers.Add(computer);
-            context.SaveChanges();
-
-            return CreatedAtAction("Get", new { id = computer.Id }, computer);
+            return Post(computer);
         }
+
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<Computer> Get(long id)
+        public override ActionResult<Computer> Get(long id)
         {
             if (context.Computers.Any(c => c.Id == id))
             {

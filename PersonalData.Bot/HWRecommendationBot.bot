@@ -1,0 +1,16 @@
+{
+    "name": "PersonalData.Bot",
+    "description": "",
+    "services": [
+      {
+        "type": "endpoint",
+        "appId": "",
+        "appPassword": "",
+        "endpoint": "http://localhost:57019/api/messages",
+        "id": "2",
+        "name": "development"
+      }
+    ],
+    "padlock": "",
+    "version": "2.0"
+}
