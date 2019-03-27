@@ -1,10 +1,8 @@
-﻿using System;
+﻿using HWWebApi.Models;
+using PersonalData.Bot.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using HWWebApi.Controllers;
-using HWWebApi.Models;
-using PersonalData.Bot.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace HWWebApi.Bot
 {
@@ -19,21 +17,31 @@ namespace HWWebApi.Bot
 
         public IEnumerable<string> GetOrderedWorkList()
         {
-            return new[] {"Student", "Hi-Tech"};
+            return new[] { "Student", "Hi-Tech" };
         }
 
         public bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData)
         {
-            //if(worksController.Post(personalData.Work))
-            //var work = _dbContext.Works.FirstOrDefault(w =>
-            //    w.Name.Equals(personalData.Work, StringComparison.CurrentCultureIgnoreCase));
+            var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
+            var user = _dbContext.Users.FirstOrDefault(u =>
+                u.Channels.Any(c =>
+                    c.EqualByMembers(userChannel)));
+            if (user != null)
+            {
+                _dbContext.Entry(user).State = EntityState.Modified;
+            }
+            else
+            {
+                user = new User {Channels = new List<UserChannel>{userChannel}};
+                _dbContext.Users.Add(user);
+            }
 
-            //if (string.IsNullOrEmpty(work.Name))
-            //{
-            //    work.Name = personalData.Work;
-            //    _dbContext.Works.Add(work);
-            //}
-            return false;
+            user.Name = personalData.Name;
+            user.WorkArea = personalData.WorkArea;
+            user.Age = personalData.Age;
+            user.Gender = (Gender) personalData.Gender;
+
+            return _dbContext.SaveChanges() > 0;
         }
     }
 }
