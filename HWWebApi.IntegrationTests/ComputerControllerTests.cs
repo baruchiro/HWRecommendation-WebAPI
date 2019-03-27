@@ -10,14 +10,16 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using TestUtils;
 using Xunit;
 
 namespace HWWebApi.IntegrationTest
 {
     public class ComputerControllerTests
     {
-        [Fact]
-        public async Task Post()
+        [Theory]
+        [ClassData(typeof(ComputerTestData))]
+        public async Task Post(Computer computer)
         {
             var dbName = DateTime.Now.ToString(CultureInfo.CurrentCulture);
             var factory = new WebApplicationFactory<Startup>().WithWebHostBuilder(config =>
@@ -31,7 +33,6 @@ namespace HWWebApi.IntegrationTest
                     });
                 });
             var client = factory.CreateClient();
-            var computer = TestUtils.TestUtils.GenerateComputer();
 
             var content = new StringContent(JsonConvert.SerializeObject(computer), Encoding.UTF8, "application/json");
             var response = await client.PostAsync("api/computers/Body", content);
