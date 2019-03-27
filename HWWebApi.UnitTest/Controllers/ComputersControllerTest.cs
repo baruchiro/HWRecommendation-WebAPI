@@ -63,7 +63,7 @@ namespace HWWebApi.UnitTest.Controllers
             {
                 Assert.Equal(1, context.Computers.Count());
                 Assert.Equal(computer, context.Computers.Include(c => c.Disks)
-                    .Include(c => c.GPUs)
+                    .Include(c => c.Gpus)
                     .Include(c => c.Memories)
                     .Include(c => c.MotherBoard)
                     .Include(c => c.Processor)

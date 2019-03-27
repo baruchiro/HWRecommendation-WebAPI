@@ -35,7 +35,7 @@ namespace TestUtils
                 SataConnections = 2,
                 Architecture = Architecture.X64
             };
-            var gpu = new GPU { Cores = 2 };
+            var gpu = new Gpu { Cores = 2 };
 
             var computer = new Computer
             {
@@ -43,7 +43,7 @@ namespace TestUtils
                 Disks = new[] { disk },
                 Processor = processor,
                 MotherBoard = motherBoard,
-                GPUs = new[] { gpu }
+                Gpus = new[] { gpu }
             };
 
             return computer;

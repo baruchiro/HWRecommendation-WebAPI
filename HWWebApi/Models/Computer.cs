@@ -11,7 +11,7 @@ namespace HWWebApi.Models
         public ICollection<Memory> Memories { get; set; }
         public ICollection<Disk> Disks { get; set; } 
         public MotherBoard MotherBoard { get; set; } 
-        public ICollection<GPU> GPUs { get; set; }
+        public ICollection<Gpu> Gpus { get; set; }
 
         public bool EqualByMembers(Computer computer)
         {
@@ -19,7 +19,7 @@ namespace HWWebApi.Models
                    Memories.IsEquals(computer.Memories, new ModelEqualityByMembers<Memory>()) &&
                    Disks.IsEquals(computer.Disks, new ModelEqualityByMembers<Disk>()) &&
                    MotherBoard.EqualByMembers(computer.MotherBoard) &&
-                   GPUs.IsEquals(computer.GPUs, new ModelEqualityByMembers<GPU>());
+                   Gpus.IsEquals(computer.Gpus, new ModelEqualityByMembers<Gpu>());
         }
 
         public int GetHashCodeWithMembers()
@@ -31,7 +31,7 @@ namespace HWWebApi.Models
                 hashCode = (hashCode * 397) ^ (Memories?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (Disks?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (MotherBoard?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (GPUs?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Gpus?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
