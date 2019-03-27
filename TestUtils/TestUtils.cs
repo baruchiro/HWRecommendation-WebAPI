@@ -48,6 +48,32 @@ namespace TestUtils
 
             return computer;
         }
+
+        public static Computer GenerateEmptyComponentsComputer()
+        {
+            var memory = new Memory();
+            var disk = new Disk();
+            var processor = new Processor();
+            var motherBoard = new MotherBoard();
+            var gpu = new Gpu();
+
+            var computer = new Computer
+            {
+                Memories = new[] { memory },
+                Disks = new[] { disk },
+                Processor = processor,
+                MotherBoard = motherBoard,
+                Gpus = new[] { gpu }
+            };
+
+            return computer;
+        }
+        public static Computer GenerateEmptyComputer()
+        {
+            var computer = new Computer();
+
+            return computer;
+        }
         public static DbContextOptionsBuilder<HardwareContext> GetInMemoryDbContextOptions()=> new DbContextOptionsBuilder<HardwareContext>()
             .UseInMemoryDatabase(databaseName: DateTime.Now.Ticks.ToString());
     }

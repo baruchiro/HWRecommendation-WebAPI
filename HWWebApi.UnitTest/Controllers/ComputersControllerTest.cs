@@ -5,23 +5,21 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc;
+using TestUtils;
 
 namespace HWWebApi.UnitTest.Controllers
 {
     public class ComputersControllerTest
     {
         private DbContextOptions<HardwareContext> options;
-        private Computer computer;
         public ComputersControllerTest()
         {
             options = TestUtils.TestUtils.GetInMemoryDbContextOptions().Options;
-
-            computer = TestUtils.TestUtils.GenerateComputer();
-
         }
 
-        [Fact]
-        public void Get_GetComputer_ValidateReturn()
+        [Theory]
+        [ClassData(typeof(ComputerTestData))]
+        public void Get_GetComputer_ValidateReturn(Computer computer)
         {
             //Given
             using (var context = new HardwareContext(options))
@@ -49,8 +47,9 @@ namespace HWWebApi.UnitTest.Controllers
             Assert.Equal(computer, value, new ModelEqualityComparer<Computer>());
         }
 
-        [Fact]
-        public void Post_InsertComputer_ValidateExists()
+        [Theory]
+        [ClassData(typeof(ComputerTestData))]
+        public void Post_InsertComputer_ValidateExists(Computer computer)
         {
 
             using (var context = new HardwareContext(options))

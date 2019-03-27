@@ -8,17 +8,17 @@ namespace HWWebApi.Models
     {
         public long Id { get; set; }
         public Processor Processor { get; set; } 
-        public ICollection<Memory> Memories { get; set; }
-        public ICollection<Disk> Disks { get; set; } 
+        public ICollection<Memory> Memories { get; set; } = new List<Memory>();
+        public ICollection<Disk> Disks { get; set; } = new List<Disk>();
         public MotherBoard MotherBoard { get; set; } 
-        public ICollection<Gpu> Gpus { get; set; }
+        public ICollection<Gpu> Gpus { get; set; } = new List<Gpu>();
 
         public bool EqualByMembers(Computer computer)
         {
-            return Processor.EqualByMembers(computer.Processor) &&
+            return ModelEqualityByMembers<Processor>.EqualByMembers(Processor, computer.Processor) &&
                    Memories.IsEquals(computer.Memories, new ModelEqualityByMembers<Memory>()) &&
                    Disks.IsEquals(computer.Disks, new ModelEqualityByMembers<Disk>()) &&
-                   MotherBoard.EqualByMembers(computer.MotherBoard) &&
+                   ModelEqualityByMembers<MotherBoard>.EqualByMembers(MotherBoard, computer.MotherBoard) &&
                    Gpus.IsEquals(computer.Gpus, new ModelEqualityByMembers<Gpu>());
         }
 

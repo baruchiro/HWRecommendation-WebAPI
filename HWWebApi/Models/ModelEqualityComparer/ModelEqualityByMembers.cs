@@ -15,5 +15,10 @@ namespace HWWebApi.Models.ModelEqualityComparer
         {
             return obj.GetHashCodeWithMembers();
         }
+
+        public static bool EqualByMembers(T x, T y)
+        {
+            return x?.EqualByMembers(y) ?? y == null;
+        }
     }
 }
