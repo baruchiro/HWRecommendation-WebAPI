@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace HWWebApi.Models
 {
     public class GPU : IModel<GPU>
@@ -22,8 +19,8 @@ namespace HWWebApi.Models
             unchecked
             {
                 var hashCode = 397;
-                hashCode = (hashCode * 397) ^ Name.GetHashCode();
-                hashCode = (hashCode * 397) ^ Processor.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Name?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Processor?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ Cores.GetHashCode();
                 return hashCode;
             }

@@ -49,6 +49,6 @@ namespace TestUtils
             return computer;
         }
         public static DbContextOptionsBuilder<HardwareContext> GetInMemoryDbContextOptions()=> new DbContextOptionsBuilder<HardwareContext>()
-            .UseInMemoryDatabase(databaseName: DateTime.Now.ToString(CultureInfo.CurrentCulture));
+            .UseInMemoryDatabase(databaseName: DateTime.Now.Ticks.ToString());
     }
 }

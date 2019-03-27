@@ -1,25 +1,16 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using HWWebApi.Bot;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 using HWWebApi.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Diagnostics;
-
-using HWWebApi.Helpers;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Configuration;
+using Microsoft.EntityFrameworkCore;
+using PersonalData.Bot;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace HWWebApi
@@ -57,14 +48,7 @@ namespace HWWebApi
                 
             });
 
-            /* services.AddBot<RecommendationBot>(options =>
-            {
-                var botConfig = BotConfiguration.Load("Bot\\HWRecommendationBot.bot");
-                services.AddSingleton(sp => botConfig);
-            }); */
-            
-            
-            //services.AddSingleton(()=>new BotConf)
+            services.AddPersonalDataBot<BotDbContextAdapter>(Configuration);
 
         }
 
@@ -92,9 +76,8 @@ namespace HWWebApi
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
-            app.UseMvc();
-                // .UseBotFramework();
+            app.UseMvc()
+                .UseBotFramework();
         }
     }
 }
