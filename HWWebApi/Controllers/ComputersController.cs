@@ -34,7 +34,7 @@ namespace HWWebApi.Controllers
             {
                 return Ok(context.Computers
                 .Include(c => c.Disks)
-                .Include(c => c.GPUs)
+                .Include(c => c.Gpus)
                 .Include(c => c.Memories)
                 .Include(c => c.MotherBoard)
                 .Include(c => c.Processor)

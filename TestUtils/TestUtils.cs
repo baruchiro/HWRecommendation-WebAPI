@@ -35,7 +35,7 @@ namespace TestUtils
                 SataConnections = 2,
                 Architecture = Architecture.X64
             };
-            var gpu = new GPU { Cores = 2 };
+            var gpu = new Gpu { Cores = 2 };
 
             var computer = new Computer
             {
@@ -43,8 +43,34 @@ namespace TestUtils
                 Disks = new[] { disk },
                 Processor = processor,
                 MotherBoard = motherBoard,
-                GPUs = new[] { gpu }
+                Gpus = new[] { gpu }
             };
+
+            return computer;
+        }
+
+        public static Computer GenerateEmptyComponentsComputer()
+        {
+            var memory = new Memory();
+            var disk = new Disk();
+            var processor = new Processor();
+            var motherBoard = new MotherBoard();
+            var gpu = new Gpu();
+
+            var computer = new Computer
+            {
+                Memories = new[] { memory },
+                Disks = new[] { disk },
+                Processor = processor,
+                MotherBoard = motherBoard,
+                Gpus = new[] { gpu }
+            };
+
+            return computer;
+        }
+        public static Computer GenerateEmptyComputer()
+        {
+            var computer = new Computer();
 
             return computer;
         }
