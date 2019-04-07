@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Dialogs;
+﻿using HW.Bot.Dialogs;
+using HW.Bot.Factories;
 using HW.Bot.Interfaces;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Bot.Schema;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot
 {
@@ -38,7 +37,7 @@ namespace HW.Bot
             _dialogSet.Add(new WaterfallDialog(MENU_DIALOG)
                 .AddStep(MenuStepAsync)
                 .AddStep(HandleChoiceAsync)
-                .AddStep(HandleResultAsync)
+                .AddStep(MenuLoopAsync)
             );
 
             _dialogSet.Add(new ChoicePrompt(CHOICE_DIALOG));
@@ -72,16 +71,10 @@ namespace HW.Bot
 
         private async Task<DialogTurnResult> MenuStepAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            var options = new PromptOptions
-            {
-                Prompt = MessageFactory.Text("Hi, select what you want"),
-                Choices = menuDialogKeyToTitle.Select(v =>
-                    new Choice(v.Key)
-                    {
-                        Action = new CardAction(ActionTypes.ImBack, v.Value, value: v.Key)
-                    })
-                    .ToList()
-            };
+            var options =
+                new PromptOptionsFactory()
+                .CreatePromptOptions("Hi, select what you want", menuDialogKeyToTitle);
+
             return await stepcontext.PromptAsync(CHOICE_DIALOG, options, cancellationtoken);
         }
 
@@ -99,7 +92,8 @@ namespace HW.Bot
             }
         }
 
-        private async Task<DialogTurnResult> HandleResultAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> MenuLoopAsync(WaterfallStepContext stepcontext,
+            CancellationToken cancellationtoken)
         {
             return await stepcontext.ReplaceDialogAsync(MENU_DIALOG, cancellationToken: cancellationtoken);
         }
