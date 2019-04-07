@@ -9,7 +9,7 @@ namespace HW.Bot.Factories
 {
     internal class PromptOptionsFactory
     {
-        internal PromptOptions CreatePromptOptions(string text, IDictionary<string, string> keyToTitle)
+        internal PromptOptions CreateChoicesPromptOptions(string text, IDictionary<string, string> keyToTitle)
         {
             return new PromptOptions
             {
@@ -21,6 +21,21 @@ namespace HW.Bot.Factories
                     })
                     .ToList()
             };
+        }
+
+        internal PromptOptions CreateActionsPromptOptions(string text, IEnumerable<string> actions)
+        {
+            var activityPrompt = MessageFactory.Text(text);
+            activityPrompt.SuggestedActions = new SuggestedActions
+            {
+                Actions = actions.Select(w => new CardAction(ActionTypes.PostBack, w, value: w)).ToList()
+            };
+
+            var promptOptions = new PromptOptions
+            {
+                Prompt = activityPrompt
+            };
+            return promptOptions;
         }
     }
 }
