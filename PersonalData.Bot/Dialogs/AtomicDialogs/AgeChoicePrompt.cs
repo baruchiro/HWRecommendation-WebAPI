@@ -11,12 +11,10 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 {
     class AgeNumberPrompt : NumberPrompt<int>
     {
-        private readonly string dialogId;
         private readonly PromptOptions promptOptions;
 
         public AgeNumberPrompt(string dialogId, PromptValidator<int> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
-            this.dialogId = dialogId;
             this.promptOptions = new PromptOptions
             {
                 Prompt = MessageFactory.Text("Enter your age"),
@@ -26,7 +24,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            return stepcontext.PromptAsync(this.dialogId, promptOptions, cancellationtoken);
+            return stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
         }
     }
 }
