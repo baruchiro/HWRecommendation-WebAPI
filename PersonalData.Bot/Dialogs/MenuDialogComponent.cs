@@ -31,7 +31,10 @@ namespace HW.Bot.Dialogs
                 .AddStep(MenuLoopAsync)
             );
 
-            this.dialogs.Keys.Select(d => AddDialog(d));
+            foreach(var d in this.dialogs.Keys)
+            {
+                AddDialog(d);
+            }
             AddDialog(new ChoicePrompt(CHOICE_DIALOG));
         }
 
