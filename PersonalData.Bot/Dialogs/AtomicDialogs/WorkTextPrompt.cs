@@ -11,11 +11,9 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 {
     internal class WorkTextPrompt : TextPrompt
     {
-        private readonly string dialogId;
 
         public WorkTextPrompt(string dialogId, PromptValidator<string> validator = null) : base(dialogId, validator)
         {
-            this.dialogId = dialogId;
         }
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken, IEnumerable<string> suggestedActions = null)
@@ -31,7 +29,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
                 Prompt = activityPrompt
             };
 
-            return stepcontext.PromptAsync(this.dialogId, promptOptions, cancellationtoken);
+            return stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
         }
     }
 }

@@ -12,12 +12,10 @@ namespace HW.Bot.Dialogs.AtomicDialogs
     class EnumChoicePrompt<ENUM> : ChoicePrompt
         where ENUM : struct
     {
-        private readonly string dialogId;
         private readonly PromptOptions promptOptions;
 
         public EnumChoicePrompt(string dialogId, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
-            this.dialogId = dialogId;
             this.promptOptions = new PromptOptionsFactory()
                 .CreatePromptOptions("Select your gender",
                 typeof(ENUM).GetEnumValues().Cast<ENUM>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
@@ -25,7 +23,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            return stepcontext.PromptAsync(dialogId, promptOptions, cancellationtoken);
+            return stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
         }
     }
 }
