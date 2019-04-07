@@ -17,7 +17,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         public EnumChoicePrompt(string dialogId, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
             this.promptOptions = new PromptOptionsFactory()
-                .CreatePromptOptions("Select your gender",
+                .CreateChoicesPromptOptions("Select your gender",
                 typeof(ENUM).GetEnumValues().Cast<ENUM>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
         }
 

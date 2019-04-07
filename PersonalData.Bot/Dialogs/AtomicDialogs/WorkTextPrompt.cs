@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder;
+﻿using HW.Bot.Factories;
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 using System;
@@ -18,16 +19,8 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken, IEnumerable<string> suggestedActions = null)
         {
-            var activityPrompt = MessageFactory.Text("Select one of this works or write your own.");
-            activityPrompt.SuggestedActions = new SuggestedActions
-            {
-                Actions = suggestedActions?.Select(w => new CardAction(ActionTypes.PostBack, w, value: w)).ToList()
-            };
-
-            var promptOptions = new PromptOptions
-            {
-                Prompt = activityPrompt
-            };
+            var promptOptions = new PromptOptionsFactory()
+                .CreateActionsPromptOptions("Select your work or write a new one:", suggestedActions);
 
             return stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
         }

@@ -23,6 +23,7 @@ namespace HW.Bot.Dialogs
         private const string GENDER_CHOICE_DIALOG = nameof(PersonalDataDialogComponent) + nameof(EnumChoicePrompt<Gender>) + "gender";
         private const string AGE_NUMBER_DIALOG = nameof(PersonalDataDialogComponent) + nameof(AgeNumberPrompt) + "age";
         private const string WORK_TEXT_DIALOG = nameof(PersonalDataDialogComponent) + nameof(WorkTextPrompt) + "work";
+        private const string DETAILS_EXIST_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
         private const string dataID = nameof(PersonalDataDialogComponent) + "data";
 
         public PersonalDataDialogComponent(string dialogId, IDbContext dbContext) : base(dialogId)

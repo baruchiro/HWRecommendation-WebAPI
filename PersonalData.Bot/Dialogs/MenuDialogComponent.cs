@@ -42,7 +42,7 @@ namespace HW.Bot.Dialogs
         {
             var options =
                 new PromptOptionsFactory()
-                .CreatePromptOptions(title, menuDialogKeyToTitle);
+                .CreateChoicesPromptOptions(title, menuDialogKeyToTitle);
 
             return await stepcontext.PromptAsync(CHOICE_DIALOG, options, cancellationtoken);
         }
