@@ -1,17 +1,16 @@
-﻿using Microsoft.Bot.Builder;
+﻿using HW.Bot.Extensions;
+using HW.Bot.Interfaces;
+using HW.Bot.Model;
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Bot.Schema;
-using PersonalData.Bot.Interfaces;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using PersonalData.Bot.Extensions;
-using PersonalData.Bot.Model;
-using PersonalData = PersonalData.Bot.Model.PersonalData;
 
-namespace PersonalData.Bot.Dialogs
+namespace HW.Bot.Dialogs
 {
     public class PersonalDataDialogComponent : ComponentDialog
     {
@@ -24,7 +23,7 @@ namespace PersonalData.Bot.Dialogs
 
         public PersonalDataDialogComponent(string dialogId, IDbContext dbContext) : base(dialogId)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
             AddDialog(new WaterfallDialog(WATERFALL_DIALOG)
                 .AddStep(RequestGenderStep)
                 .AddStep(RequestAgeStep)
@@ -42,17 +41,17 @@ namespace PersonalData.Bot.Dialogs
         {
             stepcontext.Context.Activity.CreateReply(
                 "First, we need some of your personal data to give you specific recommendations and to upgrade our system.");
-            
+
             stepcontext.Values[dataID] = new Model.PersonalData();
 
-            var choices = typeof(Gender).GetEnumValues().Cast<Gender>().Select(g=>
+            var choices = typeof(Gender).GetEnumValues().Cast<Gender>().Select(g =>
                 new Choice(g.ToString())
                 {
                     Action = new CardAction(ActionTypes.ImBack,
                         g.GetDescription(),
-                        text:g.GetDescription(),
-                        displayText:g.GetDescription(),
-                        value:g.ToString())
+                        text: g.GetDescription(),
+                        displayText: g.GetDescription(),
+                        value: g.ToString())
                 })
                 .ToArray();
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PersonalData.Bot
+namespace HW.Bot
 {
     public class StateManager
     {
