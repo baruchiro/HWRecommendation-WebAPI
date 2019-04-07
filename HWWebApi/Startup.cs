@@ -10,8 +10,8 @@ using Microsoft.Extensions.Logging;
 using HWWebApi.Models;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.EntityFrameworkCore;
-using PersonalData.Bot;
 using Swashbuckle.AspNetCore.Swagger;
+using HW.Bot;
 
 namespace HWWebApi
 {

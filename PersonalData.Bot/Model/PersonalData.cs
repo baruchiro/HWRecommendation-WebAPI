@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using PersonalData.Bot.Interfaces;
+using HW.Bot.Interfaces;
 
-namespace PersonalData.Bot.Model
+namespace HW.Bot.Model
 {
     internal class PersonalData : IPersonalData
     {

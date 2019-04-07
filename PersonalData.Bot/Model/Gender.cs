@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PersonalData.Bot.Model
+namespace HW.Bot.Model
 {
     internal enum Gender
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Bot.Schema;
 
-namespace PersonalData.Bot.Interfaces
+namespace HW.Bot.Interfaces
 {
     public interface IDbContext
     {

@@ -1,6 +1,4 @@
-﻿using PersonalData.Bot.Model;
-
-namespace PersonalData.Bot.Interfaces
+﻿namespace HW.Bot.Interfaces
 {
     public interface IPersonalData
     {

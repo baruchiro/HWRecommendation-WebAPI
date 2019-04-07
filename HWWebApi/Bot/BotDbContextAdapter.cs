@@ -1,8 +1,8 @@
 ﻿using HWWebApi.Models;
-using PersonalData.Bot.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using HW.Bot.Interfaces;
 
 namespace HWWebApi.Bot
 {
