@@ -62,7 +62,7 @@ namespace HW.Bot.Dialogs
             {
                 var personalData = stepContext.Values[dataID] as IPersonalData ?? new PersonalData();
                 Enum.TryParse<Gender>(foundChoice.Value, true, out var result);
-                personalData.Gender = (int)result;
+                personalData.Gender = result;
 
                 stepContext.Values[dataID] = personalData;
             }
