@@ -1,8 +1,8 @@
-﻿using HWWebApi.Models;
+﻿using HW.Bot.Interfaces;
+using HWWebApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using HW.Bot.Interfaces;
 
 namespace HWWebApi.Bot
 {
@@ -23,16 +23,14 @@ namespace HWWebApi.Bot
         public bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData)
         {
             var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
-            var user = _dbContext.Users.FirstOrDefault(u =>
-                u.Channels.Any(c =>
-                    c.EqualByMembers(userChannel)));
+            var user = GetUserByUserChannel(userChannel);
             if (user != null)
             {
                 _dbContext.Entry(user).State = EntityState.Modified;
             }
             else
             {
-                user = new User {Channels = new List<UserChannel>{userChannel}};
+                user = new User { Channels = new List<UserChannel> { userChannel } };
                 _dbContext.Users.Add(user);
             }
 
@@ -42,6 +40,17 @@ namespace HWWebApi.Bot
             user.Gender = personalData.Gender;
 
             return _dbContext.SaveChanges() > 0;
+        }
+
+        public IPersonalData GetPersonalDetails(string channelId, string userId)
+        {
+            var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
+            return GetUserByUserChannel(userChannel);
+        }
+
+        private User GetUserByUserChannel(UserChannel userChannel)
+        {
+            return _dbContext.Users.FirstOrDefault(u => u.Channels.Any(c => c.EqualByMembers(userChannel)));
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using HW.Bot.Factories;
-using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Schema;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,17 +8,23 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 {
     internal class WorkTextPrompt : TextPrompt
     {
+        private PromptOptions promptOptions;
 
-        public WorkTextPrompt(string dialogId, PromptValidator<string> validator = null) : base(dialogId, validator)
+        public WorkTextPrompt(string dialogId, PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null) : base(dialogId, validator)
         {
+            this.promptOptions = new PromptOptionsFactory()
+                     .CreateActionsPromptOptions("Select your work or write a new one:", suggestedActions);
         }
 
-        internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken, IEnumerable<string> suggestedActions = null)
+        internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            var promptOptions = new PromptOptionsFactory()
-                .CreateActionsPromptOptions("Select your work or write a new one:", suggestedActions);
-
             return stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
+        }
+
+        public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext dc, object options,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await base.BeginDialogAsync(dc, options ?? promptOptions, cancellationToken);
         }
     }
 }

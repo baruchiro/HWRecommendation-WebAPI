@@ -11,7 +11,7 @@ namespace HW.Bot.Dialogs
 {
     class MenuDialogComponent : ComponentDialog
     {
-        private readonly IDictionary<Dialog, string> dialogs;
+        private readonly IDictionary<Dialog, string> _dialogsAndTitles;
         private readonly string title;
         private readonly Dictionary<string, string> menuDialogKeyToTitle;
 
@@ -19,11 +19,11 @@ namespace HW.Bot.Dialogs
         private const string CHOICE_DIALOG = nameof(MenuDialogComponent) + "choice";
 
 
-        public MenuDialogComponent(string dialogId,string title, IDictionary<Dialog, string> dialogs) : base(dialogId)
+        public MenuDialogComponent(string dialogId, string title, IDictionary<Dialog, string> dialogsAndTitles) : base(dialogId)
         {
-            this.dialogs = dialogs;
+            this._dialogsAndTitles = dialogsAndTitles;
             this.title = title;
-            this.menuDialogKeyToTitle = this.dialogs.ToDictionary(d => d.Key.Id, d => d.Value);
+            this.menuDialogKeyToTitle = this._dialogsAndTitles.ToDictionary(d => d.Key.Id, d => d.Value);
 
             AddDialog(new WaterfallDialog(WATERFALL_DIALOG)
                 .AddStep(MenuStepAsync)
@@ -31,7 +31,7 @@ namespace HW.Bot.Dialogs
                 .AddStep(MenuLoopAsync)
             );
 
-            foreach(var d in this.dialogs.Keys)
+            foreach (var d in this._dialogsAndTitles.Keys)
             {
                 AddDialog(d);
             }
