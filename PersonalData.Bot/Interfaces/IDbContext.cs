@@ -7,5 +7,6 @@ namespace HW.Bot.Interfaces
     {
         IEnumerable<string> GetOrderedWorkList();
         bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData);
+        IPersonalData GetPersonalDetails(string channelId, string userId);
     }
 }

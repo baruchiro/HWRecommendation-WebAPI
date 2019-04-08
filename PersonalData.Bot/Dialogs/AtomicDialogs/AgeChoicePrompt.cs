@@ -1,9 +1,5 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,6 +21,12 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
             return stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
+        }
+
+        public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext dc, object options,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await base.BeginDialogAsync(dc, options ?? promptOptions, cancellationToken);
         }
     }
 }
