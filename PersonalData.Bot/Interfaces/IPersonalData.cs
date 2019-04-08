@@ -1,4 +1,6 @@
-﻿namespace HW.Bot.Interfaces
+﻿using HW.Bot.Model;
+
+namespace HW.Bot.Interfaces
 {
     public interface IPersonalData
     {
@@ -6,7 +8,7 @@
         /// <summary>
         /// 0= NOT_DEFINE, 1= MALE, 2= FEMALE
         /// </summary>
-        int Gender { get; set; }
+        Gender Gender { get; set; }
         int Age { get; set; }
         string WorkArea { get; set; }
     }

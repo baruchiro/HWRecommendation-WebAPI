@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace HW.Bot.Model
 {
-    internal enum Gender
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Gender
     {
         [Description("Not defined")]
         NOT_DEFINE,

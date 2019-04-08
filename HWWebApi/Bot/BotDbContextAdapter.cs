@@ -39,7 +39,7 @@ namespace HWWebApi.Bot
             user.Name = personalData.Name;
             user.WorkArea = personalData.WorkArea;
             user.Age = personalData.Age;
-            user.Gender = (Gender) personalData.Gender;
+            user.Gender = personalData.Gender;
 
             return _dbContext.SaveChanges() > 0;
         }
