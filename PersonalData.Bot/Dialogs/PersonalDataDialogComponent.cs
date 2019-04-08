@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HW.Bot.Dialogs.MenuDialog;
 
 namespace HW.Bot.Dialogs
 {

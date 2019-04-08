@@ -1,13 +1,12 @@
-﻿using HW.Bot.Factories;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HW.Bot.Factories;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Dialogs.Choices;
 
-namespace HW.Bot.Dialogs
+namespace HW.Bot.Dialogs.MenuDialog
 {
     class MenuDialogComponent : ComponentDialog
     {
@@ -19,11 +18,15 @@ namespace HW.Bot.Dialogs
         private const string CHOICE_DIALOG = nameof(MenuDialogComponent) + "choice";
 
 
-        public MenuDialogComponent(string dialogId, string title, IDictionary<Dialog, string> dialogsAndTitles) : base(dialogId)
+        public MenuDialogComponent(string dialogId, string title, IDictionary<Dialog, string> dialogsAndTitles, string doneTitle = "Done") : base(dialogId)
         {
             this._dialogsAndTitles = dialogsAndTitles;
             this.title = title;
             this.menuDialogKeyToTitle = this._dialogsAndTitles.ToDictionary(d => d.Key.Id, d => d.Value);
+            if (!string.IsNullOrEmpty(doneTitle))
+            {
+                menuDialogKeyToTitle.Add(doneTitle, doneTitle);
+            }
 
             AddDialog(new WaterfallDialog(WATERFALL_DIALOG)
                 .AddStep(MenuStepAsync)
@@ -35,6 +38,7 @@ namespace HW.Bot.Dialogs
             {
                 AddDialog(d);
             }
+
             AddDialog(new ChoicePrompt(CHOICE_DIALOG));
         }
 
@@ -53,11 +57,11 @@ namespace HW.Bot.Dialogs
             switch (stepcontext.Result)
             {
                 case FoundChoice result
-                    when menuDialogKeyToTitle.Keys.Contains(result.Value):
+                    when _dialogsAndTitles.Keys.Select(d => d.Id).Contains(result.Value):// menuDialogKeyToTitle.Keys.Contains(result.Value):
                     return await stepcontext.BeginDialogAsync(result.Value, cancellationToken: cancellationtoken);
 
                 default:
-                    return await stepcontext.EndDialogAsync(cancellationToken: cancellationtoken);
+                    return await stepcontext.EndDialogAsync(stepcontext.Values, cancellationToken: cancellationtoken);
             }
         }
 
