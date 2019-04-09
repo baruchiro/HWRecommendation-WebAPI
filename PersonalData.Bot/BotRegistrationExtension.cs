@@ -27,7 +27,7 @@ namespace PersonalData.Bot
                 services.AddSingleton(sp =>
                     botConfig ??
                     throw new InvalidOperationException(
-                        $"The .bot configuration file could not be loaded. ({botFilePath ?? @".\HWRecommendationBot.bot"})"));
+                        $"The .bot configuration file could not be loaded. ({botFilePath ?? @"HWRecommendationBot.bot"})"));
 
                 // Retrieve current endpoint.
                 var environment = env.IsProduction() ? "production" : "development";
