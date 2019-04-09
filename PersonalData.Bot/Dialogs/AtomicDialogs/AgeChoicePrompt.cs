@@ -21,9 +21,9 @@ namespace HW.Bot.Dialogs.AtomicDialogs
             };
         }
 
-        internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            return stepcontext.PromptAsync(Id, _promptOptions, cancellationtoken);
+            return stepContext.PromptAsync(Id, _promptOptions, cancellationToken);
         }
 
         public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext dc, object options,

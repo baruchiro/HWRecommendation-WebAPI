@@ -43,37 +43,37 @@ namespace HW.Bot.Dialogs.MenuDialog
             AddDialog(new ChoicePrompt(CHOICE_DIALOG));
         }
 
-        private async Task<DialogTurnResult> MenuStepAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> MenuStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var options =
                 new PromptOptionsFactory()
                 .CreateChoicesPromptOptions(_title, _menuDialogKeyToTitle);
 
-            return await stepcontext.PromptAsync(CHOICE_DIALOG, options, cancellationtoken);
+            return await stepContext.PromptAsync(CHOICE_DIALOG, options, cancellationToken);
         }
 
-        private async Task<DialogTurnResult> HandleChoiceAsync(WaterfallStepContext stepcontext,
-            CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> HandleChoiceAsync(WaterfallStepContext stepContext,
+            CancellationToken cancellationToken)
         {
-            switch (stepcontext.Result)
+            switch (stepContext.Result)
             {
                 case FoundChoice result
                     when _dialogsAndTitles.Keys.Select(d => d.Id).Contains(result.Value):
 
-                    stepcontext.Values[SELECTED_DIALOG] = result.Value;
-                    return await stepcontext.BeginDialogAsync(result.Value, cancellationToken: cancellationtoken);
+                    stepContext.Values[SELECTED_DIALOG] = result.Value;
+                    return await stepContext.BeginDialogAsync(result.Value, cancellationToken: cancellationToken);
 
                 default:
-                    return await stepcontext.EndDialogAsync(stepcontext.Values, cancellationToken: cancellationtoken);
+                    return await stepContext.EndDialogAsync(stepContext.Values, cancellationToken: cancellationToken);
             }
         }
 
-        private async Task<DialogTurnResult> MenuLoopAsync(WaterfallStepContext stepcontext,
-            CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> MenuLoopAsync(WaterfallStepContext stepContext,
+            CancellationToken cancellationToken)
         {
-            _dialogsAndTitles.Keys.First(d => d.Id.Equals(stepcontext.Values[SELECTED_DIALOG]))
-                .HandleResult?.Invoke(stepcontext.Context, stepcontext.Result, cancellationtoken);
-            return await stepcontext.ReplaceDialogAsync(WATERFALL_DIALOG, cancellationToken: cancellationtoken);
+            _dialogsAndTitles.Keys.First(d => d.Id.Equals(stepContext.Values[SELECTED_DIALOG]))
+                .HandleResult?.Invoke(stepContext.Context, stepContext.Result, cancellationToken);
+            return await stepContext.ReplaceDialogAsync(WATERFALL_DIALOG, cancellationToken: cancellationToken);
         }
     }
 }
