@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using System.Linq;
+using HW.Bot.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Configuration;
@@ -6,11 +9,8 @@ using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using PersonalData.Bot.Interfaces;
-using System;
-using System.Linq;
 
-namespace PersonalData.Bot
+namespace HW.Bot
 {
     public static class BotRegistrationExtension
     {
@@ -34,7 +34,7 @@ namespace PersonalData.Bot
                 var service = botConfig.Services.FirstOrDefault(s => s.Type == "endpoint" && s.Name == environment);
                 if (!(service is EndpointService endpointService))
                 {
-                    throw new InvalidOperationException($"The .bot file does not contain an endpoint.");
+                    throw new InvalidOperationException("The .bot file does not contain an endpoint.");
                 }
 
                 options.CredentialProvider =

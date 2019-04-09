@@ -1,6 +1,6 @@
-﻿using PersonalData.Bot.Model;
+﻿using HW.Bot.Model;
 
-namespace PersonalData.Bot.Interfaces
+namespace HW.Bot.Interfaces
 {
     public interface IPersonalData
     {
@@ -8,7 +8,7 @@ namespace PersonalData.Bot.Interfaces
         /// <summary>
         /// 0= NOT_DEFINE, 1= MALE, 2= FEMALE
         /// </summary>
-        int Gender { get; set; }
+        Gender Gender { get; set; }
         int Age { get; set; }
         string WorkArea { get; set; }
     }

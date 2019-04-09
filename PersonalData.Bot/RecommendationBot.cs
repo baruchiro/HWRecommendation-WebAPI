@@ -1,50 +1,37 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HW.Bot.Dialogs;
+using HW.Bot.Dialogs.MenuDialog;
+using HW.Bot.Interfaces;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Bot.Schema;
-using PersonalData.Bot.Dialogs;
-using PersonalData.Bot.Interfaces;
 
-namespace PersonalData.Bot
+namespace HW.Bot
 {
-
-    public class RecommendationBot : IBot
+    internal class RecommendationBot : IBot
     {
         private readonly StateManager _accessors;
         private readonly DialogSet _dialogSet;
 
-        private readonly IDictionary<string, string> menuDialogKeyToTitle =
-            new Dictionary<string, string>
-            {
-                {DETAILS_DIALOG, "Get hardware recommendations for your current computer"}
-            };
+        private readonly IDictionary<IMenuItemDialog, string> _menuDialogs = new Dictionary<IMenuItemDialog, string>();
 
-        private const string DETAILS_DIALOG = "recommendations";
         private const string MENU_DIALOG = "menu";
-        private const string CHOICE_DIALOG = "choice";
 
         public RecommendationBot(StateManager accessors, IDbContext dbContext)
         {
             _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
 
+            _menuDialogs.Add(
+                new PersonalDataDialogComponent("recommendations", _accessors, dbContext),
+                "Get hardware recommendations for your current computer");
+
+
             _dialogSet = new DialogSet(accessors.ConversationDataAccessor);
 
-            _dialogSet.Add(new WaterfallDialog(MENU_DIALOG)
-                .AddStep(MenuStepAsync)
-                .AddStep(HandleChoiceAsync)
-                .AddStep(HandleResultAsync)
-            );
-
-            _dialogSet.Add(new ChoicePrompt(CHOICE_DIALOG));
-
-            _dialogSet.Add(new PersonalDataDialogComponent(DETAILS_DIALOG, dbContext));
-
+            _dialogSet.Add(new MenuDialogComponent(MENU_DIALOG, "Hi, select what you want", _menuDialogs, doneTitle: null));
         }
 
         public async Task OnTurnAsync(ITurnContext turnContext,
@@ -68,40 +55,6 @@ namespace PersonalData.Bot
                 await turnContext.SendActivityAsync($"{turnContext.Activity.Type} event detected",
                     cancellationToken: cancellationToken);
             }
-        }
-
-        private async Task<DialogTurnResult> MenuStepAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
-        {
-            var options = new PromptOptions
-            {
-                Prompt = MessageFactory.Text("Hi, select what you want"),
-                Choices = menuDialogKeyToTitle.Select(v=>
-                    new Choice(v.Key)
-                    {
-                        Action = new CardAction(ActionTypes.ImBack, v.Value, value:v.Key)
-                    })
-                    .ToList()
-            };
-            return await stepcontext.PromptAsync(CHOICE_DIALOG, options, cancellationtoken);
-        }
-
-        private async Task<DialogTurnResult> HandleChoiceAsync(WaterfallStepContext stepcontext,
-            CancellationToken cancellationtoken)
-        {
-            switch (stepcontext.Result)
-            {
-                case FoundChoice result
-                    when menuDialogKeyToTitle.Keys.Contains(result.Value):
-                    return await stepcontext.BeginDialogAsync(result.Value, cancellationToken: cancellationtoken);
-
-                default:
-                    return await stepcontext.EndDialogAsync(cancellationToken: cancellationtoken);
-            }
-        }
-
-        private async Task<DialogTurnResult> HandleResultAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
-        {
-            return await stepcontext.ReplaceDialogAsync(MENU_DIALOG, cancellationToken: cancellationtoken);
         }
     }
 }

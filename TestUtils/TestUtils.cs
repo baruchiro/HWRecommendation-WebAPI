@@ -1,6 +1,5 @@
-﻿using HWWebApi.Models;
-using System;
-using System.Globalization;
+﻿using System;
+using HWWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace TestUtils
@@ -15,7 +14,7 @@ namespace TestUtils
                 Type = RamType.DDR3,
                 Ghz = 5000004
             };
-            var disk = new Disk()
+            var disk = new Disk
             {
                 Type = DiskType.HDD,
                 Rpm = 5000,

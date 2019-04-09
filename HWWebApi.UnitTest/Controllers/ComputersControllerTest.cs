@@ -1,20 +1,20 @@
-﻿using Xunit;
+﻿using System.Linq;
 using HWWebApi.Controllers;
 using HWWebApi.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TestUtils;
+using Xunit;
 
 namespace HWWebApi.UnitTest.Controllers
 {
     public class ComputersControllerTest
     {
-        private DbContextOptions<HardwareContext> options;
+        private readonly DbContextOptions<HardwareContext> _options;
         public ComputersControllerTest()
         {
-            options = TestUtils.TestUtils.GetInMemoryDbContextOptions().Options;
+            _options = TestUtils.TestUtils.GetInMemoryDbContextOptions().Options;
         }
 
         [Theory]
@@ -22,21 +22,21 @@ namespace HWWebApi.UnitTest.Controllers
         public void Get_GetComputer_ValidateReturn(Computer computer)
         {
             //Given
-            using (var context = new HardwareContext(options))
+            using (var context = new HardwareContext(_options))
             {
                 context.Computers.Add(computer);
                 context.SaveChanges();
             }
 
             //When
-            using (var context = new HardwareContext(options))
+            using (var context = new HardwareContext(_options))
             {
                 Assert.Equal(1, context.Computers.Count());
             }
 
             ActionResult<Computer> result;
             //Then
-            using (var context = new HardwareContext(options))
+            using (var context = new HardwareContext(_options))
             {
                 var computersController = new ComputersController(context);
                 result = computersController.Get(computer.Id);     
@@ -52,13 +52,13 @@ namespace HWWebApi.UnitTest.Controllers
         public void Post_InsertComputer_ValidateExists(Computer computer)
         {
 
-            using (var context = new HardwareContext(options))
+            using (var context = new HardwareContext(_options))
             {
                 var computersController = new ComputersController(context);
                 computersController.PostBody(computer);
             }
 
-            using (var context = new HardwareContext(options))
+            using (var context = new HardwareContext(_options))
             {
                 Assert.Equal(1, context.Computers.Count());
                 Assert.Equal(computer, context.Computers.Include(c => c.Disks)

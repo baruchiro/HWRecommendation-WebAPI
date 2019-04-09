@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HWWebApi.Models;
 
 namespace HWWebApi.Controllers
 {
@@ -60,10 +60,8 @@ namespace HWWebApi.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
             return NoContent();
@@ -72,7 +70,7 @@ namespace HWWebApi.Controllers
         [HttpPost("DataOnly")]
         public async Task<ActionResult<TestString>> PostTestString([FromForm]string data)
         {
-            var testString = new TestString() {Data = data};
+            var testString = new TestString {Data = data};
             _context.TestStrings.Add(testString);
             await _context.SaveChangesAsync();
 

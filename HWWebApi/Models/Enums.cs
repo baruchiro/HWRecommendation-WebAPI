@@ -48,7 +48,7 @@ namespace HWWebApi.Models
         [EnumMember] LPDDR,
         [EnumMember] LPDDR2,
         [EnumMember] LPDDR3,
-        [EnumMember] LPDDR4,
+        [EnumMember] LPDDR4
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -64,13 +64,5 @@ namespace HWWebApi.Models
         /// HDD
         /// </summary>
         [EnumMember] HDD
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum Gender
-    {
-        NOT_DEFINED,
-        MALE,
-        FEMALE
     }
 }
