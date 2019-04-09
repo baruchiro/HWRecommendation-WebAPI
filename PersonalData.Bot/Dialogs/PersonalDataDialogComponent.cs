@@ -23,7 +23,7 @@ namespace HW.Bot.Dialogs
         private readonly IDbContext _dbContext;
         private readonly IPersonalDataStateManager personalDataStateManager;
         private const string NEW_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "newuser";
-        private const string EXIST_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
+        private const string EXIST_USER_MENU = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
         private const string GENDER_CHOICE_DIALOG = "Gender";
         private const string AGE_NUMBER_DIALOG = "Age";
         private const string WORK_TEXT_DIALOG = "Work";
@@ -45,7 +45,7 @@ namespace HW.Bot.Dialogs
 
             AddDialog(new WaterfallDialog(WELCOME_WATERFALL)
                 .AddStep(DecideIfNewOrExistUserStep)
-                .AddStep(SaveDetailsLoopStep)
+                .AddStep(SaveDetailsStep)
             );
 
             AddDialog(new WaterfallDialog(NEW_USER_WATERFALL)
@@ -59,7 +59,7 @@ namespace HW.Bot.Dialogs
                 .AddStep(EndWaterfallStep)
             );
 
-            AddDialog(new MenuDialogComponent(EXIST_USER_WATERFALL, "Select which data you want to change",
+            AddDialog(new MenuDialogComponent(EXIST_USER_MENU, "Select which data you want to change",
                 new Dictionary<IMenuItemDialog, string>
                 {
                     {_genderPrompt, "Change your Gender"},
@@ -90,10 +90,10 @@ namespace HW.Bot.Dialogs
             }
 
             stepContext.Values[dataID] = personalInfo;
-            return await stepContext.BeginDialogAsync(EXIST_USER_WATERFALL, personalInfo, cancellationToken: cancellationToken);
+            return await stepContext.BeginDialogAsync(EXIST_USER_MENU, personalInfo, cancellationToken: cancellationToken);
         }
 
-        private async Task<DialogTurnResult> SaveDetailsLoopStep(WaterfallStepContext stepcontext,
+        private async Task<DialogTurnResult> SaveDetailsStep(WaterfallStepContext stepcontext,
             CancellationToken cancellationtoken)
         {
             var personalData = await personalDataStateManager.GetPersonalDataAsync(stepcontext.Context, cancellationtoken);
@@ -116,7 +116,8 @@ namespace HW.Bot.Dialogs
             {
                 await stepcontext.Context.SendActivityAsync("We can't save your data", cancellationToken: cancellationtoken);
             }
-            return await stepcontext.ReplaceDialogAsync(WELCOME_WATERFALL, cancellationToken: cancellationtoken);
+
+            return await stepcontext.EndDialogAsync(cancellationToken: cancellationtoken);
         }
 
         private async Task<DialogTurnResult> HandlePersonalDataStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
