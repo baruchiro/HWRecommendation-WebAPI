@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using HW.Bot.Interfaces;
+using HW.Bot.Model;
 using HWWebApi.Helpers;
 using HWWebApi.Models.ModelEqualityComparer;
 
 namespace HWWebApi.Models
 {
-    public class User : IModel<User>
+    public class User : IModel<User>, IPersonalData
     {
         public long Id { get; set; }
         public string Name { get; set; }

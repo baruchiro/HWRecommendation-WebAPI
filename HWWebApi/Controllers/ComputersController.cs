@@ -1,7 +1,7 @@
-﻿using HWWebApi.Models;
+﻿using System.Linq;
+using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace HWWebApi.Controllers
 {
@@ -30,9 +30,9 @@ namespace HWWebApi.Controllers
         [HttpGet("{id}")]
         public override ActionResult<Computer> Get(long id)
         {
-            if (context.Computers.Any(c => c.Id == id))
+            if (Context.Computers.Any(c => c.Id == id))
             {
-                return Ok(context.Computers
+                return Ok(Context.Computers
                 .Include(c => c.Disks)
                 .Include(c => c.Gpus)
                 .Include(c => c.Memories)

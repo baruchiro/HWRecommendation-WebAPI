@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HWWebApi.IntegrationTest", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUtils", "TestUtils\TestUtils.csproj", "{91C5DDF1-4AA7-4AB2-978B-1CB10710E610}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalData.Bot", "PersonalData.Bot\PersonalData.Bot.csproj", "{9C4AE582-0A5C-4B8C-9768-6EA9A1469385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HW.Bot", "PersonalData.Bot\HW.Bot.csproj", "{9C4AE582-0A5C-4B8C-9768-6EA9A1469385}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

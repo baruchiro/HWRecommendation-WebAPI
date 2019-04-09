@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace PersonalData.Bot.Extensions
+namespace HW.Bot.Extensions
 {
     internal static class EnumDescriptionExtension
     {
