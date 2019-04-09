@@ -23,11 +23,11 @@ namespace PersonalData.Bot
                 var botFilePath = configuration.GetSection("botFilePath")?.Value;
 
                 // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
-                var botConfig = BotConfiguration.Load(botFilePath ?? @".\HWRecommendationBot.bot", secretKey);
+                var botConfig = BotConfiguration.Load(botFilePath ?? @"HWRecommendationBot.bot", secretKey);
                 services.AddSingleton(sp =>
                     botConfig ??
                     throw new InvalidOperationException(
-                        $"The .bot configuration file could not be loaded. ({botFilePath ?? @".\HWRecommendationBot.bot"})"));
+                        $"The .bot configuration file could not be loaded. ({botFilePath ?? @"HWRecommendationBot.bot"})"));
 
                 // Retrieve current endpoint.
                 var environment = env.IsProduction() ? "production" : "development";
