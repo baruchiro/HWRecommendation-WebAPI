@@ -11,7 +11,7 @@ using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {
-    class EnumChoicePrompt<TEnum> : ChoicePrompt, IMenuItemDialog
+    internal class EnumChoicePrompt<TEnum> : ChoicePrompt, IMenuItemDialog
         where TEnum : struct
     {
         private readonly PromptOptions _promptOptions;

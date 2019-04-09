@@ -5,7 +5,7 @@ using Microsoft.Bot.Builder;
 
 namespace HW.Bot.Interfaces
 {
-    interface IPersonalDataStateManager
+    internal interface IPersonalDataStateManager
     {
         Task<IPersonalData> GetPersonalDataAsync(ITurnContext turnContext, CancellationToken cancellationToken);
         Task SavePersonalDataAsync(ITurnContext turnContext, IPersonalData personalData, CancellationToken cancellationToken);

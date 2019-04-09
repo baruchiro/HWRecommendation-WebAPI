@@ -8,7 +8,7 @@ using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace HW.Bot.Dialogs.MenuDialog
 {
-    class MenuDialogComponent : ComponentDialog
+    internal class MenuDialogComponent : ComponentDialog
     {
         private readonly IDictionary<IMenuItemDialog, string> _dialogsAndTitles;
         private readonly string _title;

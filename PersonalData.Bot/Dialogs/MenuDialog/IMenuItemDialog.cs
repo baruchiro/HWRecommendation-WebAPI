@@ -6,7 +6,7 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace HW.Bot.Dialogs.MenuDialog
 {
-    interface IMenuItemDialog
+    internal interface IMenuItemDialog
     {
         string Id { get; }
         Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; }
