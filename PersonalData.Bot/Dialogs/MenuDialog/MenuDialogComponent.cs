@@ -10,15 +10,16 @@ namespace HW.Bot.Dialogs.MenuDialog
 {
     class MenuDialogComponent : ComponentDialog
     {
-        private readonly IDictionary<Dialog, string> _dialogsAndTitles;
+        private readonly IDictionary<IMenuItemDialog, string> _dialogsAndTitles;
         private readonly string title;
         private readonly Dictionary<string, string> menuDialogKeyToTitle;
 
+        private const string SELECTED_DIALOG = nameof(MenuDialogComponent) + "selectedDialog";
         private const string WATERFALL_DIALOG = nameof(MenuDialogComponent) + "waterfall";
         private const string CHOICE_DIALOG = nameof(MenuDialogComponent) + "choice";
 
 
-        public MenuDialogComponent(string dialogId, string title, IDictionary<Dialog, string> dialogsAndTitles, string doneTitle = "Done") : base(dialogId)
+        public MenuDialogComponent(string dialogId, string title, IDictionary<IMenuItemDialog, string> dialogsAndTitles, string doneTitle = "Done") : base(dialogId)
         {
             this._dialogsAndTitles = dialogsAndTitles;
             this.title = title;
@@ -36,7 +37,7 @@ namespace HW.Bot.Dialogs.MenuDialog
 
             foreach (var d in this._dialogsAndTitles.Keys)
             {
-                AddDialog(d);
+                AddDialog(d.GetDialog());
             }
 
             AddDialog(new ChoicePrompt(CHOICE_DIALOG));
@@ -58,6 +59,7 @@ namespace HW.Bot.Dialogs.MenuDialog
             {
                 case FoundChoice result
                     when _dialogsAndTitles.Keys.Select(d => d.Id).Contains(result.Value):// menuDialogKeyToTitle.Keys.Contains(result.Value):
+                    stepcontext.Values[SELECTED_DIALOG] = result.Value;
                     return await stepcontext.BeginDialogAsync(result.Value, cancellationToken: cancellationtoken);
 
                 default:
@@ -68,6 +70,8 @@ namespace HW.Bot.Dialogs.MenuDialog
         private async Task<DialogTurnResult> MenuLoopAsync(WaterfallStepContext stepcontext,
             CancellationToken cancellationtoken)
         {
+            _dialogsAndTitles.Keys.First(d => d.Id.Equals(stepcontext.Values[SELECTED_DIALOG]))
+                .HandleResult?.Invoke(stepcontext.Context, stepcontext.Result, cancellationtoken);
             return await stepcontext.ReplaceDialogAsync(WATERFALL_DIALOG, cancellationToken: cancellationtoken);
         }
     }
