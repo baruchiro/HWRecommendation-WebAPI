@@ -7,18 +7,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HW.Bot.Dialogs.MenuDialog;
 using Microsoft.Bot.Builder;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {
-    class EnumChoicePrompt<ENUM> : ChoicePrompt
+    class EnumChoicePrompt<ENUM> : ChoicePrompt, IMenuItemDialog
         where ENUM : struct
     {
         private readonly PromptOptions promptOptions;
+        public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
         public EnumChoicePrompt(string dialogId, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
-            
             this.promptOptions = new PromptOptionsFactory()
                 .CreateChoicesPromptOptions("Select your gender",
                 typeof(ENUM).GetEnumValues().Cast<ENUM>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
@@ -33,6 +34,11 @@ namespace HW.Bot.Dialogs.AtomicDialogs
             CancellationToken cancellationToken = default(CancellationToken))
         {
             return await base.BeginDialogAsync(dc, options ?? promptOptions, cancellationToken);
+        }
+
+        public Dialog GetDialog()
+        {
+            return this;
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using HW.Bot.Dialogs.AtomicDialogs;
+using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Extensions;
 using HW.Bot.Interfaces;
 using HW.Bot.Model;
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using System;
@@ -9,17 +11,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using HW.Bot.Dialogs.MenuDialog;
 
 namespace HW.Bot.Dialogs
 {
-    public class PersonalDataDialogComponent : ComponentDialog
+    internal class PersonalDataDialogComponent : ComponentDialog, IMenuItemDialog
     {
         private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG);
         private readonly AgeNumberPrompt _agePrompt = new AgeNumberPrompt(AGE_NUMBER_DIALOG);
         private readonly WorkTextPrompt _workPrompt;
 
         private readonly IDbContext _dbContext;
+        private readonly IPersonalDataStateManager personalDataStateManager;
         private const string NEW_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "newuser";
         private const string EXIST_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
         private const string GENDER_CHOICE_DIALOG = "Gender";
@@ -28,10 +30,18 @@ namespace HW.Bot.Dialogs
         private const string WELCOME_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "welcome";
         private const string dataID = nameof(PersonalDataDialogComponent) + "data";
 
-        public PersonalDataDialogComponent(string dialogId, IDbContext dbContext) : base(dialogId)
+        public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
+
+        public PersonalDataDialogComponent(string dialogId, IPersonalDataStateManager personalDataStateManager, IDbContext dbContext) : base(dialogId)
         {
+            this.personalDataStateManager = personalDataStateManager;
             _dbContext = dbContext;
-            _workPrompt = new WorkTextPrompt(WORK_TEXT_DIALOG, suggestedActions: _dbContext.GetOrderedWorkList().Take(5));
+            _workPrompt = new WorkTextPrompt(WORK_TEXT_DIALOG, suggestedActions: _dbContext.GetOrderedWorkList().Take(5))
+            {
+                HandleResult = HandleWork
+            };
+            _agePrompt.HandleResult = HandleAge;
+            _genderPrompt.HandleResult = HandleGender;
 
             AddDialog(new WaterfallDialog(WELCOME_WATERFALL)
                 .AddStep(DecideIfNewOrExistUserStep)
@@ -50,7 +60,7 @@ namespace HW.Bot.Dialogs
             );
 
             AddDialog(new MenuDialogComponent(EXIST_USER_WATERFALL, "Select which data you want to change",
-                new Dictionary<Dialog, string>
+                new Dictionary<IMenuItemDialog, string>
                 {
                     {_genderPrompt, "Change your Gender"},
                     {_agePrompt, "Change your age"},
@@ -86,21 +96,20 @@ namespace HW.Bot.Dialogs
         private async Task<DialogTurnResult> SaveDetailsLoopStep(WaterfallStepContext stepcontext,
             CancellationToken cancellationtoken)
         {
-            var userDetails = stepcontext.Result as IPersonalData ??
-                              throw new ArgumentNullException(nameof(stepcontext.Result), "dont have an IPersonalData");
+            var personalData = await personalDataStateManager.GetPersonalDataAsync(stepcontext.Context, cancellationtoken);
 
             var channelId = stepcontext.Context.Activity.ChannelId;
             var userId = stepcontext.Context.Activity.From.Id;
 
             await stepcontext.Context.SendActivityAsync($"Saving information of {userId} from {channelId}", cancellationToken: cancellationtoken);
 
-            if (_dbContext.SavePersonalDetails(channelId, userId, userDetails))
+            if (_dbContext.SavePersonalDetails(channelId, userId, personalData))
             {
                 await stepcontext.Context.SendActivityAsync(
                     $"Saving your data:\n" +
-                    $"Gender- {userDetails.Gender.GetDescription()}\n" +
-                    $"Age- {userDetails.Age}\n" +
-                    $"WorkArea- {userDetails.WorkArea}",
+                    $"Gender- {personalData.Gender.GetDescription()}\n" +
+                    $"Age- {personalData.Age}\n" +
+                    $"WorkArea- {personalData.WorkArea}",
                     cancellationToken: cancellationtoken);
             }
             else
@@ -146,7 +155,47 @@ namespace HW.Bot.Dialogs
 
         private async Task<DialogTurnResult> EndWaterfallStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            return await stepContext.NextAsync(((IPersonalData)stepContext.Values[dataID]), cancellationToken);
+            if (stepContext.Values[dataID] is IPersonalData personalData)
+            {
+                await personalDataStateManager.SavePersonalDataAsync(stepContext.Context, personalData, cancellationToken);
+            }
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
+        }
+
+        public Dialog GetDialog()
+        {
+            return this;
+        }
+
+        private async Task HandleWork(ITurnContext turnContext, object result, CancellationToken cancellationToken)
+        {
+            await personalDataStateManager.UpdatePersonalDataAsync(turnContext,
+                personalData =>
+                {
+                    if (result is string work)
+                        personalData.WorkArea = work;
+                }, cancellationToken);
+        }
+
+        private async Task HandleAge(ITurnContext turnContext, object result, CancellationToken cancellationToken)
+        {
+            await personalDataStateManager.UpdatePersonalDataAsync(turnContext,
+                personalData =>
+                {
+                    if (result is int age)
+                        personalData.Age = age;
+                }, cancellationToken);
+        }
+
+        private async Task HandleGender(ITurnContext turnContext, object result, CancellationToken cancellationToken)
+        {
+            await personalDataStateManager.UpdatePersonalDataAsync(turnContext,
+                personalData =>
+                {
+                    if (!(result is FoundChoice foundChoice)) return;
+                    Enum.TryParse<Gender>(foundChoice.Value, true, out var gender);
+                    personalData.Gender = gender;
+                }, cancellationToken);
         }
     }
 }

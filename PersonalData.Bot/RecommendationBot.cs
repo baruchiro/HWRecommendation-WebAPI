@@ -1,4 +1,5 @@
 ﻿using HW.Bot.Dialogs;
+using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Interfaces;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
@@ -7,31 +8,30 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using HW.Bot.Dialogs.MenuDialog;
 
 namespace HW.Bot
 {
-
-    public class RecommendationBot : IBot
+    internal class RecommendationBot : IBot
     {
         private readonly StateManager _accessors;
         private readonly DialogSet _dialogSet;
 
-        private readonly IDictionary<Dialog, string> menuDialogs = new Dictionary<Dialog, string>();
+        private readonly IDictionary<IMenuItemDialog, string> menuDialogs = new Dictionary<IMenuItemDialog, string>();
 
         private const string MENU_DIALOG = "menu";
 
         public RecommendationBot(StateManager accessors, IDbContext dbContext)
         {
+            _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
+
             menuDialogs.Add(
-                new PersonalDataDialogComponent("recommendations", dbContext),
+                new PersonalDataDialogComponent("recommendations", _accessors, dbContext),
                 "Get hardware recommendations for your current computer");
 
-            _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
 
             _dialogSet = new DialogSet(accessors.ConversationDataAccessor);
 
-            _dialogSet.Add(new MenuDialogComponent(MENU_DIALOG, "Hi, select what you want", menuDialogs));
+            _dialogSet.Add(new MenuDialogComponent(MENU_DIALOG, "Hi, select what you want", menuDialogs, doneTitle: null));
         }
 
         public async Task OnTurnAsync(ITurnContext turnContext,
