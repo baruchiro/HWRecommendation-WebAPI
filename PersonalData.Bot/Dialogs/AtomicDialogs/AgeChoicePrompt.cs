@@ -1,9 +1,9 @@
 ﻿using System;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
 using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Dialogs.MenuDialog;
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Dialogs;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {
@@ -14,7 +14,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 
         public AgeNumberPrompt(string dialogId, PromptValidator<int> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
-            this.promptOptions = new PromptOptions
+            promptOptions = new PromptOptions
             {
                 Prompt = MessageFactory.Text("Enter your age"),
                 RetryPrompt = MessageFactory.Text("Please, Enter your age!!")

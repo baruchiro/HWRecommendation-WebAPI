@@ -1,10 +1,10 @@
-﻿using HW.Bot.Factories;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HW.Bot.Factories;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace HW.Bot.Dialogs.MenuDialog
 {
@@ -21,9 +21,9 @@ namespace HW.Bot.Dialogs.MenuDialog
 
         public MenuDialogComponent(string dialogId, string title, IDictionary<IMenuItemDialog, string> dialogsAndTitles, string doneTitle = "Done") : base(dialogId)
         {
-            this._dialogsAndTitles = dialogsAndTitles;
+            _dialogsAndTitles = dialogsAndTitles;
             this.title = title;
-            this.menuDialogKeyToTitle = this._dialogsAndTitles.ToDictionary(d => d.Key.Id, d => d.Value);
+            menuDialogKeyToTitle = _dialogsAndTitles.ToDictionary(d => d.Key.Id, d => d.Value);
             if (!string.IsNullOrEmpty(doneTitle))
             {
                 menuDialogKeyToTitle.Add(doneTitle, doneTitle);
@@ -35,7 +35,7 @@ namespace HW.Bot.Dialogs.MenuDialog
                 .AddStep(MenuLoopAsync)
             );
 
-            foreach (var d in this._dialogsAndTitles.Keys)
+            foreach (var d in _dialogsAndTitles.Keys)
             {
                 AddDialog(d.GetDialog());
             }

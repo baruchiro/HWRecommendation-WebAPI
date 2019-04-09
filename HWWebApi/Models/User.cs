@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HW.Bot.Interfaces;
 using HW.Bot.Model;
 using HWWebApi.Helpers;

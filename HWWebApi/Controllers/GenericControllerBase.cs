@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HWWebApi.Models;
+﻿using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HWWebApi.Controllers

@@ -1,17 +1,16 @@
 using System.IO;
+using HW.Bot;
 using HWWebApi.Bot;
+using HWWebApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
-using HWWebApi.Models;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
-using HW.Bot;
 
 namespace HWWebApi
 {

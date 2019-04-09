@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HW.Bot.Interfaces;
+﻿using HW.Bot.Interfaces;
 
 namespace HW.Bot.Model
 {

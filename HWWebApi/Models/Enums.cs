@@ -48,7 +48,7 @@ namespace HWWebApi.Models
         [EnumMember] LPDDR,
         [EnumMember] LPDDR2,
         [EnumMember] LPDDR3,
-        [EnumMember] LPDDR4,
+        [EnumMember] LPDDR4
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
