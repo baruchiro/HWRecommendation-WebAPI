@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using HW.Bot.Factories;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Dialogs.Choices;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using HW.Bot.Factories;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace HW.Bot.Dialogs.MenuDialog
 {
@@ -58,7 +58,8 @@ namespace HW.Bot.Dialogs.MenuDialog
             switch (stepcontext.Result)
             {
                 case FoundChoice result
-                    when _dialogsAndTitles.Keys.Select(d => d.Id).Contains(result.Value):// menuDialogKeyToTitle.Keys.Contains(result.Value):
+                    when _dialogsAndTitles.Keys.Select(d => d.Id).Contains(result.Value):
+
                     stepcontext.Values[SELECTED_DIALOG] = result.Value;
                     return await stepcontext.BeginDialogAsync(result.Value, cancellationToken: cancellationtoken);
 
