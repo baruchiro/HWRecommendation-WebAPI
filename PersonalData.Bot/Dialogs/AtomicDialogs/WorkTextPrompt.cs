@@ -11,24 +11,24 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 {
     internal class WorkTextPrompt : TextPrompt, IMenuItemDialog
     {
-        private readonly PromptOptions promptOptions;
+        private readonly PromptOptions _promptOptions;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
         public WorkTextPrompt(string dialogId, PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null) : base(dialogId, validator)
         {
-            promptOptions = new PromptOptionsFactory()
+            _promptOptions = new PromptOptionsFactory()
                      .CreateActionsPromptOptions("Select your work or write a new one:", suggestedActions);
         }
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            return stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
+            return stepcontext.PromptAsync(Id, _promptOptions, cancellationtoken);
         }
 
         public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext dc, object options,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await base.BeginDialogAsync(dc, options ?? promptOptions, cancellationToken);
+            return await base.BeginDialogAsync(dc, options ?? _promptOptions, cancellationToken);
         }
 
         public Dialog GetDialog()
