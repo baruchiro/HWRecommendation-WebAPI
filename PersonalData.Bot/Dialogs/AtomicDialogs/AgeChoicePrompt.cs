@@ -7,7 +7,7 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {
-    class AgeNumberPrompt : NumberPrompt<int>, IMenuItemDialog
+    internal class AgeNumberPrompt : NumberPrompt<int>, IMenuItemDialog
     {
         private readonly PromptOptions _promptOptions;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
