@@ -1,7 +1,7 @@
-﻿using HWWebApi.Models;
+﻿using System.Linq;
+using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace HWWebApi.Controllers
 {

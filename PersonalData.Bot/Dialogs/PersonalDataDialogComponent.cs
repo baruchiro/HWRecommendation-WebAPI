@@ -1,4 +1,9 @@
-﻿using HW.Bot.Dialogs.AtomicDialogs;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using HW.Bot.Dialogs.AtomicDialogs;
 using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Extensions;
 using HW.Bot.Interfaces;
@@ -6,11 +11,6 @@ using HW.Bot.Model;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace HW.Bot.Dialogs
 {
@@ -106,7 +106,7 @@ namespace HW.Bot.Dialogs
             if (_dbContext.SavePersonalDetails(channelId, userId, personalData))
             {
                 await stepcontext.Context.SendActivityAsync(
-                    $"Saving your data:\n" +
+                    "Saving your data:\n" +
                     $"Gender- {personalData.Gender.GetDescription()}\n" +
                     $"Age- {personalData.Age}\n" +
                     $"WorkArea- {personalData.WorkArea}",

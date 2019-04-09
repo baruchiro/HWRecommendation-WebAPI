@@ -1,14 +1,13 @@
-﻿using HW.Bot.Extensions;
-using HW.Bot.Factories;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Dialogs.MenuDialog;
+using HW.Bot.Extensions;
+using HW.Bot.Factories;
 using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {
@@ -20,7 +19,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 
         public EnumChoicePrompt(string dialogId, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
-            this.promptOptions = new PromptOptionsFactory()
+            promptOptions = new PromptOptionsFactory()
                 .CreateChoicesPromptOptions("Select your gender",
                 typeof(ENUM).GetEnumValues().Cast<ENUM>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
         }

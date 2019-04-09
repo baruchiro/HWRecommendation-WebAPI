@@ -1,11 +1,11 @@
-﻿using Xunit;
+﻿using System.Linq;
 using HWWebApi.Controllers;
 using HWWebApi.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TestUtils;
+using Xunit;
 
 namespace HWWebApi.UnitTest.Controllers
 {

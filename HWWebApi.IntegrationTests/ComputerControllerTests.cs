@@ -1,15 +1,15 @@
-using HWWebApi.Models;
-using HWWebApi.Models.ModelEqualityComparer;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using HWWebApi.Models;
+using HWWebApi.Models.ModelEqualityComparer;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using TestUtils;
 using Xunit;
 

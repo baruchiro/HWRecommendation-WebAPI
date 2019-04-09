@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Bot.Schema;
 
 namespace HW.Bot.Interfaces
 {
