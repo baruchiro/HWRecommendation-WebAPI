@@ -11,7 +11,7 @@ namespace HWWebApi.UnitTest.Controllers
 {
     public class ComputersControllerTest
     {
-        private DbContextOptions<HardwareContext> options;
+        private readonly DbContextOptions<HardwareContext> options;
         public ComputersControllerTest()
         {
             options = TestUtils.TestUtils.GetInMemoryDbContextOptions().Options;
