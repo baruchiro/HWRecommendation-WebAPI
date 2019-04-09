@@ -11,7 +11,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
 {
     internal class WorkTextPrompt : TextPrompt, IMenuItemDialog
     {
-        private PromptOptions promptOptions;
+        private readonly PromptOptions promptOptions;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
         public WorkTextPrompt(string dialogId, PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null) : base(dialogId, validator)
