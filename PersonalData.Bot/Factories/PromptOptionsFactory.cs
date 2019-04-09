@@ -28,7 +28,7 @@ namespace HW.Bot.Factories
             var activityPrompt = MessageFactory.Text(text);
             activityPrompt.SuggestedActions = new SuggestedActions
             {
-                Actions = actions.Select(w => new CardAction(ActionTypes.PostBack, w, value: w)).ToList()
+                Actions = actions.Select(w => new CardAction(ActionTypes.ImBack, w, value: w)).ToList()
             };
 
             var promptOptions = new PromptOptions
