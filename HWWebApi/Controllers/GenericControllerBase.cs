@@ -6,19 +6,19 @@ namespace HWWebApi.Controllers
     public abstract class GenericControllerBase<T> : ControllerBase
         where T : class, IModel<T>
     {
-        protected HardwareContext context;
+        protected HardwareContext Context;
 
         protected GenericControllerBase(HardwareContext context)
         {
-            this.context = context;
+            this.Context = context;
         }
 
         [HttpPost]
         public ActionResult<T> Post(T model)
         {
-            context.Add(model);
+            Context.Add(model);
 
-            if (context.SaveChanges() == 0)
+            if (Context.SaveChanges() == 0)
             {
                 return BadRequest("Error adding object");
             }

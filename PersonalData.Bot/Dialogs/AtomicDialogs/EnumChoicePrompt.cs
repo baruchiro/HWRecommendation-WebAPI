@@ -11,28 +11,28 @@ using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {
-    class EnumChoicePrompt<ENUM> : ChoicePrompt, IMenuItemDialog
-        where ENUM : struct
+    class EnumChoicePrompt<TEnum> : ChoicePrompt, IMenuItemDialog
+        where TEnum : struct
     {
-        private readonly PromptOptions promptOptions;
+        private readonly PromptOptions _promptOptions;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
         public EnumChoicePrompt(string dialogId, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
-            promptOptions = new PromptOptionsFactory()
+            _promptOptions = new PromptOptionsFactory()
                 .CreateChoicesPromptOptions("Select your gender",
-                typeof(ENUM).GetEnumValues().Cast<ENUM>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
+                typeof(TEnum).GetEnumValues().Cast<TEnum>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
         }
 
         internal async Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            return await stepcontext.PromptAsync(Id, promptOptions, cancellationtoken);
+            return await stepcontext.PromptAsync(Id, _promptOptions, cancellationtoken);
         }
 
         public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext dc, object options,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await base.BeginDialogAsync(dc, options ?? promptOptions, cancellationToken);
+            return await base.BeginDialogAsync(dc, options ?? _promptOptions, cancellationToken);
         }
 
         public Dialog GetDialog()

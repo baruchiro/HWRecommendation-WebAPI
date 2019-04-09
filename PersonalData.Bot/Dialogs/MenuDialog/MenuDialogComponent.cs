@@ -11,8 +11,8 @@ namespace HW.Bot.Dialogs.MenuDialog
     class MenuDialogComponent : ComponentDialog
     {
         private readonly IDictionary<IMenuItemDialog, string> _dialogsAndTitles;
-        private readonly string title;
-        private readonly Dictionary<string, string> menuDialogKeyToTitle;
+        private readonly string _title;
+        private readonly Dictionary<string, string> _menuDialogKeyToTitle;
 
         private const string SELECTED_DIALOG = nameof(MenuDialogComponent) + "selectedDialog";
         private const string WATERFALL_DIALOG = nameof(MenuDialogComponent) + "waterfall";
@@ -22,11 +22,11 @@ namespace HW.Bot.Dialogs.MenuDialog
         public MenuDialogComponent(string dialogId, string title, IDictionary<IMenuItemDialog, string> dialogsAndTitles, string doneTitle = "Done") : base(dialogId)
         {
             _dialogsAndTitles = dialogsAndTitles;
-            this.title = title;
-            menuDialogKeyToTitle = _dialogsAndTitles.ToDictionary(d => d.Key.Id, d => d.Value);
+            this._title = title;
+            _menuDialogKeyToTitle = _dialogsAndTitles.ToDictionary(d => d.Key.Id, d => d.Value);
             if (!string.IsNullOrEmpty(doneTitle))
             {
-                menuDialogKeyToTitle.Add(doneTitle, doneTitle);
+                _menuDialogKeyToTitle.Add(doneTitle, doneTitle);
             }
 
             AddDialog(new WaterfallDialog(WATERFALL_DIALOG)
@@ -47,7 +47,7 @@ namespace HW.Bot.Dialogs.MenuDialog
         {
             var options =
                 new PromptOptionsFactory()
-                .CreateChoicesPromptOptions(title, menuDialogKeyToTitle);
+                .CreateChoicesPromptOptions(_title, _menuDialogKeyToTitle);
 
             return await stepcontext.PromptAsync(CHOICE_DIALOG, options, cancellationtoken);
         }
