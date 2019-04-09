@@ -24,9 +24,9 @@ namespace HW.Bot.Dialogs.AtomicDialogs
                 typeof(TEnum).GetEnumValues().Cast<TEnum>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
         }
 
-        internal async Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        internal async Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            return await stepcontext.PromptAsync(Id, _promptOptions, cancellationtoken);
+            return await stepContext.PromptAsync(Id, _promptOptions, cancellationToken);
         }
 
         public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext dc, object options,

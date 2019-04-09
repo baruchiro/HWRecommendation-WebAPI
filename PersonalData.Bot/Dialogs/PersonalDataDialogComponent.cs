@@ -93,31 +93,31 @@ namespace HW.Bot.Dialogs
             return await stepContext.BeginDialogAsync(EXIST_USER_MENU, personalInfo, cancellationToken: cancellationToken);
         }
 
-        private async Task<DialogTurnResult> SaveDetailsStep(WaterfallStepContext stepcontext,
-            CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> SaveDetailsStep(WaterfallStepContext stepContext,
+            CancellationToken cancellationToken)
         {
-            var personalData = await _personalDataStateManager.GetPersonalDataAsync(stepcontext.Context, cancellationtoken);
+            var personalData = await _personalDataStateManager.GetPersonalDataAsync(stepContext.Context, cancellationToken);
 
-            var channelId = stepcontext.Context.Activity.ChannelId;
-            var userId = stepcontext.Context.Activity.From.Id;
+            var channelId = stepContext.Context.Activity.ChannelId;
+            var userId = stepContext.Context.Activity.From.Id;
 
-            await stepcontext.Context.SendActivityAsync($"Saving information of {userId} from {channelId}", cancellationToken: cancellationtoken);
+            await stepContext.Context.SendActivityAsync($"Saving information of {userId} from {channelId}", cancellationToken: cancellationToken);
 
             if (_dbContext.SavePersonalDetails(channelId, userId, personalData))
             {
-                await stepcontext.Context.SendActivityAsync(
+                await stepContext.Context.SendActivityAsync(
                     "Saving your data:\n" +
                     $"Gender- {personalData.Gender.GetDescription()}\n" +
                     $"Age- {personalData.Age}\n" +
                     $"WorkArea- {personalData.WorkArea}",
-                    cancellationToken: cancellationtoken);
+                    cancellationToken: cancellationToken);
             }
             else
             {
-                await stepcontext.Context.SendActivityAsync("We can't save your data", cancellationToken: cancellationtoken);
+                await stepContext.Context.SendActivityAsync("We can't save your data", cancellationToken: cancellationToken);
             }
 
-            return await stepcontext.EndDialogAsync(cancellationToken: cancellationtoken);
+            return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandlePersonalDataStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -140,18 +140,18 @@ namespace HW.Bot.Dialogs
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
-        private async Task<DialogTurnResult> HandleAgeStep(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> HandleAgeStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            ((IPersonalData)stepcontext.Values[DATA_ID]).Age = stepcontext.Result is int age ? age : -1;
+            ((IPersonalData)stepContext.Values[DATA_ID]).Age = stepContext.Result is int age ? age : -1;
 
-            return await stepcontext.NextAsync(cancellationToken: cancellationtoken);
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
-        private async Task<DialogTurnResult> HandleWorkStep(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> HandleWorkStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            ((IPersonalData)stepcontext.Values[DATA_ID]).WorkArea = stepcontext.Result as string;
+            ((IPersonalData)stepContext.Values[DATA_ID]).WorkArea = stepContext.Result as string;
 
-            return await stepcontext.NextAsync(cancellationToken: cancellationtoken);
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> EndWaterfallStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
