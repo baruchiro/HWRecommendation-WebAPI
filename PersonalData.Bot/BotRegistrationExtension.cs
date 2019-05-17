@@ -38,7 +38,8 @@ namespace HW.Bot
                 }
 
                 options.CredentialProvider =
-                    new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
+                    new SimpleCredentialProvider(configuration[MicrosoftAppCredentials.MicrosoftAppIdKey],
+                        configuration[MicrosoftAppCredentials.MicrosoftAppPasswordKey]);
 
                 // Creates a logger for the application to use.
                 ILogger logger = new LoggerFactory().CreateLogger<RecommendationBot>();
