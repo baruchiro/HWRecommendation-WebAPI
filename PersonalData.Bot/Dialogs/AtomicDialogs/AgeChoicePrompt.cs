@@ -10,15 +10,17 @@ namespace HW.Bot.Dialogs.AtomicDialogs
     internal class AgeNumberPrompt : NumberPrompt<int>, IMenuItemDialog
     {
         private readonly PromptOptions _promptOptions;
+        private string _title;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public AgeNumberPrompt(string dialogId, PromptValidator<int> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
+        public AgeNumberPrompt(string dialogId, string title = null, PromptValidator<int> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
             _promptOptions = new PromptOptions
             {
                 Prompt = MessageFactory.Text("Enter your age"),
                 RetryPrompt = MessageFactory.Text("Please, Enter your age!!")
             };
+            _title = title ?? dialogId;
         }
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -35,6 +37,11 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         public Dialog GetDialog()
         {
             return this;
+        }
+
+        public string GetTitle()
+        {
+            return _title;
         }
     }
 }
