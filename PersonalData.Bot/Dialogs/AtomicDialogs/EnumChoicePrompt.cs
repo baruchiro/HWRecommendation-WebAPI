@@ -15,13 +15,18 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         where TEnum : struct
     {
         private readonly PromptOptions _promptOptions;
+        private string _title;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public EnumChoicePrompt(string dialogId, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
+        public EnumChoicePrompt(string dialogId, string title = null, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
         {
-            _promptOptions = new PromptOptionsFactory()
-                .CreateChoicesPromptOptions("Select your gender",
-                typeof(TEnum).GetEnumValues().Cast<TEnum>().ToDictionary(g => g.ToString(), g => g.GetDescription()));
+            _promptOptions = new PromptOptions
+            {
+                Prompt = MessageFactory.Text("Select your gender"),
+                Choices = ChoiceFactory.ToChoices(typeof(TEnum).GetEnumValues().Cast<TEnum>()
+                    .Select(g => g.GetDescription()).ToArray())
+            };
+            _title = title ?? dialogId;
         }
 
         internal async Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -38,6 +43,11 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         public Dialog GetDialog()
         {
             return this;
+        }
+
+        public string GetTitle()
+        {
+            return _title;
         }
     }
 }
