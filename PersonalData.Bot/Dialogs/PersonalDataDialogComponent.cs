@@ -16,12 +16,13 @@ namespace HW.Bot.Dialogs
 {
     internal class PersonalDataDialogComponent : ComponentDialog, IMenuItemDialog
     {
-        private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG);
-        private readonly AgeNumberPrompt _agePrompt = new AgeNumberPrompt(AGE_NUMBER_DIALOG);
+        private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG, "Change your Gender");
+        private readonly AgeNumberPrompt _agePrompt = new AgeNumberPrompt(AGE_NUMBER_DIALOG, "Change your age");
         private readonly WorkTextPrompt _workPrompt;
 
         private readonly IDbContext _dbContext;
         private readonly IPersonalDataStateManager _personalDataStateManager;
+        private string _title;
         private const string NEW_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "newuser";
         private const string EXIST_USER_MENU = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
         private const string GENDER_CHOICE_DIALOG = "Gender";
@@ -32,14 +33,17 @@ namespace HW.Bot.Dialogs
 
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public PersonalDataDialogComponent(string dialogId, IPersonalDataStateManager personalDataStateManager, IDbContext dbContext) : base(dialogId)
+        public PersonalDataDialogComponent(string dialogId, IPersonalDataStateManager personalDataStateManager,
+            IDbContext dbContext, string title = null) : base(dialogId)
         {
-            this._personalDataStateManager = personalDataStateManager;
+            _title = title ?? dialogId;
+            _personalDataStateManager = personalDataStateManager;
             _dbContext = dbContext;
-            _workPrompt = new WorkTextPrompt(WORK_TEXT_DIALOG, suggestedActions: _dbContext.GetOrderedWorkList().Take(5))
-            {
-                HandleResult = HandleWork
-            };
+            _workPrompt =
+                new WorkTextPrompt(WORK_TEXT_DIALOG, title: "Change your work", suggestedActions: _dbContext.GetOrderedWorkList().Take(5))
+                {
+                    HandleResult = HandleWork
+                };
             _agePrompt.HandleResult = HandleAge;
             _genderPrompt.HandleResult = HandleGender;
 
@@ -60,11 +64,11 @@ namespace HW.Bot.Dialogs
             );
 
             AddDialog(new MenuDialogComponent(EXIST_USER_MENU, "Select which data you want to change",
-                new Dictionary<IMenuItemDialog, string>
+                new List<IMenuItemDialog>
                 {
-                    {_genderPrompt, "Change your Gender"},
-                    {_agePrompt, "Change your age"},
-                    {_workPrompt, "Change your work"}
+                    _genderPrompt,
+                    _agePrompt,
+                    _workPrompt
                 }));
 
             AddDialog(_genderPrompt);
@@ -166,6 +170,11 @@ namespace HW.Bot.Dialogs
         public Dialog GetDialog()
         {
             return this;
+        }
+
+        public string GetTitle()
+        {
+            return _title;
         }
 
         private async Task HandleWork(ITurnContext turnContext, object result, CancellationToken cancellationToken)

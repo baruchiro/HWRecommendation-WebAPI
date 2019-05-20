@@ -3,30 +3,38 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Factories;
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
+using Microsoft.Bot.Schema;
 
 namespace HW.Bot.Dialogs.MenuDialog
 {
     internal class MenuDialogComponent : ComponentDialog
     {
-        private readonly IDictionary<IMenuItemDialog, string> _dialogsAndTitles;
         private readonly string _title;
-        private readonly Dictionary<string, string> _menuDialogKeyToTitle;
+        private readonly string _doneTitle;
+        private readonly Dictionary<string, Dialog> _mapTitleToDialog;
+        private readonly Dictionary<string, IMenuItemDialog> _mapDialogIdToMenuItem;
+        private readonly ICollection<string> _menuItemTitles;
+        
+        private const string SELECTED_DIALOG_ID = nameof(MenuDialogComponent) + "_selectedDialog";
+        private const string WATERFALL_DIALOG = nameof(MenuDialogComponent) + "_waterfall";
+        private const string CHOICE_DIALOG = nameof(MenuDialogComponent) + "_choice";
 
-        private const string SELECTED_DIALOG = nameof(MenuDialogComponent) + "selectedDialog";
-        private const string WATERFALL_DIALOG = nameof(MenuDialogComponent) + "waterfall";
-        private const string CHOICE_DIALOG = nameof(MenuDialogComponent) + "choice";
 
-
-        public MenuDialogComponent(string dialogId, string title, IDictionary<IMenuItemDialog, string> dialogsAndTitles, string doneTitle = "Done") : base(dialogId)
+        public MenuDialogComponent(string dialogId, string title, ICollection<IMenuItemDialog> dialogsMenuItems, string doneTitle = "Done") : base(dialogId)
         {
-            _dialogsAndTitles = dialogsAndTitles;
-            this._title = title;
-            _menuDialogKeyToTitle = _dialogsAndTitles.ToDictionary(d => d.Key.Id, d => d.Value);
-            if (!string.IsNullOrEmpty(doneTitle))
+            _title = title;
+            _doneTitle = doneTitle;
+            _mapTitleToDialog = dialogsMenuItems.ToDictionary(d => d.GetTitle(), d => d.GetDialog());
+            _mapDialogIdToMenuItem = dialogsMenuItems.ToDictionary(d => d.Id, d => d);
+
+            _menuItemTitles = dialogsMenuItems.Select(d => d.GetTitle()).ToList();
+
+            if (_doneTitle != null)
             {
-                _menuDialogKeyToTitle.Add(doneTitle, doneTitle);
+                _menuItemTitles.Add(_doneTitle);
             }
 
             AddDialog(new WaterfallDialog(WATERFALL_DIALOG)
@@ -35,7 +43,7 @@ namespace HW.Bot.Dialogs.MenuDialog
                 .AddStep(MenuLoopAsync)
             );
 
-            foreach (var d in _dialogsAndTitles.Keys)
+            foreach (var d in dialogsMenuItems)
             {
                 AddDialog(d.GetDialog());
             }
@@ -45,9 +53,11 @@ namespace HW.Bot.Dialogs.MenuDialog
 
         private async Task<DialogTurnResult> MenuStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var options =
-                new PromptOptionsFactory()
-                .CreateChoicesPromptOptions(_title, _menuDialogKeyToTitle);
+            var options = new PromptOptions
+            {
+                Prompt = MessageFactory.Text(_title),
+                Choices = ChoiceFactory.ToChoices(_menuItemTitles.ToArray())
+            };
 
             return await stepContext.PromptAsync(CHOICE_DIALOG, options, cancellationToken);
         }
@@ -58,20 +68,27 @@ namespace HW.Bot.Dialogs.MenuDialog
             switch (stepContext.Result)
             {
                 case FoundChoice result
-                    when _dialogsAndTitles.Keys.Select(d => d.Id).Contains(result.Value):
+                    when _mapTitleToDialog.Keys.Contains(result.Value):
 
-                    stepContext.Values[SELECTED_DIALOG] = result.Value;
-                    return await stepContext.BeginDialogAsync(result.Value, cancellationToken: cancellationToken);
+                    var selectedDialogId = _mapTitleToDialog[result.Value].Id;
+                    stepContext.Values[SELECTED_DIALOG_ID] = selectedDialogId;
+                    return await stepContext.BeginDialogAsync(selectedDialogId, cancellationToken: cancellationToken);
+
+                case FoundChoice result
+                    when result.Value.Equals(_doneTitle):
+                    return await stepContext.EndDialogAsync(stepContext.Values, cancellationToken: cancellationToken);
 
                 default:
-                    return await stepContext.EndDialogAsync(stepContext.Values, cancellationToken: cancellationToken);
+                    await stepContext.Context.SendActivityAsync("Can't find what you have selected.",
+                        cancellationToken: cancellationToken);
+                    return await stepContext.ReplaceDialogAsync(WATERFALL_DIALOG, cancellationToken: cancellationToken);
             }
         }
 
         private async Task<DialogTurnResult> MenuLoopAsync(WaterfallStepContext stepContext,
             CancellationToken cancellationToken)
         {
-            _dialogsAndTitles.Keys.First(d => d.Id.Equals(stepContext.Values[SELECTED_DIALOG]))
+            _mapDialogIdToMenuItem[stepContext.Values[SELECTED_DIALOG_ID].ToString()]
                 .HandleResult?.Invoke(stepContext.Context, stepContext.Result, cancellationToken);
             return await stepContext.ReplaceDialogAsync(WATERFALL_DIALOG, cancellationToken: cancellationToken);
         }
