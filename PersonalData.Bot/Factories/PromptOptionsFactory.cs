@@ -9,20 +9,6 @@ namespace HW.Bot.Factories
 {
     internal class PromptOptionsFactory
     {
-        internal PromptOptions CreateChoicesPromptOptions(string text, IDictionary<string, string> keyToTitle)
-        {
-            return new PromptOptions
-            {
-                Prompt = MessageFactory.Text(text),
-                Choices = keyToTitle.Select(v =>
-                    new Choice(v.Key)
-                    {
-                        Action = new CardAction(ActionTypes.ImBack, v.Value, value: v.Key)
-                    })
-                    .ToList()
-            };
-        }
-
         internal PromptOptions CreateActionsPromptOptions(string text, IEnumerable<string> actions)
         {
             var activityPrompt = MessageFactory.Text(text);

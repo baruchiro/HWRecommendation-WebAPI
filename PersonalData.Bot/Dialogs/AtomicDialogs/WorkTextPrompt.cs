@@ -12,12 +12,14 @@ namespace HW.Bot.Dialogs.AtomicDialogs
     internal class WorkTextPrompt : TextPrompt, IMenuItemDialog
     {
         private readonly PromptOptions _promptOptions;
+        private string _title;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public WorkTextPrompt(string dialogId, PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null) : base(dialogId, validator)
+        public WorkTextPrompt(string dialogId, string title = null, PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null) : base(dialogId, validator)
         {
             _promptOptions = new PromptOptionsFactory()
                      .CreateActionsPromptOptions("Select your work or write a new one:", suggestedActions);
+            _title = title ?? dialogId;
         }
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -36,5 +38,9 @@ namespace HW.Bot.Dialogs.AtomicDialogs
             return this;
         }
 
+        public string GetTitle()
+        {
+            return _title;
+        }
     }
 }

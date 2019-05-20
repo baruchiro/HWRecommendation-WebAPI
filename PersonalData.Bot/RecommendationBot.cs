@@ -16,7 +16,7 @@ namespace HW.Bot
         private readonly StateManager _accessors;
         private readonly DialogSet _dialogSet;
 
-        private readonly IDictionary<IMenuItemDialog, string> _menuDialogs = new Dictionary<IMenuItemDialog, string>();
+        private readonly ICollection<IMenuItemDialog> _menuDialogs = new List<IMenuItemDialog>();
 
         private const string MENU_DIALOG = "menu";
 
@@ -25,8 +25,8 @@ namespace HW.Bot
             _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
 
             _menuDialogs.Add(
-                new PersonalDataDialogComponent("recommendations", _accessors, dbContext),
-                "Get hardware recommendations for your current computer");
+                new PersonalDataDialogComponent("recommendations", _accessors, dbContext,
+                    "Get hardware recommendations for your current computer"));
 
 
             _dialogSet = new DialogSet(accessors.ConversationDataAccessor);
