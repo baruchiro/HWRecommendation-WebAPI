@@ -79,6 +79,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Bot language.
+        /// </summary>
+        public static string Change_Bot_language {
+            get {
+                return ResourceManager.GetString("Change_Bot_language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change your age.
         /// </summary>
         public static string Change_your_age {
