@@ -24,7 +24,6 @@ namespace HW.Bot.Dialogs
 
         private readonly IDbContext _dbContext;
         private readonly IPersonalDataStateManager _personalDataStateManager;
-        private string _title;
         private const string NEW_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "newuser";
         private const string EXIST_USER_MENU = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
         private const string GENDER_CHOICE_DIALOG = "Gender";
@@ -33,19 +32,18 @@ namespace HW.Bot.Dialogs
         private const string WELCOME_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "welcome";
         private const string DATA_ID = nameof(PersonalDataDialogComponent) + "data";
 
+        public string MenuItemOptionText { get; }
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
         public PersonalDataDialogComponent([Localizable(false)] string dialogId, IPersonalDataStateManager personalDataStateManager,
-            IDbContext dbContext, string title = null) : base(dialogId)
+            IDbContext dbContext, string menuItemOptionText = null) : base(dialogId)
         {
-            _title = title ?? dialogId;
+            MenuItemOptionText = menuItemOptionText ?? dialogId;
             _personalDataStateManager = personalDataStateManager;
             _dbContext = dbContext;
             _workPrompt =
-                new WorkTextPrompt(WORK_TEXT_DIALOG, title: BotStrings.Change_your_work, suggestedActions: _dbContext.GetOrderedWorkList().Take(5))
-                {
-                    HandleResult = HandleWork
-                };
+                new WorkTextPrompt(WORK_TEXT_DIALOG, menuItemOptionText: BotStrings.Change_your_work,
+                    suggestedActions: _dbContext.GetOrderedWorkList().Take(5), handleResult: HandleWork);
             _agePrompt.HandleResult = HandleAge;
             _genderPrompt.HandleResult = HandleGender;
 
@@ -172,11 +170,6 @@ namespace HW.Bot.Dialogs
         public Dialog GetDialog()
         {
             return this;
-        }
-
-        public string GetMenuItemOptionText()
-        {
-            return _title;
         }
 
         private async Task HandleWork(ITurnContext turnContext, object result, CancellationToken cancellationToken)
