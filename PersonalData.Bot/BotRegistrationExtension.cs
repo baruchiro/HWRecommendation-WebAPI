@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using HW.Bot.Interfaces;
 using HW.Bot.Middleware;
@@ -15,6 +16,7 @@ namespace HW.Bot
 {
     public static class BotRegistrationExtension
     {
+        [Localizable(false)]
         public static void AddPersonalDataBot<T>(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
             where T : IDbContext
         {

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Factories;
+using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
@@ -79,7 +80,7 @@ namespace HW.Bot.Dialogs.MenuDialog
                     return await stepContext.EndDialogAsync(stepContext.Values, cancellationToken: cancellationToken);
 
                 default:
-                    await stepContext.Context.SendActivityAsync("Can't find what you have selected.",
+                    await stepContext.Context.SendActivityAsync(BotStrings.Cant_find_selected_menu_item,
                         cancellationToken: cancellationToken);
                     return await stepContext.ReplaceDialogAsync(WATERFALL_DIALOG, cancellationToken: cancellationToken);
             }
