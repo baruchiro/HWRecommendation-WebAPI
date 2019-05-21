@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Extensions;
 using HW.Bot.Factories;
+using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
@@ -22,7 +23,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         {
             _promptOptions = new PromptOptions
             {
-                Prompt = MessageFactory.Text("Select your gender"),
+                Prompt = MessageFactory.Text(BotStrings.Select_your_gender),
                 Choices = ChoiceFactory.ToChoices(typeof(TEnum).GetEnumValues().Cast<TEnum>()
                     .Select(g => g.GetDescription()).ToArray())
             };

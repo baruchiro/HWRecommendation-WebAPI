@@ -97,7 +97,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Hello" xml:space="preserve">
-    <value>English</value>
+  <data name="MainMenuTitle" xml:space="preserve">
+    <value>Hi, select what you want</value>
+  </data>
+  <data name="RecommendationMenuItemTitle" xml:space="preserve">
+    <value>Get hardware recommendations for your current computer</value>
+  </data>
+  <data name="Enter_your_age" xml:space="preserve">
+    <value>Enter your age</value>
+  </data>
+  <data name="Enter_your_age_Repeat" xml:space="preserve">
+    <value>Please, Enter your age!!</value>
+  </data>
+  <data name="Select_your_gender" xml:space="preserve">
+    <value>Select your gender</value>
+  </data>
+  <data name="Select_your_work" xml:space="preserve">
+    <value>Select your work or write a new one:</value>
+  </data>
+  <data name="Cant_find_selected_menu_item" xml:space="preserve">
+    <value>Can't find what you have selected.</value>
+  </data>
+  <data name="Change_your_Gender" xml:space="preserve">
+    <value>Change your Gender</value>
+  </data>
+  <data name="Change_your_age" xml:space="preserve">
+    <value>Change your age</value>
+  </data>
+  <data name="Change_your_work" xml:space="preserve">
+    <value>Change your work</value>
+  </data>
+  <data name="Select_which_data_you_want_to_change" xml:space="preserve">
+    <value>Select which data you want to change</value>
+  </data>
+  <data name="There_is_No_info_about_user" xml:space="preserve">
+    <value>We see there is no information about {0} from {1}.
+</value>
+  </data>
+  <data name="We_need_some_information" xml:space="preserve">
+    <value>We need some information of you to give you a personal results</value>
+  </data>
+  <data name="Saving_info_of_user" xml:space="preserve">
+    <value>Saving information of {0} from {1}</value>
+  </data>
+  <data name="Saving_your_data" xml:space="preserve">
+    <value>Saving your data:
+</value>
+  </data>
+  <data name="data_gender" xml:space="preserve">
+    <value>Gender- {0}
+</value>
+  </data>
+  <data name="data_age" xml:space="preserve">
+    <value>Age- {0}
+</value>
+  </data>
+  <data name="date_workArea" xml:space="preserve">
+    <value>WorkArea- {0}</value>
+  </data>
+  <data name="cant_save_your_data" xml:space="preserve">
+    <value>We can't save your data</value>
+  </data>
+  <data name="event_detected" xml:space="preserve">
+    <value>{0} event detected</value>
   </data>
 </root>

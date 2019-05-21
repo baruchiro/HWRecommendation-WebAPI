@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Factories;
+using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 
@@ -18,7 +19,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         public WorkTextPrompt(string dialogId, string title = null, PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null) : base(dialogId, validator)
         {
             _promptOptions = new PromptOptionsFactory()
-                     .CreateActionsPromptOptions("Select your work or write a new one:", suggestedActions);
+                     .CreateActionsPromptOptions(BotStrings.Select_your_work, suggestedActions);
             _title = title ?? dialogId;
         }
 

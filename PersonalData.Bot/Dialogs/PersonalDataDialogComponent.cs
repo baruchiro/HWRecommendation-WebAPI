@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Extensions;
 using HW.Bot.Interfaces;
 using HW.Bot.Model;
+using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
@@ -16,8 +18,8 @@ namespace HW.Bot.Dialogs
 {
     internal class PersonalDataDialogComponent : ComponentDialog, IMenuItemDialog
     {
-        private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG, "Change your Gender");
-        private readonly AgeNumberPrompt _agePrompt = new AgeNumberPrompt(AGE_NUMBER_DIALOG, "Change your age");
+        private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG, BotStrings.Change_your_Gender);
+        private readonly AgeNumberPrompt _agePrompt = new AgeNumberPrompt(AGE_NUMBER_DIALOG, BotStrings.Change_your_age);
         private readonly WorkTextPrompt _workPrompt;
 
         private readonly IDbContext _dbContext;
@@ -33,14 +35,14 @@ namespace HW.Bot.Dialogs
 
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public PersonalDataDialogComponent(string dialogId, IPersonalDataStateManager personalDataStateManager,
+        public PersonalDataDialogComponent([Localizable(false)] string dialogId, IPersonalDataStateManager personalDataStateManager,
             IDbContext dbContext, string title = null) : base(dialogId)
         {
             _title = title ?? dialogId;
             _personalDataStateManager = personalDataStateManager;
             _dbContext = dbContext;
             _workPrompt =
-                new WorkTextPrompt(WORK_TEXT_DIALOG, title: "Change your work", suggestedActions: _dbContext.GetOrderedWorkList().Take(5))
+                new WorkTextPrompt(WORK_TEXT_DIALOG, title: BotStrings.Change_your_work, suggestedActions: _dbContext.GetOrderedWorkList().Take(5))
                 {
                     HandleResult = HandleWork
                 };
@@ -63,7 +65,7 @@ namespace HW.Bot.Dialogs
                 .AddStep(EndWaterfallStep)
             );
 
-            AddDialog(new MenuDialogComponent(EXIST_USER_MENU, "Select which data you want to change",
+            AddDialog(new MenuDialogComponent(EXIST_USER_MENU, BotStrings.Select_which_data_you_want_to_change,
                 new List<IMenuItemDialog>
                 {
                     _genderPrompt,
@@ -86,8 +88,8 @@ namespace HW.Bot.Dialogs
             if (personalInfo == null)
             {
                 await stepContext.Context.SendActivityAsync(
-                    $"We see there is no information about {userId} from {channelId}.\n" +
-                    "We need some information of you to give you a personal results",
+                    string.Format(BotStrings.There_is_No_info_about_user, userId, channelId) +
+                    BotStrings.We_need_some_information,
                     cancellationToken: cancellationToken);
 
                 return await stepContext.BeginDialogAsync(NEW_USER_WATERFALL, new PersonalData(), cancellationToken: cancellationToken);
@@ -105,20 +107,20 @@ namespace HW.Bot.Dialogs
             var channelId = stepContext.Context.Activity.ChannelId;
             var userId = stepContext.Context.Activity.From.Id;
 
-            await stepContext.Context.SendActivityAsync($"Saving information of {userId} from {channelId}", cancellationToken: cancellationToken);
+            await stepContext.Context.SendActivityAsync(string.Format(BotStrings.Saving_info_of_user, userId, channelId), cancellationToken: cancellationToken);
 
             if (_dbContext.SavePersonalDetails(channelId, userId, personalData))
             {
                 await stepContext.Context.SendActivityAsync(
-                    "Saving your data:\n" +
-                    $"Gender- {personalData.Gender.GetDescription()}\n" +
-                    $"Age- {personalData.Age}\n" +
-                    $"WorkArea- {personalData.WorkArea}",
+                    BotStrings.Saving_your_data +
+                    string.Format(BotStrings.data_gender, personalData.Gender.GetDescription()) +
+                    string.Format(BotStrings.data_age, personalData.Age) +
+                    string.Format(BotStrings.date_workArea, personalData.WorkArea),
                     cancellationToken: cancellationToken);
             }
             else
             {
-                await stepContext.Context.SendActivityAsync("We can't save your data", cancellationToken: cancellationToken);
+                await stepContext.Context.SendActivityAsync(BotStrings.cant_save_your_data, cancellationToken: cancellationToken);
             }
 
             return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);

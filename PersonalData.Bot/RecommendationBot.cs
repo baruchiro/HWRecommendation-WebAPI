@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HW.Bot.Dialogs;
 using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Interfaces;
+using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
@@ -26,12 +27,12 @@ namespace HW.Bot
 
             _menuDialogs.Add(
                 new PersonalDataDialogComponent("recommendations", _accessors, dbContext,
-                    "Get hardware recommendations for your current computer"));
+                    BotStrings.RecommendationMenuItemTitle));
 
 
             _dialogSet = new DialogSet(accessors.ConversationDataAccessor);
 
-            _dialogSet.Add(new MenuDialogComponent(MENU_DIALOG, "Hi, select what you want", _menuDialogs, doneTitle: null));
+            _dialogSet.Add(new MenuDialogComponent(MENU_DIALOG, BotStrings.MainMenuTitle, _menuDialogs, doneTitle: null));
         }
 
         public async Task OnTurnAsync(ITurnContext turnContext,
@@ -52,7 +53,7 @@ namespace HW.Bot
             }
             else
             {
-                await turnContext.SendActivityAsync($"{turnContext.Activity.Type} event detected",
+                await turnContext.SendActivityAsync(string.Format(BotStrings.event_detected, turnContext.Activity.Type),
                     cancellationToken: cancellationToken);
             }
         }
