@@ -18,7 +18,7 @@ namespace HW.Bot.Dialogs
 {
     internal class PersonalDataDialogComponent : ComponentDialog, IMenuItemDialog
     {
-        private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG, BotStrings.Change_your_Gender);
+        private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG, BotStrings.Select_your_gender, BotStrings.Change_your_Gender);
         private readonly AgeNumberPrompt _agePrompt = new AgeNumberPrompt(AGE_NUMBER_DIALOG, BotStrings.Change_your_age);
         private readonly WorkTextPrompt _workPrompt;
 
@@ -174,7 +174,7 @@ namespace HW.Bot.Dialogs
             return this;
         }
 
-        public string GetTitle()
+        public string GetMenuItemOptionText()
         {
             return _title;
         }

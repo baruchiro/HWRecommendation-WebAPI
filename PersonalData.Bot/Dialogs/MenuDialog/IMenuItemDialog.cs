@@ -11,6 +11,6 @@ namespace HW.Bot.Dialogs.MenuDialog
         string Id { get; }
         Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; }
         Dialog GetDialog();
-        string GetTitle();
+        string GetMenuItemOptionText();
     }
 }

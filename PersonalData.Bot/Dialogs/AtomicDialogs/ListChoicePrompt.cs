@@ -16,17 +16,20 @@ namespace HW.Bot.Dialogs.AtomicDialogs
     class ListChoicePrompt : ChoicePrompt, IMenuItemDialog
     {
         private readonly PromptOptions _promptOptions;
-        private string _title;
+        private string _menuItemOptionText;
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public ListChoicePrompt([Localizable(false)] string dialogId, IList<string> choices, string title = null, PromptValidator<FoundChoice> validator = null, string defaultLocale = null) : base(dialogId, validator, defaultLocale)
+        public ListChoicePrompt([Localizable(false)] string dialogId, string text,
+            IList<string> choices,
+            string menuItemOptionText = null, PromptValidator<FoundChoice> validator = null, string defaultLocale = null, Func<ITurnContext, object, CancellationToken, Task> handleResult = null) : base(dialogId, validator, defaultLocale)
         {
             _promptOptions = new PromptOptions
             {
-                Prompt = MessageFactory.Text(BotStrings.Select_your_gender),
+                Prompt = MessageFactory.Text(text),
                 Choices = ChoiceFactory.ToChoices(choices)
             };
-            _title = title ?? dialogId;
+            _menuItemOptionText = menuItemOptionText ?? dialogId;
+            HandleResult = handleResult;
         }
 
         internal async Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -45,9 +48,9 @@ namespace HW.Bot.Dialogs.AtomicDialogs
             return this;
         }
 
-        public string GetTitle()
+        public string GetMenuItemOptionText()
         {
-            return _title;
+            return _menuItemOptionText;
         }
     }
 }

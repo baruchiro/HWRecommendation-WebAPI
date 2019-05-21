@@ -15,11 +15,11 @@ namespace HW.Bot.Dialogs.AtomicDialogs
     internal class EnumChoicePrompt<TEnum> : ListChoicePrompt
         where TEnum : struct
     {
-        public EnumChoicePrompt(string dialogId, string title = null, PromptValidator<FoundChoice> validator = null,
+        public EnumChoicePrompt(string dialogId, string text, string menuItemOptionText = null, PromptValidator<FoundChoice> validator = null,
             string defaultLocale = null) :
-            base(dialogId,
+            base(dialogId, text,
                 typeof(TEnum).GetEnumValues().Cast<TEnum>().Select(g => g.GetDescription()).ToArray(),
-                title, validator, defaultLocale)
+                menuItemOptionText, validator, defaultLocale)
         {
         }
     }
