@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using HW.Bot.Interfaces;
+using HW.Bot.Middleware;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
@@ -50,6 +51,8 @@ namespace HW.Bot
                     logger.LogError($"Exception caught : {exception}");
                     await context.SendActivityAsync("Sorry, it looks like something went wrong.");
                 };
+
+                options.Middleware.Add(new SetLocaleMiddleware("he-il"));
             });
 
             services.AddScoped(typeof(IDbContext), typeof(T));
