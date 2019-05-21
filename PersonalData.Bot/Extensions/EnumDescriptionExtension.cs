@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace HW.Bot.Extensions
 {
+    [Localizable(false)]
     internal static class EnumDescriptionExtension
     {
         public static string GetDescription<T>(this T enumerationValue)

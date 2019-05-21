@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Interfaces;
@@ -8,6 +9,7 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace HW.Bot
 {
+    [Localizable(false)]
     internal class StateManager : IPersonalDataStateManager
     {
         public StateManager(IStorage storage)
