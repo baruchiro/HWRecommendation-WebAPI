@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Dialogs.MenuDialog;
+using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 
@@ -17,8 +18,8 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         {
             _promptOptions = new PromptOptions
             {
-                Prompt = MessageFactory.Text("Enter your age"),
-                RetryPrompt = MessageFactory.Text("Please, Enter your age!!")
+                Prompt = MessageFactory.Text(BotStrings.Enter_your_age),
+                RetryPrompt = MessageFactory.Text(BotStrings.Enter_your_age_Repeat)
             };
             _title = title ?? dialogId;
         }
@@ -39,7 +40,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
             return this;
         }
 
-        public string GetTitle()
+        public string GetMenuItemOptionText()
         {
             return _title;
         }
