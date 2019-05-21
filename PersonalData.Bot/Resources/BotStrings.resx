@@ -161,7 +161,4 @@
   <data name="event_detected" xml:space="preserve">
     <value>{0} event detected</value>
   </data>
-  <data name="Change_Bot_language" xml:space="preserve">
-    <value>Change Bot language</value>
-  </data>
 </root>

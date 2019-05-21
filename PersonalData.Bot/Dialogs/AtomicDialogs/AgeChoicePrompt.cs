@@ -40,7 +40,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
             return this;
         }
 
-        public string GetTitle()
+        public string GetMenuItemOptionText()
         {
             return _title;
         }
