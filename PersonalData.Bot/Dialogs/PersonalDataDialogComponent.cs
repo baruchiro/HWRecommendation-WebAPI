@@ -16,7 +16,7 @@ using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace HW.Bot.Dialogs
 {
-    internal class ExistedComputerDialogComponent : ComponentDialog, IMenuItemDialog
+    internal class PersonalDataDialogComponent : ComponentDialog, IMenuItemDialog
     {
         private readonly EnumChoicePrompt<Gender> _genderPrompt = new EnumChoicePrompt<Gender>(GENDER_CHOICE_DIALOG, BotStrings.Select_your_gender, BotStrings.Change_your_Gender);
         private readonly AgeNumberPrompt _agePrompt = new AgeNumberPrompt(AGE_NUMBER_DIALOG, BotStrings.Change_your_age);
@@ -24,18 +24,18 @@ namespace HW.Bot.Dialogs
 
         private readonly IDbContext _dbContext;
         private readonly IPersonalDataStateManager _personalDataStateManager;
-        private const string NEW_USER_WATERFALL = nameof(ExistedComputerDialogComponent) + nameof(WaterfallDialog) + "newuser";
-        private const string EXIST_USER_MENU = nameof(ExistedComputerDialogComponent) + nameof(WaterfallDialog) + "existuser";
+        private const string NEW_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "newuser";
+        private const string EXIST_USER_MENU = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
         private const string GENDER_CHOICE_DIALOG = "Gender";
         private const string AGE_NUMBER_DIALOG = "Age";
         private const string WORK_TEXT_DIALOG = "Work";
-        private const string WELCOME_WATERFALL = nameof(ExistedComputerDialogComponent) + nameof(WaterfallDialog) + "welcome";
-        private const string DATA_ID = nameof(ExistedComputerDialogComponent) + "data";
+        private const string WELCOME_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "welcome";
+        private const string DATA_ID = nameof(PersonalDataDialogComponent) + "data";
 
         public string MenuItemOptionText { get; }
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public ExistedComputerDialogComponent([Localizable(false)] string dialogId, IPersonalDataStateManager personalDataStateManager,
+        public PersonalDataDialogComponent([Localizable(false)] string dialogId, IPersonalDataStateManager personalDataStateManager,
             IDbContext dbContext, string menuItemOptionText = null) : base(dialogId)
         {
             MenuItemOptionText = menuItemOptionText ?? dialogId;

@@ -26,7 +26,7 @@ namespace HW.Bot
             _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
 
             _menuDialogs.Add(
-                new ExistedComputerDialogComponent("recommendations", _accessors, dbContext,
+                new PersonalDataDialogComponent("recommendations", _accessors, dbContext,
                     BotStrings.RecommendationMenuItemTitle));
 
 
