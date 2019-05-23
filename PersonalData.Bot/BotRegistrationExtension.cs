@@ -61,5 +61,10 @@ namespace HW.Bot
             services.AddSingleton<IStorage>(new MemoryStorage());
             services.AddSingleton<StateManager>();
         }
+
+        public static IBot GetBotForTest(IDbContext dbContext)
+        {
+            return new RecommendationBot(new StateManager(new MemoryStorage()), dbContext);
+        }
     }
 }
