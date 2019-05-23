@@ -24,5 +24,6 @@ namespace HWWebApi.Models
         public DbSet<User> Users { get; set; }
         public DbSet<UserChannel> UserChannels { get; set; }
         public DbSet<TestString> TestStrings { get; set; }
+        public DbSet<Scan> Scans { get; set; }
     }
 }
