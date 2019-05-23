@@ -1,6 +1,6 @@
 using System;
 
-namespace HWWebApi.Models
+namespace Models
 {
     public class Memory : IModel<Memory>
     {

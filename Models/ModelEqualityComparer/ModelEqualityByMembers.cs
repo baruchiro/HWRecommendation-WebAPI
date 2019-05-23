@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HWWebApi.Models.ModelEqualityComparer
+namespace Models.ModelEqualityComparer
 {
     public class ModelEqualityByMembers<T> : IEqualityComparer<IModel<T>>
         where T : IModel<T>
