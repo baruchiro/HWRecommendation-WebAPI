@@ -18,20 +18,24 @@ namespace HW.Bot.UnitTests
 {
     public class FullConversation
     {
+        private readonly IDbContext _dbContext;
+        private readonly TestAdapter _adapter;
+
+        public FullConversation()
+        {
+            _dbContext = A.Fake<IDbContext>();
+            A.CallTo(() => _dbContext.GetPersonalDetails(A<string>.Ignored, A<string>.Ignored))
+                .Returns(null);
+            A.CallTo(
+                    () => _dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored, A<IPersonalData>.Ignored))
+                .Returns(true);
+            _adapter = new TestAdapter()
+                .Use(new AutoSaveStateMiddleware(new ConversationState(new MemoryStorage())));
+        }
         [Fact]
         public async Task FullConversation_PersonalData()
         {
-            var dbContext = A.Fake<IDbContext>();
-            A.CallTo(() => dbContext.GetPersonalDetails(A<string>.Ignored, A<string>.Ignored))
-                .Returns(null);
-            A.CallTo(
-                    () => dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored, A<IPersonalData>.Ignored))
-                .Returns(true);
-
-            var adapter = new TestAdapter()
-                .Use(new AutoSaveStateMiddleware(new ConversationState(new MemoryStorage())));
-
-            await new TestFlow(adapter, BotRegistrationExtension.GetBotForTest(dbContext))
+            await new TestFlow(_adapter, BotRegistrationExtension.GetBotForTest(_dbContext))
                 .Send("Hi")
                 .AssertReplyContain(BotStrings.MainMenuTitle)
 

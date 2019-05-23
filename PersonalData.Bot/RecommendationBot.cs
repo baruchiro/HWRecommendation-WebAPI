@@ -26,14 +26,21 @@ namespace HW.Bot
             _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
 
             _menuDialogs.Add(
-                new PersonalDataDialogComponent("recommendations", _accessors, dbContext,
+                new PersonalDataDialogComponent(PERSONAL_DATA_DIALOG, _accessors, dbContext,
+                    BotStrings.Manage_your_personal_information));
+            _menuDialogs.Add(
+                new ExistedComputerDialogComponent(EXISTED_COMPUTER_DIALOG, _accessors, dbContext,
                     BotStrings.RecommendationMenuItemTitle));
 
 
             _dialogSet = new DialogSet(accessors.ConversationDataAccessor);
 
-            _dialogSet.Add(new MenuDialogComponent(MENU_DIALOG, BotStrings.MainMenuTitle, _menuDialogs, doneTitle: null));
+            _dialogSet.Add(
+                new MenuDialogComponent(MENU_DIALOG, BotStrings.MainMenuTitle, _menuDialogs, doneTitle: null));
         }
+
+        public const string PERSONAL_DATA_DIALOG = nameof(RecommendationBot) + "_" + nameof(PERSONAL_DATA_DIALOG);
+        public const string EXISTED_COMPUTER_DIALOG = nameof(RecommendationBot) + "_" + nameof(EXISTED_COMPUTER_DIALOG);
 
         public async Task OnTurnAsync(ITurnContext turnContext,
             CancellationToken cancellationToken = new CancellationToken())

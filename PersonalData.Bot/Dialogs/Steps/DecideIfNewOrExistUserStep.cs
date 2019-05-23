@@ -12,7 +12,7 @@ namespace HW.Bot.Dialogs.Steps
 {
     public class DecideIfNewOrExistUser
     {
-        public static WaterfallStep Step(IDbContext dbContext, string NEW_USER_DIALOG, string EXIST_USER_MENU)
+        public static WaterfallStep Step(IDbContext dbContext, string newUserDialogId, string existUserMenuId = null)
         {
             return async (stepContext, cancellationToken) =>
             {
@@ -28,11 +28,17 @@ namespace HW.Bot.Dialogs.Steps
                         BotStrings.We_need_some_information,
                         cancellationToken: cancellationToken);
 
-                    return await stepContext.BeginDialogAsync(NEW_USER_DIALOG, new PersonalData(),
+                    return await stepContext.BeginDialogAsync(newUserDialogId, new PersonalData(),
                         cancellationToken: cancellationToken);
                 }
 
-                return await stepContext.BeginDialogAsync(EXIST_USER_MENU, personalInfo, cancellationToken: cancellationToken);
+                if (existUserMenuId != null)
+                {
+                    return await stepContext.BeginDialogAsync(existUserMenuId, personalInfo,
+                        cancellationToken: cancellationToken);
+                }
+
+                return await stepContext.NextAsync(cancellationToken: cancellationToken);
             };
         }
     }

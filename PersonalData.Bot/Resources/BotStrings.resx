@@ -167,4 +167,13 @@
   <data name="LinkToLateasSoftware_windows" xml:space="preserve">
     <value>https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach-windows.exe</value>
   </data>
+  <data name="ScanIdOrExit" xml:space="preserve">
+    <value>Give me your scan id or say "Exit" to leave.</value>
+  </data>
+  <data name="ScanIdExample" xml:space="preserve">
+    <value>Scan Id should looks in this structure: f6610e5b-13b1-486b-bcda-d04b9506b461. You can go back to main by saying "Exit"</value>
+  </data>
+  <data name="Manage_your_personal_information" xml:space="preserve">
+    <value>Manage your personal information</value>
+  </data>
 </root>
