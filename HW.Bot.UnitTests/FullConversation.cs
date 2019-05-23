@@ -45,5 +45,21 @@ namespace HW.Bot.UnitTests
 
                 .StartTestAsync();
         }
+
+        [Fact]
+        public async Task FullConversation_ExistComputerRecommendation()
+        {
+            await new TestFlow(_adapter, BotRegistrationExtension.GetBotForTest(_dbContext))
+                .Send("Hi")
+                .AssertReplyContain(BotStrings.MainMenuTitle)
+
+                .Send(BotStrings.RecommendationMenuItemTitle)
+
+                // TODO: Bug, duplicate message
+                .AssertReplyContain(BotStrings.We_need_some_information)
+                .AssertNewUserInsertData()
+
+                .StartTestAsync();
+        }
     }
 }
