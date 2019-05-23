@@ -19,12 +19,8 @@ namespace HW.Bot.UnitTests
     public class FullConversation
     {
         [Fact]
-        public async Task Bot_RunFullConversation()
+        public async Task FullConversation_PersonalData()
         {
-            var gender = Gender.NOT_DEFINE.AsString(EnumFormat.Description);
-            const string age = "25";
-            const string work = "student";
-
             var dbContext = A.Fake<IDbContext>();
             A.CallTo(() => dbContext.GetPersonalDetails(A<string>.Ignored, A<string>.Ignored))
                 .Returns(null);
@@ -39,20 +35,8 @@ namespace HW.Bot.UnitTests
                 .Send("Hi")
                 .AssertReplyContain(BotStrings.MainMenuTitle)
 
-                .Send(BotStrings.RecommendationMenuItemTitle)
-                .AssertReplyContain(BotStrings.We_need_some_information)
-                
-                .AssertReplyContain(BotStrings.Select_your_gender)
-                .Send(gender)
-                
-                .AssertReplyContain(BotStrings.Enter_your_age)
-                .Send(age)
-
-                .AssertReplyContain(BotStrings.Select_your_work)
-                .Send(work)
-
-                .AssertReplyContain(string.Format(BotStrings.Saving_info_of_user, "user1", "test"))
-                .AssertReplyContainAll(new []{BotStrings.Saving_your_data, gender,age,work})
+                .Send(BotStrings.Manage_your_personal_information)
+                .AssertNewUserInsertData()
 
 
                 .StartTestAsync();
