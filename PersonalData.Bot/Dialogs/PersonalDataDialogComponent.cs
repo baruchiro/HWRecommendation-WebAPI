@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Dialogs.AtomicDialogs;
 using HW.Bot.Dialogs.MenuDialog;
+using HW.Bot.Dialogs.Steps;
 using HW.Bot.Extensions;
 using HW.Bot.Interfaces;
 using HW.Bot.Model;
@@ -48,7 +49,7 @@ namespace HW.Bot.Dialogs
             _genderPrompt.HandleResult = HandleGender;
 
             AddDialog(new WaterfallDialog(WELCOME_WATERFALL)
-                .AddStep(DecideIfNewOrExistUserStep)
+                .AddStep(DecideIfNewOrExistUser.Step(dbContext, NEW_USER_WATERFALL, EXIST_USER_MENU))
                 .AddStep(SaveDetailsStep)
             );
 
@@ -74,27 +75,6 @@ namespace HW.Bot.Dialogs
             AddDialog(_genderPrompt);
             AddDialog(_agePrompt);
             AddDialog(_workPrompt);
-        }
-
-        private async Task<DialogTurnResult> DecideIfNewOrExistUserStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            var channelId = stepContext.Context.Activity.ChannelId;
-            var userId = stepContext.Context.Activity.From.Id;
-
-            var personalInfo = _dbContext.GetPersonalDetails(channelId, userId);
-
-            if (personalInfo == null)
-            {
-                await stepContext.Context.SendActivityAsync(
-                    string.Format(BotStrings.There_is_No_info_about_user, userId, channelId) +
-                    BotStrings.We_need_some_information,
-                    cancellationToken: cancellationToken);
-
-                return await stepContext.BeginDialogAsync(NEW_USER_WATERFALL, new PersonalData(), cancellationToken: cancellationToken);
-            }
-
-            stepContext.Values[DATA_ID] = personalInfo;
-            return await stepContext.BeginDialogAsync(EXIST_USER_MENU, personalInfo, cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> SaveDetailsStep(WaterfallStepContext stepContext,
