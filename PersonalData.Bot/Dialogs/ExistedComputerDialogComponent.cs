@@ -17,8 +17,11 @@ namespace HW.Bot.Dialogs
 {
     class ExistedComputerDialogComponent : ComponentDialog, IMenuItemDialog
     {
+        private readonly IDbContext _dbContext;
+
         public ExistedComputerDialogComponent(string dialogId, IPersonalDataStateManager personalDataStateManager, IDbContext dbContext, string menuItemOptionText) : base(dialogId)
         {
+            _dbContext = dbContext;
             MenuItemOptionText = menuItemOptionText ?? dialogId;
             AddDialog(new WaterfallDialog(MAIN_WATERFALL)
                 .AddStep(DecideIfNewOrExistUser.Step(dbContext, PERSONAL_DATA_DIALOG))
@@ -61,9 +64,29 @@ namespace HW.Bot.Dialogs
                 }, cancellationToken);
         }
 
-        private Task<DialogTurnResult> HandleScanIdResult(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> HandleScanIdResult(WaterfallStepContext stepContext,
+            CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (Guid.TryParse(stepContext.Result.ToString(), out var guid))
+            {
+                var recommendations = _dbContext.GetRecommendationsForScan(guid);
+                if (recommendations == null)
+                {
+                    await stepContext.Context.SendActivityAsync("There is no such scan",
+                        cancellationToken: cancellationToken);
+                }
+                else
+                {
+                    foreach (var recommendation in recommendations)
+                    {
+                        await stepContext.Context.SendActivityAsync("Here your recommendation",
+                            cancellationToken: cancellationToken);
+                    }
+                }
+
+            }
+
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
         public const string SCAN_ID_PROMPT = nameof(ExistedComputerDialogComponent) + "_" + nameof(SCAN_ID_PROMPT);

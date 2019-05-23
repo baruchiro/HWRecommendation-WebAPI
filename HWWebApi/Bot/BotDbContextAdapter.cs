@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HW.Bot.Interfaces;
 using HWWebApi.Models;
@@ -46,6 +47,11 @@ namespace HWWebApi.Bot
         {
             var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
             return GetUserByUserChannel(userChannel);
+        }
+
+        public IEnumerable<string> GetRecommendationsForScan(Guid guid)
+        {
+            return null;
         }
 
         private User GetUserByUserChannel(UserChannel userChannel)

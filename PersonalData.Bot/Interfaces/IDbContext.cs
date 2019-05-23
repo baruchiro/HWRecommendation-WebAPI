@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HW.Bot.Interfaces
 {
@@ -7,5 +9,6 @@ namespace HW.Bot.Interfaces
         IEnumerable<string> GetOrderedWorkList();
         bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData);
         IPersonalData GetPersonalDetails(string channelId, string userId);
+        IEnumerable<string> GetRecommendationsForScan(Guid guid);
     }
 }
