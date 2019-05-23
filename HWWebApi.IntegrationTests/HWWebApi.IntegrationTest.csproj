@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HWWebApi\HWWebApi.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using HWWebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Models;
 
 namespace TestUtils
 {

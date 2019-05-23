@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using HW.Bot.Interfaces;
 using HW.Bot.Model;
 using HWWebApi.Helpers;
-using HWWebApi.Models.ModelEqualityComparer;
+using Models;
+using Models.ModelEqualityComparer;
 
 namespace HWWebApi.Models
 {
