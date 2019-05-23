@@ -161,4 +161,10 @@
   <data name="event_detected" xml:space="preserve">
     <value>{0} event detected</value>
   </data>
+  <data name="DownloadOurSoftware_windows_withoutLink" xml:space="preserve">
+    <value>For get recommendation for your computer, you need to download our software, and get the scan id. You can download our software (for windows) here: </value>
+  </data>
+  <data name="LinkToLateasSoftware_windows" xml:space="preserve">
+    <value>https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach-windows.exe</value>
+  </data>
 </root>
