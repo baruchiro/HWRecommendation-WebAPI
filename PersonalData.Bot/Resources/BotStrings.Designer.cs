@@ -77,6 +77,7 @@ namespace HW.Bot.Resources {
                 return ResourceManager.GetString("cant_save_your_data", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change your age.
         /// </summary>
@@ -134,6 +135,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For get recommendation for your computer, you need to download our software, and get the scan id. You can download our software (for windows) here: .
+        /// </summary>
+        public static string DownloadOurSoftware_windows_withoutLink {
+            get {
+                return ResourceManager.GetString("DownloadOurSoftware_windows_withoutLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter your age.
         /// </summary>
         public static string Enter_your_age {
@@ -157,6 +167,15 @@ namespace HW.Bot.Resources {
         public static string event_detected {
             get {
                 return ResourceManager.GetString("event_detected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach-windows.exe.
+        /// </summary>
+        public static string LinkToLateasSoftware_windows {
+            get {
+                return ResourceManager.GetString("LinkToLateasSoftware_windows", resourceCulture);
             }
         }
         
