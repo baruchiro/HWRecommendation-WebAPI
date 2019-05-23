@@ -189,6 +189,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage your personal information.
+        /// </summary>
+        public static string Manage_your_personal_information {
+            get {
+                return ResourceManager.GetString("Manage_your_personal_information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get hardware recommendations for your current computer.
         /// </summary>
         public static string RecommendationMenuItemTitle {
@@ -213,6 +222,24 @@ namespace HW.Bot.Resources {
         public static string Saving_your_data {
             get {
                 return ResourceManager.GetString("Saving_your_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan Id should looks in this structure: f6610e5b-13b1-486b-bcda-d04b9506b461. You can go back to main by saying &quot;Exit&quot;.
+        /// </summary>
+        public static string ScanIdExample {
+            get {
+                return ResourceManager.GetString("ScanIdExample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Give me your scan id or say &quot;Exit&quot; to leave..
+        /// </summary>
+        public static string ScanIdOrExit {
+            get {
+                return ResourceManager.GetString("ScanIdOrExit", resourceCulture);
             }
         }
         
