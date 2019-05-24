@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using ComputerUpgradeStrategies;
+using ComputerUpgradeStrategies.Recommendations.Disk;
 using EnumsNET;
 using FakeItEasy;
 using HW.Bot.Interfaces;
@@ -27,11 +30,13 @@ namespace HW.Bot.UnitTests
             A.CallTo(() => _dbContext.GetPersonalDetails(A<string>.Ignored, A<string>.Ignored))
                 .Returns(null);
             A.CallTo(
-                    () => _dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored, A<IPersonalData>.Ignored))
+                    () => _dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored,
+                        A<IPersonalData>.Ignored))
                 .Returns(true);
             _adapter = new TestAdapter()
                 .Use(new AutoSaveStateMiddleware(new ConversationState(new MemoryStorage())));
         }
+
         [Fact]
         public async Task FullConversation_PersonalData()
         {
@@ -42,13 +47,15 @@ namespace HW.Bot.UnitTests
                 .Send(BotStrings.Manage_your_personal_information)
                 .AssertNewUserInsertData()
 
-
                 .StartTestAsync();
         }
 
         [Fact]
         public async Task FullConversation_ExistComputerRecommendation()
         {
+            A.CallTo(() => _dbContext.GetRecommendationsForScan(A<Guid>.Ignored))
+                .Returns(new[] {DiskRecommendations.Replace_HDD_SDD});
+
             await new TestFlow(_adapter, BotRegistrationExtension.GetBotForTest(_dbContext))
                 .Send("Hi")
                 .AssertReplyContain(BotStrings.MainMenuTitle)
@@ -58,6 +65,14 @@ namespace HW.Bot.UnitTests
                 // TODO: Bug, duplicate message
                 .AssertReplyContain(BotStrings.We_need_some_information)
                 .AssertNewUserInsertData()
+
+                .AssertReplyContainAll(new[]
+                    {BotStrings.DownloadOurSoftware_windows_withoutLink, BotStrings.LinkToLateasSoftware_windows})
+                .AssertReplyContainAll(new[] {BotStrings.ScanIdOrExit})
+
+                .Send(Guid.NewGuid().ToString())
+                .AssertReplyContain(BotStrings.Here_our_recommendations_for_you)
+                .AssertReplyContain(DiskRecommendations.Replace_HDD_SDD)
 
                 .StartTestAsync();
         }
