@@ -1,32 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using ComputerUpgradeStrategies.Extensions;
+using ComputerUpgradeStrategies.Adapters;
+using ComputerUpgradeStrategies.DevicesInterfaces;
 using ComputerUpgradeStrategies.Recommendations;
 using ComputerUpgradeStrategies.Recommendations.Disk;
 using Models;
 
 namespace ComputerUpgradeStrategies.Strategies.Simple
 {
-    class SimpleDiskStrategy : IDiskStrategy
+    class SimpleDiskStrategy : IRecommendationStrategy<IDiskDevice>
     {
-        public IEnumerable<IUpgradeRecommendation> GetRecommendations(Disk disk)
+        public IEnumerable<IUpgradeRecommendation> GetRecommendations(IDiskDevice disk)
         {
-            if (disk.Type == DiskType.HDD)
+            switch (disk.Type)
             {
-                yield return new DiskReplaceRecommendation(disk, disk.Replace(d => d.Type = DiskType.SSD),
-                    DiskRecommendations.Replace_HDD_SDD);
-            }
-
-            if (disk.Type == DiskType.Unknown)
-            {
-                yield return new DiskReplaceRecommendation(disk, disk.Replace(d => d.Type = DiskType.SSD),
-                    DiskRecommendations.Replace_Unknown_SDD);
+                case DiskType.HDD:
+                    yield return new DiskReplaceRecommendation(disk, DiskRecommendations.Replace_HDD_SDD);
+                    break;
+                case DiskType.Unknown:
+                case null:
+                    yield return new DiskReplaceRecommendation(disk, DiskRecommendations.Replace_Unknown_SDD);
+                    break;
+                case DiskType.SSD:
+                    break;
+                default:
+                    yield return new DiskReplaceRecommendation(disk, "System does not recognize disk type:" + disk.Type);
+                    break;
             }
 
             // TODO Capacity in bytes?
             if (disk.Capacity < 300)
             {
-                yield return new DiskReplaceRecommendation(disk, disk.Replace(d=>d.Capacity = 500), DiskRecommendations.Get_More_Capacity);
+                yield return new DiskReplaceRecommendation(disk, DiskRecommendations.Get_More_Capacity);
             }
         }
     }
