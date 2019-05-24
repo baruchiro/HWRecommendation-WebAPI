@@ -189,7 +189,7 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach-windows.exe.
+        ///   Looks up a localized string similar to https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach.exe.
         /// </summary>
         public static string LinkToLateasSoftware_windows {
             get {
