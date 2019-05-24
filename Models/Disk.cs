@@ -1,4 +1,4 @@
-namespace HWWebApi.Models
+namespace Models
 {
     public class Disk : IModel<Disk>
     {
