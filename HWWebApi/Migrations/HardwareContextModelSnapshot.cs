@@ -231,7 +231,7 @@ namespace HWWebApi.Migrations
                         .HasForeignKey("ComputerId");
 
                     b.HasOne("HWWebApi.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Scans")
                         .HasForeignKey("UserId");
                 });
 

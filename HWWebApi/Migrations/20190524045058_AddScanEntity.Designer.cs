@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HWWebApi.Migrations
 {
     [DbContext(typeof(HardwareContext))]
-    [Migration("20190523185752_AddScanEntity")]
+    [Migration("20190524045058_AddScanEntity")]
     partial class AddScanEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -233,7 +233,7 @@ namespace HWWebApi.Migrations
                         .HasForeignKey("ComputerId");
 
                     b.HasOne("HWWebApi.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Scans")
                         .HasForeignKey("UserId");
                 });
 
