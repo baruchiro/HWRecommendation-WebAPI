@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using HWWebApi.Helpers;
-using HWWebApi.Models.ModelEqualityComparer;
+using Models.ModelEqualityComparer;
 
-namespace HWWebApi.Models
+namespace Models
 {
     public class Computer : IModel<Computer>
     {

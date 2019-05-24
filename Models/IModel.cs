@@ -1,4 +1,4 @@
-﻿namespace HWWebApi.Models
+﻿namespace Models
 {
     public interface IModel<in T> where T:IModel<T>
     {
