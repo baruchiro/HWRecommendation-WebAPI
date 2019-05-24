@@ -1,8 +1,8 @@
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 using Newtonsoft.Json.Converters;
 
-namespace HWWebApi.Models
+namespace Models
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Architecture

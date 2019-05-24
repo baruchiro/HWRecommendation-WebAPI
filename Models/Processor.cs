@@ -1,4 +1,4 @@
-namespace HWWebApi.Models
+namespace Models
 {
     public class Processor : IModel<Processor>
     {
