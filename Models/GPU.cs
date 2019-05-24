@@ -1,4 +1,4 @@
-namespace HWWebApi.Models
+namespace Models
 {
     public class Gpu : IModel<Gpu>
     {
