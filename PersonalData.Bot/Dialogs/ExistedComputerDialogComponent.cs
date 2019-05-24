@@ -77,11 +77,24 @@ namespace HW.Bot.Dialogs
                 }
                 else
                 {
-                    await stepContext.Context.SendActivityAsync(BotStrings.Here_our_recommendations_for_you,
-                            cancellationToken: cancellationToken);
+                    var isHave = false;
                     foreach (var recommendation in recommendations)
                     {
+                        if (!isHave)
+                        {
+                            await stepContext.Context.SendActivityAsync(BotStrings.Here_our_recommendations_for_you,
+                                cancellationToken: cancellationToken);
+                            isHave = true;
+                        }
                         await stepContext.Context.SendActivityAsync(recommendation,
+                            cancellationToken: cancellationToken);
+                    }
+
+                    if (!isHave)
+                    {
+                        await stepContext.Context.SendActivityAsync(BotStrings.NoRecommendationsForYou,
+                            cancellationToken: cancellationToken);
+                        await stepContext.Context.SendActivityAsync(BotStrings.Github_issues,
                             cancellationToken: cancellationToken);
                     }
                 }

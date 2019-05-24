@@ -22,7 +22,7 @@ namespace ComputerUpgradeStrategies.Recommendations.Disk {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DiskRecommendations {
+    public class DiskRecommendations {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ComputerUpgradeStrategies.Recommendations.Disk {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ComputerUpgradeStrategies.Recommendations.Disk.DiskRecommendations", typeof(DiskRecommendations).Assembly);
@@ -51,7 +51,7 @@ namespace ComputerUpgradeStrategies.Recommendations.Disk {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ComputerUpgradeStrategies.Recommendations.Disk {
         /// <summary>
         ///   Looks up a localized string similar to Your disk is too small, we recommend at least 480GB..
         /// </summary>
-        internal static string Get_More_Capacity {
+        public static string Get_More_Capacity {
             get {
                 return ResourceManager.GetString("Get_More_Capacity", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ComputerUpgradeStrategies.Recommendations.Disk {
         /// <summary>
         ///   Looks up a localized string similar to We recommend you to replace your HDD disk to SSD disk. An SSD disk is faster and more resistant to data loss and demage..
         /// </summary>
-        internal static string Replace_HDD_SDD {
+        public static string Replace_HDD_SDD {
             get {
                 return ResourceManager.GetString("Replace_HDD_SDD", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ComputerUpgradeStrategies.Recommendations.Disk {
         /// <summary>
         ///   Looks up a localized string similar to We do not know what kind of disk you have, but we recommend you to use an SSD disk. An SSD disk is faster and more resistant to data loss and demage..
         /// </summary>
-        internal static string Replace_Unknown_SDD {
+        public static string Replace_Unknown_SDD {
             get {
                 return ResourceManager.GetString("Replace_Unknown_SDD", resourceCulture);
             }

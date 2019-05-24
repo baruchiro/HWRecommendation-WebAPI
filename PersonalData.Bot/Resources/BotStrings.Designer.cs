@@ -171,6 +171,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://github.com/baruchiro/HWRecommendation-webapi/issues.
+        /// </summary>
+        public static string Github_issues {
+            get {
+                return ResourceManager.GetString("Github_issues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Here our recommendations for you.
         /// </summary>
         public static string Here_our_recommendations_for_you {
@@ -203,6 +212,15 @@ namespace HW.Bot.Resources {
         public static string Manage_your_personal_information {
             get {
                 return ResourceManager.GetString("Manage_your_personal_information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We have no recommendations for you, probably your computer is good! If you think there is something to improve on your computer, feel free to open us a bug in Github:.
+        /// </summary>
+        public static string NoRecommendationsForYou {
+            get {
+                return ResourceManager.GetString("NoRecommendationsForYou", resourceCulture);
             }
         }
         

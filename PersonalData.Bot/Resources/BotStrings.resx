@@ -182,4 +182,10 @@
   <data name="Here_our_recommendations_for_you" xml:space="preserve">
     <value>Here our recommendations for you</value>
   </data>
+  <data name="NoRecommendationsForYou" xml:space="preserve">
+    <value>We have no recommendations for you, probably your computer is good! If you think there is something to improve on your computer, feel free to open us a bug in Github:</value>
+  </data>
+  <data name="Github_issues" xml:space="preserve">
+    <value>https://github.com/baruchiro/HWRecommendation-webapi/issues</value>
+  </data>
 </root>
