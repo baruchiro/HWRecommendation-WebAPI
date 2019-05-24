@@ -72,14 +72,16 @@ namespace HW.Bot.Dialogs
                 var recommendations = _dbContext.GetRecommendationsForScan(guid);
                 if (recommendations == null)
                 {
-                    await stepContext.Context.SendActivityAsync("There is no such scan",
+                    await stepContext.Context.SendActivityAsync(BotStrings.There_is_no_such_scan,
                         cancellationToken: cancellationToken);
                 }
                 else
                 {
+                    await stepContext.Context.SendActivityAsync(BotStrings.Here_our_recommendations_for_you,
+                            cancellationToken: cancellationToken);
                     foreach (var recommendation in recommendations)
                     {
-                        await stepContext.Context.SendActivityAsync("Here your recommendation",
+                        await stepContext.Context.SendActivityAsync(recommendation,
                             cancellationToken: cancellationToken);
                     }
                 }

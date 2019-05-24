@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using ComputerUpgradeStrategies;
 using HW.Bot.Interfaces;
 using HWWebApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +53,9 @@ namespace HWWebApi.Bot
 
         public IEnumerable<string> GetRecommendationsForScan(Guid guid)
         {
-            return null;
+            var computer = _dbContext.Find<Scan>(guid)?.Computer;
+
+            return computer?.GetUpgradeRecommendations().Select(r=>r.ToString());
         }
 
         private User GetUserByUserChannel(UserChannel userChannel)

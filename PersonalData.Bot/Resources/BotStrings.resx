@@ -176,4 +176,10 @@
   <data name="Manage_your_personal_information" xml:space="preserve">
     <value>Manage your personal information</value>
   </data>
+  <data name="There_is_no_such_scan" xml:space="preserve">
+    <value>There is no such scan</value>
+  </data>
+  <data name="Here_our_recommendations_for_you" xml:space="preserve">
+    <value>Here our recommendations for you</value>
+  </data>
 </root>

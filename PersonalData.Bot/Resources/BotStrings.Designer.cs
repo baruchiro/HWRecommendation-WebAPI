@@ -171,6 +171,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here our recommendations for you.
+        /// </summary>
+        public static string Here_our_recommendations_for_you {
+            get {
+                return ResourceManager.GetString("Here_our_recommendations_for_you", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach-windows.exe.
         /// </summary>
         public static string LinkToLateasSoftware_windows {
@@ -277,6 +286,15 @@ namespace HW.Bot.Resources {
         public static string There_is_No_info_about_user {
             get {
                 return ResourceManager.GetString("There_is_No_info_about_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no such scan.
+        /// </summary>
+        public static string There_is_no_such_scan {
+            get {
+                return ResourceManager.GetString("There_is_no_such_scan", resourceCulture);
             }
         }
         
