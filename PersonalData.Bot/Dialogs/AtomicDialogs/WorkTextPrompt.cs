@@ -13,14 +13,17 @@ namespace HW.Bot.Dialogs.AtomicDialogs
     internal class WorkTextPrompt : TextPrompt, IMenuItemDialog
     {
         private readonly PromptOptions _promptOptions;
-        private string _title;
+        public string MenuItemOptionText { get; }
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
-        public WorkTextPrompt(string dialogId, string title = null, PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null) : base(dialogId, validator)
+        public WorkTextPrompt(string dialogId, string menuItemOptionText = null,
+            PromptValidator<string> validator = null, IEnumerable<string> suggestedActions = null,
+            Func<ITurnContext, object, CancellationToken, Task> handleResult = null) : base(dialogId, validator)
         {
             _promptOptions = new PromptOptionsFactory()
-                     .CreateActionsPromptOptions(BotStrings.Select_your_work, suggestedActions);
-            _title = title ?? dialogId;
+                .CreateActionsPromptOptions(BotStrings.Select_your_work, suggestedActions);
+            MenuItemOptionText = menuItemOptionText ?? dialogId;
+            HandleResult = handleResult;
         }
 
         internal Task<DialogTurnResult> PromptAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -37,11 +40,6 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         public Dialog GetDialog()
         {
             return this;
-        }
-
-        public string GetMenuItemOptionText()
-        {
-            return _title;
         }
     }
 }

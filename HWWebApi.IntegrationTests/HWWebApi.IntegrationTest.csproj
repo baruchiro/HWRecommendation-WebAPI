@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HWWebApi.UnitTest\HWWebApi.UnitTest.csproj" />
     <ProjectReference Include="..\HWWebApi\HWWebApi.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\TestUtils\TestUtils.csproj" />

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HWWebApi.Controllers;
 using HWWebApi.Models;
+using HWWebApi.UnitTest.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -19,7 +20,7 @@ namespace HWWebApi.UnitTest
         private readonly DbContextOptions<HardwareContext> _options;
         public ScansControllerTests()
         {
-            _options = TestUtils.TestUtils.GetInMemoryDbContextOptions().Options;
+            _options = TestUtils.TestUtils.GetInMemoryDbContextOptions<HardwareContext>().Options;
         }
 
         [Theory]

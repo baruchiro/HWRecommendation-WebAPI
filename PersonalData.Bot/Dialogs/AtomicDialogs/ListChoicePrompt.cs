@@ -16,7 +16,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
     class ListChoicePrompt : ChoicePrompt, IMenuItemDialog
     {
         private readonly PromptOptions _promptOptions;
-        private string _menuItemOptionText;
+        public string MenuItemOptionText { get; }
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
         public ListChoicePrompt([Localizable(false)] string dialogId, string text,
@@ -28,7 +28,7 @@ namespace HW.Bot.Dialogs.AtomicDialogs
                 Prompt = MessageFactory.Text(text),
                 Choices = ChoiceFactory.ToChoices(choices)
             };
-            _menuItemOptionText = menuItemOptionText ?? dialogId;
+            MenuItemOptionText = menuItemOptionText ?? dialogId;
             HandleResult = handleResult;
         }
 
@@ -46,11 +46,6 @@ namespace HW.Bot.Dialogs.AtomicDialogs
         public Dialog GetDialog()
         {
             return this;
-        }
-
-        public string GetMenuItemOptionText()
-        {
-            return _menuItemOptionText;
         }
     }
 }
