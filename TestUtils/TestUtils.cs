@@ -1,6 +1,4 @@
 ﻿using System;
-using HW.Bot.Model;
-using HWWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -50,15 +48,6 @@ namespace TestUtils
             return computer;
         }
 
-        public static Scan GenerateScan()
-        {
-            return new Scan
-            {
-                Computer = GenerateComputer(),
-                CreationDateTime = DateTime.Now,
-                User = new User {Age = 25, Gender = Gender.MALE, Name = "User Name", WorkArea = "My work"}
-            };
-        }
         public static Computer GenerateEmptyComponentsComputer()
         {
             var memory = new Memory();
@@ -79,15 +68,6 @@ namespace TestUtils
             return computer;
         }
 
-        public static Scan GenerateEmptyComponentsScan()
-        {
-            return new Scan
-            {
-                Computer = new Computer(),
-                CreationDateTime = new DateTime(),
-                User = new User()
-            };
-        }
         public static Computer GenerateEmptyComputer()
         {
             var computer = new Computer();
@@ -95,11 +75,11 @@ namespace TestUtils
             return computer;
         }
 
-        public static Scan GenerateEmptyScan()
+        public static DbContextOptionsBuilder<T> GetInMemoryDbContextOptions<T>()
+            where T : DbContext
         {
-            return new Scan();
+            return new DbContextOptionsBuilder<T>()
+                .UseInMemoryDatabase(databaseName: DateTime.Now.Ticks.ToString());
         }
-        public static DbContextOptionsBuilder<HardwareContext> GetInMemoryDbContextOptions()=> new DbContextOptionsBuilder<HardwareContext>()
-            .UseInMemoryDatabase(databaseName: DateTime.Now.Ticks.ToString());
     }
 }
