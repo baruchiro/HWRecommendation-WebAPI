@@ -1,5 +1,6 @@
 ﻿using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace HWWebApi.Controllers
 {

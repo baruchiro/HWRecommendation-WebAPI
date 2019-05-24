@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using HWWebApi.Controllers;
 using HWWebApi.Models;
-using HWWebApi.Models.ModelEqualityComparer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Models;
+using Models.ModelEqualityComparer;
 using TestUtils;
 using Xunit;
 

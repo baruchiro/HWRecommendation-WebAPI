@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using HW.Bot.Interfaces;
 using HW.Bot.Model;
 using HWWebApi.Helpers;
-using HWWebApi.Models.ModelEqualityComparer;
+using Models;
+using Models.ModelEqualityComparer;
 
 namespace HWWebApi.Models
 {
@@ -15,14 +16,16 @@ namespace HWWebApi.Models
         public int Age { get; set; }
         public Gender Gender { get; set; }
         public ICollection<UserChannel> Channels { get; set; }
+        public ICollection<Scan> Scans { get; set; }
 
         public bool EqualByMembers(User model)
         {
             return Name == model.Name &&
-                   WorkArea.Equals(model.WorkArea, StringComparison.CurrentCultureIgnoreCase)&&
+                   WorkArea.Equals(model.WorkArea, StringComparison.CurrentCultureIgnoreCase) &&
                    Age == model.Age &&
                    Gender == model.Gender &&
-                   Channels.IsEquals(model.Channels, new ModelEqualityByMembers<UserChannel>());
+                   Channels.IsEquals(model.Channels, new ModelEqualityByMembers<UserChannel>()) &&
+                   Scans.IsEquals(model.Scans);
         }
 
         public int GetHashCodeWithMembers()
@@ -35,6 +38,7 @@ namespace HWWebApi.Models
                 hashCode = (hashCode * 397) ^ Age.GetHashCode();
                 hashCode = (hashCode * 397) ^ Gender.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Channels?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Scans?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
