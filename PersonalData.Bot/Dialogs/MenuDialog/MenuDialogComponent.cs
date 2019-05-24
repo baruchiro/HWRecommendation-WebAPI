@@ -28,10 +28,10 @@ namespace HW.Bot.Dialogs.MenuDialog
         {
             _title = title;
             _doneTitle = doneTitle;
-            _mapTitleToDialog = dialogsMenuItems.ToDictionary(d => d.GetMenuItemOptionText(), d => d.GetDialog());
+            _mapTitleToDialog = dialogsMenuItems.ToDictionary(d => d.MenuItemOptionText, d => d.GetDialog());
             _mapDialogIdToMenuItem = dialogsMenuItems.ToDictionary(d => d.Id, d => d);
 
-            _menuItemTitles = dialogsMenuItems.Select(d => d.GetMenuItemOptionText()).ToList();
+            _menuItemTitles = dialogsMenuItems.Select(d => d.MenuItemOptionText).ToList();
 
             if (_doneTitle != null)
             {

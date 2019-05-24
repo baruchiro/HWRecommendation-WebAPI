@@ -161,4 +161,31 @@
   <data name="event_detected" xml:space="preserve">
     <value>{0} event detected</value>
   </data>
+  <data name="DownloadOurSoftware_windows_withoutLink" xml:space="preserve">
+    <value>For get recommendation for your computer, you need to download our software, and get the scan id. You can download our software (for windows) here: </value>
+  </data>
+  <data name="LinkToLateasSoftware_windows" xml:space="preserve">
+    <value>https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach-windows.exe</value>
+  </data>
+  <data name="ScanIdOrExit" xml:space="preserve">
+    <value>Give me your scan id or say "Exit" to leave.</value>
+  </data>
+  <data name="ScanIdExample" xml:space="preserve">
+    <value>Scan Id should looks in this structure: f6610e5b-13b1-486b-bcda-d04b9506b461. You can go back to main by saying "Exit"</value>
+  </data>
+  <data name="Manage_your_personal_information" xml:space="preserve">
+    <value>Manage your personal information</value>
+  </data>
+  <data name="There_is_no_such_scan" xml:space="preserve">
+    <value>There is no such scan</value>
+  </data>
+  <data name="Here_our_recommendations_for_you" xml:space="preserve">
+    <value>Here our recommendations for you</value>
+  </data>
+  <data name="NoRecommendationsForYou" xml:space="preserve">
+    <value>We have no recommendations for you, probably your computer is good! If you think there is something to improve on your computer, feel free to open us a bug in Github:</value>
+  </data>
+  <data name="Github_issues" xml:space="preserve">
+    <value>https://github.com/baruchiro/HWRecommendation-webapi/issues</value>
+  </data>
 </root>

@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using ComputerUpgradeStrategies;
+using ComputerUpgradeStrategies.Recommendations.Disk;
 using EnumsNET;
 using FakeItEasy;
 using HW.Bot.Interfaces;
@@ -18,42 +21,58 @@ namespace HW.Bot.UnitTests
 {
     public class FullConversation
     {
-        [Fact]
-        public async Task Bot_RunFullConversation()
-        {
-            var gender = Gender.NOT_DEFINE.AsString(EnumFormat.Description);
-            const string age = "25";
-            const string work = "student";
+        private readonly IDbContext _dbContext;
+        private readonly TestAdapter _adapter;
 
-            var dbContext = A.Fake<IDbContext>();
-            A.CallTo(() => dbContext.GetPersonalDetails(A<string>.Ignored, A<string>.Ignored))
+        public FullConversation()
+        {
+            _dbContext = A.Fake<IDbContext>();
+            A.CallTo(() => _dbContext.GetPersonalDetails(A<string>.Ignored, A<string>.Ignored))
                 .Returns(null);
             A.CallTo(
-                    () => dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored, A<IPersonalData>.Ignored))
+                    () => _dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored,
+                        A<IPersonalData>.Ignored))
                 .Returns(true);
-
-            var adapter = new TestAdapter()
+            _adapter = new TestAdapter()
                 .Use(new AutoSaveStateMiddleware(new ConversationState(new MemoryStorage())));
+        }
 
-            await new TestFlow(adapter, BotRegistrationExtension.GetBotForTest(dbContext))
+        [Fact]
+        public async Task FullConversation_PersonalData()
+        {
+            await new TestFlow(_adapter, BotRegistrationExtension.GetBotForTest(_dbContext))
+                .Send("Hi")
+                .AssertReplyContain(BotStrings.MainMenuTitle)
+
+                .Send(BotStrings.Manage_your_personal_information)
+                .AssertNewUserInsertData()
+
+                .StartTestAsync();
+        }
+
+        [Fact]
+        public async Task FullConversation_ExistComputerRecommendation()
+        {
+            A.CallTo(() => _dbContext.GetRecommendationsForScan(A<Guid>.Ignored))
+                .Returns(new[] {DiskRecommendations.Replace_HDD_SDD});
+
+            await new TestFlow(_adapter, BotRegistrationExtension.GetBotForTest(_dbContext))
                 .Send("Hi")
                 .AssertReplyContain(BotStrings.MainMenuTitle)
 
                 .Send(BotStrings.RecommendationMenuItemTitle)
+
+                // TODO: Bug, duplicate message
                 .AssertReplyContain(BotStrings.We_need_some_information)
-                
-                .AssertReplyContain(BotStrings.Select_your_gender)
-                .Send(gender)
-                
-                .AssertReplyContain(BotStrings.Enter_your_age)
-                .Send(age)
+                .AssertNewUserInsertData()
 
-                .AssertReplyContain(BotStrings.Select_your_work)
-                .Send(work)
+                .AssertReplyContainAll(new[]
+                    {BotStrings.DownloadOurSoftware_windows_withoutLink, BotStrings.LinkToLateasSoftware_windows})
+                .AssertReplyContainAll(new[] {BotStrings.ScanIdOrExit})
 
-                .AssertReplyContain(string.Format(BotStrings.Saving_info_of_user, "user1", "test"))
-                .AssertReplyContainAll(new []{BotStrings.Saving_your_data, gender,age,work})
-
+                .Send(Guid.NewGuid().ToString())
+                .AssertReplyContain(BotStrings.Here_our_recommendations_for_you)
+                .AssertReplyContain(DiskRecommendations.Replace_HDD_SDD)
 
                 .StartTestAsync();
         }

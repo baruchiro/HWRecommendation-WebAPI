@@ -77,6 +77,7 @@ namespace HW.Bot.Resources {
                 return ResourceManager.GetString("cant_save_your_data", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change your age.
         /// </summary>
@@ -134,6 +135,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For get recommendation for your computer, you need to download our software, and get the scan id. You can download our software (for windows) here: .
+        /// </summary>
+        public static string DownloadOurSoftware_windows_withoutLink {
+            get {
+                return ResourceManager.GetString("DownloadOurSoftware_windows_withoutLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter your age.
         /// </summary>
         public static string Enter_your_age {
@@ -161,11 +171,56 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://github.com/baruchiro/HWRecommendation-webapi/issues.
+        /// </summary>
+        public static string Github_issues {
+            get {
+                return ResourceManager.GetString("Github_issues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here our recommendations for you.
+        /// </summary>
+        public static string Here_our_recommendations_for_you {
+            get {
+                return ResourceManager.GetString("Here_our_recommendations_for_you", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/baruchiro/HWRecommendation-local/releases/latest/download/CompuTEach-windows.exe.
+        /// </summary>
+        public static string LinkToLateasSoftware_windows {
+            get {
+                return ResourceManager.GetString("LinkToLateasSoftware_windows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hi, select what you want.
         /// </summary>
         public static string MainMenuTitle {
             get {
                 return ResourceManager.GetString("MainMenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage your personal information.
+        /// </summary>
+        public static string Manage_your_personal_information {
+            get {
+                return ResourceManager.GetString("Manage_your_personal_information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We have no recommendations for you, probably your computer is good! If you think there is something to improve on your computer, feel free to open us a bug in Github:.
+        /// </summary>
+        public static string NoRecommendationsForYou {
+            get {
+                return ResourceManager.GetString("NoRecommendationsForYou", resourceCulture);
             }
         }
         
@@ -194,6 +249,24 @@ namespace HW.Bot.Resources {
         public static string Saving_your_data {
             get {
                 return ResourceManager.GetString("Saving_your_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan Id should looks in this structure: f6610e5b-13b1-486b-bcda-d04b9506b461. You can go back to main by saying &quot;Exit&quot;.
+        /// </summary>
+        public static string ScanIdExample {
+            get {
+                return ResourceManager.GetString("ScanIdExample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Give me your scan id or say &quot;Exit&quot; to leave..
+        /// </summary>
+        public static string ScanIdOrExit {
+            get {
+                return ResourceManager.GetString("ScanIdOrExit", resourceCulture);
             }
         }
         
@@ -231,6 +304,15 @@ namespace HW.Bot.Resources {
         public static string There_is_No_info_about_user {
             get {
                 return ResourceManager.GetString("There_is_No_info_about_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no such scan.
+        /// </summary>
+        public static string There_is_no_such_scan {
+            get {
+                return ResourceManager.GetString("There_is_no_such_scan", resourceCulture);
             }
         }
         

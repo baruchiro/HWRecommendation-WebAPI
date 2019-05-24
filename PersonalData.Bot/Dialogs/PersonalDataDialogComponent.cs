@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Dialogs.AtomicDialogs;
 using HW.Bot.Dialogs.MenuDialog;
+using HW.Bot.Dialogs.Steps;
 using HW.Bot.Extensions;
 using HW.Bot.Interfaces;
 using HW.Bot.Model;
@@ -24,7 +25,6 @@ namespace HW.Bot.Dialogs
 
         private readonly IDbContext _dbContext;
         private readonly IPersonalDataStateManager _personalDataStateManager;
-        private string _title;
         private const string NEW_USER_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "newuser";
         private const string EXIST_USER_MENU = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "existuser";
         private const string GENDER_CHOICE_DIALOG = "Gender";
@@ -33,24 +33,23 @@ namespace HW.Bot.Dialogs
         private const string WELCOME_WATERFALL = nameof(PersonalDataDialogComponent) + nameof(WaterfallDialog) + "welcome";
         private const string DATA_ID = nameof(PersonalDataDialogComponent) + "data";
 
+        public string MenuItemOptionText { get; }
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; set; }
 
         public PersonalDataDialogComponent([Localizable(false)] string dialogId, IPersonalDataStateManager personalDataStateManager,
-            IDbContext dbContext, string title = null) : base(dialogId)
+            IDbContext dbContext, string menuItemOptionText = null) : base(dialogId)
         {
-            _title = title ?? dialogId;
+            MenuItemOptionText = menuItemOptionText ?? dialogId;
             _personalDataStateManager = personalDataStateManager;
             _dbContext = dbContext;
             _workPrompt =
-                new WorkTextPrompt(WORK_TEXT_DIALOG, title: BotStrings.Change_your_work, suggestedActions: _dbContext.GetOrderedWorkList().Take(5))
-                {
-                    HandleResult = HandleWork
-                };
+                new WorkTextPrompt(WORK_TEXT_DIALOG, menuItemOptionText: BotStrings.Change_your_work,
+                    suggestedActions: _dbContext.GetOrderedWorkList().Take(5), handleResult: HandleWork);
             _agePrompt.HandleResult = HandleAge;
             _genderPrompt.HandleResult = HandleGender;
 
             AddDialog(new WaterfallDialog(WELCOME_WATERFALL)
-                .AddStep(DecideIfNewOrExistUserStep)
+                .AddStep(DecideIfNewOrExistUser.Step(dbContext, NEW_USER_WATERFALL, EXIST_USER_MENU))
                 .AddStep(SaveDetailsStep)
             );
 
@@ -76,27 +75,6 @@ namespace HW.Bot.Dialogs
             AddDialog(_genderPrompt);
             AddDialog(_agePrompt);
             AddDialog(_workPrompt);
-        }
-
-        private async Task<DialogTurnResult> DecideIfNewOrExistUserStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            var channelId = stepContext.Context.Activity.ChannelId;
-            var userId = stepContext.Context.Activity.From.Id;
-
-            var personalInfo = _dbContext.GetPersonalDetails(channelId, userId);
-
-            if (personalInfo == null)
-            {
-                await stepContext.Context.SendActivityAsync(
-                    string.Format(BotStrings.There_is_No_info_about_user, userId, channelId) +
-                    BotStrings.We_need_some_information,
-                    cancellationToken: cancellationToken);
-
-                return await stepContext.BeginDialogAsync(NEW_USER_WATERFALL, new PersonalData(), cancellationToken: cancellationToken);
-            }
-
-            stepContext.Values[DATA_ID] = personalInfo;
-            return await stepContext.BeginDialogAsync(EXIST_USER_MENU, personalInfo, cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> SaveDetailsStep(WaterfallStepContext stepContext,
@@ -172,11 +150,6 @@ namespace HW.Bot.Dialogs
         public Dialog GetDialog()
         {
             return this;
-        }
-
-        public string GetMenuItemOptionText()
-        {
-            return _title;
         }
 
         private async Task HandleWork(ITurnContext turnContext, object result, CancellationToken cancellationToken)
