@@ -6,8 +6,8 @@ using Models;
 
 namespace ComputerUpgradeStrategies.Strategies
 {
-    interface IDiskStrategy
+    interface IRecommendationStrategy<in T>
     {
-        IEnumerable<IUpgradeRecommendation> GetRecommendations(Disk disk);
+        IEnumerable<IUpgradeRecommendation> GetRecommendations(T t);
     }
 }

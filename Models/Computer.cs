@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HWWebApi.Helpers;
 using Models.ModelEqualityComparer;
 
@@ -6,6 +7,17 @@ namespace Models
 {
     public class Computer : IModel<Computer>
     {
+        public Computer() { }
+        protected Computer(Computer computer)
+        {
+            Id = computer.Id;
+            Processor = computer.Processor;
+            Memories = computer.Memories;
+            Disks = computer.Disks;
+            MotherBoard = computer.MotherBoard;
+            Gpus = Gpus;
+        }
+
         public long Id { get; set; }
         public Processor Processor { get; set; } 
         public ICollection<Memory> Memories { get; set; } = new List<Memory>();
