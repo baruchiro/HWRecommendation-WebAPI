@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <iframe id="chat" src=''  style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>
+</body>
+<script>
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://webchat.botframework.com/api/tokens", true);
+    xhr.setRequestHeader('Authorization', 'BotConnector ' + 'jlqT9te3UOI.JWnPltaFICOMYQp2L2INsgChBBUorqfGQzU4eE1ZMhg');
+    xhr.send();
+    xhr.onreadystatechange = processRequest;
+
+    function processRequest(e) {
+      if (xhr.readyState == 4  && xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        document.getElementById("chat").src="https://webchat.botframework.com/embed/CompuTEach?t="+response
+      }
+    }
+
+  </script>
+</html>
