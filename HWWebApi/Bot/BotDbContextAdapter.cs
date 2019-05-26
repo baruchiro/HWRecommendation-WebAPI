@@ -53,7 +53,10 @@ namespace HWWebApi.Bot
 
         public IEnumerable<string> GetRecommendationsForScan(Guid guid)
         {
-            var computer = _dbContext.Find<Scan>(guid)?.Computer;
+            var scan = _dbContext.Scans
+                .Include(s=>s.Computer)
+                .FirstOrDefault(ss => ss.Id == guid);
+            var computer = scan?.Computer;
 
             return computer?.GetUpgradeRecommendations().Select(r=>r.ToString());
         }
