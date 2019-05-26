@@ -15,6 +15,11 @@ namespace ComputerUpgradeStrategies
             {
                 yield return recommend;
             }
+
+            foreach (var recommend in upgradeRecommend.MemoryUpgrades())
+            {
+                yield return recommend;
+            }
         }
     }
 }
