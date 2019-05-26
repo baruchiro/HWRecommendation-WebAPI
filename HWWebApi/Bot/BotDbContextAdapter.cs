@@ -20,7 +20,10 @@ namespace HWWebApi.Bot
 
         public IEnumerable<string> GetOrderedWorkList()
         {
-            return new[] { "Student", "Hi-Tech" };
+            return _dbContext.Users.Select(u => u.WorkArea)
+                .GroupBy(w => w)
+                .OrderByDescending(g => g.Count())
+                .Select(w=>w.Key);
         }
 
         public bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData)
