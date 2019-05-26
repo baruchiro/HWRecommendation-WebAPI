@@ -55,6 +55,11 @@ namespace HWWebApi.Bot
         {
             var scan = _dbContext.Scans
                 .Include(s=>s.Computer)
+                .Include(s=>s.Computer.Disks)
+                .Include(s => s.Computer.Gpus)
+                .Include(s => s.Computer.Memories)
+                .Include(s => s.Computer.MotherBoard)
+                .Include(s => s.Computer.Processor)
                 .FirstOrDefault(ss => ss.Id == guid);
             var computer = scan?.Computer;
 
