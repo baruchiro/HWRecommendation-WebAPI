@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="webchat" role="main"></div>
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <script>
+            var xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://webchat.botframework.com/api/tokens", true);
+    xhr.setRequestHeader('Authorization', 'BotConnector ' + 'jlqT9te3UOI.JWnPltaFICOMYQp2L2INsgChBBUorqfGQzU4eE1ZMhg');
+    xhr.send();
+    xhr.onreadystatechange = processRequest;
+
+    function processRequest(e) {
+      if (xhr.readyState == 4  && xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        window.WebChat.renderWebChat({
+        directLine: window.WebChat.createDirectLine({ token: response }),
+        userID: Math.random().toString(36).substring(10),
+        username: 'Web Chat User',
+        locale: 'en-US',
+        botAvatarInitials: 'WC',
+        userAvatarInitials: 'WW'
+      }, document.getElementById('webchat'));
+      }
+    }
+    </script>
+  </body>
+</html>
