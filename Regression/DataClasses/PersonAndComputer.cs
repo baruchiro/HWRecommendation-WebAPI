@@ -14,13 +14,13 @@ namespace Regression.DataClasses
         public string GpuName { get; set; }
 
         [LoadColumn(2)]
-        public int MotherBoardSataConnections { get; set; }
+        public float MotherBoardSataConnections { get; set; }
 
         [LoadColumn(3)]
-        public int MotherBoardMaxRam { get; set; }
+        public float MotherBoardMaxRam { get; set; }
 
         [LoadColumn(4)]
-        public int MotherBoardDdrSockets { get; set; }
+        public float MotherBoardDdrSockets { get; set; }
 
         [LoadColumn(5)]
         public string MotherBoardName { get; set; }
@@ -29,7 +29,7 @@ namespace Regression.DataClasses
         public string DiskCapacity { get; set; }
 
         [LoadColumn(7)]
-        public int DiskRpm { get; set; }
+        public float DiskRpm { get; set; }
 
         [LoadColumn(8)]
         public string DiskType { get; set; }
@@ -38,7 +38,7 @@ namespace Regression.DataClasses
         public string DiskModel { get; set; }
 
         [LoadColumn(10)]
-        public int MemoryMHz { get; set; }
+        public float MemoryMHz { get; set; }
 
         [LoadColumn(11)]
         public string MemoryType { get; set; }
@@ -50,16 +50,16 @@ namespace Regression.DataClasses
         public string ProcessorArchitecture { get; set; }
 
         [LoadColumn(14)]
-        public int ProcessorNumOfCores { get; set; }
+        public float ProcessorNumOfCores { get; set; }
 
         [LoadColumn(15)]
-        public double ProcessorGHz { get; set; }
+        public float ProcessorGHz { get; set; }
 
         [LoadColumn(16)]
         public string ProcessorName { get; set; }
 
         [LoadColumn(17)]
-        public int Age { get; set; }
+        public float Age { get; set; }
 
         [LoadColumn(18)]
         public string FieldInterest { get; set; }
@@ -71,13 +71,13 @@ namespace Regression.DataClasses
         public string Gender { get; set; }
 
         [LoadColumn(22)]
-        public int People { get; set; }
+        public float People { get; set; }
 
         [LoadColumn(23)]
         public string ComputerType { get; set; }
 
         [LoadColumn(24)]
-        public int Price { get; set; }
+        public float Price { get; set; }
     }
 
     public class ComputerPrediction
@@ -89,13 +89,13 @@ namespace Regression.DataClasses
         public string GpuName { get; set; }
 
         [ColumnName("MotherBoardSataConnections")]
-        public int MotherBoardSataConnections { get; set; }
+        public float MotherBoardSataConnections { get; set; }
 
         [ColumnName("MotherBoardMaxRam")]
-        public int MotherBoardMaxRam { get; set; }
+        public float MotherBoardMaxRam { get; set; }
 
         [ColumnName("MotherBoardDdrSockets")]
-        public int MotherBoardDdrSockets { get; set; }
+        public float MotherBoardDdrSockets { get; set; }
 
         [ColumnName("MotherBoardName")]
         public string MotherBoardName { get; set; }
@@ -104,7 +104,7 @@ namespace Regression.DataClasses
         public string DiskCapacity { get; set; }
 
         [ColumnName("DiskRpm")]
-        public int DiskRpm { get; set; }
+        public float DiskRpm { get; set; }
 
         [ColumnName("DiskType")]
         public string DiskType { get; set; }
@@ -113,7 +113,7 @@ namespace Regression.DataClasses
         public string DiskModel { get; set; }
 
         [ColumnName("MemoryMHz")]
-        public int MemoryMHz { get; set; }
+        public float MemoryMHz { get; set; }
 
         [ColumnName("MemoryType")]
         public string MemoryType { get; set; }
@@ -125,10 +125,10 @@ namespace Regression.DataClasses
         public string ProcessorArchitecture { get; set; }
 
         [ColumnName("ProcessorNumOfCores")]
-        public int ProcessorNumOfCores { get; set; }
+        public float ProcessorNumOfCores { get; set; }
 
         [ColumnName("ProcessorGHz")]
-        public double ProcessorGHz { get; set; }
+        public float ProcessorGHz { get; set; }
 
         [ColumnName("ProcessorName")]
         public string ProcessorName { get; set; }
