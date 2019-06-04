@@ -128,7 +128,6 @@ namespace Regression.DataClasses
         public int ProcessorNumOfCores { get; set; }
 
         [ColumnName("ProcessorGHz")]
-
         public double ProcessorGHz { get; set; }
 
         [ColumnName("ProcessorName")]
