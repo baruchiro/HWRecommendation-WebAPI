@@ -79,4 +79,59 @@ namespace Regression.DataClasses
         [LoadColumn(24)]
         public int Price { get; set; }
     }
+
+    public class ComputerPrediction
+    {
+        [ColumnName("GpuProcessor")]
+        public string GpuProcessor { get; set; }
+
+        [ColumnName("GpuName")]
+        public string GpuName { get; set; }
+
+        [ColumnName("MotherBoardSataConnections")]
+        public int MotherBoardSataConnections { get; set; }
+
+        [ColumnName("MotherBoardMaxRam")]
+        public int MotherBoardMaxRam { get; set; }
+
+        [ColumnName("MotherBoardDdrSockets")]
+        public int MotherBoardDdrSockets { get; set; }
+
+        [ColumnName("MotherBoardName")]
+        public string MotherBoardName { get; set; }
+
+        [ColumnName("DiskCapacity")]
+        public string DiskCapacity { get; set; }
+
+        [ColumnName("DiskRpm")]
+        public int DiskRpm { get; set; }
+
+        [ColumnName("DiskType")]
+        public string DiskType { get; set; }
+
+        [ColumnName("DiskModel")]
+        public string DiskModel { get; set; }
+
+        [ColumnName("MemoryMHz")]
+        public int MemoryMHz { get; set; }
+
+        [ColumnName("MemoryType")]
+        public string MemoryType { get; set; }
+
+        [ColumnName("MemoryCapacity")]
+        public string MemoryCapacity { get; set; }
+
+        [ColumnName("ProcessorArchitecture")]
+        public string ProcessorArchitecture { get; set; }
+
+        [ColumnName("ProcessorNumOfCores")]
+        public int ProcessorNumOfCores { get; set; }
+
+        [ColumnName("ProcessorGHz")]
+
+        public double ProcessorGHz { get; set; }
+
+        [ColumnName("ProcessorName")]
+        public string ProcessorName { get; set; }
+    }
 }
