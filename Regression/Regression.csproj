@@ -7,10 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="1.0.0" />
+    <PackageReference Include="Microsoft.ML.FastTree" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\fake-data.csv">
+    <None Update="Data\fake-data-orig.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
