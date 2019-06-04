@@ -1,7 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Microsoft.ML;
+using Microsoft.ML.Data;
+using Microsoft.ML.Transforms;
 using Regression.DataClasses;
+using Regression.Extensions;
 
 namespace Regression
 {
@@ -15,42 +19,60 @@ namespace Regression
         {
             var mlContext = new MLContext(seed: 0);
 
+            IDataView dataView = mlContext.Data.LoadFromTextFile<PersonAndComputer>(_originalDataPath, hasHeader: true, separatorChar: ',');
+            dataView.PrintPreview();
+
             var model = Train(mlContext, _originalDataPath);
+        }
+
+        public static IDataView Transform(MLContext mlContext, IDataView input)
+        {
+            // Define pipeline
+            var pipeline = mlContext.Transforms.Categorical
+                .OneHotEncoding("GpuProcessor", "GpuProcessor")
+                .Append(mlContext.Transforms.Categorical.OneHotEncoding("GpuName", "GpuName"));
+
+            // Fitting generates a transformer that applies the operations of defined by estimator
+            ITransformer replacementTransformer = pipeline.Fit(input);
+
+            // Transform data
+            IDataView output = replacementTransformer.Transform(input);
+
+            return output;
         }
 
         public static ITransformer Train(MLContext mlContext, string dataPath)
         {
+            var stringColumns = new[]
+            {
+                "GpuProcessor", "GpuName", "MotherBoardName", "DiskCapacity", "DiskType", "DiskModel", "MemoryType",
+                "MemoryCapacity", "ProcessorArchitecture", "ProcessorName", "FieldInterest", "MainUse", "Gender",
+                "ComputerType"
+            };
+
+            var stringColumnsInputOutputColumnPair = stringColumns.Select(c => new InputOutputColumnPair(c)).ToArray();
+
             var dataView =
                 mlContext.Data.LoadFromTextFile<PersonAndComputer>(dataPath, hasHeader: true, separatorChar: ',');
 
-            var pipeline = mlContext.Transforms.Categorical.OneHotEncoding("GpuProcessorNumeric", "GpuProcessor")
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("GpuNameNumeric", "GpuName"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("MotherBoardNameNumeric", "MotherBoardName"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("DiskCapacityNumeric", "DiskCapacity"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("DiskTypeNumeric", "DiskType"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("DiskModelNumeric", "DiskModel"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("MemoryTypeNumeric", "MemoryType"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("MemoryCapacityNumeric", "MemoryCapacity"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding(
-                    "ProcessorArchitectureNumeric", "ProcessorArchitecture"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("ProcessorNameNumeric", "ProcessorName"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("FieldInterestNumeric", "FieldInterest"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("MainUseNumeric", "MainUse"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("GenderNumeric", "Gender"))
-                .Append(mlContext.Transforms.Categorical.OneHotEncoding("ComputerTypeNumeric", "ComputerType"))
+            var pipeline = mlContext.Transforms.Categorical.OneHotEncoding(stringColumnsInputOutputColumnPair)
+
+                .Append(
+                    mlContext.Transforms.Conversion.ConvertType(stringColumnsInputOutputColumnPair, DataKind.Double))
 
                 .Append(mlContext.Transforms.Concatenate("Label", "GpuProcessor", "GpuName",
                     "MotherBoardSataConnections", "MotherBoardMaxRam", "MotherBoardDdrSockets", "MotherBoardName",
                     "DiskCapacity", "DiskRpm", "DiskType", "DiskModel", "MemoryMHz", "MemoryType", "MemoryCapacity",
                     "ProcessorArchitecture", "ProcessorNumOfCores", "ProcessorGHz", "ProcessorName"))
 
-                .Append(mlContext.Transforms.Concatenate("Features", "Age", "FieldInterestNumeric", "MainUseNumeric",
-                    "GenderNumeric", "People", "ComputerTypeNumeric", "Price"))
+                .Append(mlContext.Transforms.Concatenate("Features", "Age", "FieldInterest", "MainUse",
+                    "Gender", "People", "ComputerType", "Price"))
 
                 .Append(mlContext.Regression.Trainers.FastTree());
 
-            
+
             var model = pipeline.Fit(dataView);
+
             return model;
         }
     }
