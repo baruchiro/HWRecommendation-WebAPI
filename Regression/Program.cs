@@ -11,7 +11,6 @@ namespace Regression
 {
     class Program
     {
-        static readonly string _originalDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "fake-data-orig.csv");
         static readonly string _trainDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "fake-data-train.csv");
         static readonly string _testDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "fake-data-test.csv");
         static readonly string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "Model.zip");
@@ -19,10 +18,15 @@ namespace Regression
         {
             var mlContext = new MLContext(seed: 0);
 
-            IDataView dataView = mlContext.Data.LoadFromTextFile<PersonAndComputer>(_originalDataPath, hasHeader: true, separatorChar: ',');
-            dataView.PrintPreview();
+            var prepareData = new PrepareData(mlContext);
 
-            var model = Train(mlContext, _originalDataPath);
+            prepareData.OneHotEncoding().Preview(5, 5).PrintByColumn();
+            prepareData.StringsSingleToDouble().Preview(5, 5).PrintByColumn();
+            prepareData.ConcatenateLabel().Preview(5, 5).PrintByColumn();
+            prepareData.ConcatenateFeatures().Preview(5, 5).PrintByColumn();
+
+
+            //var model = Train(mlContext, _originalDataPath);
         }
 
         public static IDataView Transform(MLContext mlContext, IDataView input)
@@ -39,41 +43,6 @@ namespace Regression
             IDataView output = replacementTransformer.Transform(input);
 
             return output;
-        }
-
-        public static ITransformer Train(MLContext mlContext, string dataPath)
-        {
-            var stringColumns = new[]
-            {
-                "GpuProcessor", "GpuName", "MotherBoardName", "DiskCapacity", "DiskType", "DiskModel", "MemoryType",
-                "MemoryCapacity", "ProcessorArchitecture", "ProcessorName", "FieldInterest", "MainUse", "Gender",
-                "ComputerType"
-            };
-
-            var stringColumnsInputOutputColumnPair = stringColumns.Select(c => new InputOutputColumnPair(c)).ToArray();
-
-            var dataView =
-                mlContext.Data.LoadFromTextFile<PersonAndComputer>(dataPath, hasHeader: true, separatorChar: ',');
-
-            var pipeline = mlContext.Transforms.Categorical.OneHotEncoding(stringColumnsInputOutputColumnPair)
-
-                .Append(
-                    mlContext.Transforms.Conversion.ConvertType(stringColumnsInputOutputColumnPair, DataKind.Double))
-
-                .Append(mlContext.Transforms.Concatenate("Label", "GpuProcessor", "GpuName",
-                    "MotherBoardSataConnections", "MotherBoardMaxRam", "MotherBoardDdrSockets", "MotherBoardName",
-                    "DiskCapacity", "DiskRpm", "DiskType", "DiskModel", "MemoryMHz", "MemoryType", "MemoryCapacity",
-                    "ProcessorArchitecture", "ProcessorNumOfCores", "ProcessorGHz", "ProcessorName"))
-
-                .Append(mlContext.Transforms.Concatenate("Features", "Age", "FieldInterest", "MainUse",
-                    "Gender", "People", "ComputerType", "Price"))
-
-                .Append(mlContext.Regression.Trainers.FastTree());
-
-
-            var model = pipeline.Fit(dataView);
-
-            return model;
         }
     }
 }
