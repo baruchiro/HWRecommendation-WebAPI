@@ -28,19 +28,29 @@ namespace Regression.Extensions
 
         public static void PrintPreviewByColumn(this IDataView dataView, int maxRows = 100, TextWriter writer = null)
         {
-            dataView.Preview(maxRows).PrintByColumn(writer);
+            dataView.Preview(maxRows).PrintByColumn(writer: writer);
         }
 
-        public static void PrintByColumn(this DataDebuggerPreview preview, TextWriter writer = null)
+        public static void PrintByColumn(this DataDebuggerPreview preview, bool isHidden = false, TextWriter writer = null, string separatorLine = null)
         {
             writer = writer ?? Console.Out;
 
-            foreach (var columnInfo in preview.ColumnView)
+            writer.WriteLine(separatorLine);
+
+            var columns = preview.ColumnView.AsEnumerable();
+            if (!isHidden)
+            {
+                columns = columns.Where(c => !c.Column.IsHidden);
+            }
+
+            foreach (var columnInfo in columns)
             {
                 writer.WriteLine(columnInfo);
                 writer.WriteLine("\t" + string.Join('\t', columnInfo.Values));
                 writer.WriteLine();
             }
+
+            writer.WriteLine(separatorLine);
         }
     }
 }

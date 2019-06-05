@@ -67,16 +67,13 @@ namespace Regression.DataClasses
         [LoadColumn(19)]
         public string MainUse { get; set; }
 
-        [LoadColumn(21)]
+        [LoadColumn(20)]
         public string Gender { get; set; }
 
-        [LoadColumn(22)]
-        public float People { get; set; }
-
-        [LoadColumn(23)]
+        [LoadColumn(21)]
         public string ComputerType { get; set; }
 
-        [LoadColumn(24)]
+        [LoadColumn(22)]
         public float Price { get; set; }
     }
 
