@@ -13,7 +13,7 @@ namespace Regression.DataClasses
     {
         readonly string _originalDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "fake-data-orig.csv");
 
-        private MLContext _mlContext;
+        private readonly MLContext _mlContext;
         private IDataView _dataView;
 
         private readonly string[] _stringColumns =
@@ -34,7 +34,7 @@ namespace Regression.DataClasses
         private readonly string[] _featuresColumns =
         {
             "Age", "FieldInterest", "MainUse",
-            "Gender", "People", "ComputerType", "Price"
+            "Gender", "ComputerType", "Price"
         };
 
         private readonly InputOutputColumnPair[] _stringColumnsInputOutputColumnPair;
@@ -93,7 +93,7 @@ namespace Regression.DataClasses
         //}
         public DataDebuggerPreview Preview(int maxRows = 100, int maxTrainingRows = 100)
         {
-            return _pipeline.Preview(_dataView, maxRows, maxTrainingRows);
+            return _pipeline?.Preview(_dataView, maxRows, maxTrainingRows) ?? _dataView.Preview(maxRows);
         }
     }
 }

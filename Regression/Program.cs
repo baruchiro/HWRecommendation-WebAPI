@@ -14,16 +14,18 @@ namespace Regression
         static readonly string _trainDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "fake-data-train.csv");
         static readonly string _testDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "fake-data-test.csv");
         static readonly string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "Model.zip");
+
         static void Main(string[] args)
         {
+            var separatorLine = "------------------------------------------------------------------------------";
             var mlContext = new MLContext(seed: 0);
 
             var prepareData = new PrepareData(mlContext);
 
-            prepareData.OneHotEncoding().Preview(5, 5).PrintByColumn();
-            prepareData.StringsSingleToDouble().Preview(5, 5).PrintByColumn();
-            prepareData.ConcatenateLabel().Preview(5, 5).PrintByColumn();
-            prepareData.ConcatenateFeatures().Preview(5, 5).PrintByColumn();
+            prepareData.Preview(3, 3).PrintByColumn(true, separatorLine: separatorLine);
+            prepareData.OneHotEncoding().Preview(3, 3).PrintByColumn(separatorLine:separatorLine);
+            prepareData.ConcatenateLabel().Preview(3, 3).PrintByColumn(separatorLine: separatorLine);
+            prepareData.ConcatenateFeatures().Preview(3, 3).PrintByColumn(separatorLine: separatorLine);
 
 
             //var model = Train(mlContext, _originalDataPath);
