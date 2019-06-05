@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "HWRecommendation-WebAPI.sln",
+    "projects": [
+      "Regression\\Regression.csproj"
+    ]
+  }
+}
