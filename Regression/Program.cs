@@ -28,7 +28,6 @@ namespace Regression
             prepareData.ConcatenateFeatures().Preview(3, 3).PrintByColumn(separatorLine: separatorLine);
 
             var dataView = prepareData.Apply().DataView();
-            var csv = dataView.ToCsv(mlContext);
 
             var model = Train(mlContext, dataView);
 
