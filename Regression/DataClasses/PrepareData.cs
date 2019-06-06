@@ -95,5 +95,17 @@ namespace Regression.DataClasses
         {
             return _pipeline?.Preview(_dataView, maxRows, maxTrainingRows) ?? _dataView.Preview(maxRows);
         }
+
+        public IDataView DataView()
+        {
+            return _dataView;
+        }
+
+        public PrepareData Apply()
+        {
+            var model = _pipeline.Fit(_dataView);
+            _dataView = model.Transform(_dataView);
+            return this;
+        }
     }
 }

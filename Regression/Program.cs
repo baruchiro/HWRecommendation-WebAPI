@@ -27,8 +27,32 @@ namespace Regression
             prepareData.ConcatenateLabel().Preview(3, 3).PrintByColumn(separatorLine: separatorLine);
             prepareData.ConcatenateFeatures().Preview(3, 3).PrintByColumn(separatorLine: separatorLine);
 
+            var dataView = prepareData.Apply().DataView();
+            var csv = dataView.ToCsv(mlContext);
 
-            //var model = Train(mlContext, _originalDataPath);
+            var model = Train(mlContext, dataView);
+
+            Evaluate(mlContext, model, dataView);
+        }
+
+        private static ITransformer Train(MLContext mlContext, IDataView dataView)
+        {
+            return mlContext.Regression.Trainers.FastTree().Fit(dataView);
+        }
+
+        private static void Evaluate(MLContext mlContext, ITransformer model, IDataView dataView)
+        {
+            var predictions = model.Transform(dataView);
+            var metrics = mlContext.Regression.Evaluate(predictions);
+
+            Console.WriteLine();
+            Console.WriteLine($"*************************************************");
+            Console.WriteLine($"*       Model quality metrics evaluation         ");
+            Console.WriteLine($"*------------------------------------------------");
+
+            Console.WriteLine($"*       RSquared Score:      {metrics.RSquared:0.##}");
+
+            Console.WriteLine($"*       Root Mean Squared Error:      {metrics.RootMeanSquaredError:#.##}");
         }
 
         public static IDataView Transform(MLContext mlContext, IDataView input)
