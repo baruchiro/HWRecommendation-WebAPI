@@ -1,10 +1,10 @@
 Gpu_Processor,Gpu_Name,MotherBoard_SataConnections,MotherBoard_MaxRam,MotherBoard_DDRSockets,MotherBoard_Name,Disk_Capacity,Disk_RPM,Disk_Type,Disk_Model,Memory_MHz,Memory_Type,Memory_Capacity,Processor_Architecture,Processor_NumOfCores,Processor_GHz,Processor_Name,Age,FieldInterest,MainUse,Gender,ComputerType,Price
-940M DDR3,NVIDIA GeForce 940M,1,8388608,1, Skylake U DDR4 RVP7,500GB,5400,hdd,ST500LM000-SSHD-8GB,1600,DDR3,8GB,x64,4,2.5,Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz,29,computers,programming,male,laptop,3200
-6GB DDR5,EVGA® Nvdia™ GTX1060  Gaming,6,,2,Asrock® Z390 Phantom Gaming SLi 9th Gen,240GB,7200,ssd,Kingston® A1000,3000,DDR4,16GB,x64,6,4,Intel® Core™ i5 - 8400 4Ghz Turbo 8th Gen,25,home,personal use,male,desk,3600
+940M DDR3,NVIDIA GeForce 940M,1,8388608,1, Skylake U DDR4 RVP7,500GB,5400,hdd,ST500LM000-SSHD-8GB,1600,DDR3,8GB,x64,4,2.5,Intel Core i7-6500U CPU @ 2.50GHz,29,computers,programming,male,laptop,3200
+6GB DDR5,EVGA® Nvdia™ GTX1060  Gaming,6,,2,Asrock® Z390 Phantom Gaming SLi 9th Gen,240GB,7200,ssd,Kingston® A1000,3000,DDR4,16GB,x64,6,4,Intel® Core™ i5-8400 4Ghz Turbo 8th Gen,25,home,personal use,male,desk,3600
 6GB GDDR6,Asus Nvidia GeForce GTX1660 Ti ,6,,2,Asus B360M-K,1TB,7200,hdd,Western Digital Blue,2666,DDR4,8GB ,x64,6,2.9,Intel Core i5-9400F 2.9GHz,23,home,gaming,male,desk,3500
 null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-K,1TB,7200,hdd,Western Digital Blue,2666,DDR4,16GB,x64,6,2.8,Intel® Core i5-8400 2.8GHz Coffee Lake,24,computers,programming,female,desk,3250
 null,Intel 620 Integrated Graphics,1,,1,,256GB,5400,ssd,,3000,DDR4,8GB,x64,4,2.2,Intel® Core™ i5-8265U Processor,25,office,work,female,laptop,3200
-2GB DDR5,NVIDIA GeForce MX110,1,,1,,1TB,5400,hdd,,2666,DDR4,8GB,x64,2,3.7,intel Core i3 (6th Gen),26,office,work,female,laptop,3700
+2GB DDR5,NVIDIA GeForce MX110,1,,1,,1TB,5400,hdd,,2666,DDR4,8GB,x64,2,3.7,intel Core i3-6006,26,office,work,female,laptop,3700
 4GB,AMD Radeon 530,1,,1,,2TB,5400,hdd,,2666,DDR4,32GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,27,home,gaming,male,laptop,6500
 8GB GDDR6,Gigabyte Nvidia GeForce RTX2070 WindForce,4,,2,Gigabyte Z390 UD,500GB,5400,ssd,Samsung 860 EVO,2666,DDR4,16GB,x64,8,3.6,Intel® Core i7-9700K 3.6GHz Coffee Lake,28,home,gaming,male,desk,7200
 null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-K,240GB,5400,ssd,SanDisk SSD Plus,2666,DDR4,8GB,x64,6,2.8,Intel® Core i5-8400 2.8GHz Coffee Lake,28,home,personal use,female,desk,2400
