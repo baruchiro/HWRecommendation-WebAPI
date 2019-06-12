@@ -13,8 +13,8 @@ from transformers import *
 
 def parse_arguments() -> dict:
     if len(sys.argv) == 1:
-        sys.argv.append('../data/fake-data-orig.csv')
-        sys.argv.append('../data/fake-data-out.csv')
+        sys.argv.append('../../data/fake-data-orig.csv')
+        sys.argv.append('../../data/fake-data-out.csv')
     return docopt(__doc__, version="Prepare Data 0.1")
 
 
