@@ -49,12 +49,20 @@ def convert_processor_ghz_to_mhz(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def remove_unwanted_chars_in_processor_name(df: pd.DataFrame) -> pd.DataFrame:
-    df['processor_name'] =df['processor_name'].str.replace('®', '')
-    df['processor_name'] = df['processor_name'].str.replace('™', '')
-    df['processor_name'] = df['processor_name'].str.replace(' Processor', '')
-    df['processor_name'] = df['processor_name'].str.replace(' processor', '')
+def __remove_unwanted_chars_in_name(df: pd.DataFrame, column:str) -> pd.DataFrame:
+    df[column] = df[column].str.replace('®', '')
+    df[column] = df[column].str.replace('™', '')
+    df[column] = df[column].str.replace(' Processor', '')
+    df[column] = df[column].str.replace(' processor', '')
     return df
+
+
+def remove_unwanted_chars_in_processor_name(df: pd.DataFrame) -> pd.DataFrame:
+    return __remove_unwanted_chars_in_name(df, 'processor_name')
+
+
+def remove_unwanted_chars_in_gpu_name(df: pd.DataFrame) -> pd.DataFrame:
+    return __remove_unwanted_chars_in_name(df, 'gpu_name')
 
 
 def extract_processor_features(df: pd.DataFrame) -> pd.DataFrame:
