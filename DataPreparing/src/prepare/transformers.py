@@ -40,3 +40,8 @@ def convert_memory_capacity_to_byte(df: pd.DataFrame) -> pd.DataFrame:
     df['memory_capacity_as_kb'] = df["memory_capacity"].apply(__series_apply_capacity_to_byte_value)
     del df["memory_capacity"]
     return df
+
+def convert_processor_ghz_to_mhz(df: pd.DataFrame) -> pd.DataFrame:
+    df['processor_mhz'] = df['processor_ghz'] * 1000
+    del df['processor_ghz']
+    return df
