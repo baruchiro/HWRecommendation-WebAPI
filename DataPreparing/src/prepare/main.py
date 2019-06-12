@@ -8,11 +8,11 @@ from docopt import docopt
 
 import pandas as pd
 
-from transformers import extract_ddr_from_gpu_processor,\
-    convert_disk_capacity_to_byte,\
+from transformers import extract_ddr_from_gpu_processor, \
+    convert_disk_capacity_to_byte, \
     convert_memory_capacity_to_byte, \
-    convert_processor_ghz_to_mhz,\
-    remove_unwanted_chars_in_processor_name,\
+    convert_processor_ghz_to_mhz, \
+    remove_unwanted_chars_in_processor_name, \
     extract_processor_features
 
 
@@ -25,6 +25,10 @@ def parse_arguments() -> dict:
 
 def read_data(source_path: str) -> pd.DataFrame:
     return pd.read_csv(source_path)
+
+
+def save_data(df_to_save: pd.DataFrame, output_path: str):
+    df_to_save.to_csv(output_path, index=False)
 
 
 if __name__ == '__main__':
@@ -41,3 +45,5 @@ if __name__ == '__main__':
     df = extract_processor_features(df)
 
     df = df.reindex(sorted(df.columns), axis=1)
+
+    save_data(df, arguments['<output>'])
