@@ -8,7 +8,7 @@ from docopt import docopt
 
 import pandas as pd
 
-from transformers import extract_ddr_from_gpu_processor, convert_disk_capacity_to_byte
+from transformers import extract_ddr_from_gpu_processor, convert_disk_capacity_to_byte, convert_memory_capacity_to_byte
 
 
 def parse_arguments() -> dict:
@@ -28,6 +28,7 @@ if __name__ == '__main__':
 
     df = extract_ddr_from_gpu_processor(df)
     df = convert_disk_capacity_to_byte(df)
+    df = convert_memory_capacity_to_byte(df)
 
     df.columns = [n.lower() for n in df.columns]
     df = df.reindex(sorted(df.columns), axis=1)
