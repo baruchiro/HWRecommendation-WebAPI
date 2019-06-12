@@ -23,20 +23,20 @@ def __dataframe_apply_capacity_to_byte_value(capacity: pd.Series) -> int:
 
 
 def extract_ddr_from_gpu_processor(df: pd.DataFrame) -> pd.DataFrame:
-    df["gpu_processor_ddr"] = df["Gpu_Processor"].str.extract('(G?DDR\\dX?)', re.IGNORECASE)
+    df["gpu_processor_ddr"] = df["gpu_processor"].str.extract('(G?DDR\\dX?)', re.IGNORECASE)
 
-    capacity: pd.DataFrame = df["Gpu_Processor"].str.extract('(\\d+(?:M|GB))', re.IGNORECASE)
+    capacity: pd.DataFrame = df["gpu_processor"].str.extract('(\\d+(?:M|GB))', re.IGNORECASE)
     df["gpu_processor_ddr_capacity"] = capacity.apply(__dataframe_apply_capacity_to_byte_value, axis=1)
-    del df["Gpu_Processor"]
+    del df["gpu_processor"]
     return df
 
 
 def convert_disk_capacity_to_byte(df: pd.DataFrame) -> pd.DataFrame:
-    df['disk_capacity_as_kb'] = df["Disk_Capacity"].apply(__series_apply_capacity_to_byte_value)
-    del df["Disk_Capacity"]
+    df['disk_capacity_as_kb'] = df["disk_capacity"].apply(__series_apply_capacity_to_byte_value)
+    del df["disk_capacity"]
     return df
 
 def convert_memory_capacity_to_byte(df: pd.DataFrame) -> pd.DataFrame:
-    df['memory_capacity_as_kb'] = df["Memory_Capacity"].apply(__series_apply_capacity_to_byte_value)
-    del df["Memory_Capacity"]
+    df['memory_capacity_as_kb'] = df["memory_capacity"].apply(__series_apply_capacity_to_byte_value)
+    del df["memory_capacity"]
     return df
