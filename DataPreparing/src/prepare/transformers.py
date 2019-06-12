@@ -35,3 +35,8 @@ def convert_disk_capacity_to_byte(df: pd.DataFrame) -> pd.DataFrame:
     df['disk_capacity_as_kb'] = df["Disk_Capacity"].apply(__series_apply_capacity_to_byte_value)
     del df["Disk_Capacity"]
     return df
+
+def convert_memory_capacity_to_byte(df: pd.DataFrame) -> pd.DataFrame:
+    df['memory_capacity_as_kb'] = df["Memory_Capacity"].apply(__series_apply_capacity_to_byte_value)
+    del df["Memory_Capacity"]
+    return df
