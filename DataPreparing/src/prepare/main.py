@@ -27,3 +27,5 @@ if __name__ == '__main__':
     df = read_data(arguments['<input>'])
 
     df = extract_ddr_from_gpu_processor(df)
+    
+    df = df.reindex(sorted(df.columns), axis=1)
