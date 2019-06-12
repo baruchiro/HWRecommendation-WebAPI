@@ -4,9 +4,15 @@ import re
 
 def __capacity_to_byte_value(capacity: pd.Series) -> int:
     if capacity[0] is not pd.np.nan:
-        convection_relation = {'gb': 1024 * 1024, 'm': 1024, 'mb': 1024, 'kb': 1}
+        convection_relation = {
+            'tb': 1024 * 1024 * 1024,
+            'gb': 1024 * 1024,
+            'm': 1024,
+            'mb': 1024,
+            'kb': 1
+        }
         capacity = capacity[0].lower()
-        groups = re.search('(\\d+)((?:M|GB))', capacity, re.IGNORECASE)
+        groups = re.search('(\\d+)((?:M|GB|TB))', capacity, re.IGNORECASE)
         count = groups.group(1)
         unit = groups.group(2)
         return int(count) * convection_relation[unit]
