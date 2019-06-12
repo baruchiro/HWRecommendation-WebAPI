@@ -25,10 +25,11 @@ def read_data(source_path: str) -> pd.DataFrame:
 if __name__ == '__main__':
     arguments = parse_arguments()
     df = read_data(arguments['<input>'])
+    
+    df.columns = [n.lower() for n in df.columns]
 
     df = extract_ddr_from_gpu_processor(df)
     df = convert_disk_capacity_to_byte(df)
     df = convert_memory_capacity_to_byte(df)
 
-    df.columns = [n.lower() for n in df.columns]
     df = df.reindex(sorted(df.columns), axis=1)
