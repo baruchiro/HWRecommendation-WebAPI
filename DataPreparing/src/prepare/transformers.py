@@ -71,3 +71,13 @@ def extract_processor_features(df: pd.DataFrame) -> pd.DataFrame:
     df["processor_model"] = df["processor_name"].str.extract(r'((?:[a-z ]+)\d[- ]?\d{2,4}[a-z]{0,2})', re.IGNORECASE)
     del df["processor_name"]
     return df
+
+
+def extract_gpu_features(df: pd.DataFrame) -> pd.DataFrame:
+    df["gpu_manufacturer"] = df["gpu_name"].str.extract('((?:intel|nvidia|amd|asus))', re.IGNORECASE)
+    df["gpu_model"] = df["gpu_name"].str.extract(
+            '((?:(?:geforce )*(?:gt|m|rt)x|U?HD Graphics|radeon(?: vega)*|gt|geforce|ROG STRIX-GTX){1})',
+            re.IGNORECASE)
+    df["gpu_version"] = df["gpu_name"].str.extract(r'(\d{2,})', re.IGNORECASE)
+    del df["gpu_name"]
+    return df

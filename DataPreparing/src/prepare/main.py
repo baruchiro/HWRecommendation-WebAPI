@@ -14,7 +14,8 @@ from transformers import extract_ddr_from_gpu_processor, \
     convert_processor_ghz_to_mhz, \
     remove_unwanted_chars_in_processor_name, \
     extract_processor_features, \
-    remove_unwanted_chars_in_gpu_name
+    remove_unwanted_chars_in_gpu_name, \
+    extract_gpu_features
 
 
 def parse_arguments() -> dict:
@@ -45,6 +46,7 @@ if __name__ == '__main__':
     df = remove_unwanted_chars_in_processor_name(df)
     df = extract_processor_features(df)
     df = remove_unwanted_chars_in_gpu_name(df)
+    df = extract_gpu_features(df)
 
     df = df.reindex(sorted(df.columns), axis=1)
 
