@@ -36,12 +36,22 @@ def convert_disk_capacity_to_byte(df: pd.DataFrame) -> pd.DataFrame:
     del df["disk_capacity"]
     return df
 
+
 def convert_memory_capacity_to_byte(df: pd.DataFrame) -> pd.DataFrame:
     df['memory_capacity_as_kb'] = df["memory_capacity"].apply(__series_apply_capacity_to_byte_value)
     del df["memory_capacity"]
     return df
 
+
 def convert_processor_ghz_to_mhz(df: pd.DataFrame) -> pd.DataFrame:
     df['processor_mhz'] = df['processor_ghz'] * 1000
     del df['processor_ghz']
+    return df
+
+
+def remove_unwanted_chars_in_processor_name(df: pd.DataFrame) -> pd.DataFrame:
+    df['processor_name'] =df['processor_name'].str.replace('®', '')
+    df['processor_name'] = df['processor_name'].str.replace('™', '')
+    df['processor_name'] = df['processor_name'].str.replace(' Processor', '')
+    df['processor_name'] = df['processor_name'].str.replace(' processor', '')
     return df
