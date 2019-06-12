@@ -1,0 +1,150 @@
+Gpu_Processor,Gpu_Name,MotherBoard_SataConnections,MotherBoard_MaxRam,MotherBoard_DDRSockets,MotherBoard_Name,Disk_Capacity,Disk_RPM,Disk_Type,Disk_Model,Memory_MHz,Memory_Type,Memory_Capacity,Processor_Architecture,Processor_NumOfCores,Processor_GHz,Processor_Name,Age,FieldInterest,MainUse,Gender,ComputerType,Price
+940M DDR3,NVIDIA GeForce 940M,1,8388608,1, Skylake U DDR4 RVP7,500GB,5400,hdd,ST500LM000-SSHD-8GB,1600,DDR3,8GB,x64,4,2.5,Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz,29,computers,programming,male,laptop,3200
+6GB DDR5,EVGA® Nvdia™ GTX1060  Gaming,6,,2,Asrock® Z390 Phantom Gaming SLi 9th Gen,240GB,7200,ssd,Kingston® A1000,3000,DDR4,16GB,x64,6,4,Intel® Core™ i5 - 8400 4Ghz Turbo 8th Gen,25,home,personal use,male,desk,3600
+6GB GDDR6,Asus Nvidia GeForce GTX1660 Ti ,6,,2,Asus B360M-K,1TB,7200,hdd,Western Digital Blue,2666,DDR4,8GB ,x64,6,2.9,Intel Core i5-9400F 2.9GHz,23,home,gaming,male,desk,3500
+null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-K,1TB,7200,hdd,Western Digital Blue,2666,DDR4,16GB,x64,6,2.8,Intel® Core i5-8400 2.8GHz Coffee Lake,24,computers,programming,female,desk,3250
+null,Intel 620 Integrated Graphics,1,,1,,256GB,5400,ssd,,3000,DDR4,8GB,x64,4,2.2,Intel® Core™ i5-8265U Processor,25,office,work,female,laptop,3200
+2GB DDR5,NVIDIA GeForce MX110,1,,1,,1TB,5400,hdd,,2666,DDR4,8GB,x64,2,3.7,intel Core i3 (6th Gen),26,office,work,female,laptop,3700
+4GB,AMD Radeon 530,1,,1,,2TB,5400,hdd,,2666,DDR4,32GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,27,home,gaming,male,laptop,6500
+8GB GDDR6,Gigabyte Nvidia GeForce RTX2070 WindForce,4,,2,Gigabyte Z390 UD,500GB,5400,ssd,Samsung 860 EVO,2666,DDR4,16GB,x64,8,3.6,Intel® Core i7-9700K 3.6GHz Coffee Lake,28,home,gaming,male,desk,7200
+null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-K,240GB,5400,ssd,SanDisk SSD Plus,2666,DDR4,8GB,x64,6,2.8,Intel® Core i5-8400 2.8GHz Coffee Lake,28,home,personal use,female,desk,2400
+null,Intel® HD Graphics 520,1,,1,,500GB,5400,ssd,,1600,DDR4,4GB,x64,2,2,Intel® Core™ i3-6006U Processor,27,home,personal use,female,laptop,1600
+null,Intel® HD Graphics 521,1,,1,,500GB,5400,ssd,,2666,DDR4,8GB,x64,2,2,Intel® Core™ i3-6006U Processor,29,home,personal use,male,laptop,2400
+2GB DDR3,Nvidia GeForce MX110,1,,1,,256GB,5400,ssd,,2666,DDR4,8GB,x64,4,1.6,Intel® Core™ i5-8250U Processor,26,home,personal use,male,laptop,2950
+null,Intel HD Graphics 520,1,,1,,500GB,5400,hdd,,1600,DDR4,8GB,x64,2,2,Intel® Core™ i3-6006U Processor,34,home,personal use,male,laptop,2000
+4GB GDDR5,NVIDIA® GeForce® GTX 1050Ti,1,,1,,256GB,5400,ssd,,1600,DDR4,8GB,x64,4,2.3,Intel® Core™ i5-8300H Processor,32,computers,gaming,male,laptop,5000
+4GB GDDR6,Nvidia GeForce MX150,1,,1,,512GB,5400,ssd,,3000,DDR4,16GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,30,home,personal use,male,laptop,5050
+4GB GDDR5,NVIDIA® GeForce® GTX 1050Ti,1,,1,,1TB,7200,hdd,,3000,DDR4,8GB,x64,6,2.2,Intel® Core™ i7-8750H Processor,29,computers,gaming,male,laptop,6300
+null,Intel® UHD Graphics 620,1,,1,,1TB,5400,hdd,,2666,DDR4,8GB,x64,4,1.6,Intel® Core™ i5-8250U Processor,26,computers,gaming,male,laptop,2400
+null,Intel® UHD Graphics 620,1,,1,,1TB,5400,hdd,,3000,DDR4,8GB,x64,2,2.3,Intel® Core™ i3-7020U Processor,25,computers,programming,male,laptop,2200
+null,Intel® UHD Graphics 605,1,,1,,500GB,5400,hdd,,3000,LPDDR4,4GB,x64,4,1.1,Intel® Pentium™ Silver N5000 Processor,28,computers,personal use,female,laptop,1600
+null,Intel® HD Graphics 520,1,,1,,500GB,5400,hdd,,2666,DDR4,4GB,x64,2,2,Intel® Core™ i3-6006U Processor,27,home,personal use,male,laptop,1750
+2GB GDDR5,Nvidia GeForce MX130,1,,1,,256GB,7200,ssd,,3000,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,27,computers,programming,female,laptop,2800
+8GB GDDR6,NVIDIA® GeForce® GTX 1070,1,,1,,512GB,7200,ssd,,3000,DDR4,32GB,x64,6,4.1,Intel® Core™ i7-8750H Processor,27,computers,gaming,male,laptop,10500
+null,Intel UHD Graphics 620,1,,1,,256GB,7200,ssd,,2666,DDR4,8GB,x64,2,2.2,Intel® Core™ i3-8130U Processor,25,home,personal use,male,laptop,3200
+4GB GDDR5,Nvidia GeForce GTX 1050,1,,1,,256GB,7200,ssd,,3000,DDR4,8GB,x64,6,2.2,Intel® Core™ i7-8750H Processor,24,computers,programming,male,laptop,4400
+null,Intel® UHD Graphics 630,4,,2,Asus H310M-A,240GB,5400,ssd,SanDisk SSD Plus,2666,DDR4,8GB,x64,6,3.2,Intel® Core i7-8700 3.2GHz Coffee Lake,23,computers,personal use,female,desk,2800
+null,Intel UHD Graphics 620,1,,1,,1TB,5400,hdd,,3000,DDR4,8GB,x64,2,2.3,Intel® Core™ i3-7020U Processor,24,computers,programming,male,laptop,2000
+null,Intel UHD Graphics 620,1,,1,,256GB,7200,sdd,,3000,DDR4,4GB,x64,4,1.6,Intel® Core™ i5-8250U Quad Core,27,computers,programming,male,laptop,3100
+null,Intel UHD Graphics 620,1,,1,,512GB,7200,sdd,,3000,DDR4,8GB,x64,2,2.2,Intel® Core™ i3-8130U Processor,29,computers,programming,male,laptop,2950
+null,Intel UHD Graphics 620,1,,1,,512GB,7200,sdd,,3000,DDR4,8GB,x64,2,2.3,Intel® Core™ i3-7020U Processor,30,computers,programming,male,laptop,2200
+2GB GDDR3,Sapphire AMD Radeon R5 230,4,,2,Asus Prime H310M-K,240GB,7200,ssd,SanDisk SSD Plus,2666,DDR4,4GB,x64,6,2.9,Intel Core i5-9400F 2.9GHz,32,home,personal use,male,desk,2200
+null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-K,240GB,7200,ssd,SanDisk SSD Plus,2666,DDR4,8GB,x64,4,3.6,Intel Core i3-8100 3.6GHz Coffee Lake,33,home,personal use,male,desk,2000
+6GB GDDR6,Nvidia GeForce GTX1660 Ti Phoenix OC,4,,2, Asus B360M-K,1TB,7200,hdd,Western Digital Blue,2666,DDR4,8GB,x64,6,2.9,Intel Core i5-9400F 2.9GHz,20,home,gaming,male,desk,4200
+null,Intel® UHD Graphics 631,4,,2,Asus Prime H310M-K,240GB,7200,ssd,SanDisk SSD Plus,3000,DDR4,16GB ,x64,6,3,Intel® Core i5-8500 3GHz Coffee Lake,24,computers,programming,male,desk,3300
+null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-K,1TB,7200,hdd,Western Digital Blue,3000,DDR4,4GB,x64,4,3.6,Intel Core i3-8100 3.6GHz Coffee Lake,30,computers,programming,female,desk,2100
+null,Intel® HD graphics 520,1,,1,,256GB,5400,ssd,,2666,DDR4,8GB,x64,2,2.3,Intel® Core™ i3-7020U Processor,22,home,programming,female,laptop,2400
+2GB GDDR5,Nvidia GeForce MX130,1,,1,,256GB,7200,ssd,,2666,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,24,home,personal use,female,laptop,2800
+8GB GDDR5X,NVIDIA® GeForce® GTX 1080,1,,1,,1TB,5400,ssd,,3000,DDR4,32GB,x64,6,2.2,Intel® Core™ i7-8750H Processor,27,home,gaming,male,laptop,14600
+null,Intel UHD Graphics 605,1,,1,,500GB,5400,hdd,,3000,DDR4,4GB,x64,4,1.1,Intel® Pentium™ Silver N5000 Processor,26,computers,programming,female,laptop,1240
+4GB GDDR5,Nvidia GeForce MX150,1,,1,,512GB,5400,ssd,,3000,DDR4,8GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,25,computers,programming,female,laptop,3700
+null,Intel HD Graphics 620,1,,1,,256GB,7200,ssd,,2666,DDR4,4GB,x64,2,2.3,Intel® Core™ i3-7020U Processor,24,computers,programming,male,laptop,1800
+2GB GDDR5,Nvidia GeForce GTX 1050,1,,1,,512GB,5400,ssd,,2666,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,27,computers,programming,male,laptop,5000
+null,Intel UHD Graphics 610,1,,1,,128GB,5400,ssd,,3000,DDR4,4GB,x64,2,2.3,Intel® Pentium™ 4415U Processor,35,home,personal use,male,laptop,2100
+2GB GDDR5,Nvidia GeForce MX130,1,,1,,256GB,5400,ssd,,3000,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,21,home,personal use,male,laptop,3800
+null,Intel HD Graphics 605,1,,1,,128GB,5400,ssd,,3000,DDR4,4GB,x64,4,1.1,Intel® Pentium™ Silver N5000 Processor,21,home,personal use,male,laptop,1900
+null,Intel UHD Graphics 620,1,,1,,256GB,7200,ssd,,2666,DDR4,8GB,x64,4,2,Intel® Core™ i5-8250U Processor,23,office,work,male,laptop,3300
+4GB GDDR5,Nvidia GeForce GTX 1050,1,,1,,512GB,7200,ssd,,2666,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,22,office,work,male,laptop,5400
+null,Intel® HD Graphics 520,1,,1,,500GB,7200,hdd,,3000,DDR4,4GB,x64,2,2,Intel® Core™ i3-6006U Processor,25,office,work,male,laptop,1700
+null,Intel HD Graphics 620,1,,1,,256GB,5400,ssd,,3000,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,29,office,work,male,laptop,2400
+ 2GB GDDR5,Nvidia GeForce MX110,1,,1,,256GB,7200,ssd,,3000,DDR4,8GB,x64,4,2.3,Intel® Core™ i5-8250U Processor,30,computers,programming,male,laptop,3150
+null,Intel HD Graphics 620,1,,1,,256GB,7200,ssd,,2666,DDR3,8GB,x64,2,2.5,Intel® Core™ i3-8145U Processor,22,home,programming,female,laptop,3000
+null,Intel HD Graphics 620,1,,1,,2TB,5400,hdd,,2666,DDR4,8GB,x64,4,2.2,Intel® Core™ i5-8265U Processor,33,computers,personal use,female,laptop,3500
+null,Intel HD Graphics 620,1,,1,,256GB,7200,ssd,,3000,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,31,computers,programming,male,laptop,2500
+null,Intel® HD Graphics 520,1,,1,,256GB,7200,ssd,,3000,DDR4,4GB,x64,2,2.3,Intel® Core™ i3-7020U Processor,33,computers,personal use,male,laptop,2000
+GDDR5 4GB,NVIDIA GeForce GTX 1050,1,,1,,512GB,5400,ssd,,3000,DDR4,16GB,x64,4,3,Intel® Core™ i7-8565U Processor,32,office,work,male,laptop,7000
+null,Intel HD Graphics 620,1,,1,,256GB,5400,ssd,,3000,DDR3,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,30,office,work,male,laptop,3700
+null,Intel UHD Graphics 620,1,,1,,256GB,5400,ssd,,3000,DDR3,4GB,x64,2,2.7,Intel® Core™ i3-8130U Processor,34,office,work,female,laptop,2800
+4GB GDDR5,NVIDIA GeForce GTX 1050,1,,1,,512GB,5400,ssd,,3000,DDR4,8GB,x64,4,3,Intel® Core™ i7-8565U Processor,40,home,personal use,female,laptop,5700
+2GB GDDR5,NVIDIA GeForce MX150,1,,1,,256GB,7200,ssd,,3000,DDR4,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,37,computers,programming,female,laptop,4200
+6GB GDDR5,NVIDIA® GeForce® GTX 1060,1,,2,,1TB,7200,ssd,,2666,DDR6,16GB,x64,6,3.5,Intel® Core™ i7-8750H Processor,27,computers,gaming,male,laptop,6400
+null,Intel UHD Graphics 620,1,,1,,128GB,7200,ssd,,2666,DDR4,4GB,x64,4,2.5,Intel® Core™ i5-8250U processor,29,computers,programming,female,laptop,2500
+null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-A,1TB,7200,ssd,Western Digital Blue,1600,DDR4,8GB,x64,6,2.8,Intel® Core i5-8400 2.8GHz Coffee Lake,28,computers,programming,male,desk,3000
+null,Intel® UHD Graphics 630,4,,2,Asus Prime Z390M Plus,500GB,7200,ssd,SSD Samsung 860 EVO,2933,DDR4,16GB,x64,8,3.6,Intel® Core™ i9-9900K 3.6GHz,27,home,programming,female,desk,4700
+2GB DDR5,Gigabyte Nvidia GeForce GTX 1050 D5,4,,2,Asus Prime H310M-K,240GB,7200,ssd,SanDisk SSD Plus,2666,DDR4,16GB,x64,6,2.9,Intel Core i5-9400F 2.9GHz,27,computers,gaming,male,desk,3200
+null,Intel® UHD Graphics 630,4,,2,Asus Prime H310M-A,240GB,7201,ssd,SanDisk SSD Plus,2666,DDR4,8GB,x64,4,3.6,Intel Core i3-8100 3.6GHz Coffee Lake,27,computers,programming,male,desk,1900
+4GB DDR5,GEFORCE GTX 1050TI,4,,2,BIOSTAR H81,480GB,7200,ssd,,1600,DDR3,8GB,x64,4,3.9,Intel® Core™ i7-4770 Processor,25,home,personal use,male,desk,3500
+null,Intel® UHD Graphics 630,4,,2,BIOSTAR B360GT5S,240GB,5400,ssd,Pioneer SL2 APS,2140,DDR4,8GB,x64,2,3.7,INTEL DUAL CORE G5400,24,computers,programming,female,desk,2000
+null,Intel® UHD Graphics 630,4,,2,BIOSTAR H81,1TB,7200,hdd,Seagate Barracuda,2400,DDR4,4GB,x64,2,3.4,Intel Core i3-7100T,23,computers,programming,male,desk,1700
+6GB GDDR5,NVIDIA® GeForce® GTX 1060,4,,2,BIOSTAR B360GT5S,512GB,5400,ssd,Transcend SSD230S,2666,DDR4,16GB,x64,6,3.2,Intel® Core i7-8700 3.2GHz Coffee Lake,24,computers,gaming,male,desk,8300
+2GB,AMD Radeon 530,1,,1,,256GB,5400,ssd,,3000,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,27,computers,programming,male,laptop,2700
+null,Radeon Vega 3,4,,2,Asus PRIME B340M-A AM4,240GB,5400,ssd,Kingston UV500 M.2,2933,DDR4,16GB,x64,2,3.5,AMD Athlon 240GE 3.5Ghz Radeon Vega 3 - AR8,29,computers,personal use,male,desk,2800
+null,Intel® HD Graphics 520,1,,1,,500GB,5400,hdd,,2133,DDR4,8GB,x64,2,2,Intel® Core™ i3-6006U Processor,30,computers,personal use,male,laptop,2000
+ 4GB GDDR5,NVIDIA® GeForce® GTX 1050 Ti,2,,2,,512GB,5400,ssd,,2666,DDR4,32GB,x64,4,3.2,Intel® Core™ i7-8750H Six Core Processor,32,home,gaming,male,laptop,7000
+2GB GDDR5,AMD Radeon™ 520 Graphics,1,,1,,256GB,5400,ssd,,2666,DDR4,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,33,home,programming,male,laptop,2600
+null,Intel UHD Graphics 620,1,,1,,256GB,5400,ssd,,2400,DDR4,8GB,x64,2,2.2,Intel® Core™ i3-8130U Processor,20,home,programming,male,laptop,2700
+2GB GDDR6,NVIDIA GeForce® MX150,1,,1,,256GB,5400,ssd,,2133,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,24,computers,programming,female,laptop,2800
+2GB GDDR5,NVIDIA® GeForce® MX130,1,,1,,256GB,7200,ssd,,2666,DDR4,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,30,computers,personal use,female,laptop,3400
+2GB GDDR5,AMD® Radeon 535,1,,1,,512GB,7200,ssd,,2400,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,22,home,personal use,female,laptop,3200
+2GB GDDR5,AMD® Radeon 535,1,,1,,512GB,7200,ssd,,2400,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,24,home,programming,male,laptop,3200
+null,Intel UHD Graphics 620,1,,1,,256GB,5400,ssd,,1866,LPDDR3,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,27,home,programming,female,laptop,4000
+2GB GDDR5,NVIDIA® GeForce® MX130,1,,1,,256GB,7200,ssd,,2133,DDR4,8GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,26,computers,programming,female,laptop,3400
+2GB GDDR5,AMD® Radeon 535,1,,1,,512GB,7200,ssd,,2400,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,25,computers,programming,male,laptop,3000
+null,Intel UHD Graphics 620,1,,1,,256GB,5400,ssd,,2133,LPDDR3,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,24,computers,personal use,male,laptop,4100
+null,Intel UHD Graphics 620,1,,1,,512GB,7200,ssd,,1866,LPDDR3,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,27,computers,personal use,male,laptop,4300
+null,Intel UHD Graphics 620,1,,1,,256GB,7200,ssd,,2133,LPDDR3,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,35,home,personal use,male,laptop,5000
+ 4GB GDDR5,NVIDIA® GeForce® GTX 1050,1,,1,,512GB,5400,ssd,,2400,DDR4,8GB,x64,6,3.1,Intel® Core™ i7-8750H Six Core Processor,21,office,work,male,laptop,4400
+4GB GDDR5,NVIDIA® GeForce® GTX 1050 Ti,2,,2,,512GB,5400,ssd,,2666,DDR4,16GB,x64,6,3.1,Intel® Core™ i7-8750H Six Core Processor,21,home,gaming,male,laptop,5700
+null,Intel® UHD Graphics 600,1,,1,,64GB,5400,emmc,,2133,LPDDR4,2GB,x64,2,2.5,Intel® Celeron® Processor N4000,23,office,work,male,laptop,1250
+null,Integrated Intel® HD Graphics 620,1,,1,,1TB,5400,hdd,,2666,DDR4,4GB,x64,2,2.3,Intel® Core™ i3-7020U Dual Core Processor,22,office,work,male,laptop,2000
+null,Integrated Intel® HD Graphics 620,1,,1,,1TB,7200,hdd,,2400,DDR4,4GB,x64,2,2.3,Intel® Core™ i3-7020U Dual Core Processor,25,office,programming,male,laptop,2100
+null,Intel UHD Graphics 620,1,,1,,256GB,7200,ssd,,2133,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,29,office,programming,male,laptop,2400
+null,Intel UHD Graphics 620,1,,1,,500GB,5400,hdd,,2133,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,30,computers,personal use,female,laptop,2500
+null,Intel UHD Graphics 620,1,,1,,1TB,5400,hdd,,2400,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,22,home,programming,female,laptop,3000
+null,intel HD Graphics 630,4,,2,Asus PRIME H310M-E,240GB,7200,ssd,Kingston A400,2400,DDR4,8GB,x64,4,3.6,Intel® Core™ i3-8100 Processor,33,computers,personal use,male,desk,2700
+null,Integrated Intel® HD Graphics 620,1,,1,,256GB,7200,ssd,,2666,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,31,computers,work,male,laptop,2500
+null,Intel UHD Graphics 620,1,,1,,512GB,5400,ssd,,2400,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,33,computers,work,male,laptop,2650
+null,Intel UHD Graphics 620,1,,1,,256GB,7200,ssd,,2400,DDR4,8GB,x64,2,2.2,Intel® Core™ i3-8130U Processor,32,office,work,male,laptop,2800
+null,Intel UHD Graphics 620,1,,1,,512GB,7200,ssd,,2133,DDR4,8GB,x64,4,3,Intel® Core™ i7-8550U Quad Core Processor,30,home,personal use,female,laptop,3000
+null,intel HD Graphics 630,4,,2,Asus PRIME Z390-P,1TB,5400,hdd,Western Digital Caviar Blue,2400,DDR4,8GB,x64,6,3.7,Intel® Core™ i5-9600K Processor,34,office,programming,female,desk,2900
+null,intel HD Graphics 630,4,,2,Asus PRIME Z390-P,512GB,5400,ssd,Transcend SSD230S,2400,DDR4,16GB,x64,8,4.9,Intel® Core™ i7-9700K Processor,40,home,programming,female,desk,3800
+6GB GDDR5,Asus GTX 1060 DUAL,4,,2, Asus B360M-K,480GB,5400,ssd,Kingston UV500 2.5,3000,DDR4,8GB,x64,6,3.7,Intel® Core™ i5-9600K Processor,37,computers,gaming,male,desk,4450
+null,intel HD Graphics 630,4,,2,MSI H310M PRO-VH PLUS,1TB,5400,ssd,Western Digital Caviar Blue,2400,DDR4,8GB,x64,4,3.6,Intel® Core™ i3-8100 Processor,27,office,work,female,desk,2300
+null,Intel UHD Graphics 620,1,,1,,1TB,5400,hdd,,2133,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,40,home,programming,male,laptop,2400
+8GB GDDR6,NVIDIA® GeForce RTX™ 2070,2,,2,,1TB,5400,ssd,,2666,DDR4,24GB,x64,4,3.2,Intel® Core™ i7-8750H Six Core Processor,37,home,gaming,male,laptop,13000
+null,Integrated Intel® HD Graphics 620,1,,1,,512GB,5400,ssd,,2133,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,27,home,programming,male,laptop,3000
+2GB GDDR5,AMD Radeon™ 540 Graphics,1,,1,,512GB,7200,ssd,,2400,DDR4,8GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,29,computers,programming,male,laptop,3300
+4GB GDDR5,NVIDIA Geforce GTX 1050Ti,1,,1,,512GB,7200,ssd,,2666,DDR4,8GB,x64,4,2.3,Intel® Core™ i5-8300H Processor,28,computers,personal use,female,laptop,3700
+2GB GDDR5,AMD Radeon™ 540 Graphics,1,,1,,512GB,5400,ssd,,2400,DDR4,8GB,x64,4,3,Intel® Core™ i7-8565U Processor,27,home,personal use,female,laptop,3900
+1GB GDDR5,Asus GT710 Silent,4,,2,Gigabyte B450M DS3H AM4,240GB,7200,ssd,Kingston A400,2400,DDR4,8GB,x64,6,3.4,AMD Ryzen™ 5 2600 Processor,27,home,programming,male,desk,2000
+null,Radeon Vega 8,4,,2,MSI B450M GAMING PLUS AM4,1TB,5400,hdd,Western Digital Caviar Blue,2400,DDR4,8GB,x64,4,3.5,AMD Ryzen™ 3 2200G with Radeon™ Vega 8,27,home,programming,male,desk,1600
+2GB GDDR5,ASUS ROG STRIX-GTX1050 Ti,4,,2, Asus B360M-K,240GB,5400,ssd,Kingston A400,2666,DDR4,8GB,x64,6,2.9,Intel Core i5-9400F 2.9GHz,25,computers,gaming,male,desk,4450
+null,Intel UHD Graphics 620,4,,2,Gigabyte Z390 UD,512GB,5400,ssd,Transcend SSD230S,2400,DDR4,8GB,x64,6,3.7,Intel® Core™ i5-9600K Processor,24,computers,programming,male,desk,3150
+null,Intel UHD Graphics 620,4,,2,Asus Prime H310M-K,512GB,5400,ssd,SanDisk SSD Plus,2666,DDR4,8GB,x64,4,3.6,Intel Core i3-8100 3.6GHz Coffee Lake,23,computers,personal use,female,desk,2000
+2GB GDDR5,NVIDIA® GeForce® MX130,1,,1,,256GB,5400,ssd,,2666,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,24,computers,personal use,female,laptop,3800
+2GB GDDR5,Nvidia GeForce 930MX,1,,1,,256GB,7200,ssd,,2666,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,27,home,personal use,female,laptop,3000
+null,Intel UHD Graphics 620,1,,1,,256GB,5400,ssd,,2666,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,29,office,work,male,laptop,2650
+8GB GDDR5,NVIDIA® GeForce® GTX 1080,2,,2,,1TB,5400,ssd,,2666,DDR4,24GB,x64,6,3.1,Intel® Core™ i7-8750H Six Core Processor,30,home,gaming,female,laptop,12200
+null,Intel UHD Graphics 620,1,,1,,256GB,7200,ssd,,2400,LPDDR3,8GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,32,office,work,male,laptop,4000
+null,Intel UHD Graphics 620,1,,1,,500GB,7200,hdd,,2400,DDR4,4GB,x64,4,2.5,Intel® Core™ i5-8250U processor,33,office,work,male,laptop,2300
+4GB GDDR5,Nvidia GeForce MX150,1,,1,,256GB,5400,ssd,,2133,DDR4,8GB,x64,4,1.8,Intel® Core™ i7-8550U Quad Core Processor,20,office,programming,male,laptop,3600
+4GB GDDR5,Nvidia GeForce GTX 1050,1,,1,,512GB,7200,ssd,,2400,DDR4,8GB,x64,4,2.3,Intel® Core™ i5-8265U Processor,24,office,programming,male,laptop,5800
+null,intel HD Graphics,1,,1,,64GB,7200,emmc,,2400,LPDDR4,4GB,x64,2,2.5,Intel® Celeron® Processor N4000,30,computers,personal use,female,laptop,1200
+null,Intel UHD Graphics 620,1,,1,,256GB,5400,ssd,,2666,DDR4,8GB,x64,2,2.2,Intel® Core™ i3-8130U Processor,22,home,programming,female,laptop,3400
+2GB GDDR5,AMD RADEON 535,1,,1,,512GB,5400,ssd,,2400,DDR4,8GB,x64,4,2.5,Intel® Core™ i5-8250U processor,24,computers,personal use,male,laptop,2900
+null,Intel UHD Graphics 620,1,,1,,512GB,5400,ssd,,2400,DDR4,8GB,x64,2,2.2,Intel® Core™ i3-8130U Processor,27,computers,work,male,laptop,
+null,,1,,1,,,7200,ssd,,2400,DDR4,,x64,,,,26,computers,work,male,desk,
+null,,1,,1,,,7200,ssd,,2133,DDR4,,x64,,,,25,office,work,male,desk,
+null,,1,,1,,,5400,ssd,,1866,DDR4,,x64,,,,24,home,personal use,female,laptop,
+null,,1,,1,,,7200,ssd,,2133,DDR4,,x64,,,,27,office,programming,female,laptop,
+null,,1,,1,,,7200,ssd,,2400,DDR4,,x64,,,,35,home,programming,female,laptop,
+null,,1,,1,,,5400,ssd,,2666,DDR4,,x64,,,,21,computers,gaming,male,laptop,
+null,,1,,1,,,5400,ssd,,2133,DDR4,,x64,,,,21,office,work,female,desk,
+null,,1,,1,,,5400,ssd,,2666,DDR4,,x64,,,,23,computers,gaming,female,desk,
+null,,1,,1,,,5400,ssd,,2400,DDR4,,x64,,,,22,computers,gaming,male,desk,
+null,,1,,1,,,7200,ssd,,2133,DDR4,,x64,,,,25,computers,programming,male,desk,
+null,,1,,1,,,5400,ssd,,2133,DDR4,,x64,,,,29,computers,personal use,male,laptop,
+null,,1,,1,,,5400,ssd,,2400,DDR4,,x64,,,,30,home,personal use,male,laptop,
+null,,1,,1,,,7200,ssd,,2400,DDR4,,x64,,,,22,computers,programming,female,laptop,
+null,,1,,1,,,7200,ssd,,2666,DDR4,,x64,,,,33,computers,gaming,female,desk,
+null,,1,,1,,,5400,ssd,,2400,DDR4,,x64,,,,33,home,personal use,male,desk,
+null,,1,,1,,,7200,ssd,,2400,DDR4,,x64,,,,20,computers,programming,male,desk,
+null,,1,,1,,,5400,ssd,,2133,DDR4,,x64,,,,24,computers,personal use,male,laptop,
+null,,1,,1,,,5400,ssd,,2400,DDR4,,x64,,,,30,computers,programming,male,laptop,
+null,,1,,1,,,7200,ssd,,2400,DDR4,,x64,,,,22,computers,programming,female,laptop,
+null,,1,,1,,,7200,ssd,,2400,DDR4,,x64,,,,24,home,personal use,female,laptop,
+null,,1,,1,,,5400,ssd,,2400,DDR4,,x64,,,,27,computers,programming,female,desk,
+null,,1,,1,,,7200,ssd,,3000,DDR4,,x64,,,,26,computers,gaming,male,laptop,
+null,,1,,1,,,7200,ssd,,2400,DDR4,,x64,,,,25,computers,programming,female,laptop,
+null,,1,,1,,,5400,ssd,,2400,DDR4,,x64,,,,24,computers,programming,male,laptop,
+null,,1,,1,,,5400,ssd,,2400,DDR4,,x64,,,,27,home,personal use,female,desk,
