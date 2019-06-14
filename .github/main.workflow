@@ -4,7 +4,7 @@ workflow "Build and Test in PR" {
 }
 
 action ".NET Core CLI" {
-  uses = "./"
+  uses = "./.github/net-core/"
   args = "test"
 }
 
