@@ -81,3 +81,7 @@ def extract_gpu_features(df: pd.DataFrame) -> pd.DataFrame:
     df["gpu_version"] = df["gpu_name"].str.extract(r'(\d{2,})', re.IGNORECASE)
     del df["gpu_name"]
     return df
+
+def fix_disk_type(df: pd.DataFrame) -> pd.DataFrame:
+    df.loc[df.disk_type == 'sdd', 'disk_type'] = 'ssd'
+    return df

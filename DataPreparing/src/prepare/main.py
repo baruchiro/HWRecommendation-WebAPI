@@ -8,20 +8,21 @@ from docopt import docopt
 
 import pandas as pd
 
-from transformers import extract_ddr_from_gpu_processor, \
+from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     convert_disk_capacity_to_byte, \
     convert_memory_capacity_to_byte, \
     convert_processor_ghz_to_mhz, \
     remove_unwanted_chars_in_processor_name, \
     extract_processor_features, \
     remove_unwanted_chars_in_gpu_name, \
-    extract_gpu_features
+    extract_gpu_features, \
+    fix_disk_type
 
 
 def parse_arguments() -> dict:
     if len(sys.argv) == 1:
-        sys.argv.append('../../data/fake-data-orig.csv')
-        sys.argv.append('../../data/fake-data-out.csv')
+        sys.argv.append('data/fake-data-orig.csv')
+        sys.argv.append('data/fake-data-out.csv')
     return docopt(__doc__, version="Prepare Data 0.1")
 
 
@@ -47,6 +48,7 @@ if __name__ == '__main__':
     df = extract_processor_features(df)
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
+    df = fix_disk_type(df)
 
     df = df.reindex(sorted(df.columns), axis=1)
 
