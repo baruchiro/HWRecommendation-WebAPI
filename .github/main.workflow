@@ -1,16 +1,17 @@
 workflow "Build and Test in PR" {
   on = "push"
-  resolves = ["docker://python"]
+  resolves = [
+    "Run python",
+    ".NET Core CLI",
+  ]
 }
 
 action ".NET Core CLI" {
-  uses = "./"
+  uses = "./.github/net-core/"
   args = "test"
 }
 
-action "docker://python" {
-  uses = "docker://python"
-  needs = [".NET Core CLI"]
-  runs = "python"
+action "Run python" {
+  uses = "./.github/python/"
   args = "DataPreparing/src/prepare/main.py"
 }
