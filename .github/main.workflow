@@ -13,5 +13,5 @@ action ".NET Core CLI" {
 
 action "Run python" {
   uses = "./.github/python/"
-  args = "DataPreparing/src/prepare/main.py"
+  args = "src/prepare/main.py"
 }
