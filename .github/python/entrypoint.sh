@@ -1,5 +1,7 @@
 #!/bin/bash
 
-pip install -r $GITHUB_WORKSPACE/DataPreparing/requirements.txt
+cd $GITHUB_WORKSPACE/DataPreparing/
+
+pip install -r requirements.txt
 
 sh -c "python $*"
