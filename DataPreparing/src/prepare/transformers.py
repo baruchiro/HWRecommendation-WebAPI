@@ -49,7 +49,7 @@ def convert_processor_ghz_to_mhz(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def __remove_unwanted_chars_in_name(df: pd.DataFrame, column:str) -> pd.DataFrame:
+def __remove_unwanted_chars_in_name(df: pd.DataFrame, column: str) -> pd.DataFrame:
     df[column] = df[column].str.replace('®', '')
     df[column] = df[column].str.replace('™', '')
     df[column] = df[column].str.replace(' Processor', '')
@@ -76,12 +76,37 @@ def extract_processor_features(df: pd.DataFrame) -> pd.DataFrame:
 def extract_gpu_features(df: pd.DataFrame) -> pd.DataFrame:
     df["gpu_manufacturer"] = df["gpu_name"].str.extract('((?:intel|nvidia|amd|asus))', re.IGNORECASE)
     df["gpu_model"] = df["gpu_name"].str.extract(
-            '((?:(?:geforce )*(?:gt|m|rt)x|U?HD Graphics|radeon(?: vega)*|gt|geforce|ROG STRIX-GTX){1})',
-            re.IGNORECASE)
+        '((?:(?:geforce )*(?:gt|m|rt)x|U?HD Graphics|radeon(?: vega)*|gt|geforce|ROG STRIX-GTX){1})',
+        re.IGNORECASE)
     df["gpu_version"] = df["gpu_name"].str.extract(r'(\d{2,})', re.IGNORECASE)
     del df["gpu_name"]
     return df
 
+
 def fix_disk_type(df: pd.DataFrame) -> pd.DataFrame:
     df.loc[df.disk_type == 'sdd', 'disk_type'] = 'ssd'
+    return df
+
+
+def rename_processor_name_to_match_cpubenchmark(df: pd.DataFrame) -> pd.DataFrame:
+    processor_replace_names = {
+        'Intel Core i7-8700 3.2GHz Coffee Lake': 'Intel Core i7-8700 @ 3.20GHz',
+        'intel Core i3-6006': 'Intel Core i3-6006U @ 2.00GHz',
+        'INTEL\xa0DUAL CORE G5400': 'Intel Pentium Gold G5400 @ 3.70GHz',
+        'Intel Core i7-9700K 3.6GHz Coffee Lake': 'Intel Core i7-9700K @ 3.60GHz',
+        'Intel Core i7-6500U CPU @ 2.50GHz': 'Intel Core i7-6500U @ 2.50GHz',
+        'Intel Core i7-8750H Six Core': 'Intel Core i7-8750H @ 2.20GHz',
+        'Intel Core i5-8400 2.8GHz Coffee Lake': 'Intel Core i5-8400 @ 2.80GHz',
+        'AMD Ryzen 3 2200G with Radeon Vega 8': 'AMD Ryzen 3 2200G',
+        'Intel Core i5-8400 4Ghz\xa0Turbo 8th Gen': 'Intel Core i5-8400 @ 2.80GHz',
+        'Intel Core i5-9400F 2.9GHz': 'Intel Core i5-9400F @ 2.90GHz',
+        'Intel Core i3-8100 3.6GHz Coffee Lake': 'Intel Core i3-8100 @ 3.60GHz',
+        'Intel Core i5-8500 3GHz Coffee Lake': 'Intel Core i5-8500 @ 3.00GHz',
+        'Intel Core i7-8550U Quad Core': 'Intel Core i7-8550U @ 1.80GHz',
+        'Intel Core i5-8250U Quad Core': 'Intel Core i5-8250U @ 1.60GHz',
+        'Intel Core i3-7020U Dual Core': 'Intel Core i3-7020U @ 2.30GHz',
+        'AMD Athlon 240GE 3.5Ghz Radeon Vega 3 - AR8': 'AMD Athlon 240GE',
+        'Intel Core i9-9900K 3.6GHz':'Intel Core i9-9900K @ 3.60GHz'
+    }
+    df['processor_name'].replace(processor_replace_names, inplace=True)
     return df

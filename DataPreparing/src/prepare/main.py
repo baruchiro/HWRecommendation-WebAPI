@@ -16,7 +16,8 @@ from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     extract_processor_features, \
     remove_unwanted_chars_in_gpu_name, \
     extract_gpu_features, \
-    fix_disk_type
+    fix_disk_type, \
+    rename_processor_name_to_match_cpubenchmark
 
 
 def parse_arguments() -> dict:
@@ -40,11 +41,13 @@ if __name__ == '__main__':
 
     df.columns = [n.lower() for n in df.columns]
 
+
     df = extract_ddr_from_gpu_processor(df)
     df = convert_disk_capacity_to_byte(df)
     df = convert_memory_capacity_to_byte(df)
     df = convert_processor_ghz_to_mhz(df)
     df = remove_unwanted_chars_in_processor_name(df)
+    df = rename_processor_name_to_match_cpubenchmark(df)
     df = extract_processor_features(df)
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)

@@ -4,7 +4,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 23,desk,1073741824.0,Western Digital Blue,7200,hdd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,Asus B360M-K,6,3500.0,x64,Intel,2900.0,Core i5-9400F,6.0
 24,desk,1073741824.0,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,programming,16777216.0,2666,DDR4,2,,Asus Prime H310M-K,4,3250.0,x64,Intel,2800.0,Core i5-8400,6.0
 25,laptop,268435456.0,,5400,ssd,office,female,Intel,,,,620,work,8388608.0,3000,DDR4,1,,,1,3200.0,x64,Intel,2200.0,Core i5-8265U,4.0
-26,laptop,1073741824.0,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,work,8388608.0,2666,DDR4,1,,,1,3700.0,x64,intel,3700.0,Core i3-6006,2.0
+26,laptop,1073741824.0,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,work,8388608.0,2666,DDR4,1,,,1,3700.0,x64,Intel,3700.0,Core i3-6006U,2.0
 27,laptop,2147483648.0,,5400,hdd,home,male,AMD,Radeon,,4194304.0,530,gaming,33554432.0,2666,DDR4,1,,,1,6500.0,x64,Intel,1800.0,Core i7-8550U,4.0
 28,desk,524288000.0,Samsung 860 EVO,5400,ssd,home,male,Nvidia,GeForce RTX,GDDR6,8388608.0,2070,gaming,16777216.0,2666,DDR4,2,,Gigabyte Z390 UD,4,7200.0,x64,Intel,3600.0,Core i7-9700K,8.0
 28,desk,251658240.0,SanDisk SSD Plus,5400,ssd,home,female,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,Asus Prime H310M-K,4,2400.0,x64,Intel,2800.0,Core i5-8400,6.0
@@ -64,7 +64,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 27,desk,251658240.0,SanDisk SSD Plus,7200,ssd,computers,male,Nvidia,GeForce GTX,DDR5,2097152.0,1050,gaming,16777216.0,2666,DDR4,2,,Asus Prime H310M-K,4,3200.0,x64,Intel,2900.0,Core i5-9400F,6.0
 27,desk,251658240.0,SanDisk SSD Plus,7201,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608.0,2666,DDR4,2,,Asus Prime H310M-A,4,1900.0,x64,Intel,3600.0,Core i3-8100,4.0
 25,desk,503316480.0,,7200,ssd,home,male,Nvidia,GEFORCE GTX,DDR5,4194304.0,1050,personal use,8388608.0,1600,DDR3,2,,BIOSTAR H81,4,3500.0,x64,Intel,3900.0,Core i7-4770,4.0
-24,desk,251658240.0,Pioneer SL2 APS,5400,ssd,computers,female,Intel,UHD Graphics,,,630,programming,8388608.0,2140,DDR4,2,,BIOSTAR B360GT5S,4,2000.0,x64,INTEL,3700.0,DUAL CORE G5400,2.0
+24,desk,251658240.0,Pioneer SL2 APS,5400,ssd,computers,female,Intel,UHD Graphics,,,630,programming,8388608.0,2140,DDR4,2,,BIOSTAR B360GT5S,4,2000.0,x64,Intel,3700.0,Pentium Gold G5400,2.0
 23,desk,1073741824.0,Seagate Barracuda,7200,hdd,computers,male,Intel,UHD Graphics,,,630,programming,4194304.0,2400,DDR4,2,,BIOSTAR H81,4,1700.0,x64,Intel,3400.0,Core i3-7100T,2.0
 24,desk,536870912.0,Transcend SSD230S,5400,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216.0,2666,DDR4,2,,BIOSTAR B360GT5S,4,8300.0,x64,Intel,3200.0,Core i7-8700,6.0
 27,laptop,268435456.0,,5400,ssd,computers,male,AMD,Radeon,,2097152.0,530,programming,8388608.0,3000,DDR4,1,,,1,2700.0,x64,Intel,2500.0,Core i5-8250U,4.0
