@@ -141,7 +141,6 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 20,desk,,,7200,ssd,computers,male,,,,,,programming,,2400,DDR4,1,,,1,,x64,,,,
 24,laptop,,,5400,ssd,computers,male,,,,,,personal use,,2133,DDR4,1,,,1,,x64,,,,
 30,laptop,,,5400,ssd,computers,male,,,,,,programming,,2400,DDR4,1,,,1,,x64,,,,
-22,laptop,,,7200,ssd,computers,female,,,,,,programming,,2400,DDR4,1,,,1,,x64,,,,
 24,laptop,,,7200,ssd,home,female,,,,,,personal use,,2400,DDR4,1,,,1,,x64,,,,
 27,desk,,,5400,ssd,computers,female,,,,,,programming,,2400,DDR4,1,,,1,,x64,,,,
 26,laptop,,,7200,ssd,computers,male,,,,,,gaming,,3000,DDR4,1,,,1,,x64,,,,

@@ -60,5 +60,6 @@ if __name__ == '__main__':
     df = extract_gpu_features(df)
 
     df = df.reindex(sorted(df.columns), axis=1)
+    df.drop_duplicates(inplace=True)
 
     save_data(df, arguments['<output>'])
