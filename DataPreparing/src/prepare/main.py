@@ -8,6 +8,7 @@ from docopt import docopt
 
 import pandas as pd
 
+from src.prepare.expand import expand_df_with_similar_processors_from_cpubenchmark
 from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     convert_disk_capacity_to_byte, \
     convert_memory_capacity_to_byte, \
@@ -53,6 +54,7 @@ if __name__ == '__main__':
     df = convert_processor_ghz_to_mhz(df)
     df = remove_unwanted_chars_in_processor_name(df)
     df = rename_processor_name_to_match_cpubenchmark(df)
+    df = expand_df_with_similar_processors_from_cpubenchmark(df)
     df = extract_processor_features(df)
     
     # GPU
