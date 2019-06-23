@@ -41,17 +41,23 @@ if __name__ == '__main__':
 
     df.columns = [n.lower() for n in df.columns]
 
-
+    # Memory
     df = extract_ddr_from_gpu_processor(df)
-    df = convert_disk_capacity_to_byte(df)
     df = convert_memory_capacity_to_byte(df)
+    
+    # Disk
+    df = convert_disk_capacity_to_byte(df)
+    df = fix_disk_type(df)
+    
+    # Processor
     df = convert_processor_ghz_to_mhz(df)
     df = remove_unwanted_chars_in_processor_name(df)
     df = rename_processor_name_to_match_cpubenchmark(df)
     df = extract_processor_features(df)
+    
+    # GPU
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
-    df = fix_disk_type(df)
 
     df = df.reindex(sorted(df.columns), axis=1)
 
