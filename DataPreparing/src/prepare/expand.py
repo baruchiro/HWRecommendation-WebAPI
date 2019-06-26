@@ -31,3 +31,9 @@ def expand_df_with_similar_processors_from_cpubenchmark(df: pd.DataFrame) -> pd.
     up_processors = df.replace({'processor_name': up_replacements})
     down_processors = df.replace({'processor_name': down_replacements})
     return df.append(up_processors, ignore_index=True).append(down_processors, ignore_index=True)
+
+
+def expand_df_with_ssd_for_gamers_programmers(df: pd.DataFrame) -> pd.DataFrame:
+    hdd_users = df[(df.disk_type == 'hdd') & ((df.mainuse == 'programming') | (df.mainuse == 'gaming'))]
+    hdd_users.loc[hdd_users['disk_type'] == 'hdd', 'disk_type'] = 'ssd'
+    return df.append(hdd_users, ignore_index=True)
