@@ -8,7 +8,8 @@ from docopt import docopt
 
 import pandas as pd
 
-from src.prepare.expand import expand_df_with_similar_processors_from_cpubenchmark
+from src.prepare.expand import expand_df_with_similar_processors_from_cpubenchmark, \
+    expand_df_with_ssd_for_gamers_programmers
 from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     convert_disk_capacity_to_byte, \
     convert_memory_capacity_to_byte, \
@@ -49,6 +50,7 @@ if __name__ == '__main__':
     # Disk
     df = convert_disk_capacity_to_byte(df)
     df = fix_disk_type(df)
+    df = expand_df_with_ssd_for_gamers_programmers(df)
     
     # Processor
     df = convert_processor_ghz_to_mhz(df)
