@@ -13,5 +13,5 @@ action ".NET Core CLI" {
 
 action "Run python" {
   uses = "./.github/python/"
-  args = "src/prepare/main.py data/fake-data-orig.csv data/fake-data-temp.csv"
+  args = "src/test/main.py"
 }
