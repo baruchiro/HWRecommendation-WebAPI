@@ -1,9 +1,9 @@
 workflow "Build and Test in PR" {
-  on = "push"
   resolves = [
     "Run python",
     ".NET Core CLI",
   ]
+  on = "pull_request"
 }
 
 action ".NET Core CLI" {
