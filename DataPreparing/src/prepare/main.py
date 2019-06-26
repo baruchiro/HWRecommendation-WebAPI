@@ -37,33 +37,34 @@ def save_data(df_to_save: pd.DataFrame, output_path: str):
     df_to_save.to_csv(output_path, index=False)
 
 
-if __name__ == '__main__':
-    arguments = parse_arguments()
-    df = read_data(arguments['<input>'])
-
+def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = [n.lower() for n in df.columns]
-
     # Memory
     df = extract_ddr_from_gpu_processor(df)
     df = convert_memory_capacity_to_byte(df)
-    
     # Disk
     df = convert_disk_capacity_to_byte(df)
     df = fix_disk_type(df)
     df = expand_df_with_ssd_for_gamers_programmers(df)
-    
     # Processor
     df = convert_processor_ghz_to_mhz(df)
     df = remove_unwanted_chars_in_processor_name(df)
     df = rename_processor_name_to_match_cpubenchmark(df)
     df = expand_df_with_similar_processors_from_cpubenchmark(df)
     df = extract_processor_features(df)
-    
     # GPU
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
-
     df = df.reindex(sorted(df.columns), axis=1)
     df.drop_duplicates(inplace=True)
 
-    save_data(df, arguments['<output>'])
+    return df
+
+
+if __name__ == '__main__':
+    arguments = parse_arguments()
+    input_df = read_data(arguments['<input>'])
+
+    output = transpose_data(input_df)
+
+    save_data(output, arguments['<output>'])
