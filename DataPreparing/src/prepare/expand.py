@@ -1,6 +1,7 @@
 import pandas as pd
 
 from src.cpu.cpu_rank_scraper import get_processors
+from src.decorators.pandas_config import disable_chained_assignment
 
 
 def __build_processor_up_replacement_dict(unique_processor_names: pd.Series,
@@ -33,7 +34,8 @@ def expand_df_with_similar_processors_from_cpubenchmark(df: pd.DataFrame) -> pd.
     return df.append(up_processors, ignore_index=True).append(down_processors, ignore_index=True)
 
 
+@disable_chained_assignment
 def expand_df_with_ssd_for_gamers_programmers(df: pd.DataFrame) -> pd.DataFrame:
     hdd_users = df[(df.disk_type == 'hdd') & ((df.mainuse == 'programming') | (df.mainuse == 'gaming'))]
-    hdd_users.loc[hdd_users['disk_type'] == 'hdd', 'disk_type'] = 'ssd'
+    hdd_users['disk_type'] = 'ssd'
     return df.append(hdd_users, ignore_index=True)
