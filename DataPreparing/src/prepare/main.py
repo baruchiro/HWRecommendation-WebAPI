@@ -40,8 +40,9 @@ def save_data(df_to_save: pd.DataFrame, output_path: str):
 def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = [n.lower() for n in df.columns]
     
+    df.drop(['motherboard_name', 'motherboard_sataconnections', 'processor_architecture'], axis=1, inplace=True)
     df = drop_rows_with_nan_by_columns(df, 'processor_name')
-    
+
     # Memory
     df = extract_ddr_from_gpu_processor(df)
     df = convert_memory_capacity_to_byte(df)
@@ -67,7 +68,6 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     # Price
     df = expand_prices_by_fieldinterest_mainuse(df)
 
-    df.drop(['motherboard_name', 'motherboard_sataconnections'], axis=1, inplace=True)
     df.drop_duplicates(inplace=True)
     df.reset_index(inplace=True, drop=True)
     
