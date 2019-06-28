@@ -69,7 +69,7 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
 
     df.drop(['motherboard_name', 'motherboard_sataconnections'], axis=1, inplace=True)
     df.drop_duplicates(inplace=True)
-    df.reset_index(inplace=True)
+    df.reset_index(inplace=True, drop=True)
     
     return df
 
