@@ -9,7 +9,7 @@ from docopt import docopt
 import pandas as pd
 
 from src.prepare.expand import expand_df_with_similar_processors_from_cpubenchmark, \
-    expand_df_with_ssd_for_gamers_programmers
+    expand_df_with_ssd_for_gamers_programmers, expand_prices_by_fieldinterest_mainuse
 from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     convert_disk_capacity_to_byte, \
     convert_memory_capacity_to_byte, \
@@ -63,6 +63,9 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
     df = df.reindex(sorted(df.columns), axis=1)
+
+    # Price
+    df = expand_prices_by_fieldinterest_mainuse(df)
 
     df.drop(['motherboard_name', 'motherboard_sataconnections'], axis=1, inplace=True)
     df.drop_duplicates(inplace=True)
