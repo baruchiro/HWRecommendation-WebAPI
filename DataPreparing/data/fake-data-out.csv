@@ -57,7 +57,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304,3000,DDR3,1,,2800.0,Intel,2700.0,Core i3-8130U,2.0
 40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608,3000,DDR4,1,,5700.0,Intel,3000.0,Core i7-8565U,4.0
 37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608,3000,DDR4,1,,4200.0,Intel,2300.0,Core i5-8265U,4.0
-27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR6,2,,6400.0,Intel,3500.0,Core i7-8750H,6.0
+27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR4,2,,6400.0,Intel,3500.0,Core i7-8750H,6.0
 29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304,2666,DDR4,1,,2500.0,Intel,2500.0,Core i5-8250U,4.0
 28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608,1600,DDR4,2,,3000.0,Intel,2800.0,Core i5-8400,6.0
 27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216,2933,DDR4,2,,4700.0,Intel,3600.0,Core i9-9900K,8.0
@@ -198,7 +198,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304,3000,DDR3,1,,2800.0,AMD,2700.0,Athlon X4 840,2.0
 40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608,3000,DDR4,1,,5700.0,Intel,3000.0,Core i3-9100F,4.0
 37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608,3000,DDR4,1,,4200.0,AMD,2300.0,,4.0
-27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR6,2,,6400.0,Intel,3500.0,Xeon E5-2680,6.0
+27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR4,2,,6400.0,Intel,3500.0,Xeon E5-2680,6.0
 29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304,2666,DDR4,1,,2500.0,Intel,2500.0,Xeon E3-1235,4.0
 28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608,1600,DDR4,2,,3000.0,Intel,2800.0,Xeon Silver 4110,6.0
 27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216,2933,DDR4,2,,4700.0,Intel,3600.0,Xeon E5-2695,8.0
@@ -339,7 +339,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304,3000,DDR3,1,,2800.0,AMD,2700.0,Phenom II X6 1405T,2.0
 40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608,3000,DDR4,1,,5700.0,Intel,3000.0,Xeon E5-2430,4.0
 37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608,3000,DDR4,1,,4200.0,Intel,2300.0,Xeon E3-1245,4.0
-27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR6,2,,6400.0,Intel,3500.0,Core i7-8559U,6.0
+27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR4,2,,6400.0,Intel,3500.0,Core i7-8559U,6.0
 29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304,2666,DDR4,1,,2500.0,AMD,2500.0, PRO 3700U,4.0
 28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608,1600,DDR4,2,,3000.0,Intel,2800.0,Xeon E5-2665,6.0
 27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216,2933,DDR4,2,,4700.0,AMD,3600.0,Ryzen 5 3600,8.0
@@ -479,7 +479,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304,3000,DDR3,1,,3800.0,Intel,2700.0,Core i3-8130U,2.0
 40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608,3000,DDR4,1,,5500.0,Intel,3000.0,Core i7-8565U,4.0
 37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608,3000,DDR4,1,,6200.0,Intel,2300.0,Core i5-8265U,4.0
-27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR6,2,,8400.0,Intel,3500.0,Core i7-8750H,6.0
+27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR4,2,,8400.0,Intel,3500.0,Core i7-8750H,6.0
 29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304,2666,DDR4,1,,4500.0,Intel,2500.0,Core i5-8250U,4.0
 28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608,1600,DDR4,2,,5000.0,Intel,2800.0,Core i5-8400,6.0
 27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216,2933,DDR4,2,,5200.0,Intel,3600.0,Core i9-9900K,8.0
@@ -619,7 +619,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304,3000,DDR3,1,,3800.0,AMD,2700.0,Athlon X4 840,2.0
 40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608,3000,DDR4,1,,5500.0,Intel,3000.0,Core i3-9100F,4.0
 37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608,3000,DDR4,1,,6200.0,AMD,2300.0,,4.0
-27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR6,2,,8400.0,Intel,3500.0,Xeon E5-2680,6.0
+27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR4,2,,8400.0,Intel,3500.0,Xeon E5-2680,6.0
 29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304,2666,DDR4,1,,4500.0,Intel,2500.0,Xeon E3-1235,4.0
 28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608,1600,DDR4,2,,5000.0,Intel,2800.0,Xeon Silver 4110,6.0
 27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216,2933,DDR4,2,,5200.0,Intel,3600.0,Xeon E5-2695,8.0
@@ -759,7 +759,7 @@ age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest
 34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304,3000,DDR3,1,,3800.0,AMD,2700.0,Phenom II X6 1405T,2.0
 40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608,3000,DDR4,1,,5500.0,Intel,3000.0,Xeon E5-2430,4.0
 37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608,3000,DDR4,1,,6200.0,Intel,2300.0,Xeon E3-1245,4.0
-27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR6,2,,8400.0,Intel,3500.0,Core i7-8559U,6.0
+27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216,2666,DDR4,2,,8400.0,Intel,3500.0,Core i7-8559U,6.0
 29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304,2666,DDR4,1,,4500.0,AMD,2500.0, PRO 3700U,4.0
 28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608,1600,DDR4,2,,5000.0,Intel,2800.0,Xeon E5-2665,6.0
 27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216,2933,DDR4,2,,5200.0,AMD,3600.0,Ryzen 5 3600,8.0
