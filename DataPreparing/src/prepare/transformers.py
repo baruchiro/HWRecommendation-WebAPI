@@ -106,7 +106,16 @@ def rename_processor_name_to_match_cpubenchmark(df: pd.DataFrame) -> pd.DataFram
         'Intel Core i5-8250U Quad Core': 'Intel Core i5-8250U @ 1.60GHz',
         'Intel Core i3-7020U Dual Core': 'Intel Core i3-7020U @ 2.30GHz',
         'AMD Athlon 240GE 3.5Ghz Radeon Vega 3 - AR8': 'AMD Athlon 240GE',
-        'Intel Core i9-9900K 3.6GHz':'Intel Core i9-9900K @ 3.60GHz'
+        'Intel Core i9-9900K 3.6GHz': 'Intel Core i9-9900K @ 3.60GHz'
     }
     df['processor_name'].replace(processor_replace_names, inplace=True)
     return df
+
+
+def minus_rpm_for_ssd(df: pd.DataFrame) -> pd.DataFrame:
+    df.loc[df['disk_type'] == 'ssd', 'disk_rpm'] = -1
+    return df
+
+
+def drop_rows_with_nan_by_columns(df: pd.DataFrame, *args) -> pd.DataFrame:
+    return df.dropna(subset=args).reset_index(drop=True)

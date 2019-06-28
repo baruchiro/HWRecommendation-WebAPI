@@ -5,7 +5,7 @@ from src.decorators.pandas_config import disable_chained_assignment
 
 
 def __build_processor_replacement_dict(unique_processor_names: pd.Series,
-                                          all_processors_sorted: pd.DataFrame, up: bool) -> dict:
+                                       all_processors_sorted: pd.DataFrame, up: bool) -> dict:
     result = {}
     for p in unique_processor_names:
         rank = all_processors_sorted[all_processors_sorted.processor_name.str.contains(p)].iloc[0]['rank']
@@ -37,3 +37,37 @@ def expand_df_with_ssd_for_gamers_programmers(df: pd.DataFrame) -> pd.DataFrame:
     hdd_users = df[(df.disk_type == 'hdd') & ((df.mainuse == 'programming') | (df.mainuse == 'gaming'))]
     hdd_users['disk_type'] = 'ssd'
     return df.append(hdd_users, ignore_index=True)
+
+
+def __add_price_by_fieldinterest_mainuse(row: pd.Series):
+    fieldinterest_update_dict = {
+        'computers': 1000,
+        'home': -500,
+        'office': 500
+    }
+    mainuse_update_dict = {
+        'programming': 1000,
+        'personal use': 300,
+        'gaming': 1000,
+        'work': 500
+    }
+    row['price'] = row['price'] + \
+                   fieldinterest_update_dict[row['fieldinterest']] + \
+                   mainuse_update_dict[row['mainuse']]
+    return row
+
+
+def expand_prices_by_fieldinterest_mainuse(df: pd.DataFrame) -> pd.DataFrame:
+    added = df.apply(__add_price_by_fieldinterest_mainuse, axis=1)
+    return df.append(added)
+
+
+def expand_ddrsocket_by_computertype(df: pd.DataFrame) -> pd.DataFrame:
+    desktops = df.loc[df['computertype'] == 'desk']
+    desktops.loc[:, 'motherboard_ddrsockets'] = 4
+
+    ddr3 = df.loc[df['memory_type'].str.contains('DDR3') & (df['computertype'] == 'laptop')]
+    ddr3.loc[:, 'motherboard_ddrsockets'] = 2
+
+    return df.append(desktops).append(ddr3)
+
