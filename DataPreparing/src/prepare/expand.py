@@ -60,3 +60,14 @@ def __add_price_by_fieldinterest_mainuse(row: pd.Series):
 def expand_prices_by_fieldinterest_mainuse(df: pd.DataFrame) -> pd.DataFrame:
     added = df.apply(__add_price_by_fieldinterest_mainuse, axis=1)
     return df.append(added)
+
+
+def expand_ddrsocket_by_computertype(df: pd.DataFrame) -> pd.DataFrame:
+    desktops = df.loc[df['computertype'] == 'desk']
+    desktops.loc[:, 'motherboard_ddrsockets'] = 4
+
+    ddr3 = df.loc[df['memory_type'].str.contains('DDR3') & (df['computertype'] == 'laptop')]
+    ddr3.loc[:, 'motherboard_ddrsockets'] = 2
+
+    return df.append(desktops).append(ddr3)
+
