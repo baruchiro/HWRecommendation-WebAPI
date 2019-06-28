@@ -19,7 +19,7 @@ from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     remove_unwanted_chars_in_gpu_name, \
     extract_gpu_features, \
     fix_disk_type, \
-    rename_processor_name_to_match_cpubenchmark
+    rename_processor_name_to_match_cpubenchmark, minus_rpm_for_ssd
 
 
 def parse_arguments() -> dict:
@@ -37,6 +37,7 @@ def save_data(df_to_save: pd.DataFrame, output_path: str):
     df_to_save.to_csv(output_path, index=False)
 
 
+
 def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = [n.lower() for n in df.columns]
     # Memory
@@ -45,7 +46,9 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     # Disk
     df = convert_disk_capacity_to_byte(df)
     df = fix_disk_type(df)
+    df = minus_rpm_for_ssd(df)
     df = expand_df_with_ssd_for_gamers_programmers(df)
+
     # Processor
     df = convert_processor_ghz_to_mhz(df)
     df = remove_unwanted_chars_in_processor_name(df)
