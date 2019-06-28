@@ -58,7 +58,7 @@ class TestStringMethods(unittest.TestCase):
         assert_correlation_fields_count(correlation=9, rows=1, fields=[('motherboard_ddrsockets', 'computertype')])
         assert_correlation_fields_count(correlation=8, rows=1, fields=[('disk_model', 'computertype')])
         assert_correlation_fields_count(correlation=7, rows=5, fields=[])
-        assert_correlation_fields_count(correlation=0, rows=145, fields=[])
+        assert_correlation_fields_count(correlation=0, rows=142, fields=[])
 
 
 if __name__ == '__main__':
