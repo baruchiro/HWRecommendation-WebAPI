@@ -118,4 +118,4 @@ def minus_rpm_for_ssd(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def drop_rows_with_nan_by_columns(df: pd.DataFrame, *args) -> pd.DataFrame:
-    return df.dropna(subset=args).reset_index()
+    return df.dropna(subset=args).reset_index(drop=True)
