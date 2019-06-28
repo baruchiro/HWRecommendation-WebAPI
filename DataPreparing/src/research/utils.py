@@ -9,3 +9,7 @@ def get_correlation_matrix(df: pd.DataFrame) -> pd.DataFrame:
         df[column] = pd.factorize(df[column])[0]
 
     return df.corr()
+
+
+def correlation_matrix_to_sorted_pairs(corr: pd.DataFrame):
+    return corr.abs().stack().reset_index().sort_values([0])

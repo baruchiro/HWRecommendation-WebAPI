@@ -56,6 +56,8 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
     df = df.reindex(sorted(df.columns), axis=1)
+
+    df.drop(['motherboard_name', 'motherboard_sataconnections'], axis=1, inplace=True)
     df.drop_duplicates(inplace=True)
 
     return df
