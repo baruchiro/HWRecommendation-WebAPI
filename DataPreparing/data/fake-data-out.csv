@@ -1,447 +1,423 @@
-age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest,gender,gpu_manufacturer,gpu_model,gpu_processor_ddr,gpu_processor_ddr_capacity,gpu_version,mainuse,memory_capacity_as_kb,memory_mhz,memory_type,motherboard_ddrsockets,motherboard_maxram,price,processor_architecture,processor_manufacturer,processor_mhz,processor_model,processor_numofcores
-29,laptop,524288000.0,ST500LM000-SSHD-8GB,5400,hdd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,programming,8388608.0,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i7-6500U,4.0
-25,desk,251658240.0,Kingston® A1000,-1,ssd,home,male,Nvidia,GTX,DDR5,6291456.0,1060,personal use,16777216.0,3000,DDR4,2,,3600.0,x64,Intel,4000.0,Core i5-8400,6.0
-23,desk,1073741824.0,Western Digital Blue,7200,hdd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Core i5-9400F,6.0
-24,desk,1073741824.0,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,programming,16777216.0,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Core i5-8400,6.0
-25,laptop,268435456.0,,-1,ssd,office,female,Intel,,,,620,work,8388608.0,3000,DDR4,1,,3200.0,x64,Intel,2200.0,Core i5-8265U,4.0
-26,laptop,1073741824.0,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,work,8388608.0,2666,DDR4,1,,3700.0,x64,Intel,3700.0,Core i3-6006U,2.0
-27,laptop,2147483648.0,,5400,hdd,home,male,AMD,Radeon,,4194304.0,530,gaming,33554432.0,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-8550U,4.0
-28,desk,524288000.0,Samsung 860 EVO,-1,ssd,home,male,Nvidia,GeForce RTX,GDDR6,8388608.0,2070,gaming,16777216.0,2666,DDR4,2,,7200.0,x64,Intel,3600.0,Core i7-9700K,8.0
-28,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,female,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2400.0,x64,Intel,2800.0,Core i5-8400,6.0
-27,laptop,524288000.0,,-1,ssd,home,female,Intel,HD Graphics,,,520,personal use,4194304.0,1600,DDR4,1,,1600.0,x64,Intel,2000.0,Core i3-6006U,2.0
-29,laptop,524288000.0,,-1,ssd,home,male,Intel,HD Graphics,,,521,personal use,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,2000.0,Core i3-6006U,2.0
-26,laptop,268435456.0,,-1,ssd,home,male,Nvidia,GeForce MX,DDR3,2097152.0,110,personal use,8388608.0,2666,DDR4,1,,2950.0,x64,Intel,1600.0,Core i5-8250U,4.0
-34,laptop,524288000.0,,5400,hdd,home,male,Intel,HD Graphics,,,520,personal use,8388608.0,1600,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-6006U,2.0
-32,laptop,268435456.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,1600,DDR4,1,,5000.0,x64,Intel,2300.0,Core i5-8300H,4.0
-30,laptop,536870912.0,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR6,4194304.0,150,personal use,16777216.0,3000,DDR4,1,,5050.0,x64,Intel,1800.0,Core i7-8550U,4.0
-29,laptop,1073741824.0,,7200,hdd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8750H,6.0
-26,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,gaming,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Core i5-8250U,4.0
-25,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i3-7020U,2.0
-28,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,personal use,4194304.0,3000,LPDDR4,1,,1600.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
-27,laptop,524288000.0,,5400,hdd,home,male,Intel,HD Graphics,,,520,personal use,4194304.0,2666,DDR4,1,,1750.0,x64,Intel,2000.0,Core i3-6006U,2.0
-27,laptop,268435456.0,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,programming,8388608.0,3000,DDR4,1,,2800.0,x64,Intel,2500.0,Core i5-8250U,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR6,8388608.0,1070,gaming,33554432.0,3000,DDR4,1,,10500.0,x64,Intel,4100.0,Core i7-8750H,6.0
-25,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2666,DDR4,1,,3200.0,x64,Intel,2200.0,Core i3-8130U,2.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,programming,8388608.0,3000,DDR4,1,,4400.0,x64,Intel,2200.0,Core i7-8750H,6.0
-23,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2800.0,x64,Intel,3200.0,Core i7-8700,6.0
-24,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
-27,laptop,268435456.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,4194304.0,3000,DDR4,1,,3100.0,x64,Intel,1600.0,Core i5-8250U,4.0
-29,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2950.0,x64,Intel,2200.0,Core i3-8130U,2.0
-30,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i3-7020U,2.0
-32,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,male,AMD,Radeon,GDDR3,2097152.0,230,personal use,4194304.0,2666,DDR4,2,,2200.0,x64,Intel,2900.0,Core i5-9400F,6.0
-33,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,male,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8100,4.0
-20,desk,1073741824.0,Western Digital Blue,7200,hdd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Core i5-9400F,6.0
-24,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,631,programming,16777216.0,3000,DDR4,2,,3300.0,x64,Intel,3000.0,Core i5-8500,6.0
-30,desk,1073741824.0,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,programming,4194304.0,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8100,4.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,HD graphics,,,520,programming,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,2300.0,Core i3-7020U,2.0
-24,laptop,268435456.0,,-1,ssd,home,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,2800.0,x64,Intel,2500.0,Core i5-8250U,4.0
-27,laptop,1073741824.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5X,8388608.0,1080,gaming,33554432.0,3000,DDR4,1,,14600.0,x64,Intel,2200.0,Core i7-8750H,6.0
-26,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,programming,4194304.0,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
-25,laptop,536870912.0,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,4194304.0,150,programming,8388608.0,3000,DDR4,1,,3700.0,x64,Intel,1800.0,Core i7-8550U,4.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,programming,4194304.0,2666,DDR4,1,,1800.0,x64,Intel,2300.0,Core i3-7020U,2.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,2097152.0,1050,programming,8388608.0,2666,DDR4,1,,5000.0,x64,Intel,2500.0,Core i5-8250U,4.0
-35,laptop,134217728.0,,-1,ssd,home,male,Intel,UHD Graphics,,,610,personal use,4194304.0,3000,DDR4,1,,2100.0,x64,Intel,2300.0,Pentium 4415U,2.0
-21,laptop,268435456.0,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,3000,DDR4,1,,3800.0,x64,Intel,2500.0,Core i5-8250U,4.0
-21,laptop,134217728.0,,-1,ssd,home,male,Intel,HD Graphics,,,605,personal use,4194304.0,3000,DDR4,1,,1900.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
-23,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2666,DDR4,1,,3300.0,x64,Intel,2000.0,Core i5-8250U,4.0
-22,laptop,536870912.0,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,work,8388608.0,2666,DDR4,1,,5400.0,x64,Intel,2500.0,Core i5-8250U,4.0
-25,laptop,524288000.0,,7200,hdd,office,male,Intel,HD Graphics,,,520,work,4194304.0,3000,DDR4,1,,1700.0,x64,Intel,2000.0,Core i3-6006U,2.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,HD Graphics,,,620,work,8388608.0,3000,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
-30,laptop,268435456.0,,-1,ssd,computers,male,Nvidia,GeForce MX,GDDR5,2097152.0,110,programming,8388608.0,3000,DDR4,1,,3150.0,x64,Intel,2300.0,Core i5-8250U,4.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,HD Graphics,,,620,programming,8388608.0,2666,DDR3,1,,3000.0,x64,Intel,2500.0,Core i3-8145U,2.0
-33,laptop,2147483648.0,,5400,hdd,computers,female,Intel,HD Graphics,,,620,personal use,8388608.0,2666,DDR4,1,,3500.0,x64,Intel,2200.0,Core i5-8265U,4.0
-31,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
-33,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,520,personal use,4194304.0,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
-32,laptop,536870912.0,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,work,16777216.0,3000,DDR4,1,,7000.0,x64,Intel,3000.0,Core i7-8565U,4.0
-30,laptop,268435456.0,,-1,ssd,office,male,Intel,HD Graphics,,,620,work,8388608.0,3000,DDR3,1,,3700.0,x64,Intel,2300.0,Core i5-8265U,4.0
-34,laptop,268435456.0,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304.0,3000,DDR3,1,,2800.0,x64,Intel,2700.0,Core i3-8130U,2.0
-40,laptop,536870912.0,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608.0,3000,DDR4,1,,5700.0,x64,Intel,3000.0,Core i7-8565U,4.0
-37,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608.0,3000,DDR4,1,,4200.0,x64,Intel,2300.0,Core i5-8265U,4.0
-27,laptop,1073741824.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216.0,2666,DDR6,2,,6400.0,x64,Intel,3500.0,Core i7-8750H,6.0
-29,laptop,134217728.0,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304.0,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
-28,desk,1073741824.0,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608.0,1600,DDR4,2,,3000.0,x64,Intel,2800.0,Core i5-8400,6.0
-27,desk,524288000.0,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216.0,2933,DDR4,2,,4700.0,x64,Intel,3600.0,Core i9-9900K,8.0
-27,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Nvidia,GeForce GTX,DDR5,2097152.0,1050,gaming,16777216.0,2666,DDR4,2,,3200.0,x64,Intel,2900.0,Core i5-9400F,6.0
-27,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608.0,2666,DDR4,2,,1900.0,x64,Intel,3600.0,Core i3-8100,4.0
-25,desk,503316480.0,,-1,ssd,home,male,Nvidia,GEFORCE GTX,DDR5,4194304.0,1050,personal use,8388608.0,1600,DDR3,2,,3500.0,x64,Intel,3900.0,Core i7-4770,4.0
-24,desk,251658240.0,Pioneer SL2 APS,-1,ssd,computers,female,Intel,UHD Graphics,,,630,programming,8388608.0,2140,DDR4,2,,2000.0,x64,Intel,3700.0,Pentium Gold G5400,2.0
-23,desk,1073741824.0,Seagate Barracuda,7200,hdd,computers,male,Intel,UHD Graphics,,,630,programming,4194304.0,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Core i3-7100T,2.0
-24,desk,536870912.0,Transcend SSD230S,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216.0,2666,DDR4,2,,8300.0,x64,Intel,3200.0,Core i7-8700,6.0
-27,laptop,268435456.0,,-1,ssd,computers,male,AMD,Radeon,,2097152.0,530,programming,8388608.0,3000,DDR4,1,,2700.0,x64,Intel,2500.0,Core i5-8250U,4.0
-29,desk,251658240.0,Kingston UV500 M.2,-1,ssd,computers,male,AMD,Radeon Vega,,,,personal use,16777216.0,2933,DDR4,2,,2800.0,x64,AMD,3500.0,Athlon 240GE,2.0
-30,laptop,524288000.0,,5400,hdd,computers,male,Intel,HD Graphics,,,520,personal use,8388608.0,2133,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-6006U,2.0
-32,laptop,536870912.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,33554432.0,2666,DDR4,2,,7000.0,x64,Intel,3200.0,Core i7-8750H,4.0
-33,laptop,268435456.0,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,520,programming,8388608.0,2666,DDR4,1,,2600.0,x64,Intel,2300.0,Core i5-8265U,4.0
-20,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,2700.0,x64,Intel,2200.0,Core i3-8130U,2.0
-24,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR6,2097152.0,150,programming,8388608.0,2133,DDR4,1,,2800.0,x64,Intel,2500.0,Core i5-8250U,4.0
-30,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,3400.0,x64,Intel,2300.0,Core i5-8265U,4.0
-22,laptop,536870912.0,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,535,personal use,8388608.0,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Core i5-8250U,4.0
-24,laptop,536870912.0,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,535,programming,8388608.0,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Core i5-8250U,4.0
-27,laptop,268435456.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,1866,LPDDR3,1,,4000.0,x64,Intel,2300.0,Core i5-8265U,4.0
-26,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,programming,8388608.0,2133,DDR4,1,,3400.0,x64,Intel,1800.0,Core i7-8550U,4.0
-25,laptop,536870912.0,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,535,programming,8388608.0,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,LPDDR3,1,,4100.0,x64,Intel,2300.0,Core i5-8265U,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,personal use,8388608.0,1866,LPDDR3,1,,4300.0,x64,Intel,2300.0,Core i5-8265U,4.0
-35,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,LPDDR3,1,,5000.0,x64,Intel,2300.0,Core i5-8265U,4.0
-21,laptop,536870912.0,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,work,8388608.0,2400,DDR4,1,,4400.0,x64,Intel,3100.0,Core i7-8750H,6.0
-21,laptop,536870912.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,16777216.0,2666,DDR4,2,,5700.0,x64,Intel,3100.0,Core i7-8750H,6.0
-23,laptop,67108864.0,,5400,emmc,office,male,Intel,UHD Graphics,,,600,work,2097152.0,2133,LPDDR4,1,,1250.0,x64,Intel,2500.0,Celeron N4000,2.0
-22,laptop,1073741824.0,,5400,hdd,office,male,Intel,HD Graphics,,,620,work,4194304.0,2666,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
-25,laptop,1073741824.0,,7200,hdd,office,male,Intel,HD Graphics,,,620,programming,4194304.0,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i3-7020U,2.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
-30,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
-22,laptop,1073741824.0,,5400,hdd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
-33,desk,251658240.0,Kingston A400,-1,ssd,computers,male,intel,HD Graphics,,,630,personal use,8388608.0,2400,DDR4,2,,2700.0,x64,Intel,3600.0,Core i3-8100,4.0
-31,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,work,8388608.0,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
-33,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,2650.0,x64,Intel,2500.0,Core i5-8250U,4.0
-32,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,2800.0,x64,Intel,2200.0,Core i3-8130U,2.0
-30,laptop,536870912.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,DDR4,1,,3000.0,x64,Intel,3000.0,Core i7-8550U,4.0
-34,desk,1073741824.0,Western Digital Caviar Blue,5400,hdd,office,female,intel,HD Graphics,,,630,programming,8388608.0,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i5-9600K,6.0
-40,desk,536870912.0,Transcend SSD230S,-1,ssd,home,female,intel,HD Graphics,,,630,programming,16777216.0,2400,DDR4,2,,3800.0,x64,Intel,4900.0,Core i7-9700K,8.0
-37,desk,503316480.0,Kingston UV500 2.5,-1,ssd,computers,male,Asus,GTX,GDDR5,6291456.0,1060,gaming,8388608.0,3000,DDR4,2,,4450.0,x64,Intel,3700.0,Core i5-9600K,6.0
-27,desk,1073741824.0,Western Digital Caviar Blue,-1,ssd,office,female,intel,HD Graphics,,,630,work,8388608.0,2400,DDR4,2,,2300.0,x64,Intel,3600.0,Core i3-8100,4.0
-40,laptop,1073741824.0,,5400,hdd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
-37,laptop,1073741824.0,,-1,ssd,home,male,NVIDIA,GeForce RTX,GDDR6,8388608.0,2070,gaming,25165824.0,2666,DDR4,2,,13000.0,x64,Intel,3200.0,Core i7-8750H,4.0
-27,laptop,536870912.0,,-1,ssd,home,male,Intel,HD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
-29,laptop,536870912.0,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,540,programming,8388608.0,2400,DDR4,1,,3300.0,x64,Intel,1800.0,Core i7-8550U,4.0
-28,laptop,536870912.0,,-1,ssd,computers,female,NVIDIA,Geforce GTX,GDDR5,4194304.0,1050,personal use,8388608.0,2666,DDR4,1,,3700.0,x64,Intel,2300.0,Core i5-8300H,4.0
-27,laptop,536870912.0,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,540,personal use,8388608.0,2400,DDR4,1,,3900.0,x64,Intel,3000.0,Core i7-8565U,4.0
-27,desk,251658240.0,Kingston A400,-1,ssd,home,male,Asus,GT,GDDR5,1048576.0,710,programming,8388608.0,2400,DDR4,2,,2000.0,x64,AMD,3400.0,Ryzen 5 2600,6.0
-27,desk,1073741824.0,Western Digital Caviar Blue,5400,hdd,home,male,AMD,Radeon Vega,,,,programming,8388608.0,2400,DDR4,2,,1600.0,x64,AMD,3500.0,Ryzen 3 2200G,4.0
-25,desk,251658240.0,Kingston A400,-1,ssd,computers,male,ASUS,ROG STRIX-GTX,GDDR5,2097152.0,1050,gaming,8388608.0,2666,DDR4,2,,4450.0,x64,Intel,2900.0,Core i5-9400F,6.0
-24,desk,536870912.0,Transcend SSD230S,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,2,,3150.0,x64,Intel,3700.0,Core i5-9600K,6.0
-23,desk,536870912.0,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8100,4.0
-24,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,3800.0,x64,Intel,2500.0,Core i5-8250U,4.0
-27,laptop,268435456.0,,-1,ssd,home,female,Nvidia,GeForce,GDDR5,2097152.0,930,personal use,8388608.0,2666,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2666,DDR4,1,,2650.0,x64,Intel,2500.0,Core i5-8250U,4.0
-30,laptop,1073741824.0,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,8388608.0,1080,gaming,25165824.0,2666,DDR4,2,,12200.0,x64,Intel,3100.0,Core i7-8750H,6.0
-32,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,LPDDR3,1,,4000.0,x64,Intel,1800.0,Core i7-8550U,4.0
-33,laptop,524288000.0,,7200,hdd,office,male,Intel,UHD Graphics,,,620,work,4194304.0,2400,DDR4,1,,2300.0,x64,Intel,2500.0,Core i5-8250U,4.0
-20,laptop,268435456.0,,-1,ssd,office,male,Nvidia,GeForce MX,GDDR5,4194304.0,150,programming,8388608.0,2133,DDR4,1,,3600.0,x64,Intel,1800.0,Core i7-8550U,4.0
-24,laptop,536870912.0,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,programming,8388608.0,2400,DDR4,1,,5800.0,x64,Intel,2300.0,Core i5-8265U,4.0
-30,laptop,67108864.0,,7200,emmc,computers,female,intel,HD Graphics,,,,personal use,4194304.0,2400,LPDDR4,1,,1200.0,x64,Intel,2500.0,Celeron N4000,2.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2666,DDR4,1,,3400.0,x64,Intel,2200.0,Core i3-8130U,2.0
-24,laptop,536870912.0,,-1,ssd,computers,male,AMD,RADEON,GDDR5,2097152.0,535,personal use,8388608.0,2400,DDR4,1,,2900.0,x64,Intel,2500.0,Core i5-8250U,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,,x64,Intel,2200.0,Core i3-8130U,2.0
-26,desk,,,-1,ssd,computers,male,,,,,,work,,2400,DDR4,1,,,x64,,,,
-25,desk,,,-1,ssd,office,male,,,,,,work,,2133,DDR4,1,,,x64,,,,
-24,laptop,,,-1,ssd,home,female,,,,,,personal use,,1866,DDR4,1,,,x64,,,,
-27,laptop,,,-1,ssd,office,female,,,,,,programming,,2133,DDR4,1,,,x64,,,,
-35,laptop,,,-1,ssd,home,female,,,,,,programming,,2400,DDR4,1,,,x64,,,,
-21,laptop,,,-1,ssd,computers,male,,,,,,gaming,,2666,DDR4,1,,,x64,,,,
-21,desk,,,-1,ssd,office,female,,,,,,work,,2133,DDR4,1,,,x64,,,,
-23,desk,,,-1,ssd,computers,female,,,,,,gaming,,2666,DDR4,1,,,x64,,,,
-22,desk,,,-1,ssd,computers,male,,,,,,gaming,,2400,DDR4,1,,,x64,,,,
-25,desk,,,-1,ssd,computers,male,,,,,,programming,,2133,DDR4,1,,,x64,,,,
-29,laptop,,,-1,ssd,computers,male,,,,,,personal use,,2133,DDR4,1,,,x64,,,,
-30,laptop,,,-1,ssd,home,male,,,,,,personal use,,2400,DDR4,1,,,x64,,,,
-22,laptop,,,-1,ssd,computers,female,,,,,,programming,,2400,DDR4,1,,,x64,,,,
-33,desk,,,-1,ssd,computers,female,,,,,,gaming,,2666,DDR4,1,,,x64,,,,
-33,desk,,,-1,ssd,home,male,,,,,,personal use,,2400,DDR4,1,,,x64,,,,
-20,desk,,,-1,ssd,computers,male,,,,,,programming,,2400,DDR4,1,,,x64,,,,
-24,laptop,,,-1,ssd,computers,male,,,,,,personal use,,2133,DDR4,1,,,x64,,,,
-30,laptop,,,-1,ssd,computers,male,,,,,,programming,,2400,DDR4,1,,,x64,,,,
-24,laptop,,,-1,ssd,home,female,,,,,,personal use,,2400,DDR4,1,,,x64,,,,
-27,desk,,,-1,ssd,computers,female,,,,,,programming,,2400,DDR4,1,,,x64,,,,
-26,laptop,,,-1,ssd,computers,male,,,,,,gaming,,3000,DDR4,1,,,x64,,,,
-25,laptop,,,-1,ssd,computers,female,,,,,,programming,,2400,DDR4,1,,,x64,,,,
-24,laptop,,,-1,ssd,computers,male,,,,,,programming,,2400,DDR4,1,,,x64,,,,
-27,desk,,,-1,ssd,home,female,,,,,,personal use,,2400,DDR4,1,,,x64,,,,
-29,laptop,524288000.0,ST500LM000-SSHD-8GB,5400,ssd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,programming,8388608.0,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i7-6500U,4.0
-23,desk,1073741824.0,Western Digital Blue,7200,ssd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Core i5-9400F,6.0
-24,desk,1073741824.0,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,programming,16777216.0,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Core i5-8400,6.0
-27,laptop,2147483648.0,,5400,ssd,home,male,AMD,Radeon,,4194304.0,530,gaming,33554432.0,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-8550U,4.0
-29,laptop,1073741824.0,,7200,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8750H,6.0
-26,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,gaming,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Core i5-8250U,4.0
-25,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i3-7020U,2.0
-24,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
-20,desk,1073741824.0,Western Digital Blue,7200,ssd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Core i5-9400F,6.0
-30,desk,1073741824.0,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,programming,4194304.0,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8100,4.0
-26,laptop,524288000.0,,5400,ssd,computers,female,Intel,UHD Graphics,,,605,programming,4194304.0,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
-23,desk,1073741824.0,Seagate Barracuda,7200,ssd,computers,male,Intel,UHD Graphics,,,630,programming,4194304.0,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Core i3-7100T,2.0
-25,laptop,1073741824.0,,7200,ssd,office,male,Intel,HD Graphics,,,620,programming,4194304.0,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i3-7020U,2.0
-22,laptop,1073741824.0,,5400,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
-34,desk,1073741824.0,Western Digital Caviar Blue,5400,ssd,office,female,intel,HD Graphics,,,630,programming,8388608.0,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i5-9600K,6.0
-40,laptop,1073741824.0,,5400,ssd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
-27,desk,1073741824.0,Western Digital Caviar Blue,5400,ssd,home,male,AMD,Radeon Vega,,,,programming,8388608.0,2400,DDR4,2,,1600.0,x64,AMD,3500.0,Ryzen 3 2200G,4.0
-29,laptop,524288000.0,ST500LM000-SSHD-8GB,5400,hdd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,programming,8388608.0,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i5-4300M,4.0
-25,desk,251658240.0,Kingston® A1000,-1,ssd,home,male,Nvidia,GTX,DDR5,6291456.0,1060,personal use,16777216.0,3000,DDR4,2,,3600.0,x64,Intel,4000.0,Xeon Silver 4110,6.0
-23,desk,1073741824.0,Western Digital Blue,7200,hdd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
-24,desk,1073741824.0,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,programming,16777216.0,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
-25,laptop,268435456.0,,-1,ssd,office,female,Intel,,,,620,work,8388608.0,3000,DDR4,1,,3200.0,x64,AMD,2200.0,,4.0
-26,laptop,1073741824.0,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,work,8388608.0,2666,DDR4,1,,3700.0,x64,AMD,3700.0,,2.0
-27,laptop,2147483648.0,,5400,hdd,home,male,AMD,Radeon,,4194304.0,530,gaming,33554432.0,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-28,desk,524288000.0,Samsung 860 EVO,-1,ssd,home,male,Nvidia,GeForce RTX,GDDR6,8388608.0,2070,gaming,16777216.0,2666,DDR4,2,,7200.0,x64,Intel,3600.0,Core i7-9700KF,8.0
-28,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,female,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2400.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
-27,laptop,524288000.0,,-1,ssd,home,female,Intel,HD Graphics,,,520,personal use,4194304.0,1600,DDR4,1,,1600.0,x64,AMD,2000.0,,2.0
-29,laptop,524288000.0,,-1,ssd,home,male,Intel,HD Graphics,,,521,personal use,8388608.0,2666,DDR4,1,,2400.0,x64,AMD,2000.0,,2.0
-26,laptop,268435456.0,,-1,ssd,home,male,Nvidia,GeForce MX,DDR3,2097152.0,110,personal use,8388608.0,2666,DDR4,1,,2950.0,x64,Intel,1600.0,Xeon E3-1235,4.0
-34,laptop,524288000.0,,5400,hdd,home,male,Intel,HD Graphics,,,520,personal use,8388608.0,1600,DDR4,1,,2000.0,x64,AMD,2000.0,,2.0
-32,laptop,268435456.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,1600,DDR4,1,,5000.0,x64,Intel,2300.0,Xeon E3-1286L,4.0
-30,laptop,536870912.0,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR6,4194304.0,150,personal use,16777216.0,3000,DDR4,1,,5050.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-29,laptop,1073741824.0,,7200,hdd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Xeon E5-2680,6.0
-26,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,gaming,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Xeon E3-1235,4.0
-25,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-28,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,personal use,4194304.0,3000,LPDDR4,1,,1600.0,x64,Intel,1100.0,Core i3-4010U,4.0
-27,laptop,524288000.0,,5400,hdd,home,male,Intel,HD Graphics,,,520,personal use,4194304.0,2666,DDR4,1,,1750.0,x64,AMD,2000.0,,2.0
-27,laptop,268435456.0,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,programming,8388608.0,3000,DDR4,1,,2800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR6,8388608.0,1070,gaming,33554432.0,3000,DDR4,1,,10500.0,x64,Intel,4100.0,Xeon E5-2680,6.0
-25,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2666,DDR4,1,,3200.0,x64,AMD,2200.0,Athlon X4 840,2.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,programming,8388608.0,3000,DDR4,1,,4400.0,x64,Intel,2200.0,Xeon E5-2680,6.0
-23,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2800.0,x64,Intel,3200.0,Xeon Silver 4123,6.0
-24,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-27,laptop,268435456.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,4194304.0,3000,DDR4,1,,3100.0,x64,Intel,1600.0,Xeon E3-1235,4.0
-29,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2950.0,x64,AMD,2200.0,Athlon X4 840,2.0
-30,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-32,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,male,AMD,Radeon,GDDR3,2097152.0,230,personal use,4194304.0,2666,DDR4,2,,2200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
-33,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,male,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8300T,4.0
-20,desk,1073741824.0,Western Digital Blue,7200,hdd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
-24,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,631,programming,16777216.0,3000,DDR4,2,,3300.0,x64,Intel,3000.0,Xeon E3-1285,6.0
-30,desk,1073741824.0,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,programming,4194304.0,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8300T,4.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,HD graphics,,,520,programming,8388608.0,2666,DDR4,1,,2400.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-24,laptop,268435456.0,,-1,ssd,home,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,2800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-27,laptop,1073741824.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5X,8388608.0,1080,gaming,33554432.0,3000,DDR4,1,,14600.0,x64,Intel,2200.0,Xeon E5-2680,6.0
-26,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,programming,4194304.0,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Core i3-4010U,4.0
-25,laptop,536870912.0,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,4194304.0,150,programming,8388608.0,3000,DDR4,1,,3700.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,programming,4194304.0,2666,DDR4,1,,1800.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,2097152.0,1050,programming,8388608.0,2666,DDR4,1,,5000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-35,laptop,134217728.0,,-1,ssd,home,male,Intel,UHD Graphics,,,610,personal use,4194304.0,3000,DDR4,1,,2100.0,x64,AMD,2300.0,Athlon II X4 631,2.0
-21,laptop,268435456.0,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,3000,DDR4,1,,3800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-21,laptop,134217728.0,,-1,ssd,home,male,Intel,HD Graphics,,,605,personal use,4194304.0,3000,DDR4,1,,1900.0,x64,Intel,1100.0,Core i3-4010U,4.0
-23,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2666,DDR4,1,,3300.0,x64,Intel,2000.0,Xeon E3-1235,4.0
-22,laptop,536870912.0,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,work,8388608.0,2666,DDR4,1,,5400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-25,laptop,524288000.0,,7200,hdd,office,male,Intel,HD Graphics,,,520,work,4194304.0,3000,DDR4,1,,1700.0,x64,AMD,2000.0,,2.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,HD Graphics,,,620,work,8388608.0,3000,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-30,laptop,268435456.0,,-1,ssd,computers,male,Nvidia,GeForce MX,GDDR5,2097152.0,110,programming,8388608.0,3000,DDR4,1,,3150.0,x64,Intel,2300.0,Xeon E3-1235,4.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,HD Graphics,,,620,programming,8388608.0,2666,DDR3,1,,3000.0,x64,Intel,2500.0,Xeon E5-2603,2.0
-33,laptop,2147483648.0,,5400,hdd,computers,female,Intel,HD Graphics,,,620,personal use,8388608.0,2666,DDR4,1,,3500.0,x64,AMD,2200.0,,4.0
-31,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-33,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,520,personal use,4194304.0,3000,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-32,laptop,536870912.0,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,work,16777216.0,3000,DDR4,1,,7000.0,x64,Intel,3000.0,Core i3-9100F,4.0
-30,laptop,268435456.0,,-1,ssd,office,male,Intel,HD Graphics,,,620,work,8388608.0,3000,DDR3,1,,3700.0,x64,AMD,2300.0,,4.0
-34,laptop,268435456.0,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304.0,3000,DDR3,1,,2800.0,x64,AMD,2700.0,Athlon X4 840,2.0
-40,laptop,536870912.0,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608.0,3000,DDR4,1,,5700.0,x64,Intel,3000.0,Core i3-9100F,4.0
-37,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608.0,3000,DDR4,1,,4200.0,x64,AMD,2300.0,,4.0
-27,laptop,1073741824.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216.0,2666,DDR6,2,,6400.0,x64,Intel,3500.0,Xeon E5-2680,6.0
-29,laptop,134217728.0,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304.0,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-28,desk,1073741824.0,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608.0,1600,DDR4,2,,3000.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
-27,desk,524288000.0,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216.0,2933,DDR4,2,,4700.0,x64,Intel,3600.0,Xeon E5-2695,8.0
-27,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Nvidia,GeForce GTX,DDR5,2097152.0,1050,gaming,16777216.0,2666,DDR4,2,,3200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
-27,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608.0,2666,DDR4,2,,1900.0,x64,Intel,3600.0,Core i3-8300T,4.0
-25,desk,503316480.0,,-1,ssd,home,male,Nvidia,GEFORCE GTX,DDR5,4194304.0,1050,personal use,8388608.0,1600,DDR3,2,,3500.0,x64,AMD,3900.0,Ryzen 5 1500X,4.0
-24,desk,251658240.0,Pioneer SL2 APS,-1,ssd,computers,female,Intel,UHD Graphics,,,630,programming,8388608.0,2140,DDR4,2,,2000.0,x64,Intel,3700.0,Xeon E5-2418L,2.0
-23,desk,1073741824.0,Seagate Barracuda,7200,hdd,computers,male,Intel,UHD Graphics,,,630,programming,4194304.0,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Pentium Gold G5400T,2.0
-24,desk,536870912.0,Transcend SSD230S,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216.0,2666,DDR4,2,,8300.0,x64,Intel,3200.0,Xeon Silver 4123,6.0
-27,laptop,268435456.0,,-1,ssd,computers,male,AMD,Radeon,,2097152.0,530,programming,8388608.0,3000,DDR4,1,,2700.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-29,desk,251658240.0,Kingston UV500 M.2,-1,ssd,computers,male,AMD,Radeon Vega,,,,personal use,16777216.0,2933,DDR4,2,,2800.0,x64,Intel,3500.0,Core i7-875K,2.0
-30,laptop,524288000.0,,5400,hdd,computers,male,Intel,HD Graphics,,,520,personal use,8388608.0,2133,DDR4,1,,2000.0,x64,AMD,2000.0,,2.0
-32,laptop,536870912.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,33554432.0,2666,DDR4,2,,7000.0,x64,Intel,3200.0,Xeon E5-2680,4.0
-33,laptop,268435456.0,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,520,programming,8388608.0,2666,DDR4,1,,2600.0,x64,AMD,2300.0,,4.0
-20,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,2700.0,x64,AMD,2200.0,Athlon X4 840,2.0
-24,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR6,2097152.0,150,programming,8388608.0,2133,DDR4,1,,2800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-30,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,3400.0,x64,AMD,2300.0,,4.0
-22,laptop,536870912.0,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,535,personal use,8388608.0,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-24,laptop,536870912.0,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,535,programming,8388608.0,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-27,laptop,268435456.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,1866,LPDDR3,1,,4000.0,x64,AMD,2300.0,,4.0
-26,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,programming,8388608.0,2133,DDR4,1,,3400.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-25,laptop,536870912.0,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,535,programming,8388608.0,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,LPDDR3,1,,4100.0,x64,AMD,2300.0,,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,personal use,8388608.0,1866,LPDDR3,1,,4300.0,x64,AMD,2300.0,,4.0
-35,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,LPDDR3,1,,5000.0,x64,AMD,2300.0,,4.0
-21,laptop,536870912.0,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,work,8388608.0,2400,DDR4,1,,4400.0,x64,Intel,3100.0,Xeon E5-2680,6.0
-21,laptop,536870912.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,16777216.0,2666,DDR4,2,,5700.0,x64,Intel,3100.0,Xeon E5-2680,6.0
-23,laptop,67108864.0,,5400,emmc,office,male,Intel,UHD Graphics,,,600,work,2097152.0,2133,LPDDR4,1,,1250.0,x64,AMD,2500.0,Opteron 1218,2.0
-22,laptop,1073741824.0,,5400,hdd,office,male,Intel,HD Graphics,,,620,work,4194304.0,2666,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-25,laptop,1073741824.0,,7200,hdd,office,male,Intel,HD Graphics,,,620,programming,4194304.0,2400,DDR4,1,,2100.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-30,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-22,laptop,1073741824.0,,5400,hdd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-33,desk,251658240.0,Kingston A400,-1,ssd,computers,male,intel,HD Graphics,,,630,personal use,8388608.0,2400,DDR4,2,,2700.0,x64,AMD,3600.0,Ryzen 7 2800H,4.0
-31,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,work,8388608.0,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-33,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,2650.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-32,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,2800.0,x64,AMD,2200.0,Athlon X4 840,2.0
-30,laptop,536870912.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,DDR4,1,,3000.0,x64,Intel,3000.0,Core i7-3740QM,4.0
-34,desk,1073741824.0,Western Digital Caviar Blue,5400,hdd,office,female,intel,HD Graphics,,,630,programming,8388608.0,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Xeon E5-2663,6.0
-40,desk,536870912.0,Transcend SSD230S,-1,ssd,home,female,intel,HD Graphics,,,630,programming,16777216.0,2400,DDR4,2,,3800.0,x64,Intel,4900.0,Core i9-9980HK,8.0
-37,desk,503316480.0,Kingston UV500 2.5,-1,ssd,computers,male,Asus,GTX,GDDR5,6291456.0,1060,gaming,8388608.0,3000,DDR4,2,,4450.0,x64,Intel,3700.0,Xeon E5-2663,6.0
-27,desk,1073741824.0,Western Digital Caviar Blue,-1,ssd,office,female,intel,HD Graphics,,,630,work,8388608.0,2400,DDR4,2,,2300.0,x64,AMD,3600.0,Ryzen 7 2800H,4.0
-40,laptop,1073741824.0,,5400,hdd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-37,laptop,1073741824.0,,-1,ssd,home,male,NVIDIA,GeForce RTX,GDDR6,8388608.0,2070,gaming,25165824.0,2666,DDR4,2,,13000.0,x64,Intel,3200.0,Xeon E5-2680,4.0
-27,laptop,536870912.0,,-1,ssd,home,male,Intel,HD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-29,laptop,536870912.0,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,540,programming,8388608.0,2400,DDR4,1,,3300.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-28,laptop,536870912.0,,-1,ssd,computers,female,NVIDIA,Geforce GTX,GDDR5,4194304.0,1050,personal use,8388608.0,2666,DDR4,1,,3700.0,x64,Intel,2300.0,Xeon E3-1286L,4.0
-27,laptop,536870912.0,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,540,personal use,8388608.0,2400,DDR4,1,,3900.0,x64,Intel,3000.0,Core i3-9100F,4.0
-27,desk,251658240.0,Kingston A400,-1,ssd,home,male,Asus,GT,GDDR5,1048576.0,710,programming,8388608.0,2400,DDR4,2,,2000.0,x64,Intel,3400.0,Core i7-6850K,6.0
-27,desk,1073741824.0,Western Digital Caviar Blue,5400,hdd,home,male,AMD,Radeon Vega,,,,programming,8388608.0,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Core i7-4765T,4.0
-25,desk,251658240.0,Kingston A400,-1,ssd,computers,male,ASUS,ROG STRIX-GTX,GDDR5,2097152.0,1050,gaming,8388608.0,2666,DDR4,2,,4450.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
-24,desk,536870912.0,Transcend SSD230S,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,2,,3150.0,x64,Intel,3700.0,Xeon E5-2663,6.0
-23,desk,536870912.0,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8300T,4.0
-24,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,3800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-27,laptop,268435456.0,,-1,ssd,home,female,Nvidia,GeForce,GDDR5,2097152.0,930,personal use,8388608.0,2666,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2666,DDR4,1,,2650.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-30,laptop,1073741824.0,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,8388608.0,1080,gaming,25165824.0,2666,DDR4,2,,12200.0,x64,Intel,3100.0,Xeon E5-2680,6.0
-32,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,LPDDR3,1,,4000.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-33,laptop,524288000.0,,7200,hdd,office,male,Intel,UHD Graphics,,,620,work,4194304.0,2400,DDR4,1,,2300.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-20,laptop,268435456.0,,-1,ssd,office,male,Nvidia,GeForce MX,GDDR5,4194304.0,150,programming,8388608.0,2133,DDR4,1,,3600.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-24,laptop,536870912.0,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,programming,8388608.0,2400,DDR4,1,,5800.0,x64,AMD,2300.0,,4.0
-30,laptop,67108864.0,,7200,emmc,computers,female,intel,HD Graphics,,,,personal use,4194304.0,2400,LPDDR4,1,,1200.0,x64,AMD,2500.0,Opteron 1218,2.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2666,DDR4,1,,3400.0,x64,AMD,2200.0,Athlon X4 840,2.0
-24,laptop,536870912.0,,-1,ssd,computers,male,AMD,RADEON,GDDR5,2097152.0,535,personal use,8388608.0,2400,DDR4,1,,2900.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,,x64,AMD,2200.0,Athlon X4 840,2.0
-29,laptop,524288000.0,ST500LM000-SSHD-8GB,5400,ssd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,programming,8388608.0,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i5-4300M,4.0
-23,desk,1073741824.0,Western Digital Blue,7200,ssd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
-24,desk,1073741824.0,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,programming,16777216.0,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
-27,laptop,2147483648.0,,5400,ssd,home,male,AMD,Radeon,,4194304.0,530,gaming,33554432.0,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-3740QM,4.0
-29,laptop,1073741824.0,,7200,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Xeon E5-2680,6.0
-26,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,gaming,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Xeon E3-1235,4.0
-25,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-24,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-20,desk,1073741824.0,Western Digital Blue,7200,ssd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
-30,desk,1073741824.0,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,programming,4194304.0,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8300T,4.0
-26,laptop,524288000.0,,5400,ssd,computers,female,Intel,UHD Graphics,,,605,programming,4194304.0,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Core i3-4010U,4.0
-23,desk,1073741824.0,Seagate Barracuda,7200,ssd,computers,male,Intel,UHD Graphics,,,630,programming,4194304.0,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Pentium Gold G5400T,2.0
-25,laptop,1073741824.0,,7200,ssd,office,male,Intel,HD Graphics,,,620,programming,4194304.0,2400,DDR4,1,,2100.0,x64,AMD,2300.0,PRO A8-8600B,2.0
-22,laptop,1073741824.0,,5400,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-34,desk,1073741824.0,Western Digital Caviar Blue,5400,ssd,office,female,intel,HD Graphics,,,630,programming,8388608.0,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Xeon E5-2663,6.0
-40,laptop,1073741824.0,,5400,ssd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
-27,desk,1073741824.0,Western Digital Caviar Blue,5400,ssd,home,male,AMD,Radeon Vega,,,,programming,8388608.0,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Core i7-4765T,4.0
-29,laptop,524288000.0,ST500LM000-SSHD-8GB,5400,hdd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,programming,8388608.0,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Xeon E3-1220L,4.0
-25,desk,251658240.0,Kingston® A1000,-1,ssd,home,male,Nvidia,GTX,DDR5,6291456.0,1060,personal use,16777216.0,3000,DDR4,2,,3600.0,x64,Intel,4000.0,Xeon E5-2665,6.0
-23,desk,1073741824.0,Western Digital Blue,7200,hdd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2670,6.0
-24,desk,1073741824.0,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,programming,16777216.0,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon E5-2665,6.0
-25,laptop,268435456.0,,-1,ssd,office,female,Intel,,,,620,work,8388608.0,3000,DDR4,1,,3200.0,x64,Intel,2200.0,Xeon E3-1245,4.0
-26,laptop,1073741824.0,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,work,8388608.0,2666,DDR4,1,,3700.0,x64,Intel,3700.0,Core i3-3110M,2.0
-27,laptop,2147483648.0,,5400,hdd,home,male,AMD,Radeon,,4194304.0,530,gaming,33554432.0,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-28,desk,524288000.0,Samsung 860 EVO,-1,ssd,home,male,Nvidia,GeForce RTX,GDDR6,8388608.0,2070,gaming,16777216.0,2666,DDR4,2,,7200.0,x64,AMD,3600.0, PRO 2700X,8.0
-28,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,female,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2400.0,x64,Intel,2800.0,Xeon E5-2665,6.0
-27,laptop,524288000.0,,-1,ssd,home,female,Intel,HD Graphics,,,520,personal use,4194304.0,1600,DDR4,1,,1600.0,x64,Intel,2000.0,Core i3-3110M,2.0
-29,laptop,524288000.0,,-1,ssd,home,male,Intel,HD Graphics,,,521,personal use,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,2000.0,Core i3-3110M,2.0
-26,laptop,268435456.0,,-1,ssd,home,male,Nvidia,GeForce MX,DDR3,2097152.0,110,personal use,8388608.0,2666,DDR4,1,,2950.0,x64,AMD,1600.0, PRO 3700U,4.0
-34,laptop,524288000.0,,5400,hdd,home,male,Intel,HD Graphics,,,520,personal use,8388608.0,1600,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-3110M,2.0
-32,laptop,268435456.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,1600,DDR4,1,,5000.0,x64,Intel,2300.0,Xeon E5-2658,4.0
-30,laptop,536870912.0,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR6,4194304.0,150,personal use,16777216.0,3000,DDR4,1,,5050.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-29,laptop,1073741824.0,,7200,hdd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8559U,6.0
-26,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,gaming,8388608.0,2666,DDR4,1,,2400.0,x64,AMD,1600.0, PRO 3700U,4.0
-25,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i5-5350U,2.0
-28,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,personal use,4194304.0,3000,LPDDR4,1,,1600.0,x64,AMD,1100.0,A6-5200,4.0
-27,laptop,524288000.0,,5400,hdd,home,male,Intel,HD Graphics,,,520,personal use,4194304.0,2666,DDR4,1,,1750.0,x64,Intel,2000.0,Core i3-3110M,2.0
-27,laptop,268435456.0,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,programming,8388608.0,3000,DDR4,1,,2800.0,x64,AMD,2500.0, PRO 3700U,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR6,8388608.0,1070,gaming,33554432.0,3000,DDR4,1,,10500.0,x64,Intel,4100.0,Core i7-8559U,6.0
-25,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2666,DDR4,1,,3200.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,programming,8388608.0,3000,DDR4,1,,4400.0,x64,Intel,2200.0,Core i7-8559U,6.0
-23,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2800.0,x64,Intel,3200.0,Xeon E5-2675,6.0
-24,laptop,1073741824.0,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
-27,laptop,268435456.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,4194304.0,3000,DDR4,1,,3100.0,x64,AMD,1600.0, PRO 3700U,4.0
-29,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2950.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
-30,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i5-5350U,2.0
-32,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,male,AMD,Radeon,GDDR3,2097152.0,230,personal use,4194304.0,2666,DDR4,2,,2200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
-33,desk,251658240.0,SanDisk SSD Plus,-1,ssd,home,male,Intel,UHD Graphics,,,630,personal use,8388608.0,2666,DDR4,2,,2000.0,x64,AMD,3600.0, PRO 1300,4.0
-20,desk,1073741824.0,Western Digital Blue,7200,hdd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
-24,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,631,programming,16777216.0,3000,DDR4,2,,3300.0,x64,Intel,3000.0,Core i5-9400,6.0
-30,desk,1073741824.0,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,programming,4194304.0,3000,DDR4,2,,2100.0,x64,AMD,3600.0, PRO 1300,4.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,HD graphics,,,520,programming,8388608.0,2666,DDR4,1,,2400.0,x64,Intel,2300.0,Core i5-5350U,2.0
-24,laptop,268435456.0,,-1,ssd,home,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,2800.0,x64,AMD,2500.0, PRO 3700U,4.0
-27,laptop,1073741824.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5X,8388608.0,1080,gaming,33554432.0,3000,DDR4,1,,14600.0,x64,Intel,2200.0,Core i7-8559U,6.0
-26,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,programming,4194304.0,3000,DDR4,1,,1240.0,x64,AMD,1100.0,A6-5200,4.0
-25,laptop,536870912.0,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,4194304.0,150,programming,8388608.0,3000,DDR4,1,,3700.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,programming,4194304.0,2666,DDR4,1,,1800.0,x64,Intel,2300.0,Core i5-5350U,2.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,2097152.0,1050,programming,8388608.0,2666,DDR4,1,,5000.0,x64,AMD,2500.0, PRO 3700U,4.0
-35,laptop,134217728.0,,-1,ssd,home,male,Intel,UHD Graphics,,,610,personal use,4194304.0,3000,DDR4,1,,2100.0,x64,AMD,2300.0,A6-3650,2.0
-21,laptop,268435456.0,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,3000,DDR4,1,,3800.0,x64,AMD,2500.0, PRO 3700U,4.0
-21,laptop,134217728.0,,-1,ssd,home,male,Intel,HD Graphics,,,605,personal use,4194304.0,3000,DDR4,1,,1900.0,x64,AMD,1100.0,A6-5200,4.0
-23,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2666,DDR4,1,,3300.0,x64,AMD,2000.0, PRO 3700U,4.0
-22,laptop,536870912.0,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,work,8388608.0,2666,DDR4,1,,5400.0,x64,AMD,2500.0, PRO 3700U,4.0
-25,laptop,524288000.0,,7200,hdd,office,male,Intel,HD Graphics,,,520,work,4194304.0,3000,DDR4,1,,1700.0,x64,Intel,2000.0,Core i3-3110M,2.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,HD Graphics,,,620,work,8388608.0,3000,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
-30,laptop,268435456.0,,-1,ssd,computers,male,Nvidia,GeForce MX,GDDR5,2097152.0,110,programming,8388608.0,3000,DDR4,1,,3150.0,x64,AMD,2300.0, PRO 3700U,4.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,HD Graphics,,,620,programming,8388608.0,2666,DDR3,1,,3000.0,x64,AMD,2500.0,Athlon X4 860K,2.0
-33,laptop,2147483648.0,,5400,hdd,computers,female,Intel,HD Graphics,,,620,personal use,8388608.0,2666,DDR4,1,,3500.0,x64,Intel,2200.0,Xeon E3-1245,4.0
-31,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
-33,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,520,personal use,4194304.0,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
-32,laptop,536870912.0,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,work,16777216.0,3000,DDR4,1,,7000.0,x64,Intel,3000.0,Xeon E5-2430,4.0
-30,laptop,268435456.0,,-1,ssd,office,male,Intel,HD Graphics,,,620,work,8388608.0,3000,DDR3,1,,3700.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-34,laptop,268435456.0,,-1,ssd,office,female,Intel,UHD Graphics,,,620,work,4194304.0,3000,DDR3,1,,2800.0,x64,AMD,2700.0,Phenom II X6 1405T,2.0
-40,laptop,536870912.0,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,personal use,8388608.0,3000,DDR4,1,,5700.0,x64,Intel,3000.0,Xeon E5-2430,4.0
-37,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,programming,8388608.0,3000,DDR4,1,,4200.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-27,laptop,1073741824.0,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216.0,2666,DDR6,2,,6400.0,x64,Intel,3500.0,Core i7-8559U,6.0
-29,laptop,134217728.0,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,programming,4194304.0,2666,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
-28,desk,1073741824.0,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608.0,1600,DDR4,2,,3000.0,x64,Intel,2800.0,Xeon E5-2665,6.0
-27,desk,524288000.0,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,programming,16777216.0,2933,DDR4,2,,4700.0,x64,AMD,3600.0,Ryzen 5 3600,8.0
-27,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Nvidia,GeForce GTX,DDR5,2097152.0,1050,gaming,16777216.0,2666,DDR4,2,,3200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
-27,desk,251658240.0,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,630,programming,8388608.0,2666,DDR4,2,,1900.0,x64,AMD,3600.0, PRO 1300,4.0
-25,desk,503316480.0,,-1,ssd,home,male,Nvidia,GEFORCE GTX,DDR5,4194304.0,1050,personal use,8388608.0,1600,DDR3,2,,3500.0,x64,Intel,3900.0,Xeon E5-2470,4.0
-24,desk,251658240.0,Pioneer SL2 APS,-1,ssd,computers,female,Intel,UHD Graphics,,,630,programming,8388608.0,2140,DDR4,2,,2000.0,x64,Intel,3700.0,Pentium Gold G5500,2.0
-23,desk,1073741824.0,Seagate Barracuda,7200,hdd,computers,male,Intel,UHD Graphics,,,630,programming,4194304.0,2400,DDR4,2,,1700.0,x64,AMD,3400.0,Athlon X4 840,2.0
-24,desk,536870912.0,Transcend SSD230S,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,gaming,16777216.0,2666,DDR4,2,,8300.0,x64,Intel,3200.0,Xeon E5-2675,6.0
-27,laptop,268435456.0,,-1,ssd,computers,male,AMD,Radeon,,2097152.0,530,programming,8388608.0,3000,DDR4,1,,2700.0,x64,AMD,2500.0, PRO 3700U,4.0
-29,desk,251658240.0,Kingston UV500 M.2,-1,ssd,computers,male,AMD,Radeon Vega,,,,personal use,16777216.0,2933,DDR4,2,,2800.0,x64,Intel,3500.0,Core i3-6098P,2.0
-30,laptop,524288000.0,,5400,hdd,computers,male,Intel,HD Graphics,,,520,personal use,8388608.0,2133,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-3110M,2.0
-32,laptop,536870912.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,33554432.0,2666,DDR4,2,,7000.0,x64,Intel,3200.0,Core i7-8559U,4.0
-33,laptop,268435456.0,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,520,programming,8388608.0,2666,DDR4,1,,2600.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-20,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,2700.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
-24,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR6,2097152.0,150,programming,8388608.0,2133,DDR4,1,,2800.0,x64,AMD,2500.0, PRO 3700U,4.0
-30,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,3400.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-22,laptop,536870912.0,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,535,personal use,8388608.0,2400,DDR4,1,,3200.0,x64,AMD,2500.0, PRO 3700U,4.0
-24,laptop,536870912.0,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,535,programming,8388608.0,2400,DDR4,1,,3200.0,x64,AMD,2500.0, PRO 3700U,4.0
-27,laptop,268435456.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,1866,LPDDR3,1,,4000.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-26,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,programming,8388608.0,2133,DDR4,1,,3400.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-25,laptop,536870912.0,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,535,programming,8388608.0,2400,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
-24,laptop,268435456.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,LPDDR3,1,,4100.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,personal use,8388608.0,1866,LPDDR3,1,,4300.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-35,laptop,268435456.0,,-1,ssd,home,male,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,LPDDR3,1,,5000.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-21,laptop,536870912.0,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,work,8388608.0,2400,DDR4,1,,4400.0,x64,Intel,3100.0,Core i7-8559U,6.0
-21,laptop,536870912.0,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,16777216.0,2666,DDR4,2,,5700.0,x64,Intel,3100.0,Core i7-8559U,6.0
-23,laptop,67108864.0,,5400,emmc,office,male,Intel,UHD Graphics,,,600,work,2097152.0,2133,LPDDR4,1,,1250.0,x64,Intel,2500.0,Celeron E3400,2.0
-22,laptop,1073741824.0,,5400,hdd,office,male,Intel,HD Graphics,,,620,work,4194304.0,2666,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
-25,laptop,1073741824.0,,7200,hdd,office,male,Intel,HD Graphics,,,620,programming,4194304.0,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i5-5350U,2.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
-30,laptop,524288000.0,,5400,hdd,computers,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
-22,laptop,1073741824.0,,5400,hdd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
-33,desk,251658240.0,Kingston A400,-1,ssd,computers,male,intel,HD Graphics,,,630,personal use,8388608.0,2400,DDR4,2,,2700.0,x64,Intel,3600.0,Xeon E3-1280,4.0
-31,laptop,268435456.0,,-1,ssd,computers,male,Intel,HD Graphics,,,620,work,8388608.0,2666,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
-33,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,2650.0,x64,AMD,2500.0, PRO 3700U,4.0
-32,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,2800.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
-30,laptop,536870912.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2133,DDR4,1,,3000.0,x64,Intel,3000.0,Xeon E5-2450L,4.0
-34,desk,1073741824.0,Western Digital Caviar Blue,5400,hdd,office,female,intel,HD Graphics,,,630,programming,8388608.0,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i7-9850H,6.0
-37,desk,503316480.0,Kingston UV500 2.5,-1,ssd,computers,male,Asus,GTX,GDDR5,6291456.0,1060,gaming,8388608.0,3000,DDR4,2,,4450.0,x64,Intel,3700.0,Core i7-9850H,6.0
-27,desk,1073741824.0,Western Digital Caviar Blue,-1,ssd,office,female,intel,HD Graphics,,,630,work,8388608.0,2400,DDR4,2,,2300.0,x64,Intel,3600.0,Xeon E3-1280,4.0
-40,laptop,1073741824.0,,5400,hdd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
-37,laptop,1073741824.0,,-1,ssd,home,male,NVIDIA,GeForce RTX,GDDR6,8388608.0,2070,gaming,25165824.0,2666,DDR4,2,,13000.0,x64,Intel,3200.0,Core i7-8559U,4.0
-27,laptop,536870912.0,,-1,ssd,home,male,Intel,HD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
-29,laptop,536870912.0,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,540,programming,8388608.0,2400,DDR4,1,,3300.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-28,laptop,536870912.0,,-1,ssd,computers,female,NVIDIA,Geforce GTX,GDDR5,4194304.0,1050,personal use,8388608.0,2666,DDR4,1,,3700.0,x64,Intel,2300.0,Xeon E5-2658,4.0
-27,laptop,536870912.0,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,540,personal use,8388608.0,2400,DDR4,1,,3900.0,x64,Intel,3000.0,Xeon E5-2430,4.0
-27,desk,251658240.0,Kingston A400,-1,ssd,home,male,Asus,GT,GDDR5,1048576.0,710,programming,8388608.0,2400,DDR4,2,,2000.0,x64,Intel,3400.0,Xeon E5-2687W,6.0
-27,desk,1073741824.0,Western Digital Caviar Blue,5400,hdd,home,male,AMD,Radeon Vega,,,,programming,8388608.0,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Xeon E5-2430L,4.0
-25,desk,251658240.0,Kingston A400,-1,ssd,computers,male,ASUS,ROG STRIX-GTX,GDDR5,2097152.0,1050,gaming,8388608.0,2666,DDR4,2,,4450.0,x64,Intel,2900.0,Xeon E5-2670,6.0
-24,desk,536870912.0,Transcend SSD230S,-1,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,2,,3150.0,x64,Intel,3700.0,Core i7-9850H,6.0
-23,desk,536870912.0,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,620,personal use,8388608.0,2666,DDR4,2,,2000.0,x64,AMD,3600.0, PRO 1300,4.0
-24,laptop,268435456.0,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,personal use,8388608.0,2666,DDR4,1,,3800.0,x64,AMD,2500.0, PRO 3700U,4.0
-27,laptop,268435456.0,,-1,ssd,home,female,Nvidia,GeForce,GDDR5,2097152.0,930,personal use,8388608.0,2666,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
-29,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2666,DDR4,1,,2650.0,x64,AMD,2500.0, PRO 3700U,4.0
-30,laptop,1073741824.0,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,8388608.0,1080,gaming,25165824.0,2666,DDR4,2,,12200.0,x64,Intel,3100.0,Core i7-8559U,6.0
-32,laptop,268435456.0,,-1,ssd,office,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,LPDDR3,1,,4000.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-33,laptop,524288000.0,,7200,hdd,office,male,Intel,UHD Graphics,,,620,work,4194304.0,2400,DDR4,1,,2300.0,x64,AMD,2500.0, PRO 3700U,4.0
-20,laptop,268435456.0,,-1,ssd,office,male,Nvidia,GeForce MX,GDDR5,4194304.0,150,programming,8388608.0,2133,DDR4,1,,3600.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-24,laptop,536870912.0,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,programming,8388608.0,2400,DDR4,1,,5800.0,x64,Intel,2300.0,Xeon E3-1245,4.0
-30,laptop,67108864.0,,7200,emmc,computers,female,intel,HD Graphics,,,,personal use,4194304.0,2400,LPDDR4,1,,1200.0,x64,Intel,2500.0,Celeron E3400,2.0
-22,laptop,268435456.0,,-1,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2666,DDR4,1,,3400.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
-24,laptop,536870912.0,,-1,ssd,computers,male,AMD,RADEON,GDDR5,2097152.0,535,personal use,8388608.0,2400,DDR4,1,,2900.0,x64,AMD,2500.0, PRO 3700U,4.0
-27,laptop,536870912.0,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,work,8388608.0,2400,DDR4,1,,,x64,AMD,2200.0,Phenom II X6 1405T,2.0
-29,laptop,524288000.0,ST500LM000-SSHD-8GB,5400,ssd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,programming,8388608.0,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Xeon E3-1220L,4.0
-23,desk,1073741824.0,Western Digital Blue,7200,ssd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2670,6.0
-24,desk,1073741824.0,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,programming,16777216.0,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon E5-2665,6.0
-27,laptop,2147483648.0,,5400,ssd,home,male,AMD,Radeon,,4194304.0,530,gaming,33554432.0,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
-29,laptop,1073741824.0,,7200,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,gaming,8388608.0,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8559U,6.0
-26,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,gaming,8388608.0,2666,DDR4,1,,2400.0,x64,AMD,1600.0, PRO 3700U,4.0
-25,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i5-5350U,2.0
-24,laptop,1073741824.0,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,programming,8388608.0,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
-20,desk,1073741824.0,Western Digital Blue,7200,ssd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,gaming,8388608.0,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
-30,desk,1073741824.0,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,programming,4194304.0,3000,DDR4,2,,2100.0,x64,AMD,3600.0, PRO 1300,4.0
-26,laptop,524288000.0,,5400,ssd,computers,female,Intel,UHD Graphics,,,605,programming,4194304.0,3000,DDR4,1,,1240.0,x64,AMD,1100.0,A6-5200,4.0
-23,desk,1073741824.0,Seagate Barracuda,7200,ssd,computers,male,Intel,UHD Graphics,,,630,programming,4194304.0,2400,DDR4,2,,1700.0,x64,AMD,3400.0,Athlon X4 840,2.0
-25,laptop,1073741824.0,,7200,ssd,office,male,Intel,HD Graphics,,,620,programming,4194304.0,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i5-5350U,2.0
-22,laptop,1073741824.0,,5400,ssd,home,female,Intel,UHD Graphics,,,620,programming,8388608.0,2400,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
-34,desk,1073741824.0,Western Digital Caviar Blue,5400,ssd,office,female,intel,HD Graphics,,,630,programming,8388608.0,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i7-9850H,6.0
-40,laptop,1073741824.0,,5400,ssd,home,male,Intel,UHD Graphics,,,620,programming,8388608.0,2133,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
-27,desk,1073741824.0,Western Digital Caviar Blue,5400,ssd,home,male,AMD,Radeon Vega,,,,programming,8388608.0,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Xeon E5-2430L,4.0
+level_0,age,computertype,disk_capacity_as_kb,disk_model,disk_rpm,disk_type,fieldinterest,gender,gpu_manufacturer,gpu_model,gpu_processor_ddr,gpu_processor_ddr_capacity,gpu_version,index,mainuse,memory_capacity_as_kb,memory_mhz,memory_type,motherboard_ddrsockets,motherboard_maxram,price,processor_architecture,processor_manufacturer,processor_mhz,processor_model,processor_numofcores
+0,29,laptop,524288000,ST500LM000-SSHD-8GB,5400,hdd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,0,programming,8388608,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i7-6500U,4.0
+1,25,desk,251658240,Kingston® A1000,-1,ssd,home,male,Nvidia,GTX,DDR5,6291456.0,1060,1,personal use,16777216,3000,DDR4,2,,3600.0,x64,Intel,4000.0,Core i5-8400,6.0
+2,23,desk,1073741824,Western Digital Blue,7200,hdd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,2,gaming,8388608,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Core i5-9400F,6.0
+3,24,desk,1073741824,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,3,programming,16777216,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Core i5-8400,6.0
+4,25,laptop,268435456,,-1,ssd,office,female,Intel,,,,620,4,work,8388608,3000,DDR4,1,,3200.0,x64,Intel,2200.0,Core i5-8265U,4.0
+5,26,laptop,1073741824,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,5,work,8388608,2666,DDR4,1,,3700.0,x64,Intel,3700.0,Core i3-6006U,2.0
+6,27,laptop,2147483648,,5400,hdd,home,male,AMD,Radeon,,4194304.0,530,6,gaming,33554432,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-8550U,4.0
+7,28,desk,524288000,Samsung 860 EVO,-1,ssd,home,male,Nvidia,GeForce RTX,GDDR6,8388608.0,2070,7,gaming,16777216,2666,DDR4,2,,7200.0,x64,Intel,3600.0,Core i7-9700K,8.0
+8,28,desk,251658240,SanDisk SSD Plus,-1,ssd,home,female,Intel,UHD Graphics,,,630,8,personal use,8388608,2666,DDR4,2,,2400.0,x64,Intel,2800.0,Core i5-8400,6.0
+9,27,laptop,524288000,,-1,ssd,home,female,Intel,HD Graphics,,,520,9,personal use,4194304,1600,DDR4,1,,1600.0,x64,Intel,2000.0,Core i3-6006U,2.0
+10,29,laptop,524288000,,-1,ssd,home,male,Intel,HD Graphics,,,521,10,personal use,8388608,2666,DDR4,1,,2400.0,x64,Intel,2000.0,Core i3-6006U,2.0
+11,26,laptop,268435456,,-1,ssd,home,male,Nvidia,GeForce MX,DDR3,2097152.0,110,11,personal use,8388608,2666,DDR4,1,,2950.0,x64,Intel,1600.0,Core i5-8250U,4.0
+12,34,laptop,524288000,,5400,hdd,home,male,Intel,HD Graphics,,,520,12,personal use,8388608,1600,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-6006U,2.0
+13,32,laptop,268435456,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,13,gaming,8388608,1600,DDR4,1,,5000.0,x64,Intel,2300.0,Core i5-8300H,4.0
+14,30,laptop,536870912,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR6,4194304.0,150,14,personal use,16777216,3000,DDR4,1,,5050.0,x64,Intel,1800.0,Core i7-8550U,4.0
+15,29,laptop,1073741824,,7200,hdd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,15,gaming,8388608,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8750H,6.0
+16,26,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,16,gaming,8388608,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Core i5-8250U,4.0
+17,25,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,17,programming,8388608,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i3-7020U,2.0
+18,28,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,18,personal use,4194304,3000,LPDDR4,1,,1600.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
+19,27,laptop,524288000,,5400,hdd,home,male,Intel,HD Graphics,,,520,19,personal use,4194304,2666,DDR4,1,,1750.0,x64,Intel,2000.0,Core i3-6006U,2.0
+20,27,laptop,268435456,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,20,programming,8388608,3000,DDR4,1,,2800.0,x64,Intel,2500.0,Core i5-8250U,4.0
+21,27,laptop,536870912,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR6,8388608.0,1070,21,gaming,33554432,3000,DDR4,1,,10500.0,x64,Intel,4100.0,Core i7-8750H,6.0
+22,25,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,22,personal use,8388608,2666,DDR4,1,,3200.0,x64,Intel,2200.0,Core i3-8130U,2.0
+23,24,laptop,268435456,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,23,programming,8388608,3000,DDR4,1,,4400.0,x64,Intel,2200.0,Core i7-8750H,6.0
+24,23,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,630,24,personal use,8388608,2666,DDR4,2,,2800.0,x64,Intel,3200.0,Core i7-8700,6.0
+25,24,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,25,programming,8388608,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
+26,27,laptop,268435456,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,26,programming,4194304,3000,DDR4,1,,3100.0,x64,Intel,1600.0,Core i5-8250U,4.0
+27,29,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,27,programming,8388608,3000,DDR4,1,,2950.0,x64,Intel,2200.0,Core i3-8130U,2.0
+28,30,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,28,programming,8388608,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i3-7020U,2.0
+29,32,desk,251658240,SanDisk SSD Plus,-1,ssd,home,male,AMD,Radeon,GDDR3,2097152.0,230,29,personal use,4194304,2666,DDR4,2,,2200.0,x64,Intel,2900.0,Core i5-9400F,6.0
+30,33,desk,251658240,SanDisk SSD Plus,-1,ssd,home,male,Intel,UHD Graphics,,,630,30,personal use,8388608,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8100,4.0
+31,20,desk,1073741824,Western Digital Blue,7200,hdd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,31,gaming,8388608,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Core i5-9400F,6.0
+32,24,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,631,32,programming,16777216,3000,DDR4,2,,3300.0,x64,Intel,3000.0,Core i5-8500,6.0
+33,30,desk,1073741824,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,33,programming,4194304,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8100,4.0
+34,22,laptop,268435456,,-1,ssd,home,female,Intel,HD graphics,,,520,34,programming,8388608,2666,DDR4,1,,2400.0,x64,Intel,2300.0,Core i3-7020U,2.0
+35,24,laptop,268435456,,-1,ssd,home,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,35,personal use,8388608,2666,DDR4,1,,2800.0,x64,Intel,2500.0,Core i5-8250U,4.0
+36,27,laptop,1073741824,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5X,8388608.0,1080,36,gaming,33554432,3000,DDR4,1,,14600.0,x64,Intel,2200.0,Core i7-8750H,6.0
+37,26,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,37,programming,4194304,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
+38,25,laptop,536870912,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,4194304.0,150,38,programming,8388608,3000,DDR4,1,,3700.0,x64,Intel,1800.0,Core i7-8550U,4.0
+39,24,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,39,programming,4194304,2666,DDR4,1,,1800.0,x64,Intel,2300.0,Core i3-7020U,2.0
+40,27,laptop,536870912,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,2097152.0,1050,40,programming,8388608,2666,DDR4,1,,5000.0,x64,Intel,2500.0,Core i5-8250U,4.0
+41,35,laptop,134217728,,-1,ssd,home,male,Intel,UHD Graphics,,,610,41,personal use,4194304,3000,DDR4,1,,2100.0,x64,Intel,2300.0,Pentium 4415U,2.0
+42,21,laptop,268435456,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR5,2097152.0,130,42,personal use,8388608,3000,DDR4,1,,3800.0,x64,Intel,2500.0,Core i5-8250U,4.0
+43,21,laptop,134217728,,-1,ssd,home,male,Intel,HD Graphics,,,605,43,personal use,4194304,3000,DDR4,1,,1900.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
+44,23,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,44,work,8388608,2666,DDR4,1,,3300.0,x64,Intel,2000.0,Core i5-8250U,4.0
+45,22,laptop,536870912,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,45,work,8388608,2666,DDR4,1,,5400.0,x64,Intel,2500.0,Core i5-8250U,4.0
+46,25,laptop,524288000,,7200,hdd,office,male,Intel,HD Graphics,,,520,46,work,4194304,3000,DDR4,1,,1700.0,x64,Intel,2000.0,Core i3-6006U,2.0
+47,29,laptop,268435456,,-1,ssd,office,male,Intel,HD Graphics,,,620,47,work,8388608,3000,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
+48,30,laptop,268435456,,-1,ssd,computers,male,Nvidia,GeForce MX,GDDR5,2097152.0,110,48,programming,8388608,3000,DDR4,1,,3150.0,x64,Intel,2300.0,Core i5-8250U,4.0
+49,22,laptop,268435456,,-1,ssd,home,female,Intel,HD Graphics,,,620,49,programming,8388608,2666,DDR3,1,,3000.0,x64,Intel,2500.0,Core i3-8145U,2.0
+50,33,laptop,2147483648,,5400,hdd,computers,female,Intel,HD Graphics,,,620,50,personal use,8388608,2666,DDR4,1,,3500.0,x64,Intel,2200.0,Core i5-8265U,4.0
+51,31,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,51,programming,8388608,3000,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
+52,33,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,520,52,personal use,4194304,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
+53,32,laptop,536870912,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,53,work,16777216,3000,DDR4,1,,7000.0,x64,Intel,3000.0,Core i7-8565U,4.0
+54,30,laptop,268435456,,-1,ssd,office,male,Intel,HD Graphics,,,620,54,work,8388608,3000,DDR3,1,,3700.0,x64,Intel,2300.0,Core i5-8265U,4.0
+55,34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,55,work,4194304,3000,DDR3,1,,2800.0,x64,Intel,2700.0,Core i3-8130U,2.0
+56,40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,56,personal use,8388608,3000,DDR4,1,,5700.0,x64,Intel,3000.0,Core i7-8565U,4.0
+57,37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,57,programming,8388608,3000,DDR4,1,,4200.0,x64,Intel,2300.0,Core i5-8265U,4.0
+58,27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,58,gaming,16777216,2666,DDR6,2,,6400.0,x64,Intel,3500.0,Core i7-8750H,6.0
+59,29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,59,programming,4194304,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
+60,28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,60,programming,8388608,1600,DDR4,2,,3000.0,x64,Intel,2800.0,Core i5-8400,6.0
+61,27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,61,programming,16777216,2933,DDR4,2,,4700.0,x64,Intel,3600.0,Core i9-9900K,8.0
+62,27,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Nvidia,GeForce GTX,DDR5,2097152.0,1050,62,gaming,16777216,2666,DDR4,2,,3200.0,x64,Intel,2900.0,Core i5-9400F,6.0
+63,27,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,630,63,programming,8388608,2666,DDR4,2,,1900.0,x64,Intel,3600.0,Core i3-8100,4.0
+64,25,desk,503316480,,-1,ssd,home,male,Nvidia,GEFORCE GTX,DDR5,4194304.0,1050,64,personal use,8388608,1600,DDR3,2,,3500.0,x64,Intel,3900.0,Core i7-4770,4.0
+65,24,desk,251658240,Pioneer SL2 APS,-1,ssd,computers,female,Intel,UHD Graphics,,,630,65,programming,8388608,2140,DDR4,2,,2000.0,x64,Intel,3700.0,Pentium Gold G5400,2.0
+66,23,desk,1073741824,Seagate Barracuda,7200,hdd,computers,male,Intel,UHD Graphics,,,630,66,programming,4194304,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Core i3-7100T,2.0
+67,24,desk,536870912,Transcend SSD230S,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,67,gaming,16777216,2666,DDR4,2,,8300.0,x64,Intel,3200.0,Core i7-8700,6.0
+68,27,laptop,268435456,,-1,ssd,computers,male,AMD,Radeon,,2097152.0,530,68,programming,8388608,3000,DDR4,1,,2700.0,x64,Intel,2500.0,Core i5-8250U,4.0
+69,29,desk,251658240,Kingston UV500 M.2,-1,ssd,computers,male,AMD,Radeon Vega,,,,69,personal use,16777216,2933,DDR4,2,,2800.0,x64,AMD,3500.0,Athlon 240GE,2.0
+70,30,laptop,524288000,,5400,hdd,computers,male,Intel,HD Graphics,,,520,70,personal use,8388608,2133,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-6006U,2.0
+71,32,laptop,536870912,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,71,gaming,33554432,2666,DDR4,2,,7000.0,x64,Intel,3200.0,Core i7-8750H,4.0
+72,33,laptop,268435456,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,520,72,programming,8388608,2666,DDR4,1,,2600.0,x64,Intel,2300.0,Core i5-8265U,4.0
+73,20,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,73,programming,8388608,2400,DDR4,1,,2700.0,x64,Intel,2200.0,Core i3-8130U,2.0
+74,24,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR6,2097152.0,150,74,programming,8388608,2133,DDR4,1,,2800.0,x64,Intel,2500.0,Core i5-8250U,4.0
+75,30,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,75,personal use,8388608,2666,DDR4,1,,3400.0,x64,Intel,2300.0,Core i5-8265U,4.0
+76,22,laptop,536870912,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,535,76,personal use,8388608,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Core i5-8250U,4.0
+77,24,laptop,536870912,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,535,77,programming,8388608,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Core i5-8250U,4.0
+78,27,laptop,268435456,,-1,ssd,home,female,Intel,UHD Graphics,,,620,78,programming,8388608,1866,LPDDR3,1,,4000.0,x64,Intel,2300.0,Core i5-8265U,4.0
+79,26,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,79,programming,8388608,2133,DDR4,1,,3400.0,x64,Intel,1800.0,Core i7-8550U,4.0
+80,25,laptop,536870912,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,535,80,programming,8388608,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
+81,24,laptop,268435456,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,81,personal use,8388608,2133,LPDDR3,1,,4100.0,x64,Intel,2300.0,Core i5-8265U,4.0
+82,27,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,82,personal use,8388608,1866,LPDDR3,1,,4300.0,x64,Intel,2300.0,Core i5-8265U,4.0
+83,35,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,83,personal use,8388608,2133,LPDDR3,1,,5000.0,x64,Intel,2300.0,Core i5-8265U,4.0
+84,21,laptop,536870912,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,84,work,8388608,2400,DDR4,1,,4400.0,x64,Intel,3100.0,Core i7-8750H,6.0
+85,21,laptop,536870912,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,85,gaming,16777216,2666,DDR4,2,,5700.0,x64,Intel,3100.0,Core i7-8750H,6.0
+86,23,laptop,67108864,,5400,emmc,office,male,Intel,UHD Graphics,,,600,86,work,2097152,2133,LPDDR4,1,,1250.0,x64,Intel,2500.0,Celeron N4000,2.0
+87,22,laptop,1073741824,,5400,hdd,office,male,Intel,HD Graphics,,,620,87,work,4194304,2666,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
+88,25,laptop,1073741824,,7200,hdd,office,male,Intel,HD Graphics,,,620,88,programming,4194304,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i3-7020U,2.0
+89,29,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,89,programming,8388608,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
+90,30,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,620,90,personal use,8388608,2133,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
+91,22,laptop,1073741824,,5400,hdd,home,female,Intel,UHD Graphics,,,620,91,programming,8388608,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
+92,33,desk,251658240,Kingston A400,-1,ssd,computers,male,intel,HD Graphics,,,630,92,personal use,8388608,2400,DDR4,2,,2700.0,x64,Intel,3600.0,Core i3-8100,4.0
+93,31,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,93,work,8388608,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Core i5-8250U,4.0
+94,33,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,94,work,8388608,2400,DDR4,1,,2650.0,x64,Intel,2500.0,Core i5-8250U,4.0
+95,32,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,95,work,8388608,2400,DDR4,1,,2800.0,x64,Intel,2200.0,Core i3-8130U,2.0
+96,30,laptop,536870912,,-1,ssd,home,female,Intel,UHD Graphics,,,620,96,personal use,8388608,2133,DDR4,1,,3000.0,x64,Intel,3000.0,Core i7-8550U,4.0
+97,34,desk,1073741824,Western Digital Caviar Blue,5400,hdd,office,female,intel,HD Graphics,,,630,97,programming,8388608,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i5-9600K,6.0
+98,40,desk,536870912,Transcend SSD230S,-1,ssd,home,female,intel,HD Graphics,,,630,98,programming,16777216,2400,DDR4,2,,3800.0,x64,Intel,4900.0,Core i7-9700K,8.0
+99,37,desk,503316480,Kingston UV500 2.5,-1,ssd,computers,male,Asus,GTX,GDDR5,6291456.0,1060,99,gaming,8388608,3000,DDR4,2,,4450.0,x64,Intel,3700.0,Core i5-9600K,6.0
+100,27,desk,1073741824,Western Digital Caviar Blue,-1,ssd,office,female,intel,HD Graphics,,,630,100,work,8388608,2400,DDR4,2,,2300.0,x64,Intel,3600.0,Core i3-8100,4.0
+101,40,laptop,1073741824,,5400,hdd,home,male,Intel,UHD Graphics,,,620,101,programming,8388608,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
+102,37,laptop,1073741824,,-1,ssd,home,male,NVIDIA,GeForce RTX,GDDR6,8388608.0,2070,102,gaming,25165824,2666,DDR4,2,,13000.0,x64,Intel,3200.0,Core i7-8750H,4.0
+103,27,laptop,536870912,,-1,ssd,home,male,Intel,HD Graphics,,,620,103,programming,8388608,2133,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
+104,29,laptop,536870912,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,540,104,programming,8388608,2400,DDR4,1,,3300.0,x64,Intel,1800.0,Core i7-8550U,4.0
+105,28,laptop,536870912,,-1,ssd,computers,female,NVIDIA,Geforce GTX,GDDR5,4194304.0,1050,105,personal use,8388608,2666,DDR4,1,,3700.0,x64,Intel,2300.0,Core i5-8300H,4.0
+106,27,laptop,536870912,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,540,106,personal use,8388608,2400,DDR4,1,,3900.0,x64,Intel,3000.0,Core i7-8565U,4.0
+107,27,desk,251658240,Kingston A400,-1,ssd,home,male,Asus,GT,GDDR5,1048576.0,710,107,programming,8388608,2400,DDR4,2,,2000.0,x64,AMD,3400.0,Ryzen 5 2600,6.0
+108,27,desk,1073741824,Western Digital Caviar Blue,5400,hdd,home,male,AMD,Radeon Vega,,,,108,programming,8388608,2400,DDR4,2,,1600.0,x64,AMD,3500.0,Ryzen 3 2200G,4.0
+109,25,desk,251658240,Kingston A400,-1,ssd,computers,male,ASUS,ROG STRIX-GTX,GDDR5,2097152.0,1050,109,gaming,8388608,2666,DDR4,2,,4450.0,x64,Intel,2900.0,Core i5-9400F,6.0
+110,24,desk,536870912,Transcend SSD230S,-1,ssd,computers,male,Intel,UHD Graphics,,,620,110,programming,8388608,2400,DDR4,2,,3150.0,x64,Intel,3700.0,Core i5-9600K,6.0
+111,23,desk,536870912,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,620,111,personal use,8388608,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8100,4.0
+112,24,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,112,personal use,8388608,2666,DDR4,1,,3800.0,x64,Intel,2500.0,Core i5-8250U,4.0
+113,27,laptop,268435456,,-1,ssd,home,female,Nvidia,GeForce,GDDR5,2097152.0,930,113,personal use,8388608,2666,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
+114,29,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,114,work,8388608,2666,DDR4,1,,2650.0,x64,Intel,2500.0,Core i5-8250U,4.0
+115,30,laptop,1073741824,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,8388608.0,1080,115,gaming,25165824,2666,DDR4,2,,12200.0,x64,Intel,3100.0,Core i7-8750H,6.0
+116,32,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,116,work,8388608,2400,LPDDR3,1,,4000.0,x64,Intel,1800.0,Core i7-8550U,4.0
+117,33,laptop,524288000,,7200,hdd,office,male,Intel,UHD Graphics,,,620,117,work,4194304,2400,DDR4,1,,2300.0,x64,Intel,2500.0,Core i5-8250U,4.0
+118,20,laptop,268435456,,-1,ssd,office,male,Nvidia,GeForce MX,GDDR5,4194304.0,150,118,programming,8388608,2133,DDR4,1,,3600.0,x64,Intel,1800.0,Core i7-8550U,4.0
+119,24,laptop,536870912,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,119,programming,8388608,2400,DDR4,1,,5800.0,x64,Intel,2300.0,Core i5-8265U,4.0
+120,30,laptop,67108864,,7200,emmc,computers,female,intel,HD Graphics,,,,120,personal use,4194304,2400,LPDDR4,1,,1200.0,x64,Intel,2500.0,Celeron N4000,2.0
+121,22,laptop,268435456,,-1,ssd,home,female,Intel,UHD Graphics,,,620,121,programming,8388608,2666,DDR4,1,,3400.0,x64,Intel,2200.0,Core i3-8130U,2.0
+122,24,laptop,536870912,,-1,ssd,computers,male,AMD,RADEON,GDDR5,2097152.0,535,122,personal use,8388608,2400,DDR4,1,,2900.0,x64,Intel,2500.0,Core i5-8250U,4.0
+123,27,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,123,work,8388608,2400,DDR4,1,,,x64,Intel,2200.0,Core i3-8130U,2.0
+124,29,laptop,524288000,ST500LM000-SSHD-8GB,5400,ssd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,0,programming,8388608,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i7-6500U,4.0
+125,23,desk,1073741824,Western Digital Blue,7200,ssd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,2,gaming,8388608,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Core i5-9400F,6.0
+126,24,desk,1073741824,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,3,programming,16777216,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Core i5-8400,6.0
+127,27,laptop,2147483648,,5400,ssd,home,male,AMD,Radeon,,4194304.0,530,6,gaming,33554432,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-8550U,4.0
+128,29,laptop,1073741824,,7200,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,15,gaming,8388608,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8750H,6.0
+129,26,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,16,gaming,8388608,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Core i5-8250U,4.0
+130,25,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,17,programming,8388608,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i3-7020U,2.0
+131,24,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,25,programming,8388608,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i3-7020U,2.0
+132,20,desk,1073741824,Western Digital Blue,7200,ssd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,31,gaming,8388608,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Core i5-9400F,6.0
+133,30,desk,1073741824,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,33,programming,4194304,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8100,4.0
+134,26,laptop,524288000,,5400,ssd,computers,female,Intel,UHD Graphics,,,605,37,programming,4194304,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Pentium Silver N5000,4.0
+135,23,desk,1073741824,Seagate Barracuda,7200,ssd,computers,male,Intel,UHD Graphics,,,630,66,programming,4194304,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Core i3-7100T,2.0
+136,25,laptop,1073741824,,7200,ssd,office,male,Intel,HD Graphics,,,620,88,programming,4194304,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i3-7020U,2.0
+137,22,laptop,1073741824,,5400,ssd,home,female,Intel,UHD Graphics,,,620,91,programming,8388608,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Core i5-8250U,4.0
+138,34,desk,1073741824,Western Digital Caviar Blue,5400,ssd,office,female,intel,HD Graphics,,,630,97,programming,8388608,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i5-9600K,6.0
+139,40,laptop,1073741824,,5400,ssd,home,male,Intel,UHD Graphics,,,620,101,programming,8388608,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Core i5-8250U,4.0
+140,27,desk,1073741824,Western Digital Caviar Blue,5400,ssd,home,male,AMD,Radeon Vega,,,,108,programming,8388608,2400,DDR4,2,,1600.0,x64,AMD,3500.0,Ryzen 3 2200G,4.0
+141,29,laptop,524288000,ST500LM000-SSHD-8GB,5400,hdd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,0,programming,8388608,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i5-4300M,4.0
+142,25,desk,251658240,Kingston® A1000,-1,ssd,home,male,Nvidia,GTX,DDR5,6291456.0,1060,1,personal use,16777216,3000,DDR4,2,,3600.0,x64,Intel,4000.0,Xeon Silver 4110,6.0
+143,23,desk,1073741824,Western Digital Blue,7200,hdd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,2,gaming,8388608,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
+144,24,desk,1073741824,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,3,programming,16777216,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
+145,25,laptop,268435456,,-1,ssd,office,female,Intel,,,,620,4,work,8388608,3000,DDR4,1,,3200.0,x64,AMD,2200.0,,4.0
+146,26,laptop,1073741824,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,5,work,8388608,2666,DDR4,1,,3700.0,x64,AMD,3700.0,,2.0
+147,27,laptop,2147483648,,5400,hdd,home,male,AMD,Radeon,,4194304.0,530,6,gaming,33554432,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+148,28,desk,524288000,Samsung 860 EVO,-1,ssd,home,male,Nvidia,GeForce RTX,GDDR6,8388608.0,2070,7,gaming,16777216,2666,DDR4,2,,7200.0,x64,Intel,3600.0,Core i7-9700KF,8.0
+149,28,desk,251658240,SanDisk SSD Plus,-1,ssd,home,female,Intel,UHD Graphics,,,630,8,personal use,8388608,2666,DDR4,2,,2400.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
+150,27,laptop,524288000,,-1,ssd,home,female,Intel,HD Graphics,,,520,9,personal use,4194304,1600,DDR4,1,,1600.0,x64,AMD,2000.0,,2.0
+151,29,laptop,524288000,,-1,ssd,home,male,Intel,HD Graphics,,,521,10,personal use,8388608,2666,DDR4,1,,2400.0,x64,AMD,2000.0,,2.0
+152,26,laptop,268435456,,-1,ssd,home,male,Nvidia,GeForce MX,DDR3,2097152.0,110,11,personal use,8388608,2666,DDR4,1,,2950.0,x64,Intel,1600.0,Xeon E3-1235,4.0
+153,34,laptop,524288000,,5400,hdd,home,male,Intel,HD Graphics,,,520,12,personal use,8388608,1600,DDR4,1,,2000.0,x64,AMD,2000.0,,2.0
+154,32,laptop,268435456,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,13,gaming,8388608,1600,DDR4,1,,5000.0,x64,Intel,2300.0,Xeon E3-1286L,4.0
+155,30,laptop,536870912,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR6,4194304.0,150,14,personal use,16777216,3000,DDR4,1,,5050.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+156,29,laptop,1073741824,,7200,hdd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,15,gaming,8388608,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Xeon E5-2680,6.0
+157,26,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,16,gaming,8388608,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Xeon E3-1235,4.0
+158,25,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,17,programming,8388608,3000,DDR4,1,,2200.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+159,28,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,18,personal use,4194304,3000,LPDDR4,1,,1600.0,x64,Intel,1100.0,Core i3-4010U,4.0
+160,27,laptop,524288000,,5400,hdd,home,male,Intel,HD Graphics,,,520,19,personal use,4194304,2666,DDR4,1,,1750.0,x64,AMD,2000.0,,2.0
+161,27,laptop,268435456,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,20,programming,8388608,3000,DDR4,1,,2800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+162,27,laptop,536870912,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR6,8388608.0,1070,21,gaming,33554432,3000,DDR4,1,,10500.0,x64,Intel,4100.0,Xeon E5-2680,6.0
+163,25,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,22,personal use,8388608,2666,DDR4,1,,3200.0,x64,AMD,2200.0,Athlon X4 840,2.0
+164,24,laptop,268435456,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,23,programming,8388608,3000,DDR4,1,,4400.0,x64,Intel,2200.0,Xeon E5-2680,6.0
+165,23,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,630,24,personal use,8388608,2666,DDR4,2,,2800.0,x64,Intel,3200.0,Xeon Silver 4123,6.0
+166,24,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,25,programming,8388608,3000,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+167,27,laptop,268435456,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,26,programming,4194304,3000,DDR4,1,,3100.0,x64,Intel,1600.0,Xeon E3-1235,4.0
+168,29,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,27,programming,8388608,3000,DDR4,1,,2950.0,x64,AMD,2200.0,Athlon X4 840,2.0
+169,30,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,28,programming,8388608,3000,DDR4,1,,2200.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+170,32,desk,251658240,SanDisk SSD Plus,-1,ssd,home,male,AMD,Radeon,GDDR3,2097152.0,230,29,personal use,4194304,2666,DDR4,2,,2200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
+171,33,desk,251658240,SanDisk SSD Plus,-1,ssd,home,male,Intel,UHD Graphics,,,630,30,personal use,8388608,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8300T,4.0
+172,20,desk,1073741824,Western Digital Blue,7200,hdd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,31,gaming,8388608,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
+173,24,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,631,32,programming,16777216,3000,DDR4,2,,3300.0,x64,Intel,3000.0,Xeon E3-1285,6.0
+174,30,desk,1073741824,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,33,programming,4194304,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8300T,4.0
+175,22,laptop,268435456,,-1,ssd,home,female,Intel,HD graphics,,,520,34,programming,8388608,2666,DDR4,1,,2400.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+176,24,laptop,268435456,,-1,ssd,home,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,35,personal use,8388608,2666,DDR4,1,,2800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+177,27,laptop,1073741824,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5X,8388608.0,1080,36,gaming,33554432,3000,DDR4,1,,14600.0,x64,Intel,2200.0,Xeon E5-2680,6.0
+178,26,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,37,programming,4194304,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Core i3-4010U,4.0
+179,25,laptop,536870912,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,4194304.0,150,38,programming,8388608,3000,DDR4,1,,3700.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+180,24,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,39,programming,4194304,2666,DDR4,1,,1800.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+181,27,laptop,536870912,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,2097152.0,1050,40,programming,8388608,2666,DDR4,1,,5000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+182,35,laptop,134217728,,-1,ssd,home,male,Intel,UHD Graphics,,,610,41,personal use,4194304,3000,DDR4,1,,2100.0,x64,AMD,2300.0,Athlon II X4 631,2.0
+183,21,laptop,268435456,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR5,2097152.0,130,42,personal use,8388608,3000,DDR4,1,,3800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+184,21,laptop,134217728,,-1,ssd,home,male,Intel,HD Graphics,,,605,43,personal use,4194304,3000,DDR4,1,,1900.0,x64,Intel,1100.0,Core i3-4010U,4.0
+185,23,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,44,work,8388608,2666,DDR4,1,,3300.0,x64,Intel,2000.0,Xeon E3-1235,4.0
+186,22,laptop,536870912,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,45,work,8388608,2666,DDR4,1,,5400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+187,25,laptop,524288000,,7200,hdd,office,male,Intel,HD Graphics,,,520,46,work,4194304,3000,DDR4,1,,1700.0,x64,AMD,2000.0,,2.0
+188,29,laptop,268435456,,-1,ssd,office,male,Intel,HD Graphics,,,620,47,work,8388608,3000,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+189,30,laptop,268435456,,-1,ssd,computers,male,Nvidia,GeForce MX,GDDR5,2097152.0,110,48,programming,8388608,3000,DDR4,1,,3150.0,x64,Intel,2300.0,Xeon E3-1235,4.0
+190,22,laptop,268435456,,-1,ssd,home,female,Intel,HD Graphics,,,620,49,programming,8388608,2666,DDR3,1,,3000.0,x64,Intel,2500.0,Xeon E5-2603,2.0
+191,33,laptop,2147483648,,5400,hdd,computers,female,Intel,HD Graphics,,,620,50,personal use,8388608,2666,DDR4,1,,3500.0,x64,AMD,2200.0,,4.0
+192,31,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,51,programming,8388608,3000,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+193,33,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,520,52,personal use,4194304,3000,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+194,32,laptop,536870912,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,53,work,16777216,3000,DDR4,1,,7000.0,x64,Intel,3000.0,Core i3-9100F,4.0
+195,30,laptop,268435456,,-1,ssd,office,male,Intel,HD Graphics,,,620,54,work,8388608,3000,DDR3,1,,3700.0,x64,AMD,2300.0,,4.0
+196,34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,55,work,4194304,3000,DDR3,1,,2800.0,x64,AMD,2700.0,Athlon X4 840,2.0
+197,40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,56,personal use,8388608,3000,DDR4,1,,5700.0,x64,Intel,3000.0,Core i3-9100F,4.0
+198,37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,57,programming,8388608,3000,DDR4,1,,4200.0,x64,AMD,2300.0,,4.0
+199,27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,58,gaming,16777216,2666,DDR6,2,,6400.0,x64,Intel,3500.0,Xeon E5-2680,6.0
+200,29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,59,programming,4194304,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+201,28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,60,programming,8388608,1600,DDR4,2,,3000.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
+202,27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,61,programming,16777216,2933,DDR4,2,,4700.0,x64,Intel,3600.0,Xeon E5-2695,8.0
+203,27,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Nvidia,GeForce GTX,DDR5,2097152.0,1050,62,gaming,16777216,2666,DDR4,2,,3200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
+204,27,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,630,63,programming,8388608,2666,DDR4,2,,1900.0,x64,Intel,3600.0,Core i3-8300T,4.0
+205,25,desk,503316480,,-1,ssd,home,male,Nvidia,GEFORCE GTX,DDR5,4194304.0,1050,64,personal use,8388608,1600,DDR3,2,,3500.0,x64,AMD,3900.0,Ryzen 5 1500X,4.0
+206,24,desk,251658240,Pioneer SL2 APS,-1,ssd,computers,female,Intel,UHD Graphics,,,630,65,programming,8388608,2140,DDR4,2,,2000.0,x64,Intel,3700.0,Xeon E5-2418L,2.0
+207,23,desk,1073741824,Seagate Barracuda,7200,hdd,computers,male,Intel,UHD Graphics,,,630,66,programming,4194304,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Pentium Gold G5400T,2.0
+208,24,desk,536870912,Transcend SSD230S,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,67,gaming,16777216,2666,DDR4,2,,8300.0,x64,Intel,3200.0,Xeon Silver 4123,6.0
+209,27,laptop,268435456,,-1,ssd,computers,male,AMD,Radeon,,2097152.0,530,68,programming,8388608,3000,DDR4,1,,2700.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+210,29,desk,251658240,Kingston UV500 M.2,-1,ssd,computers,male,AMD,Radeon Vega,,,,69,personal use,16777216,2933,DDR4,2,,2800.0,x64,Intel,3500.0,Core i7-875K,2.0
+211,30,laptop,524288000,,5400,hdd,computers,male,Intel,HD Graphics,,,520,70,personal use,8388608,2133,DDR4,1,,2000.0,x64,AMD,2000.0,,2.0
+212,32,laptop,536870912,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,71,gaming,33554432,2666,DDR4,2,,7000.0,x64,Intel,3200.0,Xeon E5-2680,4.0
+213,33,laptop,268435456,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,520,72,programming,8388608,2666,DDR4,1,,2600.0,x64,AMD,2300.0,,4.0
+214,20,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,73,programming,8388608,2400,DDR4,1,,2700.0,x64,AMD,2200.0,Athlon X4 840,2.0
+215,24,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR6,2097152.0,150,74,programming,8388608,2133,DDR4,1,,2800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+216,30,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,75,personal use,8388608,2666,DDR4,1,,3400.0,x64,AMD,2300.0,,4.0
+217,22,laptop,536870912,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,535,76,personal use,8388608,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+218,24,laptop,536870912,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,535,77,programming,8388608,2400,DDR4,1,,3200.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+219,27,laptop,268435456,,-1,ssd,home,female,Intel,UHD Graphics,,,620,78,programming,8388608,1866,LPDDR3,1,,4000.0,x64,AMD,2300.0,,4.0
+220,26,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,79,programming,8388608,2133,DDR4,1,,3400.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+221,25,laptop,536870912,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,535,80,programming,8388608,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+222,24,laptop,268435456,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,81,personal use,8388608,2133,LPDDR3,1,,4100.0,x64,AMD,2300.0,,4.0
+223,27,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,82,personal use,8388608,1866,LPDDR3,1,,4300.0,x64,AMD,2300.0,,4.0
+224,35,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,83,personal use,8388608,2133,LPDDR3,1,,5000.0,x64,AMD,2300.0,,4.0
+225,21,laptop,536870912,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,84,work,8388608,2400,DDR4,1,,4400.0,x64,Intel,3100.0,Xeon E5-2680,6.0
+226,21,laptop,536870912,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,85,gaming,16777216,2666,DDR4,2,,5700.0,x64,Intel,3100.0,Xeon E5-2680,6.0
+227,23,laptop,67108864,,5400,emmc,office,male,Intel,UHD Graphics,,,600,86,work,2097152,2133,LPDDR4,1,,1250.0,x64,AMD,2500.0,Opteron 1218,2.0
+228,22,laptop,1073741824,,5400,hdd,office,male,Intel,HD Graphics,,,620,87,work,4194304,2666,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+229,25,laptop,1073741824,,7200,hdd,office,male,Intel,HD Graphics,,,620,88,programming,4194304,2400,DDR4,1,,2100.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+230,29,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,89,programming,8388608,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+231,30,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,620,90,personal use,8388608,2133,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+232,22,laptop,1073741824,,5400,hdd,home,female,Intel,UHD Graphics,,,620,91,programming,8388608,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+233,33,desk,251658240,Kingston A400,-1,ssd,computers,male,intel,HD Graphics,,,630,92,personal use,8388608,2400,DDR4,2,,2700.0,x64,AMD,3600.0,Ryzen 7 2800H,4.0
+234,31,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,93,work,8388608,2666,DDR4,1,,2500.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+235,33,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,94,work,8388608,2400,DDR4,1,,2650.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+236,32,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,95,work,8388608,2400,DDR4,1,,2800.0,x64,AMD,2200.0,Athlon X4 840,2.0
+237,30,laptop,536870912,,-1,ssd,home,female,Intel,UHD Graphics,,,620,96,personal use,8388608,2133,DDR4,1,,3000.0,x64,Intel,3000.0,Core i7-3740QM,4.0
+238,34,desk,1073741824,Western Digital Caviar Blue,5400,hdd,office,female,intel,HD Graphics,,,630,97,programming,8388608,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Xeon E5-2663,6.0
+239,40,desk,536870912,Transcend SSD230S,-1,ssd,home,female,intel,HD Graphics,,,630,98,programming,16777216,2400,DDR4,2,,3800.0,x64,Intel,4900.0,Core i9-9980HK,8.0
+240,37,desk,503316480,Kingston UV500 2.5,-1,ssd,computers,male,Asus,GTX,GDDR5,6291456.0,1060,99,gaming,8388608,3000,DDR4,2,,4450.0,x64,Intel,3700.0,Xeon E5-2663,6.0
+241,27,desk,1073741824,Western Digital Caviar Blue,-1,ssd,office,female,intel,HD Graphics,,,630,100,work,8388608,2400,DDR4,2,,2300.0,x64,AMD,3600.0,Ryzen 7 2800H,4.0
+242,40,laptop,1073741824,,5400,hdd,home,male,Intel,UHD Graphics,,,620,101,programming,8388608,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+243,37,laptop,1073741824,,-1,ssd,home,male,NVIDIA,GeForce RTX,GDDR6,8388608.0,2070,102,gaming,25165824,2666,DDR4,2,,13000.0,x64,Intel,3200.0,Xeon E5-2680,4.0
+244,27,laptop,536870912,,-1,ssd,home,male,Intel,HD Graphics,,,620,103,programming,8388608,2133,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+245,29,laptop,536870912,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,540,104,programming,8388608,2400,DDR4,1,,3300.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+246,28,laptop,536870912,,-1,ssd,computers,female,NVIDIA,Geforce GTX,GDDR5,4194304.0,1050,105,personal use,8388608,2666,DDR4,1,,3700.0,x64,Intel,2300.0,Xeon E3-1286L,4.0
+247,27,laptop,536870912,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,540,106,personal use,8388608,2400,DDR4,1,,3900.0,x64,Intel,3000.0,Core i3-9100F,4.0
+248,27,desk,251658240,Kingston A400,-1,ssd,home,male,Asus,GT,GDDR5,1048576.0,710,107,programming,8388608,2400,DDR4,2,,2000.0,x64,Intel,3400.0,Core i7-6850K,6.0
+249,27,desk,1073741824,Western Digital Caviar Blue,5400,hdd,home,male,AMD,Radeon Vega,,,,108,programming,8388608,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Core i7-4765T,4.0
+250,25,desk,251658240,Kingston A400,-1,ssd,computers,male,ASUS,ROG STRIX-GTX,GDDR5,2097152.0,1050,109,gaming,8388608,2666,DDR4,2,,4450.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
+251,24,desk,536870912,Transcend SSD230S,-1,ssd,computers,male,Intel,UHD Graphics,,,620,110,programming,8388608,2400,DDR4,2,,3150.0,x64,Intel,3700.0,Xeon E5-2663,6.0
+252,23,desk,536870912,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,620,111,personal use,8388608,2666,DDR4,2,,2000.0,x64,Intel,3600.0,Core i3-8300T,4.0
+253,24,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,112,personal use,8388608,2666,DDR4,1,,3800.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+254,27,laptop,268435456,,-1,ssd,home,female,Nvidia,GeForce,GDDR5,2097152.0,930,113,personal use,8388608,2666,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+255,29,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,114,work,8388608,2666,DDR4,1,,2650.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+256,30,laptop,1073741824,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,8388608.0,1080,115,gaming,25165824,2666,DDR4,2,,12200.0,x64,Intel,3100.0,Xeon E5-2680,6.0
+257,32,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,116,work,8388608,2400,LPDDR3,1,,4000.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+258,33,laptop,524288000,,7200,hdd,office,male,Intel,UHD Graphics,,,620,117,work,4194304,2400,DDR4,1,,2300.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+259,20,laptop,268435456,,-1,ssd,office,male,Nvidia,GeForce MX,GDDR5,4194304.0,150,118,programming,8388608,2133,DDR4,1,,3600.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+260,24,laptop,536870912,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,119,programming,8388608,2400,DDR4,1,,5800.0,x64,AMD,2300.0,,4.0
+261,30,laptop,67108864,,7200,emmc,computers,female,intel,HD Graphics,,,,120,personal use,4194304,2400,LPDDR4,1,,1200.0,x64,AMD,2500.0,Opteron 1218,2.0
+262,22,laptop,268435456,,-1,ssd,home,female,Intel,UHD Graphics,,,620,121,programming,8388608,2666,DDR4,1,,3400.0,x64,AMD,2200.0,Athlon X4 840,2.0
+263,24,laptop,536870912,,-1,ssd,computers,male,AMD,RADEON,GDDR5,2097152.0,535,122,personal use,8388608,2400,DDR4,1,,2900.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+264,27,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,123,work,8388608,2400,DDR4,1,,,x64,AMD,2200.0,Athlon X4 840,2.0
+265,29,laptop,524288000,ST500LM000-SSHD-8GB,5400,ssd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,0,programming,8388608,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Core i5-4300M,4.0
+266,23,desk,1073741824,Western Digital Blue,7200,ssd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,2,gaming,8388608,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
+267,24,desk,1073741824,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,3,programming,16777216,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon Silver 4110,6.0
+268,27,laptop,2147483648,,5400,ssd,home,male,AMD,Radeon,,4194304.0,530,6,gaming,33554432,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Core i7-3740QM,4.0
+269,29,laptop,1073741824,,7200,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,15,gaming,8388608,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Xeon E5-2680,6.0
+270,26,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,16,gaming,8388608,2666,DDR4,1,,2400.0,x64,Intel,1600.0,Xeon E3-1235,4.0
+271,25,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,17,programming,8388608,3000,DDR4,1,,2200.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+272,24,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,25,programming,8388608,3000,DDR4,1,,2000.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+273,20,desk,1073741824,Western Digital Blue,7200,ssd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,31,gaming,8388608,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2618L,6.0
+274,30,desk,1073741824,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,33,programming,4194304,3000,DDR4,2,,2100.0,x64,Intel,3600.0,Core i3-8300T,4.0
+275,26,laptop,524288000,,5400,ssd,computers,female,Intel,UHD Graphics,,,605,37,programming,4194304,3000,DDR4,1,,1240.0,x64,Intel,1100.0,Core i3-4010U,4.0
+276,23,desk,1073741824,Seagate Barracuda,7200,ssd,computers,male,Intel,UHD Graphics,,,630,66,programming,4194304,2400,DDR4,2,,1700.0,x64,Intel,3400.0,Pentium Gold G5400T,2.0
+277,25,laptop,1073741824,,7200,ssd,office,male,Intel,HD Graphics,,,620,88,programming,4194304,2400,DDR4,1,,2100.0,x64,AMD,2300.0,PRO A8-8600B,2.0
+278,22,laptop,1073741824,,5400,ssd,home,female,Intel,UHD Graphics,,,620,91,programming,8388608,2400,DDR4,1,,3000.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+279,34,desk,1073741824,Western Digital Caviar Blue,5400,ssd,office,female,intel,HD Graphics,,,630,97,programming,8388608,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Xeon E5-2663,6.0
+280,40,laptop,1073741824,,5400,ssd,home,male,Intel,UHD Graphics,,,620,101,programming,8388608,2133,DDR4,1,,2400.0,x64,Intel,2500.0,Xeon E3-1235,4.0
+281,27,desk,1073741824,Western Digital Caviar Blue,5400,ssd,home,male,AMD,Radeon Vega,,,,108,programming,8388608,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Core i7-4765T,4.0
+282,29,laptop,524288000,ST500LM000-SSHD-8GB,5400,hdd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,0,programming,8388608,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Xeon E3-1220L,4.0
+283,25,desk,251658240,Kingston® A1000,-1,ssd,home,male,Nvidia,GTX,DDR5,6291456.0,1060,1,personal use,16777216,3000,DDR4,2,,3600.0,x64,Intel,4000.0,Xeon E5-2665,6.0
+284,23,desk,1073741824,Western Digital Blue,7200,hdd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,2,gaming,8388608,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2670,6.0
+285,24,desk,1073741824,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,3,programming,16777216,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon E5-2665,6.0
+286,25,laptop,268435456,,-1,ssd,office,female,Intel,,,,620,4,work,8388608,3000,DDR4,1,,3200.0,x64,Intel,2200.0,Xeon E3-1245,4.0
+287,26,laptop,1073741824,,5400,hdd,office,female,NVIDIA,GeForce MX,DDR5,2097152.0,110,5,work,8388608,2666,DDR4,1,,3700.0,x64,Intel,3700.0,Core i3-3110M,2.0
+288,27,laptop,2147483648,,5400,hdd,home,male,AMD,Radeon,,4194304.0,530,6,gaming,33554432,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+289,28,desk,524288000,Samsung 860 EVO,-1,ssd,home,male,Nvidia,GeForce RTX,GDDR6,8388608.0,2070,7,gaming,16777216,2666,DDR4,2,,7200.0,x64,AMD,3600.0, PRO 2700X,8.0
+290,28,desk,251658240,SanDisk SSD Plus,-1,ssd,home,female,Intel,UHD Graphics,,,630,8,personal use,8388608,2666,DDR4,2,,2400.0,x64,Intel,2800.0,Xeon E5-2665,6.0
+291,27,laptop,524288000,,-1,ssd,home,female,Intel,HD Graphics,,,520,9,personal use,4194304,1600,DDR4,1,,1600.0,x64,Intel,2000.0,Core i3-3110M,2.0
+292,29,laptop,524288000,,-1,ssd,home,male,Intel,HD Graphics,,,521,10,personal use,8388608,2666,DDR4,1,,2400.0,x64,Intel,2000.0,Core i3-3110M,2.0
+293,26,laptop,268435456,,-1,ssd,home,male,Nvidia,GeForce MX,DDR3,2097152.0,110,11,personal use,8388608,2666,DDR4,1,,2950.0,x64,AMD,1600.0, PRO 3700U,4.0
+294,34,laptop,524288000,,5400,hdd,home,male,Intel,HD Graphics,,,520,12,personal use,8388608,1600,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-3110M,2.0
+295,32,laptop,268435456,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,13,gaming,8388608,1600,DDR4,1,,5000.0,x64,Intel,2300.0,Xeon E5-2658,4.0
+296,30,laptop,536870912,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR6,4194304.0,150,14,personal use,16777216,3000,DDR4,1,,5050.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+297,29,laptop,1073741824,,7200,hdd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,15,gaming,8388608,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8559U,6.0
+298,26,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,16,gaming,8388608,2666,DDR4,1,,2400.0,x64,AMD,1600.0, PRO 3700U,4.0
+299,25,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,17,programming,8388608,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i5-5350U,2.0
+300,28,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,18,personal use,4194304,3000,LPDDR4,1,,1600.0,x64,AMD,1100.0,A6-5200,4.0
+301,27,laptop,524288000,,5400,hdd,home,male,Intel,HD Graphics,,,520,19,personal use,4194304,2666,DDR4,1,,1750.0,x64,Intel,2000.0,Core i3-3110M,2.0
+302,27,laptop,268435456,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,20,programming,8388608,3000,DDR4,1,,2800.0,x64,AMD,2500.0, PRO 3700U,4.0
+303,27,laptop,536870912,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR6,8388608.0,1070,21,gaming,33554432,3000,DDR4,1,,10500.0,x64,Intel,4100.0,Core i7-8559U,6.0
+304,25,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,22,personal use,8388608,2666,DDR4,1,,3200.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
+305,24,laptop,268435456,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,23,programming,8388608,3000,DDR4,1,,4400.0,x64,Intel,2200.0,Core i7-8559U,6.0
+306,23,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,630,24,personal use,8388608,2666,DDR4,2,,2800.0,x64,Intel,3200.0,Xeon E5-2675,6.0
+307,24,laptop,1073741824,,5400,hdd,computers,male,Intel,UHD Graphics,,,620,25,programming,8388608,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
+308,27,laptop,268435456,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,26,programming,4194304,3000,DDR4,1,,3100.0,x64,AMD,1600.0, PRO 3700U,4.0
+309,29,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,27,programming,8388608,3000,DDR4,1,,2950.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
+310,30,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,28,programming,8388608,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i5-5350U,2.0
+311,32,desk,251658240,SanDisk SSD Plus,-1,ssd,home,male,AMD,Radeon,GDDR3,2097152.0,230,29,personal use,4194304,2666,DDR4,2,,2200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
+312,33,desk,251658240,SanDisk SSD Plus,-1,ssd,home,male,Intel,UHD Graphics,,,630,30,personal use,8388608,2666,DDR4,2,,2000.0,x64,AMD,3600.0, PRO 1300,4.0
+313,20,desk,1073741824,Western Digital Blue,7200,hdd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,31,gaming,8388608,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
+314,24,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,631,32,programming,16777216,3000,DDR4,2,,3300.0,x64,Intel,3000.0,Core i5-9400,6.0
+315,30,desk,1073741824,Western Digital Blue,7200,hdd,computers,female,Intel,UHD Graphics,,,630,33,programming,4194304,3000,DDR4,2,,2100.0,x64,AMD,3600.0, PRO 1300,4.0
+316,22,laptop,268435456,,-1,ssd,home,female,Intel,HD graphics,,,520,34,programming,8388608,2666,DDR4,1,,2400.0,x64,Intel,2300.0,Core i5-5350U,2.0
+317,24,laptop,268435456,,-1,ssd,home,female,Nvidia,GeForce MX,GDDR5,2097152.0,130,35,personal use,8388608,2666,DDR4,1,,2800.0,x64,AMD,2500.0, PRO 3700U,4.0
+318,27,laptop,1073741824,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5X,8388608.0,1080,36,gaming,33554432,3000,DDR4,1,,14600.0,x64,Intel,2200.0,Core i7-8559U,6.0
+319,26,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,605,37,programming,4194304,3000,DDR4,1,,1240.0,x64,AMD,1100.0,A6-5200,4.0
+320,25,laptop,536870912,,-1,ssd,computers,female,Nvidia,GeForce MX,GDDR5,4194304.0,150,38,programming,8388608,3000,DDR4,1,,3700.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+321,24,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,39,programming,4194304,2666,DDR4,1,,1800.0,x64,Intel,2300.0,Core i5-5350U,2.0
+322,27,laptop,536870912,,-1,ssd,computers,male,Nvidia,GeForce GTX,GDDR5,2097152.0,1050,40,programming,8388608,2666,DDR4,1,,5000.0,x64,AMD,2500.0, PRO 3700U,4.0
+323,35,laptop,134217728,,-1,ssd,home,male,Intel,UHD Graphics,,,610,41,personal use,4194304,3000,DDR4,1,,2100.0,x64,AMD,2300.0,A6-3650,2.0
+324,21,laptop,268435456,,-1,ssd,home,male,Nvidia,GeForce MX,GDDR5,2097152.0,130,42,personal use,8388608,3000,DDR4,1,,3800.0,x64,AMD,2500.0, PRO 3700U,4.0
+325,21,laptop,134217728,,-1,ssd,home,male,Intel,HD Graphics,,,605,43,personal use,4194304,3000,DDR4,1,,1900.0,x64,AMD,1100.0,A6-5200,4.0
+326,23,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,44,work,8388608,2666,DDR4,1,,3300.0,x64,AMD,2000.0, PRO 3700U,4.0
+327,22,laptop,536870912,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,45,work,8388608,2666,DDR4,1,,5400.0,x64,AMD,2500.0, PRO 3700U,4.0
+328,25,laptop,524288000,,7200,hdd,office,male,Intel,HD Graphics,,,520,46,work,4194304,3000,DDR4,1,,1700.0,x64,Intel,2000.0,Core i3-3110M,2.0
+329,29,laptop,268435456,,-1,ssd,office,male,Intel,HD Graphics,,,620,47,work,8388608,3000,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
+330,30,laptop,268435456,,-1,ssd,computers,male,Nvidia,GeForce MX,GDDR5,2097152.0,110,48,programming,8388608,3000,DDR4,1,,3150.0,x64,AMD,2300.0, PRO 3700U,4.0
+331,22,laptop,268435456,,-1,ssd,home,female,Intel,HD Graphics,,,620,49,programming,8388608,2666,DDR3,1,,3000.0,x64,AMD,2500.0,Athlon X4 860K,2.0
+332,33,laptop,2147483648,,5400,hdd,computers,female,Intel,HD Graphics,,,620,50,personal use,8388608,2666,DDR4,1,,3500.0,x64,Intel,2200.0,Xeon E3-1245,4.0
+333,31,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,51,programming,8388608,3000,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
+334,33,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,520,52,personal use,4194304,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
+335,32,laptop,536870912,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,53,work,16777216,3000,DDR4,1,,7000.0,x64,Intel,3000.0,Xeon E5-2430,4.0
+336,30,laptop,268435456,,-1,ssd,office,male,Intel,HD Graphics,,,620,54,work,8388608,3000,DDR3,1,,3700.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+337,34,laptop,268435456,,-1,ssd,office,female,Intel,UHD Graphics,,,620,55,work,4194304,3000,DDR3,1,,2800.0,x64,AMD,2700.0,Phenom II X6 1405T,2.0
+338,40,laptop,536870912,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,56,personal use,8388608,3000,DDR4,1,,5700.0,x64,Intel,3000.0,Xeon E5-2430,4.0
+339,37,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,150,57,programming,8388608,3000,DDR4,1,,4200.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+340,27,laptop,1073741824,,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,58,gaming,16777216,2666,DDR6,2,,6400.0,x64,Intel,3500.0,Core i7-8559U,6.0
+341,29,laptop,134217728,,-1,ssd,computers,female,Intel,UHD Graphics,,,620,59,programming,4194304,2666,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
+342,28,desk,1073741824,Western Digital Blue,-1,ssd,computers,male,Intel,UHD Graphics,,,630,60,programming,8388608,1600,DDR4,2,,3000.0,x64,Intel,2800.0,Xeon E5-2665,6.0
+343,27,desk,524288000,SSD Samsung 860 EVO,-1,ssd,home,female,Intel,UHD Graphics,,,630,61,programming,16777216,2933,DDR4,2,,4700.0,x64,AMD,3600.0,Ryzen 5 3600,8.0
+344,27,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Nvidia,GeForce GTX,DDR5,2097152.0,1050,62,gaming,16777216,2666,DDR4,2,,3200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
+345,27,desk,251658240,SanDisk SSD Plus,-1,ssd,computers,male,Intel,UHD Graphics,,,630,63,programming,8388608,2666,DDR4,2,,1900.0,x64,AMD,3600.0, PRO 1300,4.0
+346,25,desk,503316480,,-1,ssd,home,male,Nvidia,GEFORCE GTX,DDR5,4194304.0,1050,64,personal use,8388608,1600,DDR3,2,,3500.0,x64,Intel,3900.0,Xeon E5-2470,4.0
+347,24,desk,251658240,Pioneer SL2 APS,-1,ssd,computers,female,Intel,UHD Graphics,,,630,65,programming,8388608,2140,DDR4,2,,2000.0,x64,Intel,3700.0,Pentium Gold G5500,2.0
+348,23,desk,1073741824,Seagate Barracuda,7200,hdd,computers,male,Intel,UHD Graphics,,,630,66,programming,4194304,2400,DDR4,2,,1700.0,x64,AMD,3400.0,Athlon X4 840,2.0
+349,24,desk,536870912,Transcend SSD230S,-1,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,6291456.0,1060,67,gaming,16777216,2666,DDR4,2,,8300.0,x64,Intel,3200.0,Xeon E5-2675,6.0
+350,27,laptop,268435456,,-1,ssd,computers,male,AMD,Radeon,,2097152.0,530,68,programming,8388608,3000,DDR4,1,,2700.0,x64,AMD,2500.0, PRO 3700U,4.0
+351,29,desk,251658240,Kingston UV500 M.2,-1,ssd,computers,male,AMD,Radeon Vega,,,,69,personal use,16777216,2933,DDR4,2,,2800.0,x64,Intel,3500.0,Core i3-6098P,2.0
+352,30,laptop,524288000,,5400,hdd,computers,male,Intel,HD Graphics,,,520,70,personal use,8388608,2133,DDR4,1,,2000.0,x64,Intel,2000.0,Core i3-3110M,2.0
+353,32,laptop,536870912,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,71,gaming,33554432,2666,DDR4,2,,7000.0,x64,Intel,3200.0,Core i7-8559U,4.0
+354,33,laptop,268435456,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,520,72,programming,8388608,2666,DDR4,1,,2600.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+355,20,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,73,programming,8388608,2400,DDR4,1,,2700.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
+356,24,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR6,2097152.0,150,74,programming,8388608,2133,DDR4,1,,2800.0,x64,AMD,2500.0, PRO 3700U,4.0
+357,30,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,75,personal use,8388608,2666,DDR4,1,,3400.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+358,22,laptop,536870912,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,535,76,personal use,8388608,2400,DDR4,1,,3200.0,x64,AMD,2500.0, PRO 3700U,4.0
+359,24,laptop,536870912,,-1,ssd,home,male,AMD,Radeon,GDDR5,2097152.0,535,77,programming,8388608,2400,DDR4,1,,3200.0,x64,AMD,2500.0, PRO 3700U,4.0
+360,27,laptop,268435456,,-1,ssd,home,female,Intel,UHD Graphics,,,620,78,programming,8388608,1866,LPDDR3,1,,4000.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+361,26,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,79,programming,8388608,2133,DDR4,1,,3400.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+362,25,laptop,536870912,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,535,80,programming,8388608,2400,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
+363,24,laptop,268435456,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,81,personal use,8388608,2133,LPDDR3,1,,4100.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+364,27,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,82,personal use,8388608,1866,LPDDR3,1,,4300.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+365,35,laptop,268435456,,-1,ssd,home,male,Intel,UHD Graphics,,,620,83,personal use,8388608,2133,LPDDR3,1,,5000.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+366,21,laptop,536870912,,-1,ssd,office,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,84,work,8388608,2400,DDR4,1,,4400.0,x64,Intel,3100.0,Core i7-8559U,6.0
+367,21,laptop,536870912,,-1,ssd,home,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,85,gaming,16777216,2666,DDR4,2,,5700.0,x64,Intel,3100.0,Core i7-8559U,6.0
+368,23,laptop,67108864,,5400,emmc,office,male,Intel,UHD Graphics,,,600,86,work,2097152,2133,LPDDR4,1,,1250.0,x64,Intel,2500.0,Celeron E3400,2.0
+369,22,laptop,1073741824,,5400,hdd,office,male,Intel,HD Graphics,,,620,87,work,4194304,2666,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
+370,25,laptop,1073741824,,7200,hdd,office,male,Intel,HD Graphics,,,620,88,programming,4194304,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i5-5350U,2.0
+371,29,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,89,programming,8388608,2133,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
+372,30,laptop,524288000,,5400,hdd,computers,female,Intel,UHD Graphics,,,620,90,personal use,8388608,2133,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
+373,22,laptop,1073741824,,5400,hdd,home,female,Intel,UHD Graphics,,,620,91,programming,8388608,2400,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
+374,33,desk,251658240,Kingston A400,-1,ssd,computers,male,intel,HD Graphics,,,630,92,personal use,8388608,2400,DDR4,2,,2700.0,x64,Intel,3600.0,Xeon E3-1280,4.0
+375,31,laptop,268435456,,-1,ssd,computers,male,Intel,HD Graphics,,,620,93,work,8388608,2666,DDR4,1,,2500.0,x64,AMD,2500.0, PRO 3700U,4.0
+376,33,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,94,work,8388608,2400,DDR4,1,,2650.0,x64,AMD,2500.0, PRO 3700U,4.0
+377,32,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,95,work,8388608,2400,DDR4,1,,2800.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
+378,30,laptop,536870912,,-1,ssd,home,female,Intel,UHD Graphics,,,620,96,personal use,8388608,2133,DDR4,1,,3000.0,x64,Intel,3000.0,Xeon E5-2450L,4.0
+379,34,desk,1073741824,Western Digital Caviar Blue,5400,hdd,office,female,intel,HD Graphics,,,630,97,programming,8388608,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i7-9850H,6.0
+381,37,desk,503316480,Kingston UV500 2.5,-1,ssd,computers,male,Asus,GTX,GDDR5,6291456.0,1060,99,gaming,8388608,3000,DDR4,2,,4450.0,x64,Intel,3700.0,Core i7-9850H,6.0
+382,27,desk,1073741824,Western Digital Caviar Blue,-1,ssd,office,female,intel,HD Graphics,,,630,100,work,8388608,2400,DDR4,2,,2300.0,x64,Intel,3600.0,Xeon E3-1280,4.0
+383,40,laptop,1073741824,,5400,hdd,home,male,Intel,UHD Graphics,,,620,101,programming,8388608,2133,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
+384,37,laptop,1073741824,,-1,ssd,home,male,NVIDIA,GeForce RTX,GDDR6,8388608.0,2070,102,gaming,25165824,2666,DDR4,2,,13000.0,x64,Intel,3200.0,Core i7-8559U,4.0
+385,27,laptop,536870912,,-1,ssd,home,male,Intel,HD Graphics,,,620,103,programming,8388608,2133,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
+386,29,laptop,536870912,,-1,ssd,computers,male,AMD,Radeon,GDDR5,2097152.0,540,104,programming,8388608,2400,DDR4,1,,3300.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+387,28,laptop,536870912,,-1,ssd,computers,female,NVIDIA,Geforce GTX,GDDR5,4194304.0,1050,105,personal use,8388608,2666,DDR4,1,,3700.0,x64,Intel,2300.0,Xeon E5-2658,4.0
+388,27,laptop,536870912,,-1,ssd,home,female,AMD,Radeon,GDDR5,2097152.0,540,106,personal use,8388608,2400,DDR4,1,,3900.0,x64,Intel,3000.0,Xeon E5-2430,4.0
+389,27,desk,251658240,Kingston A400,-1,ssd,home,male,Asus,GT,GDDR5,1048576.0,710,107,programming,8388608,2400,DDR4,2,,2000.0,x64,Intel,3400.0,Xeon E5-2687W,6.0
+390,27,desk,1073741824,Western Digital Caviar Blue,5400,hdd,home,male,AMD,Radeon Vega,,,,108,programming,8388608,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Xeon E5-2430L,4.0
+391,25,desk,251658240,Kingston A400,-1,ssd,computers,male,ASUS,ROG STRIX-GTX,GDDR5,2097152.0,1050,109,gaming,8388608,2666,DDR4,2,,4450.0,x64,Intel,2900.0,Xeon E5-2670,6.0
+392,24,desk,536870912,Transcend SSD230S,-1,ssd,computers,male,Intel,UHD Graphics,,,620,110,programming,8388608,2400,DDR4,2,,3150.0,x64,Intel,3700.0,Core i7-9850H,6.0
+393,23,desk,536870912,SanDisk SSD Plus,-1,ssd,computers,female,Intel,UHD Graphics,,,620,111,personal use,8388608,2666,DDR4,2,,2000.0,x64,AMD,3600.0, PRO 1300,4.0
+394,24,laptop,268435456,,-1,ssd,computers,female,NVIDIA,GeForce MX,GDDR5,2097152.0,130,112,personal use,8388608,2666,DDR4,1,,3800.0,x64,AMD,2500.0, PRO 3700U,4.0
+395,27,laptop,268435456,,-1,ssd,home,female,Nvidia,GeForce,GDDR5,2097152.0,930,113,personal use,8388608,2666,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
+396,29,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,114,work,8388608,2666,DDR4,1,,2650.0,x64,AMD,2500.0, PRO 3700U,4.0
+397,30,laptop,1073741824,,-1,ssd,home,female,NVIDIA,GeForce GTX,GDDR5,8388608.0,1080,115,gaming,25165824,2666,DDR4,2,,12200.0,x64,Intel,3100.0,Core i7-8559U,6.0
+398,32,laptop,268435456,,-1,ssd,office,male,Intel,UHD Graphics,,,620,116,work,8388608,2400,LPDDR3,1,,4000.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+399,33,laptop,524288000,,7200,hdd,office,male,Intel,UHD Graphics,,,620,117,work,4194304,2400,DDR4,1,,2300.0,x64,AMD,2500.0, PRO 3700U,4.0
+400,20,laptop,268435456,,-1,ssd,office,male,Nvidia,GeForce MX,GDDR5,4194304.0,150,118,programming,8388608,2133,DDR4,1,,3600.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+401,24,laptop,536870912,,-1,ssd,office,male,Nvidia,GeForce GTX,GDDR5,4194304.0,1050,119,programming,8388608,2400,DDR4,1,,5800.0,x64,Intel,2300.0,Xeon E3-1245,4.0
+402,30,laptop,67108864,,7200,emmc,computers,female,intel,HD Graphics,,,,120,personal use,4194304,2400,LPDDR4,1,,1200.0,x64,Intel,2500.0,Celeron E3400,2.0
+403,22,laptop,268435456,,-1,ssd,home,female,Intel,UHD Graphics,,,620,121,programming,8388608,2666,DDR4,1,,3400.0,x64,AMD,2200.0,Phenom II X6 1405T,2.0
+404,24,laptop,536870912,,-1,ssd,computers,male,AMD,RADEON,GDDR5,2097152.0,535,122,personal use,8388608,2400,DDR4,1,,2900.0,x64,AMD,2500.0, PRO 3700U,4.0
+405,27,laptop,536870912,,-1,ssd,computers,male,Intel,UHD Graphics,,,620,123,work,8388608,2400,DDR4,1,,,x64,AMD,2200.0,Phenom II X6 1405T,2.0
+406,29,laptop,524288000,ST500LM000-SSHD-8GB,5400,ssd,computers,male,NVIDIA,GeForce,DDR3,962560.0,940,0,programming,8388608,1600,DDR3,1,8388608.0,3200.0,x64,Intel,2500.0,Xeon E3-1220L,4.0
+407,23,desk,1073741824,Western Digital Blue,7200,ssd,home,male,Asus,GeForce GTX,GDDR6,6291456.0,1660,2,gaming,8388608,2666,DDR4,2,,3500.0,x64,Intel,2900.0,Xeon E5-2670,6.0
+408,24,desk,1073741824,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,3,programming,16777216,2666,DDR4,2,,3250.0,x64,Intel,2800.0,Xeon E5-2665,6.0
+409,27,laptop,2147483648,,5400,ssd,home,male,AMD,Radeon,,4194304.0,530,6,gaming,33554432,2666,DDR4,1,,6500.0,x64,Intel,1800.0,Xeon E5-2450L,4.0
+410,29,laptop,1073741824,,7200,ssd,computers,male,NVIDIA,GeForce GTX,GDDR5,4194304.0,1050,15,gaming,8388608,3000,DDR4,1,,6300.0,x64,Intel,2200.0,Core i7-8559U,6.0
+411,26,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,16,gaming,8388608,2666,DDR4,1,,2400.0,x64,AMD,1600.0, PRO 3700U,4.0
+412,25,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,17,programming,8388608,3000,DDR4,1,,2200.0,x64,Intel,2300.0,Core i5-5350U,2.0
+413,24,laptop,1073741824,,5400,ssd,computers,male,Intel,UHD Graphics,,,620,25,programming,8388608,3000,DDR4,1,,2000.0,x64,Intel,2300.0,Core i5-5350U,2.0
+414,20,desk,1073741824,Western Digital Blue,7200,ssd,home,male,Nvidia,GeForce GTX,GDDR6,6291456.0,1660,31,gaming,8388608,2666,DDR4,2,,4200.0,x64,Intel,2900.0,Xeon E5-2670,6.0
+415,30,desk,1073741824,Western Digital Blue,7200,ssd,computers,female,Intel,UHD Graphics,,,630,33,programming,4194304,3000,DDR4,2,,2100.0,x64,AMD,3600.0, PRO 1300,4.0
+416,26,laptop,524288000,,5400,ssd,computers,female,Intel,UHD Graphics,,,605,37,programming,4194304,3000,DDR4,1,,1240.0,x64,AMD,1100.0,A6-5200,4.0
+417,23,desk,1073741824,Seagate Barracuda,7200,ssd,computers,male,Intel,UHD Graphics,,,630,66,programming,4194304,2400,DDR4,2,,1700.0,x64,AMD,3400.0,Athlon X4 840,2.0
+418,25,laptop,1073741824,,7200,ssd,office,male,Intel,HD Graphics,,,620,88,programming,4194304,2400,DDR4,1,,2100.0,x64,Intel,2300.0,Core i5-5350U,2.0
+419,22,laptop,1073741824,,5400,ssd,home,female,Intel,UHD Graphics,,,620,91,programming,8388608,2400,DDR4,1,,3000.0,x64,AMD,2500.0, PRO 3700U,4.0
+420,34,desk,1073741824,Western Digital Caviar Blue,5400,ssd,office,female,intel,HD Graphics,,,630,97,programming,8388608,2400,DDR4,2,,2900.0,x64,Intel,3700.0,Core i7-9850H,6.0
+421,40,laptop,1073741824,,5400,ssd,home,male,Intel,UHD Graphics,,,620,101,programming,8388608,2133,DDR4,1,,2400.0,x64,AMD,2500.0, PRO 3700U,4.0
+422,27,desk,1073741824,Western Digital Caviar Blue,5400,ssd,home,male,AMD,Radeon Vega,,,,108,programming,8388608,2400,DDR4,2,,1600.0,x64,Intel,3500.0,Xeon E5-2430L,4.0
