@@ -40,7 +40,8 @@ def save_data(df_to_save: pd.DataFrame, output_path: str):
 def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = [n.lower() for n in df.columns]
     
-    df.drop(['motherboard_name', 'motherboard_sataconnections', 'processor_architecture'], axis=1, inplace=True)
+    df = df.drop(['motherboard_name', 'motherboard_sataconnections', 'processor_architecture'], axis=1)\
+        .reset_index(drop=True)
     df = drop_rows_with_nan_by_columns(df, 'processor_name')
 
     # Memory
@@ -63,12 +64,13 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     # GPU
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
-    df = df.reindex(sorted(df.columns), axis=1)
+
 
     # Price
     df = expand_prices_by_fieldinterest_mainuse(df)
 
     df.drop_duplicates(inplace=True)
+    df = df.reindex(sorted(df.columns), axis=1)
     df.reset_index(inplace=True, drop=True)
     
     return df
