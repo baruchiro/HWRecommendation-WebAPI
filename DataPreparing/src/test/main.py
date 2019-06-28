@@ -42,9 +42,9 @@ class TestStringMethods(unittest.TestCase):
 
             for tuple_fields in fields:
                 lines = len(actual_rows.loc[
-                            actual_rows['both'].str.contains(tuple_fields[0]) &
-                            actual_rows['both'].str.contains(tuple_fields[1])
-                            ])
+                                actual_rows['both'].str.contains(tuple_fields[0]) &
+                                actual_rows['both'].str.contains(tuple_fields[1])
+                                ])
                 self.assertEqual(lines, 1, f'expected exacly one rows with {tuple_fields} but found {lines} rows')
 
         orig_df = read_data(orig_path).reset_index(drop=True)
@@ -55,10 +55,13 @@ class TestStringMethods(unittest.TestCase):
         corr[0] = (corr[0] * 10).astype(int)
         corr['both'] = corr['level_0'] + corr['level_1']
 
-        assert_correlation_fields_count(correlation=9, rows=1, fields=[('motherboard_ddrsockets', 'computertype')])
-        assert_correlation_fields_count(correlation=8, rows=1, fields=[('disk_model', 'computertype')])
-        assert_correlation_fields_count(correlation=7, rows=5, fields=[])
-        assert_correlation_fields_count(correlation=0, rows=142, fields=[])
+        assert_correlation_fields_count(correlation=9, rows=0, fields=[])
+        assert_correlation_fields_count(correlation=8, rows=2, fields=[
+            ('motherboard_ddrsockets', 'computertype'),
+            ('disk_model', 'computertype')
+        ])
+        assert_correlation_fields_count(correlation=7, rows=1, fields=[('computertype', 'processor_mhz')])
+        assert_correlation_fields_count(correlation=0, rows=138, fields=[])
 
 
 if __name__ == '__main__':
