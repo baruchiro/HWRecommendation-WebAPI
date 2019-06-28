@@ -19,7 +19,7 @@ from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     remove_unwanted_chars_in_gpu_name, \
     extract_gpu_features, \
     fix_disk_type, \
-    rename_processor_name_to_match_cpubenchmark, minus_rpm_for_ssd
+    rename_processor_name_to_match_cpubenchmark, minus_rpm_for_ssd, drop_rows_with_nan_by_columns
 
 
 def parse_arguments() -> dict:
@@ -37,12 +37,15 @@ def save_data(df_to_save: pd.DataFrame, output_path: str):
     df_to_save.to_csv(output_path, index=False)
 
 
-
 def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = [n.lower() for n in df.columns]
+    
+    df = drop_rows_with_nan_by_columns(df, 'processor_name')
+    
     # Memory
     df = extract_ddr_from_gpu_processor(df)
     df = convert_memory_capacity_to_byte(df)
+
     # Disk
     df = convert_disk_capacity_to_byte(df)
     df = fix_disk_type(df)
@@ -55,6 +58,7 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df = rename_processor_name_to_match_cpubenchmark(df)
     df = expand_df_with_similar_processors_from_cpubenchmark(df)
     df = extract_processor_features(df)
+
     # GPU
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
@@ -62,7 +66,8 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
 
     df.drop(['motherboard_name', 'motherboard_sataconnections'], axis=1, inplace=True)
     df.drop_duplicates(inplace=True)
-
+    df.reset_index(inplace=True)
+    
     return df
 
 

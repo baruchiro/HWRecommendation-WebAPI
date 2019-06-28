@@ -115,3 +115,7 @@ def rename_processor_name_to_match_cpubenchmark(df: pd.DataFrame) -> pd.DataFram
 def minus_rpm_for_ssd(df):
     df.loc[df['disk_type'] == 'ssd', 'disk_rpm'] = -1
     return df
+
+
+def drop_rows_with_nan_by_columns(df, *args):
+    return df.dropna(subset=args).reset_index()
