@@ -1,7 +1,14 @@
 import pandas as pd
 
-from src.cpu.cpu_rank_scraper import get_processors
 from src.decorators.pandas_config import disable_chained_assignment
+
+__cpu_rank_url = 'https://www.cpubenchmark.net/cpu_list.php'
+
+
+def __get_processors() -> pd.DataFrame:
+    processors = pd.read_html(__cpu_rank_url)[4]
+    processors.columns = ['processor_name', 'passmark', 'rank', 'value', 'price']
+    return processors
 
 
 def __build_processor_replacement_dict(unique_processor_names: pd.Series,
@@ -23,7 +30,7 @@ def __build_processor_replacement_dict(unique_processor_names: pd.Series,
 
 
 def expand_df_with_similar_processors_from_cpubenchmark(df: pd.DataFrame) -> pd.DataFrame:
-    all_processors_sorted = get_processors().sort_values('rank')
+    all_processors_sorted = __get_processors().sort_values('rank')
     unique_processor_names = pd.unique(df['processor_name'].dropna())
     up_replacements = __build_processor_replacement_dict(unique_processor_names, all_processors_sorted, True)
     down_replacements = __build_processor_replacement_dict(unique_processor_names, all_processors_sorted, False)
@@ -70,4 +77,3 @@ def expand_ddrsocket_by_computertype(df: pd.DataFrame) -> pd.DataFrame:
     ddr3.loc[:, 'motherboard_ddrsockets'] = 2
 
     return df.append(desktops).append(ddr3)
-
