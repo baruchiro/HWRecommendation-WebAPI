@@ -35,6 +35,7 @@ def read_data(source_path: str) -> pd.DataFrame:
 
 def save_data(df_to_save: pd.DataFrame, output_path: str):
     df_to_save.to_csv(output_path, index=False)
+    df_to_save.dtypes.to_csv(output_path.replace('.csv', '.dtypes.csv'), index=True, header=False)
 
 
 def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
