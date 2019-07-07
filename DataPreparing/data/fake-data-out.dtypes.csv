@@ -9,9 +9,9 @@ gender,object
 gpu_manufacturer,object
 gpu_model,object
 gpu_processor_ddr_capacity,float64
-gpu_processor_ddr_number,object
+gpu_processor_ddr_number,float64
 gpu_processor_ddr_type,object
-gpu_version,object
+gpu_version,float64
 mainuse,object
 memory_capacity_as_kb,int64
 memory_mhz,int64
