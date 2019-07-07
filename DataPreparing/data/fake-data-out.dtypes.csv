@@ -8,8 +8,9 @@ fieldinterest,object
 gender,object
 gpu_manufacturer,object
 gpu_model,object
-gpu_processor_ddr,object
 gpu_processor_ddr_capacity,float64
+gpu_processor_ddr_number,object
+gpu_processor_ddr_type,object
 gpu_version,object
 mainuse,object
 memory_capacity_as_kb,int64
