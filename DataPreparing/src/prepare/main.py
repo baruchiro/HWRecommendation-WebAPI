@@ -30,8 +30,8 @@ def parse_arguments() -> dict:
     return docopt(__doc__, version="Prepare Data 0.1")
 
 
-def read_data(source_path: str) -> pd.DataFrame:
-    return pd.read_csv(source_path)
+def read_data(source_path: str, **kwargs) -> pd.DataFrame:
+    return pd.read_csv(source_path, **kwargs)
 
 
 def save_data(df_to_save: pd.DataFrame, output_path: str):
@@ -76,6 +76,12 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
 
     df.drop_duplicates(inplace=True)
     df = df.reindex(sorted(df.columns), axis=1)
+
+    # Fix dtypes
+    df['gpu_processor_ddr_number'] = pd.to_numeric(df['gpu_processor_ddr_number']).astype(float)
+    df['gpu_version'] = df.gpu_version.astype(float)
+
+
     df.reset_index(inplace=True, drop=True)
     
     return df
