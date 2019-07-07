@@ -1,5 +1,6 @@
-import pandas as pd
 import re
+
+import pandas as pd
 
 
 def __series_apply_capacity_to_byte_value(capacity: str) -> int:

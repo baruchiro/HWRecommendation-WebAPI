@@ -3,7 +3,6 @@ from os import path
 from typing import List, Tuple
 
 import pandas as pd
-
 from pandas.util.testing import assert_frame_equal, assert_series_equal
 
 from src.prepare.main import read_data, transpose_data

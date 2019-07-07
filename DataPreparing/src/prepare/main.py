@@ -4,9 +4,9 @@ Usage:
     main.py <input> <output>
 """
 import sys
-from docopt import docopt
 
 import pandas as pd
+from docopt import docopt
 
 from src.prepare.expand import expand_df_with_similar_processors_from_cpubenchmark, \
     expand_df_with_ssd_for_gamers_programmers, expand_prices_by_fieldinterest_mainuse, expand_ddrsocket_by_computertype
@@ -41,8 +41,8 @@ def save_data(df_to_save: pd.DataFrame, output_path: str):
 
 def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = [n.lower() for n in df.columns]
-    
-    df = df.drop(['motherboard_name', 'motherboard_sataconnections', 'processor_architecture'], axis=1)\
+
+    df = df.drop(['motherboard_name', 'motherboard_sataconnections', 'processor_architecture'], axis=1) \
         .reset_index(drop=True)
     df = drop_rows_with_nan_by_columns(df, 'processor_name')
 
@@ -81,9 +81,8 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df['gpu_processor_ddr_number'] = pd.to_numeric(df['gpu_processor_ddr_number']).astype(float)
     df['gpu_version'] = df.gpu_version.astype(float)
 
-
     df.reset_index(inplace=True, drop=True)
-    
+
     return df
 
 
