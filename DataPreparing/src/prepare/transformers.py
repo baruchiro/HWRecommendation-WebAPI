@@ -119,3 +119,11 @@ def minus_rpm_for_ssd(df: pd.DataFrame) -> pd.DataFrame:
 
 def drop_rows_with_nan_by_columns(df: pd.DataFrame, *args) -> pd.DataFrame:
     return df.dropna(subset=args).reset_index(drop=True)
+
+
+def split_ddr_column_to_type_number(df: pd.DataFrame, ddr_column: str) -> pd.DataFrame:
+    number_column_name = ddr_column + '_number'
+    type_column_name = ddr_column + '_type'
+    df[[type_column_name, number_column_name]] = df[ddr_column].str.extract(r'(\w*)(\d)', expand=True)
+    df.drop(ddr_column, axis=1, inplace=True)
+    return df

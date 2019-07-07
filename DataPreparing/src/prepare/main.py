@@ -19,7 +19,8 @@ from src.prepare.transformers import extract_ddr_from_gpu_processor, \
     remove_unwanted_chars_in_gpu_name, \
     extract_gpu_features, \
     fix_disk_type, \
-    rename_processor_name_to_match_cpubenchmark, minus_rpm_for_ssd, drop_rows_with_nan_by_columns
+    rename_processor_name_to_match_cpubenchmark, minus_rpm_for_ssd, drop_rows_with_nan_by_columns, \
+    split_ddr_column_to_type_number
 
 
 def parse_arguments() -> dict:
@@ -65,6 +66,7 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     # GPU
     df = remove_unwanted_chars_in_gpu_name(df)
     df = extract_gpu_features(df)
+    df = split_ddr_column_to_type_number(df, 'gpu_processor_ddr')
 
     # Mother Board
     df = expand_ddrsocket_by_computertype(df)

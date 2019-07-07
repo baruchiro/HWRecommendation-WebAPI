@@ -55,13 +55,15 @@ class TestStringMethods(unittest.TestCase):
         corr[0] = (corr[0] * 10).astype(int)
         corr['both'] = corr['level_0'] + corr['level_1']
 
-        assert_correlation_fields_count(correlation=9, rows=0, fields=[])
+        assert_correlation_fields_count(correlation=9, rows=1, fields=[
+            ('gpu_processor_ddr_number', 'gpu_processor_ddr_type')        
+        ])
         assert_correlation_fields_count(correlation=8, rows=2, fields=[
             ('motherboard_ddrsockets', 'computertype'),
             ('disk_model', 'computertype')
         ])
         assert_correlation_fields_count(correlation=7, rows=1, fields=[('computertype', 'processor_mhz')])
-        assert_correlation_fields_count(correlation=0, rows=138, fields=[])
+        assert_correlation_fields_count(correlation=0, rows=143, fields=[])
 
 
 if __name__ == '__main__':
