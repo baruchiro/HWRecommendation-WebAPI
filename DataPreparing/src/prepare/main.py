@@ -49,6 +49,7 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     # Memory
     df = extract_ddr_from_gpu_processor(df)
     df = convert_memory_capacity_to_byte(df)
+    df = split_ddr_column_to_type_number(df, 'memory_type')
 
     # Disk
     df = convert_disk_capacity_to_byte(df)
@@ -80,6 +81,7 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     # Fix dtypes
     df['gpu_processor_ddr_number'] = pd.to_numeric(df['gpu_processor_ddr_number']).astype(float)
     df['gpu_version'] = df.gpu_version.astype(float)
+    df['memory_type_number'] = pd.to_numeric(df['memory_type_number']).astype(float)
 
     df.reset_index(inplace=True, drop=True)
 

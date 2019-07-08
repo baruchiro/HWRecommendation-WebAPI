@@ -15,7 +15,8 @@ gpu_version,float64
 mainuse,object
 memory_capacity_as_kb,int64
 memory_mhz,int64
-memory_type,object
+memory_type_number,float64
+memory_type_type,object
 motherboard_ddrsockets,int64
 motherboard_maxram,float64
 price,float64
