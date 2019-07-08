@@ -63,7 +63,9 @@ class TestStringMethods(unittest.TestCase):
             ('motherboard_ddrsockets', 'computertype'),
             ('disk_model', 'computertype')
         ])
-        assert_correlation_fields_count(correlation=7, rows=1, fields=[('computertype', 'processor_mhz')])
+        assert_correlation_fields_count(correlation=7, rows=1, fields=[
+                ('computertype', 'processor_mhz'),
+        ])
         assert_correlation_fields_count(correlation=0, rows=138, fields=[])
 
 
