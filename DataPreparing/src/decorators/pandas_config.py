@@ -8,4 +8,5 @@ def disable_chained_assignment(func):
         result = func(*args, **kwargs)
         pd.options.mode.chained_assignment = save
         return result
+
     return wrapper
