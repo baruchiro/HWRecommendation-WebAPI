@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\TensorFlow\MultiRegression\outputmodel\saved_model.pb" Link="Resources\saved_model.pb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\TensorFlow\MultiRegression\outputmodel\variables\variables.data-00000-of-00001" Link="Resources\variables\variables.data-00000-of-00001">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\TensorFlow\MultiRegression\outputmodel\variables\variables.index" Link="Resources\variables\variables.index">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="1.2.0" />
   </ItemGroup>
 
