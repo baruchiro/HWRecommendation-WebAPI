@@ -8,19 +8,21 @@ namespace MultiRegressionTFTests
 {
     class StringHandler : IFileHandle
     {
-        private readonly Stream _streamReader;
+        private readonly List<Stream> _streamReaders;
         private readonly Stream _streamWriter;
+        private readonly string _data;
 
         public StringHandler(string data)
         {
-            _streamReader = data.ToStream();
+            _data = data;
+            _streamReaders = new List<Stream>();
             _streamWriter = data.ToStream();
         }
 
         public void Dispose()
         {
             _streamWriter.Close();
-            _streamReader.Close();
+            _streamReaders.ForEach(s=>s.Close());
         }
 
         public Stream CreateWriteStream()
@@ -30,11 +32,13 @@ namespace MultiRegressionTFTests
 
         public Stream OpenReadStream()
         {
-            return _streamReader;
+            var reader = _data.ToStream();
+            _streamReaders.Add(reader);
+            return reader;
         }
 
         public bool CanWrite => _streamWriter.CanWrite;
-        public bool CanRead => _streamReader.CanRead;
+        public bool CanRead => true;
 
 
     }
