@@ -12,6 +12,7 @@ test_dir = path.dirname(__file__)
 orig_path = 'data/fake-data-orig.csv'
 out_path = 'data/fake-data-out.csv'
 out_dtypes_path = 'data/fake-data-out.dtypes.csv'
+cpu_cache_path = 'data/cpu_cache.csv'
 
 
 def copy_types_from_another(out_df: pd.DataFrame, transposed_df: pd.DataFrame) -> pd.DataFrame:
@@ -29,7 +30,7 @@ class TestStringMethods(unittest.TestCase):
         out_dtypes = read_data(out_dtypes_path, header=None).set_index(0)
         out_dtypes = pd.Series(out_dtypes[1], out_dtypes.index)
 
-        transposed_df = transpose_data(orig_df).reset_index(drop=True)
+        transposed_df = transpose_data(orig_df, cpu_cache_path).reset_index(drop=True)
 
         transposed_df = copy_types_from_another(transposed_df, out_df)
 
@@ -52,7 +53,7 @@ class TestStringMethods(unittest.TestCase):
 
         orig_df = read_data(orig_path).reset_index(drop=True)
 
-        transposed_df = transpose_data(orig_df).reset_index(drop=True)
+        transposed_df = transpose_data(orig_df, cpu_cache_path).reset_index(drop=True)
 
         corr = correlation_matrix_to_sorted_pairs(get_correlation_matrix(transposed_df))
         corr[0] = (corr[0] * 10).astype(int)
@@ -66,7 +67,7 @@ class TestStringMethods(unittest.TestCase):
         assert_correlation_fields_count(correlation=7, rows=1, fields=[
                 ('computertype', 'processor_mhz'),
         ])
-        assert_correlation_fields_count(correlation=0, rows=149, fields=[])
+        assert_correlation_fields_count(correlation=0, rows=151, fields=[])
 
 
 if __name__ == '__main__':
