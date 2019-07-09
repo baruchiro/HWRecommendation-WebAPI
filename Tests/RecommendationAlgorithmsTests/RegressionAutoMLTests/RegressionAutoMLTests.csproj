@@ -14,20 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\DataPreparing\data\fake-data-out.csv" Link="Resources\fake-data-out.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\DataPreparing\data\fake-data-out.dtypes.csv" Link="Resources\fake-data-out.dtypes.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\RegressionAutoML\RegressionAutoML.csproj" />
+    <ProjectReference Include="..\DataTestsUtils\DataTestsUtils.csproj" />
   </ItemGroup>
 
 </Project>
