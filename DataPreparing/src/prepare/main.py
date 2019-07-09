@@ -1,7 +1,7 @@
 """Prepare Data
 
 Usage:
-    main.py <input> <output>
+    main.py <input> <output> <cpu_cache>
 """
 import sys
 
@@ -27,6 +27,7 @@ def parse_arguments() -> dict:
     if len(sys.argv) == 1:
         sys.argv.append('data/fake-data-orig.csv')
         sys.argv.append('data/fake-data-out.csv')
+        sys.argv.append('data/cpu_cache.csv')
     return docopt(__doc__, version="Prepare Data 0.1")
 
 
@@ -39,7 +40,7 @@ def save_data(df_to_save: pd.DataFrame, output_path: str):
     df_to_save.dtypes.to_csv(output_path.replace('.csv', '.dtypes.csv'), index=True, header=False)
 
 
-def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
+def transpose_data(df: pd.DataFrame, cpu_cache: str) -> pd.DataFrame:
     df.columns = [n.lower() for n in df.columns]
 
     df = df.drop(['motherboard_name', 'motherboard_sataconnections', 'processor_architecture'], axis=1) \
@@ -61,7 +62,7 @@ def transpose_data(df: pd.DataFrame) -> pd.DataFrame:
     df = convert_processor_ghz_to_mhz(df)
     df = remove_unwanted_chars_in_processor_name(df)
     df = rename_processor_name_to_match_cpubenchmark(df)
-    df = expand_df_with_similar_processors_from_cpubenchmark(df)
+    df = expand_df_with_similar_processors_from_cpubenchmark(df, cpu_cache)
     df = extract_processor_features(df)
 
     # GPU
@@ -92,6 +93,6 @@ if __name__ == '__main__':
     arguments = parse_arguments()
     input_df = read_data(arguments['<input>'])
 
-    output = transpose_data(input_df)
+    output = transpose_data(input_df, arguments['<cpu_cache>'])
 
     save_data(output, arguments['<output>'])
