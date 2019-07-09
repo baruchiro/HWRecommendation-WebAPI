@@ -45,3 +45,11 @@ launchSettings.json
 node_modules
 bower_components
 *.DotSettings
+
+
+
+
+# Python
+
+# Pycharm
+.idea/
