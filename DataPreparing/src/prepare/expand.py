@@ -1,3 +1,5 @@
+from os import path
+
 import pandas as pd
 
 from src.decorators.pandas_config import disable_chained_assignment
@@ -5,10 +7,13 @@ from src.decorators.pandas_config import disable_chained_assignment
 __cpu_rank_url = 'https://www.cpubenchmark.net/cpu_list.php'
 
 
-def __get_processors() -> pd.DataFrame:
-    processors = pd.read_html(__cpu_rank_url)[4]
-    processors.columns = ['processor_name', 'passmark', 'rank', 'value', 'price']
-    return processors
+def __get_processors(cache_file: str) -> pd.DataFrame:
+    if not path.isfile(cache_file):
+        processors: pd.DataFrame = pd.read_html(__cpu_rank_url)[4]
+        processors.columns = ['processor_name', 'passmark', 'rank', 'value', 'price']
+        processors.to_csv(cache_file, header=True, index=False)
+
+    return pd.read_csv(cache_file, index_col=False)
 
 
 def __build_processor_replacement_dict(unique_processor_names: pd.Series,
@@ -29,8 +34,8 @@ def __build_processor_replacement_dict(unique_processor_names: pd.Series,
     pass
 
 
-def expand_df_with_similar_processors_from_cpubenchmark(df: pd.DataFrame) -> pd.DataFrame:
-    all_processors_sorted = __get_processors().sort_values('rank')
+def expand_df_with_similar_processors_from_cpubenchmark(df: pd.DataFrame, cache_file: str) -> pd.DataFrame:
+    all_processors_sorted = __get_processors(cache_file).sort_values('rank')
     unique_processor_names = pd.unique(df['processor_name'].dropna())
     up_replacements = __build_processor_replacement_dict(unique_processor_names, all_processors_sorted, True)
     down_replacements = __build_processor_replacement_dict(unique_processor_names, all_processors_sorted, False)
