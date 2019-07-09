@@ -67,7 +67,7 @@ class TestStringMethods(unittest.TestCase):
         assert_correlation_fields_count(correlation=7, rows=1, fields=[
                 ('computertype', 'processor_mhz'),
         ])
-        assert_correlation_fields_count(correlation=0, rows=149, fields=[])
+        assert_correlation_fields_count(correlation=0, rows=151, fields=[])
 
 
 if __name__ == '__main__':
