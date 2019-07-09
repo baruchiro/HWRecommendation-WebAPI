@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\DataPreparing\data\fake-data-out.csv" Link="Resources\fake-data-out.csv" />
+    <None Include="..\..\..\DataPreparing\data\fake-data-out.dtypes.csv" Link="Resources\fake-data-out.dtypes.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML" Version="1.2.0" />
+  </ItemGroup>
+
+</Project>
