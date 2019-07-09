@@ -1,9 +1,17 @@
 workflow "Build and Test in PR" {
-  on = "push"
-  resolves = [".NET Core CLI"]
+  resolves = [
+    "Run python",
+    ".NET Core CLI",
+  ]
+  on = "pull_request"
 }
 
 action ".NET Core CLI" {
-  uses = "./"
+  uses = "./.github/net-core/"
   args = "test"
+}
+
+action "Run python" {
+  uses = "./.github/python/"
+  args = "src/test/main.py"
 }
