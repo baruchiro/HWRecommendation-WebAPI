@@ -1,0 +1,9 @@
+beautifulsoup4
+requests
+docopt
+numpy
+pandas
+python-dateutil
+pytz
+six
+lxml
