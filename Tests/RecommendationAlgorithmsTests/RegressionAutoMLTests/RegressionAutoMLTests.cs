@@ -13,10 +13,18 @@ namespace RegressionAutoMLTests
             var mlContext = new MLContext();
             var dataLoader = new DataLoader(mlContext);
 
-            var data = dataLoader.Data;
+            var data = dataLoader.Builder.ConvertIntToSingle()
+                .ConvertNumberToSingle()
+                .SelectFeatureColumns()
+                .SelectColumns("memory_capacity_as_kb")
+                .GetData();
 
             var regressionAutoML = new RegressionAutoML.RegressionAutoML();
-            regressionAutoML.Train(data);
+            var result = regressionAutoML.Train(data);
+
+            var metrics = result.ValidationMetrics;
+            var r = $"R-Squared: {metrics.RSquared:0.##}";
+            var m = $"Root Mean Squared Error: {metrics.RootMeanSquaredError:0.##}";
         }
     }
 }
