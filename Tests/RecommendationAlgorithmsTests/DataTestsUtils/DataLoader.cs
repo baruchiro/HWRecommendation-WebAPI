@@ -51,6 +51,10 @@ namespace DataTestsUtils
         private readonly string[] _featureColumns =
         {
             "age",
+            "computertype",
+            "fieldinterest",
+            "mainuse",
+            "price",
             "gender"
         };
         private readonly DataKind[] _intTypes = {
