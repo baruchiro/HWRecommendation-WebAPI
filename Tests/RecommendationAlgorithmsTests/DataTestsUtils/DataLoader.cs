@@ -13,7 +13,7 @@ namespace DataTestsUtils
         private readonly string _fakeDataFilePath = Path.Combine("Resources", "fake-data-out.csv");
         private readonly string _fakeDataDtypesFilePath = Path.Combine("Resources", "fake-data-out.dtypes.csv");
         private readonly MLContext _mlContext;
-        private TextLoader.Column[] _columns;
+        private readonly TextLoader.Column[] _columns;
         public IDataView Data { get; }
         public PipelineBuilder Builder => new PipelineBuilder(_mlContext, Data, _columns);
 
@@ -48,6 +48,11 @@ namespace DataTestsUtils
 
     public class PipelineBuilder
     {
+        private readonly string[] _featureColumns =
+        {
+            "age",
+            "gender"
+        };
         private readonly DataKind[] _intTypes = {
             DataKind.Byte,
             DataKind.SByte,
@@ -65,15 +70,24 @@ namespace DataTestsUtils
         };
 
         private IDataView data;
-        private TextLoader.Column[] columns;
+        private readonly TextLoader.Column[] columns;
         private IEstimator<ITransformer> _pipeline;
-        private MLContext _mlContext;
+        private readonly MLContext _mlContext;
+        private readonly List<string> _selectedColumns = new List<string>();
 
         public PipelineBuilder(MLContext mlContext, IDataView data, TextLoader.Column[] columns)
         {
             this.data = data;
             this.columns = columns;
             _mlContext = mlContext;
+        }
+
+        public PipelineBuilder SelectFeatureColumns() => SelectColumns(_featureColumns);
+
+        public PipelineBuilder SelectColumns(params string[] columnsNames)
+        {
+            _selectedColumns.AddRange(columnsNames);
+            return this;
         }
 
         public PipelineBuilder ConvertIntToSingle()
@@ -111,7 +125,8 @@ namespace DataTestsUtils
 
         public IDataView GetData()
         {
-            return _pipeline?.Fit(data).Transform(data) ?? data;
+            return _pipeline?.Append(_mlContext.Transforms.SelectColumns(_selectedColumns.ToArray()))
+                       .Fit(data).Transform(data) ?? data;
         }
 
         public PipelineBuilder ConvertNumberToSingle()
