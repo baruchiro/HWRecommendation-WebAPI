@@ -1,19 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
+using System.Threading;
 using System.Threading.Tasks;
 using DataTestsUtils;
+using DocoptNet;
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
 using Microsoft.ML.Data;
+using Trainer.Interfaces;
 
 namespace Trainer
 {
     class Trainer
     {
-        public static void Main(string[] args)
-        {
+        private IEnumerable<IRecommendationAlgorithmLearner> algorithms;
+        private ICollection<Task> running = new List<Task>();
+        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private readonly MLContext _mlContext;
 
+        public Trainer()
+        {
+            _mlContext = new MLContext(0);
         }
+
         public async Task TrainAsync()
         {
             string[] labels =
@@ -59,5 +72,80 @@ namespace Trainer
             return result;
         }
 
+        public void TrainAll(int minutes)
+        {
+            try
+            {
+                LoadAllAlgorithms();
+                RunAllAlgorithms(minutes);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        private void RunAllAlgorithms(int minutes)
+        {
+            var tasks = algorithms.Select(CreateTask);
+            foreach (var task in tasks)
+            {
+                task.Start();
+                running.Add(task);
+            }
+        }
+
+        private Task CreateTask(IRecommendationAlgorithmLearner algorithm, int arg2)
+        {
+            return new Task<ILearningResult>(() =>
+                        algorithm.TrainModel(arg2),
+                    cancellationTokenSource.Token)
+                .ContinueWith((task, name) =>
+                        SaveResultsToDir(task.Result, name as string),
+                    algorithm.GetType().Name,
+                    cancellationTokenSource.Token);
+        }
+
+        private void SaveResultsToDir(ILearningResult learningResult, string name)
+        {
+            var saver = new ModelSaver(name, learningResult, _mlContext);
+            saver.SaveResults();
+            saver.SaveModel();
+        }
+
+        private void LoadAllAlgorithms()
+        {
+            //var dir = Directory.EnumerateFiles(".", "Regression*.dll")
+            //    .Select(Path.GetFullPath).ToList();
+            //var ass = dir.Select(Assembly.LoadFile).ToList();
+            //var i = GetTypeFromAssembly<IRecommendationAlgorithmLearner>(ass.First()).ToList();
+            algorithms = Directory.EnumerateFiles(".", "Regression*.dll")
+                .Select(Path.GetFullPath)
+                .Select(Assembly.LoadFile)
+                .SelectMany(GetTypeFromAssembly<IRecommendationAlgorithmLearner>);
+        }
+
+        private IEnumerable<T> GetTypeFromAssembly<T>(Assembly assembly)
+        {
+            var relevantTypes = assembly.GetTypes()
+                .Where(t => typeof(T).IsAssignableFrom(t));
+
+            foreach (var type in relevantTypes)
+            {
+                if (Activator.CreateInstance(type) is T t)
+                    yield return t;
+            }
+        }
+
+        public void WaitAll()
+        {
+            Task.WaitAll(running.ToArray(), cancellationTokenSource.Token);
+        }
+
+        public void Cancel()
+        {
+            cancellationTokenSource.Cancel();
+        }
     }
 }
