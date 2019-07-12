@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using AlgorithmLoader.Interfaces;
+using AlgorithmManager.Interfaces;
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
 using Microsoft.ML.Data;
 
 namespace RegressionAutoML
 {
-    public class RegressionAutoML : IRecommendationAlgorithmLearner
+    public class AutoRegression : IRecommendationAlgorithmLearner
     {
-        public LearningResult TrainModel(IDataView data, string label, uint minutes)
+        public LearningResult TrainModel(IDataView dataView, string label, uint minutes)
         {
-            var mlContext = new MLContext();
+            if (dataView == null) throw new ArgumentNullException(nameof(dataView));
+                var mlContext = new MLContext();
 
             var cts = new CancellationTokenSource();
             var experimentSettings = new RegressionExperimentSettings
@@ -25,12 +26,12 @@ namespace RegressionAutoML
 
             var experiment = mlContext.Auto().CreateRegressionExperiment(experimentSettings);
 
-            var experimentResult = experiment.Execute(data, label);
+            var experimentResult = experiment.Execute(dataView, label);
             var bestResult = experimentResult.BestRun;
             return new LearningResult
             {
                 Result = bestResult.ValidationMetrics.ToString(),
-                Schema = data.Schema,
+                Schema = dataView.Schema,
                 TrainedModel = bestResult.Model
             };
         }

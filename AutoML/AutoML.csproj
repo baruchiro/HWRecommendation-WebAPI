@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RecommendationAlgorithms\AlgorithmLoader\AlgorithmLoader.csproj" />
+    <ProjectReference Include="..\RecommendationAlgorithms\AlgorithmManager\AlgorithmManager.csproj" />
   </ItemGroup>
 
 </Project>

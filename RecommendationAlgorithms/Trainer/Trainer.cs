@@ -10,34 +10,33 @@ using DataTestsUtils;
 using DocoptNet;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using AlgorithmLoader;
-using AlgorithmLoader.Interfaces;
+using AlgorithmManager;
+using AlgorithmManager.Interfaces;
 
 namespace Trainer
 {
     class Trainer
     {
-        private IEnumerable<IRecommendationAlgorithmLearner> algorithms;
-        private List<Task> running = new List<Task>();
-        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private IEnumerable<IRecommendationAlgorithmLearner> _algorithms;
+        private readonly List<Task> _running = new List<Task>();
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly MLContext _mlContext;
-        private AlgorithmLoader.AlgorithmLoader _loader;
-        private readonly IDataView Data;
-        private DataLoader dataLoader;
-        private string label = "memory_capacity_as_kb";
+        private readonly AlgorithmManager.AlgorithmLoader _loader;
+        private readonly DataLoader _dataLoader;
+        private const string LABEL = "memory_capacity_as_kb";
 
         public Trainer()
         {
             _mlContext = new MLContext(0);
-            _loader = new AlgorithmLoader.AlgorithmLoader();
-            dataLoader = new DataLoader(_mlContext);
+            _loader = new AlgorithmManager.AlgorithmLoader();
+            _dataLoader = new DataLoader(_mlContext);
         }
 
         public void TrainAll(uint minutes)
         {
             try
             {
-                algorithms = _loader.LoadAllRegressionAlgorithms();
+                _algorithms = _loader.LoadAllRegressionAlgorithms();
                 RunAllAlgorithms(minutes);
             }
             catch (Exception e)
@@ -49,36 +48,36 @@ namespace Trainer
 
         private void RunAllAlgorithms(uint minutes)
         {
-            var tasks = algorithms.Select(a=> StartAlgorithmTask(a, minutes));
-            running.AddRange(tasks);
+            var tasks = _algorithms.Select(a=> StartAlgorithmTask(a, minutes));
+            _running.AddRange(tasks);
         }
 
         private Task StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
             return new TaskFactory().StartNew(
                     BuildDataViewForTrain,
-                    cancellationTokenSource.Token,
+                    _cancellationTokenSource.Token,
                     TaskCreationOptions.None,
                     TaskScheduler.Default)
                 .ContinueWith(
                     task =>
-                        algorithm.TrainModel(task.Result, label, timeoutInMinutes),
-                    cancellationTokenSource.Token,
+                        algorithm.TrainModel(task.Result, LABEL, timeoutInMinutes),
+                    _cancellationTokenSource.Token,
                     TaskContinuationOptions.LongRunning, TaskScheduler.Current)
                 .ContinueWith(
                     (task, name) =>
                         SaveResultsToDir(task.Result, name as string),
                     algorithm.GetType().Name,
-                    cancellationTokenSource.Token,
+                    _cancellationTokenSource.Token,
                     TaskContinuationOptions.None, TaskScheduler.Current);
         }
 
         private IDataView BuildDataViewForTrain()
         {
-            return dataLoader.CreateBuilder().ConvertIntToSingle()
+            return _dataLoader.CreateBuilder().ConvertIntToSingle()
                     .ConvertNumberToSingle()
                     .SelectFeatureColumns()
-                    .SelectColumns(label)
+                    .SelectColumns(LABEL)
                     .GetData();
         }
 
@@ -91,12 +90,12 @@ namespace Trainer
 
         public void WaitAll()
         {
-            Task.WaitAll(running.ToArray(), cancellationTokenSource.Token);
+            Task.WaitAll(_running.ToArray(), _cancellationTokenSource.Token);
         }
 
         public void Cancel()
         {
-            cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Cancel();
         }
     }
 }

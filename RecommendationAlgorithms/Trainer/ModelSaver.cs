@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using AlgorithmLoader.Interfaces;
+using AlgorithmManager.Interfaces;
 using Microsoft.ML;
 
 namespace Trainer
