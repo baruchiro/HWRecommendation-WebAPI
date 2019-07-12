@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using AlgorithmLoader.Interfaces;
+using AlgorithmManager.Interfaces;
 
-namespace AlgorithmLoader
+namespace AlgorithmManager
 {
-    public class AlgorithmLoader
+    public class AlgorithmManager
     {
         public IEnumerable<IRecommendationAlgorithmLearner> LoadAllRegressionAlgorithms()
         {
