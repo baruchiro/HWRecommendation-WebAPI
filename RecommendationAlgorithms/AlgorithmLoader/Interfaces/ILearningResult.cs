@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.ML;
+﻿using Microsoft.ML;
 
-namespace Trainer.Interfaces
+namespace AlgorithmLoader.Interfaces
 {
-    public interface ILearningResult
+    public class LearningResult
     {
-        string Result { get;}
-        ITransformer TrainedModel { get; }
-        IDataLoader<object> Schema { get; }
+        public string Result;
+        public ITransformer TrainedModel;
+        public DataViewSchema Schema;
     }
 }
