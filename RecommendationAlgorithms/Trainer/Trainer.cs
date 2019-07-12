@@ -10,6 +10,10 @@ namespace Trainer
 {
     class Trainer
     {
+        public static void Main(string[] args)
+        {
+
+        }
         public async Task TrainAsync()
         {
             string[] labels =
