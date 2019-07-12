@@ -14,8 +14,8 @@ namespace DataTestsUtils
         private readonly string _fakeDataDtypesFilePath = Path.Combine("Resources", "fake-data-out.dtypes.csv");
         private readonly MLContext _mlContext;
         private readonly TextLoader.Column[] _columns;
-        public IDataView Data { get; }
-        public PipelineBuilder Builder => new PipelineBuilder(_mlContext, Data, _columns);
+        private IDataView Data { get; }
+        public PipelineBuilder CreateBuilder() => new PipelineBuilder(_mlContext, Data, _columns);
 
         public DataLoader(MLContext mlContext)
         {
@@ -30,9 +30,6 @@ namespace DataTestsUtils
             {"object", DataKind.String},
             {"float64", DataKind.Double}
         };
-
-        private TypeConvertingEstimator _pipeline;
-
 
         private TextLoader.Column[] ReadColumnsFromDtypesFile()
         {
