@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegressionAutoML", "Regress
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trainer", "RecommendationAlgorithms\Trainer\Trainer.csproj", "{EB359452-E737-44EB-ACB7-94A2E8B2655E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmLoader", "RecommendationAlgorithms\AlgorithmLoader\AlgorithmLoader.csproj", "{B5E02CBC-8678-446E-85CE-399777C5E840}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +185,18 @@ Global
 		{EB359452-E737-44EB-ACB7-94A2E8B2655E}.Release|x64.Build.0 = Release|Any CPU
 		{EB359452-E737-44EB-ACB7-94A2E8B2655E}.Release|x86.ActiveCfg = Release|Any CPU
 		{EB359452-E737-44EB-ACB7-94A2E8B2655E}.Release|x86.Build.0 = Release|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Debug|x64.Build.0 = Debug|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Release|x64.ActiveCfg = Release|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Release|x64.Build.0 = Release|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5E02CBC-8678-446E-85CE-399777C5E840}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,6 +206,7 @@ Global
 		{2B58C25C-6CD5-46BF-96D0-415280E2E851} = {319F76D9-068E-42A7-8D1E-334031DFDC87}
 		{6D8D9151-ACBF-4F85-87FD-1D9C609DFA68} = {319F76D9-068E-42A7-8D1E-334031DFDC87}
 		{EB359452-E737-44EB-ACB7-94A2E8B2655E} = {319F76D9-068E-42A7-8D1E-334031DFDC87}
+		{B5E02CBC-8678-446E-85CE-399777C5E840} = {319F76D9-068E-42A7-8D1E-334031DFDC87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF23D904-2AB4-4F3E-9D55-3C4F9D2400C1}

@@ -5,7 +5,7 @@ using Microsoft.ML;
 
 namespace Trainer.Interfaces
 {
-    interface ILearningResult
+    public interface ILearningResult
     {
         string Result { get;}
         ITransformer TrainedModel { get; }

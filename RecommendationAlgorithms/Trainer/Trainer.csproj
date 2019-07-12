@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RegressionAutoML\RegressionAutoML.csproj" />
+    <ProjectReference Include="..\AlgorithmLoader\AlgorithmLoader.csproj" />
   </ItemGroup>
 
 </Project>
