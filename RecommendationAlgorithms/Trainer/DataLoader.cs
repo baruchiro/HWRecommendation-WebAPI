@@ -31,9 +31,6 @@ namespace DataTestsUtils
             {"float64", DataKind.Double}
         };
 
-        private TypeConvertingEstimator _pipeline;
-
-
         private TextLoader.Column[] ReadColumnsFromDtypesFile()
         {
             return File.ReadAllLines(_fakeDataDtypesFilePath)
