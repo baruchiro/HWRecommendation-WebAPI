@@ -10,71 +10,30 @@ using DataTestsUtils;
 using DocoptNet;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using Trainer.Interfaces;
 using AlgorithmLoader;
+using AlgorithmLoader.Interfaces;
 
 namespace Trainer
 {
     class Trainer
     {
         private IEnumerable<IRecommendationAlgorithmLearner> algorithms;
-        private ICollection<Task> running = new List<Task>();
+        private List<Task> running = new List<Task>();
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private readonly MLContext _mlContext;
         private AlgorithmLoader.AlgorithmLoader _loader;
+        private readonly IDataView Data;
+        private DataLoader dataLoader;
+        private string label = "memory_capacity_as_kb";
 
         public Trainer()
         {
             _mlContext = new MLContext(0);
             _loader = new AlgorithmLoader.AlgorithmLoader();
+            dataLoader = new DataLoader(_mlContext);
         }
 
-        //public async Task TrainAsync()
-        //{
-        //    string[] labels =
-        //    {
-        //        "memory_capacity_as_kb",
-        //        "disk_capacity_as_kb",
-        //        "disk_rpm"
-        //    };
-        //    var mlContext = new MLContext();
-        //    var dataLoader = new DataLoader(mlContext);
-
-        //    var results = new List<RunDetail<RegressionMetrics>>();
-
-        //    var taskFactory = new TaskFactory<RunDetail<RegressionMetrics>>();
-        //    var tasks = labels.Select(l =>
-        //        taskFactory.StartNew(() => RunForLabel(dataLoader, l))).ToList();
-
-        //    while (tasks.Count > 0)
-        //    {
-        //        var finished = await Task.WhenAny(tasks);
-        //        tasks.Remove(finished);
-        //        results.Add(await finished);
-        //    }
-
-        //    foreach (var result in results)
-        //    {
-        //        var metrics = result.ValidationMetrics;
-        //        var r = $"R-Squared: {metrics.RSquared:0.##}";
-        //        var m = $"Root Mean Squared Error: {metrics.RootMeanSquaredError:0.##}";
-        //    }
-        //}
-
-        //private RunDetail<RegressionMetrics> RunForLabel(DataLoader dataLoader, string label)
-        //{
-        //    var data = dataLoader.Builder.ConvertIntToSingle()
-        //        .ConvertNumberToSingle()
-        //        .SelectFeatureColumns()
-        //        .SelectColumns(label)
-        //        .GetData();
-
-        //    var regressionAutoML = new RegressionAutoML.RegressionAutoML();
-        //    var result = regressionAutoML.Train(data, label, 10);
-        //    return result;
-        //}
-
-        public void TrainAll(int minutes)
+        public void TrainAll(uint minutes)
         {
             try
             {
@@ -88,28 +47,42 @@ namespace Trainer
             }
         }
 
-        private void RunAllAlgorithms(int minutes)
+        private void RunAllAlgorithms(uint minutes)
         {
-            var tasks = algorithms.Select(CreateTask);
-            foreach (var task in tasks)
-            {
-                task.Start();
-                running.Add(task);
-            }
+            var tasks = algorithms.Select(a=> StartAlgorithmTask(a, minutes));
+            running.AddRange(tasks);
         }
 
-        private Task CreateTask(IRecommendationAlgorithmLearner algorithm, int arg2)
+        private Task StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
-            return new Task<ILearningResult>(() =>
-                        algorithm.TrainModel(arg2),
-                    cancellationTokenSource.Token)
-                .ContinueWith((task, name) =>
+            return new TaskFactory().StartNew(
+                    BuildDataViewForTrain,
+                    cancellationTokenSource.Token,
+                    TaskCreationOptions.None,
+                    TaskScheduler.Default)
+                .ContinueWith(
+                    task =>
+                        algorithm.TrainModel(task.Result, label, timeoutInMinutes),
+                    cancellationTokenSource.Token,
+                    TaskContinuationOptions.LongRunning, TaskScheduler.Current)
+                .ContinueWith(
+                    (task, name) =>
                         SaveResultsToDir(task.Result, name as string),
                     algorithm.GetType().Name,
-                    cancellationTokenSource.Token);
+                    cancellationTokenSource.Token,
+                    TaskContinuationOptions.None, TaskScheduler.Current);
         }
 
-        private void SaveResultsToDir(ILearningResult learningResult, string name)
+        private IDataView BuildDataViewForTrain()
+        {
+            return dataLoader.CreateBuilder().ConvertIntToSingle()
+                    .ConvertNumberToSingle()
+                    .SelectFeatureColumns()
+                    .SelectColumns(label)
+                    .GetData();
+        }
+
+        private void SaveResultsToDir(LearningResult learningResult, string name)
         {
             var saver = new ModelSaver(name, learningResult, _mlContext);
             saver.SaveResults();

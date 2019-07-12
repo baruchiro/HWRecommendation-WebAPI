@@ -1,24 +1,34 @@
 ﻿using System;
 using System.IO;
+using AlgorithmLoader.Interfaces;
 using Microsoft.ML;
-using Trainer.Interfaces;
 
 namespace Trainer
 {
     internal class ModelSaver
     {
-        private readonly ILearningResult _learningResult;
+        private readonly LearningResult _learningResult;
         private readonly string _modelPath;
         private readonly string _resultsPath;
         private readonly MLContext _mlContext;
 
-        public ModelSaver(string learningName, ILearningResult learningResult, MLContext mlContext)
+        public ModelSaver(string learningName, LearningResult learningResult, MLContext mlContext)
         {
-            var now = new DateTime().ToString("yy-MM-dd_hh:mm:ss");
-            _resultsPath = Path.Combine(learningName, $"{learningName}_{now}.result");
-            _modelPath = Path.Combine(learningName, $"{learningName}_{now}.zip");
+            var now = new DateTime().ToString("yyMMdd_hhmmss");
+            var dirname = learningName + "Results";
+            CreateDir(dirname);
+            _resultsPath = Path.Combine(dirname, $"{learningName}_{now}.result");
+            _modelPath = Path.Combine(dirname, $"{learningName}_{now}.zip");
             _learningResult = learningResult;
             _mlContext = mlContext;
+        }
+
+        private void CreateDir(string dirname)
+        {
+            if (!Directory.Exists(dirname))
+            {
+                Directory.CreateDirectory(dirname);
+            }
         }
 
         public void SaveResults()

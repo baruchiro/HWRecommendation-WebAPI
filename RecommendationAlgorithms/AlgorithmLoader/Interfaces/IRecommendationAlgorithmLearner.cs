@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.ML.Data;
+﻿using Microsoft.ML;
 
-namespace Trainer.Interfaces
+namespace AlgorithmLoader.Interfaces
 {
     public interface IRecommendationAlgorithmLearner
     {
-        ILearningResult TrainModel(int timeoutInMinutes);
-        void SaveModel(string fileName);
+        LearningResult TrainModel(IDataView data, string label, uint timeoutInMinutes);
     }
 }
