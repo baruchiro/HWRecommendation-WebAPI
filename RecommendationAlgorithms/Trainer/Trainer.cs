@@ -1,27 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Threading.Tasks;
-using DataTestsUtils;
-using DocoptNet;
-using Microsoft.ML;
-using Microsoft.ML.Data;
 using AlgorithmManager;
+using DataTestsUtils;
+using Microsoft.ML;
 using AlgorithmManager.Interfaces;
 
 namespace Trainer
 {
-    class Trainer
+    class Trainer : IDisposable
     {
         private IEnumerable<IRecommendationAlgorithmLearner> _algorithms;
         private readonly List<Task> _running = new List<Task>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly MLContext _mlContext;
-        private readonly AlgorithmManager.AlgorithmLoader _loader;
+        private readonly AlgorithmLoader _loader;
         private readonly DataLoader _dataLoader;
         private const string LABEL = "memory_capacity_as_kb";
 
@@ -96,6 +91,11 @@ namespace Trainer
         public void Cancel()
         {
             _cancellationTokenSource.Cancel();
+        }
+
+        public void Dispose()
+        {
+            _cancellationTokenSource?.Dispose();
         }
     }
 }

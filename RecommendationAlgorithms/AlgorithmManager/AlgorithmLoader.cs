@@ -8,7 +8,7 @@ using AlgorithmManager.Interfaces;
 
 namespace AlgorithmManager
 {
-    public class AlgorithmManager
+    public class AlgorithmLoader
     {
         public IEnumerable<IRecommendationAlgorithmLearner> LoadAllRegressionAlgorithms()
         {
