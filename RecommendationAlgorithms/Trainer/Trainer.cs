@@ -1,18 +1,15 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataTestsUtils;
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
 using Microsoft.ML.Data;
-using Xunit;
 
-namespace RegressionAutoMLTests
+namespace Trainer
 {
-    public class RegressionAutoMLTests
+    class Trainer
     {
-
-        [Fact]
         public async Task TrainAsync()
         {
             string[] labels =
@@ -57,5 +54,6 @@ namespace RegressionAutoMLTests
             var result = regressionAutoML.Train(data, label, 10);
             return result;
         }
+
     }
 }
