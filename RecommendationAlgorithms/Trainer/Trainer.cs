@@ -1,84 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Threading.Tasks;
+using AlgorithmManager;
 using DataTestsUtils;
-using DocoptNet;
 using Microsoft.ML;
-using Microsoft.ML.Data;
-using Trainer.Interfaces;
-using AlgorithmLoader;
+using AlgorithmManager.Interfaces;
 
 namespace Trainer
 {
-    class Trainer
+    class Trainer : IDisposable
     {
-        private IEnumerable<IRecommendationAlgorithmLearner> algorithms;
-        private ICollection<Task> running = new List<Task>();
-        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private IEnumerable<IRecommendationAlgorithmLearner> _algorithms;
+        private readonly List<Task> _running = new List<Task>();
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly MLContext _mlContext;
-        private AlgorithmLoader.AlgorithmLoader _loader;
+        private readonly AlgorithmLoader _loader;
+        private readonly DataLoader _dataLoader;
+        private const string LABEL = "memory_capacity_as_kb";
 
         public Trainer()
         {
             _mlContext = new MLContext(0);
-            _loader = new AlgorithmLoader.AlgorithmLoader();
+            _loader = new AlgorithmManager.AlgorithmLoader();
+            _dataLoader = new DataLoader(_mlContext);
         }
 
-        //public async Task TrainAsync()
-        //{
-        //    string[] labels =
-        //    {
-        //        "memory_capacity_as_kb",
-        //        "disk_capacity_as_kb",
-        //        "disk_rpm"
-        //    };
-        //    var mlContext = new MLContext();
-        //    var dataLoader = new DataLoader(mlContext);
-
-        //    var results = new List<RunDetail<RegressionMetrics>>();
-
-        //    var taskFactory = new TaskFactory<RunDetail<RegressionMetrics>>();
-        //    var tasks = labels.Select(l =>
-        //        taskFactory.StartNew(() => RunForLabel(dataLoader, l))).ToList();
-
-        //    while (tasks.Count > 0)
-        //    {
-        //        var finished = await Task.WhenAny(tasks);
-        //        tasks.Remove(finished);
-        //        results.Add(await finished);
-        //    }
-
-        //    foreach (var result in results)
-        //    {
-        //        var metrics = result.ValidationMetrics;
-        //        var r = $"R-Squared: {metrics.RSquared:0.##}";
-        //        var m = $"Root Mean Squared Error: {metrics.RootMeanSquaredError:0.##}";
-        //    }
-        //}
-
-        //private RunDetail<RegressionMetrics> RunForLabel(DataLoader dataLoader, string label)
-        //{
-        //    var data = dataLoader.Builder.ConvertIntToSingle()
-        //        .ConvertNumberToSingle()
-        //        .SelectFeatureColumns()
-        //        .SelectColumns(label)
-        //        .GetData();
-
-        //    var regressionAutoML = new RegressionAutoML.RegressionAutoML();
-        //    var result = regressionAutoML.Train(data, label, 10);
-        //    return result;
-        //}
-
-        public void TrainAll(int minutes)
+        public void TrainAll(uint minutes)
         {
             try
             {
-                algorithms = _loader.LoadAllRegressionAlgorithms();
+                _algorithms = _loader.LoadAllRegressionAlgorithms();
                 RunAllAlgorithms(minutes);
             }
             catch (Exception e)
@@ -88,28 +41,42 @@ namespace Trainer
             }
         }
 
-        private void RunAllAlgorithms(int minutes)
+        private void RunAllAlgorithms(uint minutes)
         {
-            var tasks = algorithms.Select(CreateTask);
-            foreach (var task in tasks)
-            {
-                task.Start();
-                running.Add(task);
-            }
+            var tasks = _algorithms.Select(a=> StartAlgorithmTask(a, minutes));
+            _running.AddRange(tasks);
         }
 
-        private Task CreateTask(IRecommendationAlgorithmLearner algorithm, int arg2)
+        private Task StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
-            return new Task<ILearningResult>(() =>
-                        algorithm.TrainModel(arg2),
-                    cancellationTokenSource.Token)
-                .ContinueWith((task, name) =>
+            return new TaskFactory().StartNew(
+                    BuildDataViewForTrain,
+                    _cancellationTokenSource.Token,
+                    TaskCreationOptions.None,
+                    TaskScheduler.Default)
+                .ContinueWith(
+                    task =>
+                        algorithm.TrainModel(task.Result, LABEL, timeoutInMinutes),
+                    _cancellationTokenSource.Token,
+                    TaskContinuationOptions.LongRunning, TaskScheduler.Current)
+                .ContinueWith(
+                    (task, name) =>
                         SaveResultsToDir(task.Result, name as string),
                     algorithm.GetType().Name,
-                    cancellationTokenSource.Token);
+                    _cancellationTokenSource.Token,
+                    TaskContinuationOptions.None, TaskScheduler.Current);
         }
 
-        private void SaveResultsToDir(ILearningResult learningResult, string name)
+        private IDataView BuildDataViewForTrain()
+        {
+            return _dataLoader.CreateBuilder().ConvertIntToSingle()
+                    .ConvertNumberToSingle()
+                    .SelectFeatureColumns()
+                    .SelectColumns(LABEL)
+                    .GetData();
+        }
+
+        private void SaveResultsToDir(LearningResult learningResult, string name)
         {
             var saver = new ModelSaver(name, learningResult, _mlContext);
             saver.SaveResults();
@@ -118,12 +85,17 @@ namespace Trainer
 
         public void WaitAll()
         {
-            Task.WaitAll(running.ToArray(), cancellationTokenSource.Token);
+            Task.WaitAll(_running.ToArray(), _cancellationTokenSource.Token);
         }
 
         public void Cancel()
         {
-            cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Cancel();
+        }
+
+        public void Dispose()
+        {
+            _cancellationTokenSource?.Dispose();
         }
     }
 }
