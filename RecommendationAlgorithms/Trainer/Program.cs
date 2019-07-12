@@ -7,7 +7,7 @@ namespace Trainer
 {
     class Program
     {
-        private static int minutes;
+        private static uint minutes;
 
         private const string usage = @"Trainer.
 
@@ -43,7 +43,7 @@ namespace Trainer
         {
             var arguments = new Docopt().Apply(usage, args, exit: true);
 
-            minutes = arguments["<minutes>"].AsInt;
+            minutes = Convert.ToUInt32(arguments["<minutes>"].AsInt);
         }
     }
 }

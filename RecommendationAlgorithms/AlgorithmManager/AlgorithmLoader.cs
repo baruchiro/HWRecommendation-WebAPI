@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Trainer.Interfaces;
+using AlgorithmManager.Interfaces;
 
-namespace AlgorithmLoader
+namespace AlgorithmManager
 {
     public class AlgorithmLoader
     {
