@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using Newtonsoft.Json.Converters;
@@ -64,5 +65,16 @@ namespace Models
         /// HDD
         /// </summary>
         [EnumMember] HDD
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Gender
+    {
+        [Description("Not defined"), EnumMember]
+        NOT_DEFINE,
+        [Description("Male"), EnumMember]
+        MALE,
+        [Description("Female"), EnumMember]
+        FEMALE
     }
 }

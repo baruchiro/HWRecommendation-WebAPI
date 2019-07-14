@@ -6,6 +6,7 @@ using EnumsNET;
 using HW.Bot.Model;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder.Adapters;
+using Models;
 
 namespace HW.Bot.UnitTests.Extensions
 {

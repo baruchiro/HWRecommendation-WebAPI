@@ -8,35 +8,24 @@ using Models.ModelEqualityComparer;
 
 namespace HWWebApi.Models
 {
-    public class User : IModel<User>, IPersonalData
+    public class User : Person, IPersonalData
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public string WorkArea { get; set; }
-        public int Age { get; set; }
-        public Gender Gender { get; set; }
         public ICollection<UserChannel> Channels { get; set; }
         public ICollection<Scan> Scans { get; set; }
 
-        public bool EqualByMembers(User model)
+        public bool EqualByMembers(User user)
         {
-            return Name == model.Name &&
-                   WorkArea.Equals(model.WorkArea, StringComparison.CurrentCultureIgnoreCase) &&
-                   Age == model.Age &&
-                   Gender == model.Gender &&
-                   Channels.IsEquals(model.Channels, new ModelEqualityByMembers<UserChannel>()) &&
-                   Scans.IsEquals(model.Scans);
+            return user != null &&
+                   EqualByMembers(user) &&
+                   Channels.IsEquals(user.Channels, new ModelEqualityByMembers<UserChannel>()) &&
+                   Scans.IsEquals(user.Scans);
         }
 
-        public int GetHashCodeWithMembers()
+        public override int GetHashCodeWithMembers()
         {
             unchecked
             {
-                var hashCode = 397;
-                hashCode = (hashCode * 397) ^ (Name?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (WorkArea?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ Age.GetHashCode();
-                hashCode = (hashCode * 397) ^ Gender.GetHashCode();
+                var hashCode = base.GetHashCodeWithMembers();
                 hashCode = (hashCode * 397) ^ (Channels?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (Scans?.GetHashCode() ?? 0);
                 return hashCode;

@@ -1,4 +1,5 @@
 ﻿using HW.Bot.Model;
+using Models;
 
 namespace HW.Bot.Interfaces
 {
