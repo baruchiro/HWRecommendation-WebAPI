@@ -77,4 +77,13 @@ namespace Models
         [Description("Female"), EnumMember]
         FEMALE
     }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum ComputerType
+    {
+        [EnumMember]
+        LAPTOP,
+        [EnumMember]
+        DESKTOP
+    }
 }

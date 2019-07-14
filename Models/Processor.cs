@@ -7,14 +7,16 @@ namespace Models
         public string Name { get; set; }
         public long? GHz { get; set; } 
         public int? NumOfCores { get; set; }
-        public Architecture? Architecture { get; set; } 
+        public Architecture? Architecture { get; set; }
+        public string Manufacturer { get; set; }
 
         public bool EqualByMembers(Processor processor)
         {
             return string.Equals(Name, processor.Name) &&
                    GHz == processor.GHz &&
                    NumOfCores == processor.NumOfCores &&
-                   Architecture == processor.Architecture;
+                   Architecture == processor.Architecture &&
+                   Manufacturer == processor.Manufacturer;
         }
 
         public int GetHashCodeWithMembers()
@@ -26,6 +28,7 @@ namespace Models
                 hashCode = (hashCode * 397) ^ GHz.GetHashCode();
                 hashCode = (hashCode * 397) ^ NumOfCores.GetHashCode();
                 hashCode = (hashCode * 397) ^ Architecture.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Manufacturer?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }

@@ -12,32 +12,54 @@ namespace TestUtils
             {
                 Capacity = 300,
                 Type = RamType.DDR3,
-                Ghz = 5000004
+                Ghz = 5000004,
+                BankLabel = "BANKA",
+                DeviceLocator = "UNKNOWN",
+                Generation = 4
             };
             var disk = new Disk
             {
                 Type = DiskType.HDD,
                 Rpm = 5000,
-                Capacity = 1000000
+                Capacity = 1000000,
+                Model = "Samsung Eva"
             };
             var processor = new Processor
             {
                 Name = "Intel core i6",
                 GHz = 500045546,
                 NumOfCores = 4,
-                Architecture = Architecture.X64
+                Architecture = Architecture.X64,
+                Manufacturer = "Intel"
             };
             var motherBoard = new MotherBoard
             {
                 DdrSockets = 2,
                 MaxRam = 400000,
                 SataConnections = 2,
-                Architecture = Architecture.X64
+                Architecture = Architecture.X64,
+                Manufacturer = "IBM", 
+                Product = "BLA"
             };
-            var gpu = new Gpu { Cores = 2 };
+            var gpu = new Gpu
+            {
+                Cores = 2,
+                Manufacturer = "Nvidia",
+                Memory = new Memory
+                {
+                    Capacity = 4000000,
+                    Generation = 5,
+                    Ghz = 40000,
+                    Type = RamType.DDR4
+                },
+                Name = "Nvidia Xport",
+                Processor = "BBB",
+                Version = 530
+            };
 
             var computer = new Computer
             {
+                ComputerType = ComputerType.LAPTOP,
                 Memories = new[] { memory },
                 Disks = new[] { disk },
                 Processor = processor,

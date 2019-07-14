@@ -24,10 +24,13 @@ namespace Models
         public ICollection<Disk> Disks { get; set; } = new List<Disk>();
         public MotherBoard MotherBoard { get; set; } 
         public ICollection<Gpu> Gpus { get; set; } = new List<Gpu>();
+        public ComputerType ComputerType { get; set; }
 
         public bool EqualByMembers(Computer computer)
         {
-            return ModelEqualityByMembers<Processor>.EqualByMembers(Processor, computer.Processor) &&
+            return computer != null &&
+                   ComputerType == computer.ComputerType &&
+                   ModelEqualityByMembers<Processor>.EqualByMembers(Processor, computer.Processor) &&
                    Memories.IsEquals(computer.Memories, new ModelEqualityByMembers<Memory>()) &&
                    Disks.IsEquals(computer.Disks, new ModelEqualityByMembers<Disk>()) &&
                    ModelEqualityByMembers<MotherBoard>.EqualByMembers(MotherBoard, computer.MotherBoard) &&
@@ -44,6 +47,7 @@ namespace Models
                 hashCode = (hashCode * 397) ^ (Disks?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (MotherBoard?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (Gpus?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ ComputerType.GetHashCode();
                 return hashCode;
             }
         }
