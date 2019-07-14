@@ -21,6 +21,7 @@
   <ItemGroup>
     <PackageReference Include="docopt.net" Version="0.6.1.10" />
     <PackageReference Include="Microsoft.ML" Version="1.2.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
   </ItemGroup>
 
   <ItemGroup>
