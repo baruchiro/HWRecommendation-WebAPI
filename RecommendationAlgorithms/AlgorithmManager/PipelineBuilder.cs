@@ -1,48 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using Microsoft.ML.Transforms;
 
-namespace DataTestsUtils
+namespace AlgorithmManager
 {
-    public class DataLoader
-    {
-        private readonly string _fakeDataFilePath = Path.Combine("Resources", "fake-data-out.csv");
-        private readonly string _fakeDataDtypesFilePath = Path.Combine("Resources", "fake-data-out.dtypes.csv");
-        private readonly MLContext _mlContext;
-        private readonly TextLoader.Column[] _columns;
-        private IDataView Data { get; }
-        public PipelineBuilder CreateBuilder() => new PipelineBuilder(_mlContext, Data, _columns);
-
-        public DataLoader(MLContext mlContext)
-        {
-            _mlContext = mlContext;
-            _columns = ReadColumnsFromDtypesFile();
-            Data = _mlContext.Data.LoadFromTextFile(_fakeDataFilePath, _columns, ',', true);
-        }
-
-        private readonly IDictionary<string, DataKind> _strToDtypes = new Dictionary<string, DataKind>
-        {
-            {"int64", DataKind.Int64},
-            {"object", DataKind.String},
-            {"float64", DataKind.Double}
-        };
-
-        private TextLoader.Column[] ReadColumnsFromDtypesFile()
-        {
-            return File.ReadAllLines(_fakeDataDtypesFilePath)
-                .Select(l => l.Split(','))
-                .Select((line, index) =>
-                    new TextLoader.Column(line[0],
-                        _strToDtypes[line[1].ToLower()],
-                        index))
-                .ToArray();
-        }
-    }
-
     public class PipelineBuilder
     {
         private readonly string[] _featureColumns =

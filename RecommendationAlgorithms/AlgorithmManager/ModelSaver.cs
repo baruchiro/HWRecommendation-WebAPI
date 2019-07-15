@@ -3,9 +3,9 @@ using System.IO;
 using AlgorithmManager.Interfaces;
 using Microsoft.ML;
 
-namespace Trainer
+namespace AlgorithmManager
 {
-    internal class ModelSaver
+    public class ModelSaver
     {
         private readonly LearningResult _learningResult;
         private readonly string _modelPath;

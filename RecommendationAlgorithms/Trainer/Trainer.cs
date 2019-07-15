@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AlgorithmManager;
-using DataTestsUtils;
 using Microsoft.ML;
 using AlgorithmManager.Interfaces;
+using Models;
 
 namespace Trainer
 {
     class Trainer : IDisposable
     {
+        private readonly string _fakeDataFilePath = Path.Combine("Resources", "fake-data-out.csv");
+        private readonly string _fakeDataDtypesFilePath = Path.Combine("Resources", "fake-data-out.dtypes.csv");
         private IEnumerable<IRecommendationAlgorithmLearner> _algorithms;
         private readonly List<Task> _running = new List<Task>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
@@ -23,8 +26,8 @@ namespace Trainer
         public Trainer()
         {
             _mlContext = new MLContext(0);
-            _loader = new AlgorithmManager.AlgorithmLoader();
-            _dataLoader = new DataLoader(_mlContext);
+            _loader = new AlgorithmLoader();
+            _dataLoader = new DataLoader(_mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath);
         }
 
         public void TrainAll(uint minutes)
@@ -50,7 +53,7 @@ namespace Trainer
         private Task StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
             return new TaskFactory().StartNew(
-                    BuildDataViewForTrain,
+                    BuildEnumerationForTrain,
                     _cancellationTokenSource.Token,
                     TaskCreationOptions.None,
                     TaskScheduler.Default)
@@ -67,13 +70,14 @@ namespace Trainer
                     TaskContinuationOptions.None, TaskScheduler.Current);
         }
 
-        private IDataView BuildDataViewForTrain()
+        private IEnumerable<Tuple<Person, Computer>> BuildEnumerationForTrain()
         {
-            return _dataLoader.CreateBuilder().ConvertIntToSingle()
-                    .ConvertNumberToSingle()
-                    .SelectFeatureColumns()
-                    .SelectColumns(LABEL)
-                    .GetData();
+            return _dataLoader.EnumerateData();
+            /*.CreateBuilder().ConvertIntToSingle()
+                .ConvertNumberToSingle()
+                .SelectFeatureColumns()
+                .SelectColumns(LABEL)
+                .GetData();*/
         }
 
         private void SaveResultsToDir(LearningResult learningResult, string name)

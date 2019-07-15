@@ -12,7 +12,7 @@ namespace AlgorithmManager
     {
         public IEnumerable<IRecommendationAlgorithmLearner> LoadAllRegressionAlgorithms()
         {
-            return Directory.EnumerateFiles(".", "Regression*.dll")
+            return Directory.EnumerateFiles(".", "*.dll")
                 .Select(Path.GetFullPath)
                 .Select(Assembly.LoadFile)
                 .SelectMany(GetTypeFromAssembly<IRecommendationAlgorithmLearner>);
