@@ -55,7 +55,7 @@ namespace AlgorithmManager
                 {
                     Age = StringToInt(arg[0]),
                     WorkArea = arg[6],
-                    Gender = Enums.Parse<Gender>(arg[7], true),
+                    Gender = ParseEnum<Gender>(arg[7]),
                     MainUse = arg[14],
                     Price = StringToInt(arg[21]),
                 };
@@ -64,13 +64,13 @@ namespace AlgorithmManager
                     Capacity = StringToLong(arg[2]),
                     Model = arg[3],
                     Rpm = StringToInt(arg[4]),
-                    Type = Enums.Parse<DiskType>(arg[5], true)
+                    Type = ParseEnum<DiskType>(arg[5])
                 };
                 var gpuMemory = new Memory
                 {
                     Capacity = StringToLong(arg[10]),
                     Generation = StringToInt(arg[11]),
-                    Type = Enums.Parse<RamType>(arg[12], true)
+                    Type = ParseEnum<RamType>(arg[12])
                 };
                 var gpu = new Gpu
                 {
@@ -84,7 +84,7 @@ namespace AlgorithmManager
                     Capacity = StringToLong(arg[15]),
                     Ghz = StringToLong(arg[16]),
                     Generation = StringToInt(arg[17]),
-                    Type = Enums.Parse<RamType>(arg[18], true)
+                    Type = ParseEnum<RamType>(arg[18])
                 };
                 var motherBoard = new MotherBoard
                 {
@@ -100,7 +100,7 @@ namespace AlgorithmManager
                 };
                 var computer = new Computer
                 {
-                    ComputerType = Enums.Parse<ComputerType>(arg[1], true),
+                    ComputerType = ParseEnum<ComputerType>(arg[1]),
                     Disks = new List<Disk> {disk},
                     Gpus = new List<Gpu> {gpu},
                     Memories = new List<Memory> {memory},
@@ -118,14 +118,42 @@ namespace AlgorithmManager
             }
         }
 
+        private T ParseEnum<T>(string field)where T:struct, Enum
+        {
+            try
+            {
+                Enums.TryParse(field, true, out T t) ;
+                return t;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         private static int StringToInt(string number)
         {
-            return Convert.ToInt32(Convert.ToDouble(number));
+            return Convert.ToInt32(StringToDouble(number));
         }
 
         private static long StringToLong(string number)
         {
-            return Convert.ToInt64(Convert.ToDouble(number));
+            return Convert.ToInt64(StringToDouble(number));
+        }
+
+        private static double StringToDouble(string number)
+        {
+            try
+            {
+                return string.IsNullOrEmpty(number) ? 0 : Convert.ToDouble(number);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e);
+                Console.WriteLine($"param: {number}");
+                throw;
+            }
         }
     }
 }
