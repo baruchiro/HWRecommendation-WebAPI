@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
+using EnumsNET;
 using Models;
 using Xunit;
 using TypeExtensions = AlgorithmManager.Extensions.TypeExtensions;
@@ -36,10 +37,13 @@ namespace AlgorithmManagerTests
         {
             var gpu = TestUtils.TestUtils.GenerateGpu();
             var memoryCapacity = gpu.Memory.Capacity;
+            var memoryType = gpu.Memory.Type;
             Assert.True(memoryCapacity > 0);
+            Assert.NotEqual(default, memoryType);
             
             var flattenGpu = TypeExtensions.CreateFilledFlattenObject<FlattenGpu, Gpu>(TestUtils.TestUtils.GenerateGpu());
             Assert.Equal(memoryCapacity, flattenGpu.MemoryCapacity);
+            Assert.Equal(Enums.ToInt32(memoryType), flattenGpu.MemoryType);
         }
 
         [Fact]
@@ -51,21 +55,26 @@ namespace AlgorithmManagerTests
                 Person = TestUtils.TestUtils.GeneratePerson()
             };
 
+            var diskTypeNullableFirst = personComputer.Computer.Disks.FirstOrDefault()?.Type ??
+                                          throw new ArgumentNullException(
+                                              $"The test must run with value in personComputer.Computer.Disks");
             var diskCapacityFirst = personComputer.Computer.Disks.FirstOrDefault()?.Capacity ??
                                     throw new ArgumentNullException(
                                         $"The test must run with value in personComputer.Computer.Disks");
             Assert.True(diskCapacityFirst > 0);
+            Assert.NotEqual(default, diskCapacityFirst);
 
             var flattenPersonComputer =
                 TypeExtensions.CreateFilledFlattenObject<FlattenPersonComputer, PersonComputerStructureModel>(
                     personComputer);
 
             Assert.Contains(diskCapacityFirst, flattenPersonComputer.ComputerDisksCapacity);
+            Assert.Contains(Enums.ToInt32(diskTypeNullableFirst), flattenPersonComputer.ComputerDisksType);
         }
 
         private void AssertComparePropertyNamesTypesAgainstFlattenType<TType, TFlatten>()
         {
-            var expectedPropsNames = typeof(TType).ResolveRecursiveNamesAndType();
+            var expectedPropsNames = typeof(TType).ResolveRecursiveNamesAndType(true);
             var actualPropsNames = typeof(TFlatten).GetInstanceOrPublicProperties()
                 .ToDictionary(p => p.Name, p => p.PropertyType);
 

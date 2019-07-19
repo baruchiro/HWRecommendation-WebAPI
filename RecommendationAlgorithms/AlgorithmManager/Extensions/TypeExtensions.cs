@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using EnumsNET;
 
 namespace AlgorithmManager.Extensions
 {
@@ -15,11 +16,11 @@ namespace AlgorithmManager.Extensions
             return type?.GetProperties(BindingFlags.Instance | BindingFlags.Public);
         }
 
-        public static bool IsLikePrimitive(this Type type)
+        public static bool IsComplexObject(this Type type)
         {
             if (type == null) throw new ArgumentNullException(nameof(type));
 
-            return type.IsPrimitive || type.IsEnum || type == typeof(string);
+            return !type.IsPrimitive && !type.IsEnum && type != typeof(string);
         }
 
         public static IEnumerable<string> ResolveRecursiveNames(this Type type, string prefix = null)
@@ -35,7 +36,7 @@ namespace AlgorithmManager.Extensions
 
             var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
 
-            if (type.IsLikePrimitive())
+            if (!type.IsComplexObject())
             {
                 yield return prop.Name;
             }
@@ -52,24 +53,32 @@ namespace AlgorithmManager.Extensions
         }
 
 
-        public static IEnumerable<(string, object)> ResolveRecursiveNamesAndValues<T>(PropertyInfo prop, T obj)
+        public static IEnumerable<(string, object)> ResolveRecursiveNamesAndValues<T>(PropertyInfo prop, T obj,
+            bool enumToInt = false)
         {
             if (prop == null) throw new ArgumentNullException(nameof(prop));
             if (obj == null) throw new ArgumentNullException(nameof(obj));
 
 
-            var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            var nullableUnderlyingType = Nullable.GetUnderlyingType(prop.PropertyType);
+            var type = nullableUnderlyingType ?? prop.PropertyType;
 
-            if (type.IsLikePrimitive())
+            if (!type.IsComplexObject())
             {
-                yield return (prop.Name, prop.GetValue(obj));
+                var resultValue = prop.GetValue(obj);
+                if (type.IsEnum && enumToInt)
+                {
+                    resultValue = (int) resultValue;
+                }
+
+                yield return (prop.Name, resultValue);
             }
             else if (typeof(IEnumerable).IsAssignableFrom(type))
             {
                 type = type.GetGenericArguments()[0];
-                var typeProps = type.ResolveRecursiveNamesAndType().ToList();
+                var typeProps = type.ResolveRecursiveNamesAndType(enumToInt).ToList();
                 var propNamesAndCollectionValues = typeProps.ToDictionary(tp => tp.Key,
-                    tp => Activator.CreateInstance(typeof(List<>).MakeGenericType(tp.Value)));
+                    tp =>CreateCollectionOfType(tp.Value, enumToInt));
 
                 var allItems = prop.GetValue(obj) as IEnumerable ??
                                throw new ArgumentNullException(
@@ -77,7 +86,7 @@ namespace AlgorithmManager.Extensions
                                    "can't converted to IEnumarable");
                 foreach (var values in allItems)
                 {
-                    foreach (var nameValue in values.ResolveRecursiveNamesAndValue())
+                    foreach (var nameValue in values.ResolveRecursiveNamesAndValue(enumToInt))
                     {
                         propNamesAndCollectionValues[nameValue.Key].GetType().GetMethod("Add")
                                 ?.Invoke(propNamesAndCollectionValues[nameValue.Key], new[] {nameValue.Value});
@@ -91,7 +100,7 @@ namespace AlgorithmManager.Extensions
             }
             else
             {
-                foreach (var namesAndValue in prop.GetValue(obj).ResolveRecursiveNamesAndValue()
+                foreach (var namesAndValue in prop.GetValue(obj).ResolveRecursiveNamesAndValue(enumToInt)
                     .Select(p => (prop.Name + p.Key, p.Value)))
                 {
                     yield return namesAndValue;
@@ -99,58 +108,77 @@ namespace AlgorithmManager.Extensions
             }
         }
 
-        public static IEnumerable<(string, Type)> ResolveRecursiveNamesAndTypes(PropertyInfo prop)
+        private static object CreateCollectionOfType(Type type, bool enumToInt = false)
+        {
+            if (enumToInt && type.IsEnum)
+            {
+                type = typeof(int);
+            }
+            return Activator.CreateInstance(typeof(List<>).MakeGenericType(type));
+        }
+
+        public static IEnumerable<(string, Type)> ResolveRecursiveNamesAndTypes(PropertyInfo prop,
+            bool enumToInt = false)
         {
             if (prop == null) throw new ArgumentNullException(nameof(prop));
 
+            var nullableUnderlyingType = Nullable.GetUnderlyingType(prop.PropertyType);
+            var type = nullableUnderlyingType ?? prop.PropertyType;
 
-            var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-
-            if (type.IsLikePrimitive())
+            if (!type.IsComplexObject())
             {
-                yield return (prop.Name, prop.PropertyType);
-            }else if (typeof(IEnumerable).IsAssignableFrom(type))
+                var resultType = prop.PropertyType;
+                if (type.IsEnum && enumToInt)
+                {
+                    resultType = nullableUnderlyingType != null
+                        ? typeof(Nullable<>).MakeGenericType(typeof(int))
+                        : typeof(int);
+                }
+
+                yield return (prop.Name, resultType);
+            }
+            else if (typeof(IEnumerable).IsAssignableFrom(type))
             {
                 var genericType = type.GetGenericArguments()[0];
-                foreach (var namesAndValue in genericType.ResolveRecursiveNamesAndType()
+                foreach (var namesAndValue in genericType.ResolveRecursiveNamesAndType(enumToInt)
                     .Select(p => (
                         prop.Name + p.Key,
                         typeof(ICollection<>).MakeGenericType(p.Value)
-                        )))
+                    )))
                 {
                     yield return namesAndValue;
                 }
             }
             else
             {
-                foreach (var namesAndValue in type.ResolveRecursiveNamesAndType().Select(p => (prop.Name + p.Key, p.Value)))
+                foreach (var namesAndValue in type.ResolveRecursiveNamesAndType(enumToInt)
+                    .Select(p => (prop.Name + p.Key, p.Value)))
                 {
                     yield return namesAndValue;
                 }
             }
         }
 
-        public static IDictionary<string, object> ResolveRecursiveNamesAndValue(this object obj)
+        public static IDictionary<string, object> ResolveRecursiveNamesAndValue(this object obj, bool enumToInt = false)
         {
             if (obj == null) throw new ArgumentNullException(nameof(obj));
 
-            var x = obj.GetType().GetInstanceOrPublicProperties()
-                .SelectMany(p => ResolveRecursiveNamesAndValues(p, obj)).ToList();
-            return x
+            return obj.GetType().GetInstanceOrPublicProperties()
+                .SelectMany(p => ResolveRecursiveNamesAndValues(p, obj, enumToInt))
                 .ToDictionary(t => t.Item1, t => t.Item2);
         }
 
-        public static IDictionary<string, Type> ResolveRecursiveNamesAndType(this Type type)
+        public static IDictionary<string, Type> ResolveRecursiveNamesAndType(this Type type, bool enumToInt = false)
         {
             return type.GetInstanceOrPublicProperties()
-                .SelectMany(ResolveRecursiveNamesAndTypes)
+                .SelectMany(p=> ResolveRecursiveNamesAndTypes(p, enumToInt))
                 .ToDictionary(t => t.Item1, t => t.Item2);
         }
 
         public static TFlatten CreateFilledFlattenObject<TFlatten, TSource>(TSource source)
             where TFlatten : new()
         {
-            var values = source.ResolveRecursiveNamesAndValue();
+            var values = source.ResolveRecursiveNamesAndValue(true);
             var flatten = new TFlatten();
             foreach (var keyValue in values)
             {

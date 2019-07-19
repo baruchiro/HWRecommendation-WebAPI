@@ -11,7 +11,7 @@ namespace AlgorithmManager.Model
         public string Processor { get; set; }
         public int Version { get; set; }
         public long MemoryId { get; set; }
-        public RamType MemoryType { get; set; }
+        public int MemoryType { get; set; }
         public string MemoryBankLabel { get; set; }
         public long MemoryCapacity { get; set; }
         public string MemoryDeviceLocator { get; set; }
