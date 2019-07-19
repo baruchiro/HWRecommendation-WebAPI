@@ -7,7 +7,7 @@ namespace AlgorithmManager.Model
     {
         public long Id { get; set; }
         public string Manufacturer { get; set; }
-        public int? Cores { get; set; }
+        public int Cores { get; set; }
         public string Name { get; set; }
         public string Processor { get; set; }
         public int Version { get; set; }

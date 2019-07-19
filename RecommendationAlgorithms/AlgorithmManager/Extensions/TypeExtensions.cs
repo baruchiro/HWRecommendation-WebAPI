@@ -61,23 +61,22 @@ namespace AlgorithmManager.Extensions
             if (obj == null) throw new ArgumentNullException(nameof(obj));
 
 
-            var nullableUnderlyingType = Nullable.GetUnderlyingType(prop.PropertyType);
-            var type = nullableUnderlyingType ?? prop.PropertyType;
+            var realType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
 
-            if (!type.IsComplexObject())
+            if (!realType.IsComplexObject())
             {
                 var resultValue = prop.GetValue(obj);
-                if (type.IsEnum && enumToInt)
+                if (realType.IsEnum && enumToInt)
                 {
                     resultValue = (int) resultValue;
                 }
 
                 yield return (prop.Name, resultValue);
             }
-            else if (typeof(IEnumerable).IsAssignableFrom(type))
+            else if (typeof(IEnumerable).IsAssignableFrom(realType))
             {
-                type = type.GetGenericArguments()[0];
-                var typeProps = type.ResolveRecursiveNamesAndType(enumToInt).ToList();
+                realType = realType.GetGenericArguments()[0];
+                var typeProps = realType.ResolveRecursiveNamesAndType(enumToInt).ToList();
                 var propNamesAndCollectionValues = typeProps.ToDictionary(tp => tp.Key,
                     tp =>CreateCollectionOfType(tp.Value, enumToInt));
 
@@ -123,20 +122,16 @@ namespace AlgorithmManager.Extensions
         {
             if (prop == null) throw new ArgumentNullException(nameof(prop));
 
-            var nullableUnderlyingType = Nullable.GetUnderlyingType(prop.PropertyType);
-            var type = nullableUnderlyingType ?? prop.PropertyType;
+            var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
 
             if (!type.IsComplexObject())
             {
-                var resultType = prop.PropertyType;
                 if (type.IsEnum && enumToInt)
                 {
-                    resultType = nullableUnderlyingType != null
-                        ? typeof(Nullable<>).MakeGenericType(typeof(int))
-                        : typeof(int);
+                    type = typeof(int);
                 }
 
-                yield return (prop.Name, resultType);
+                yield return (prop.Name, type);
             }
             else if (typeof(IEnumerable).IsAssignableFrom(type))
             {

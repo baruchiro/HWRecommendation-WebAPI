@@ -16,9 +16,9 @@ namespace AlgorithmManager.Model
         public long ComputerId { get; set; }
         public long ComputerProcessorId { get; set; }
         public string ComputerProcessorName { get; set; }
-        public long? ComputerProcessorGHz { get; set; }
-        public int? ComputerProcessorNumOfCores { get; set; }
-        public int? ComputerProcessorArchitecture { get; set; }
+        public long ComputerProcessorGHz { get; set; }
+        public int ComputerProcessorNumOfCores { get; set; }
+        public int ComputerProcessorArchitecture { get; set; }
         public string ComputerProcessorManufacturer { get; set; }
         public ICollection<long> ComputerMemoriesId { get; set; }
         public ICollection<long> ComputerMemoriesCapacity { get; set; }
@@ -29,20 +29,20 @@ namespace AlgorithmManager.Model
         public ICollection<int> ComputerMemoriesGeneration { get; set; }
         public ICollection<long> ComputerDisksId { get; set; }
         public ICollection<string> ComputerDisksModel { get; set; }
-        public ICollection<int?> ComputerDisksType { get; set; }
-        public ICollection<int?> ComputerDisksRpm { get; set; }
-        public ICollection<long?> ComputerDisksCapacity { get; set; }
+        public ICollection<int> ComputerDisksType { get; set; }
+        public ICollection<int> ComputerDisksRpm { get; set; }
+        public ICollection<long> ComputerDisksCapacity { get; set; }
         public long ComputerMotherBoardId { get; set; }
-        public int? ComputerMotherBoardDdrSockets { get; set; }
-        public long? ComputerMotherBoardMaxRam { get; set; }
-        public int? ComputerMotherBoardSataConnections { get; set; }
-        public int? ComputerMotherBoardArchitecture { get; set; }
+        public int ComputerMotherBoardDdrSockets { get; set; }
+        public long ComputerMotherBoardMaxRam { get; set; }
+        public int ComputerMotherBoardSataConnections { get; set; }
+        public int ComputerMotherBoardArchitecture { get; set; }
         public string ComputerMotherBoardManufacturer { get; set; }
         public string ComputerMotherBoardProduct { get; set; }
         public ICollection<long> ComputerGpusId { get; set; }
         public ICollection<string> ComputerGpusName { get; set; }
         public ICollection<string> ComputerGpusProcessor { get; set; }
-        public ICollection<int?> ComputerGpusCores { get; set; }
+        public ICollection<int> ComputerGpusCores { get; set; }
         public ICollection<string> ComputerGpusManufacturer { get; set; }
         public ICollection<long> ComputerGpusMemoryId { get; set; }
         public ICollection<long> ComputerGpusMemoryCapacity { get; set; }
