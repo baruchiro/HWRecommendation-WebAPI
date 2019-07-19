@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -78,7 +79,8 @@ namespace AlgorithmManager.Extensions
                 {
                     foreach (var nameValue in values.ResolveRecursiveNamesAndValue())
                     {
-                        (propNamesAndCollectionValues[nameValue.Key] as ICollection<object>)?.Add(nameValue.Value);
+                        propNamesAndCollectionValues[nameValue.Key].GetType().GetMethod("Add")
+                                ?.Invoke(propNamesAndCollectionValues[nameValue.Key], new[] {nameValue.Value});
                     }
                 }
 

@@ -1,8 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using AlgorithmManager;
 using Microsoft.ML;
+using Microsoft.ML.Data;
 using Models;
 using Xunit;
 
@@ -47,4 +51,6 @@ namespace AlgorithmManagerTests
             Assert.NotNull(computer.Memories.FirstOrDefault());
         }
     }
+
+
 }

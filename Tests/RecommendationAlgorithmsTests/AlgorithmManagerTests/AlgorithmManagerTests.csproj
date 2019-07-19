@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\RecommendationAlgorithms\AlgorithmManager\AlgorithmManager.csproj" />
+    <ProjectReference Include="..\..\..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -32,20 +32,35 @@ namespace AlgorithmManagerTests
         }
 
         [Fact]
-        public void Flatten_Gpu_ShouldPass()
+        public void Flatten_Gpu_ValidateMemberOfMember()
         {
-            var gpu = TypeExtensions.CreateFilledFlattenObject<FlattenGpu, Gpu>(TestUtils.TestUtils.GenerateGpu());
+            var gpu = TestUtils.TestUtils.GenerateGpu();
+            var memoryCapacity = gpu.Memory.Capacity;
+            Assert.True(memoryCapacity > 0);
+            
+            var flattenGpu = TypeExtensions.CreateFilledFlattenObject<FlattenGpu, Gpu>(TestUtils.TestUtils.GenerateGpu());
+            Assert.Equal(memoryCapacity, flattenGpu.MemoryCapacity);
         }
 
         [Fact]
-        public void Flatten_PersonComputer_ShouldPass()
+        public void Flatten_PersonComputer_ValidateCollections()
         {
             var personComputer = new PersonComputerStructureModel
             {
                 Computer = TestUtils.TestUtils.GenerateComputer(),
                 Person = TestUtils.TestUtils.GeneratePerson()
             };
-            var flattenPersonComputer = TypeExtensions.CreateFilledFlattenObject<FlattenPersonComputer, PersonComputerStructureModel>(personComputer);
+
+            var diskCapacityFirst = personComputer.Computer.Disks.FirstOrDefault()?.Capacity ??
+                                    throw new ArgumentNullException(
+                                        $"The test must run with value in personComputer.Computer.Disks");
+            Assert.True(diskCapacityFirst > 0);
+
+            var flattenPersonComputer =
+                TypeExtensions.CreateFilledFlattenObject<FlattenPersonComputer, PersonComputerStructureModel>(
+                    personComputer);
+
+            Assert.Contains(diskCapacityFirst, flattenPersonComputer.ComputerDisksCapacity);
         }
 
         private void AssertComparePropertyNamesTypesAgainstFlattenType<TType, TFlatten>()
