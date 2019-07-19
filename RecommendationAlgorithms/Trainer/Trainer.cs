@@ -59,7 +59,7 @@ namespace Trainer
                     TaskScheduler.Default)
                 .ContinueWith(
                     task =>
-                        algorithm.TrainModel(task.Result, LABEL, timeoutInMinutes),
+                        algorithm.TrainModel(_mlContext, task.Result, LABEL, timeoutInMinutes),
                     _cancellationTokenSource.Token,
                     TaskContinuationOptions.LongRunning, TaskScheduler.Current)
                 .ContinueWith(
@@ -70,14 +70,9 @@ namespace Trainer
                     TaskContinuationOptions.None, TaskScheduler.Current);
         }
 
-        private IEnumerable<Tuple<Person, Computer>> BuildEnumerationForTrain()
+        private IEnumerable<(Person, Computer)> BuildEnumerationForTrain()
         {
             return _dataLoader.EnumerateData();
-            /*.CreateBuilder().ConvertIntToSingle()
-                .ConvertNumberToSingle()
-                .SelectFeatureColumns()
-                .SelectColumns(LABEL)
-                .GetData();*/
         }
 
         private void SaveResultsToDir(LearningResult learningResult, string name)

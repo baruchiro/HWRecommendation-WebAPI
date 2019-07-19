@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using AlgorithmManager.Factories;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using Models;
 
 namespace AlgorithmManager
 {
@@ -26,7 +29,6 @@ namespace AlgorithmManager
             DataKind.UInt32,
             DataKind.UInt64
         };
-
         private readonly DataKind[] _doubleTypes =
         {
             DataKind.Double
@@ -38,7 +40,7 @@ namespace AlgorithmManager
         private readonly MLContext _mlContext;
         private readonly List<string> _selectedColumns = new List<string>();
 
-        public PipelineBuilder(MLContext mlContext, IDataView data, TextLoader.Column[] columns)
+        public PipelineBuilder(MLContext mlContext, IDataView data)
         {
             this.data = data;
             this.columns = columns;

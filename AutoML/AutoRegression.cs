@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using AlgorithmManager;
+using AlgorithmManager.Factories;
 using AlgorithmManager.Interfaces;
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
@@ -13,11 +15,15 @@ namespace RegressionAutoML
 {
     public class AutoRegression : IRecommendationAlgorithmLearner
     {
-        public LearningResult TrainModel(IEnumerable<Tuple<Person, Computer>> personComputerPairs, string label, uint timeoutInMinutes)
+        public LearningResult TrainModel(MLContext mlContext, IEnumerable<(Person, Computer)> personComputerPairs, string label, uint timeoutInMinutes)
         {
-            var dataView = PersonComputerToDataView(personComputerPairs);
-            if (dataView == null) throw new ArgumentNullException(nameof(dataView));
-                var mlContext = new MLContext();
+            var factory = new AlgorithmManagerFactory(mlContext);
+            var dataView = factory.CreatePipelineBuilder(personComputerPairs)
+                .ConvertIntToSingle()
+                .ConvertNumberToSingle()
+                .SelectFeatureColumns()
+                .SelectColumns(label)
+                .GetData();
 
             var cts = new CancellationTokenSource();
             var experimentSettings = new RegressionExperimentSettings
@@ -37,13 +43,6 @@ namespace RegressionAutoML
                 Schema = dataView.Schema,
                 TrainedModel = bestResult.Model
             };
-        }
-
-        private IDataView PersonComputerToDataView(IEnumerable<Tuple<Person, Computer>> personComputerPairs)
-        {
-            var dataview = new MLContext().Data.LoadFromEnumerable(personComputerPairs);
-
-            return dataview;
         }
     }
 }

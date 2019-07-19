@@ -16,7 +16,7 @@ namespace AlgorithmManager
         private readonly MLContext _mlContext;
         private readonly TextLoader.Column[] _columns;
 
-        public IEnumerable<Tuple<Person, Computer>> EnumerateData() => File.ReadLines(_dataFilePath)
+        public IEnumerable<(Person, Computer)> EnumerateData() => File.ReadLines(_dataFilePath)
             .Skip(1)
             .Select(l => l.Split(','))
             .Select(CreateTupleFromStringArray);
@@ -47,7 +47,7 @@ namespace AlgorithmManager
                 .ToArray();
         }
 
-        private Tuple<Person, Computer> CreateTupleFromStringArray(string[] arg)
+        private (Person, Computer) CreateTupleFromStringArray(string[] arg)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace AlgorithmManager
                     MotherBoard = motherBoard,
                     Processor = processor
                 };
-                return new Tuple<Person, Computer>(person, computer);
+                return (person, computer);
 
             }
             catch (Exception e)

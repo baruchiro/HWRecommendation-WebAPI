@@ -40,7 +40,7 @@ namespace AlgorithmManagerTests
             }
         }
 
-        private void AssertTuple(Tuple<Person, Computer> tuple)
+        private void AssertTuple((Person, Computer) tuple)
         {
             var (person, computer) = tuple;
             Assert.NotNull(person);
