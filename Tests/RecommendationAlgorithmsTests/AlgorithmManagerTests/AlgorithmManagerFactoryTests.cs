@@ -18,9 +18,4 @@ namespace AlgorithmManagerTests
             var dataView = factory.CreatePipelineBuilder(new[] {new MLPersonComputerModel()}).GetData();
         }
     }
-
-    class Foo
-    {
-        public int? x { get; set; }
-    }
 }

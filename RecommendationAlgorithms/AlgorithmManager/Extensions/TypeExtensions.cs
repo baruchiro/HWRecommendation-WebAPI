@@ -79,14 +79,15 @@ namespace AlgorithmManager.Extensions
                 var typeProps = realType.ResolveRecursiveNamesAndType(enumToInt).ToList();
                 var propNamesAndCollectionValues = typeProps.ToDictionary(tp => tp.Key,
                     tp =>CreateCollectionOfType(tp.Value, enumToInt));
-
+                
                 var allItems = prop.GetValue(obj) as IEnumerable ??
                                throw new ArgumentNullException(
                                    $"The {obj.GetType().Name}.{prop.Name} " +
                                    "can't converted to IEnumarable");
-                foreach (var values in allItems)
+
+                foreach (var item in allItems)
                 {
-                    foreach (var nameValue in values.ResolveRecursiveNamesAndValue(enumToInt))
+                    foreach (var nameValue in item.ResolveRecursiveNamesAndValue(enumToInt))
                     {
                         propNamesAndCollectionValues[nameValue.Key].GetType().GetMethod("Add")
                                 ?.Invoke(propNamesAndCollectionValues[nameValue.Key], new[] {nameValue.Value});
@@ -95,7 +96,11 @@ namespace AlgorithmManager.Extensions
 
                 foreach (var namesAndCollectionValue in propNamesAndCollectionValues)
                 {
-                    yield return (prop.Name + namesAndCollectionValue.Key, namesAndCollectionValue.Value);
+                    var arrayType = namesAndCollectionValue.Value.GetType();
+                    var array = arrayType.GetMethod("ToArray")?
+                                    .Invoke(namesAndCollectionValue.Value, null) ??
+                                throw new MissingMethodException(arrayType.FullName, "ToArray");
+                    yield return (prop.Name + namesAndCollectionValue.Key, array);
                 }
             }
             else
@@ -139,7 +144,7 @@ namespace AlgorithmManager.Extensions
                 foreach (var namesAndValue in genericType.ResolveRecursiveNamesAndType(enumToInt)
                     .Select(p => (
                         prop.Name + p.Key,
-                        typeof(ICollection<>).MakeGenericType(p.Value)
+                        p.Value.MakeArrayType()
                     )))
                 {
                     yield return namesAndValue;
