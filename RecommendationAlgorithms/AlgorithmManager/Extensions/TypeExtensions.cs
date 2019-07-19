@@ -63,12 +63,34 @@ namespace AlgorithmManager.Extensions
             {
                 yield return (prop.Name, prop.GetValue(obj));
             }
+            else if (typeof(IEnumerable).IsAssignableFrom(type))
+            {
+                type = type.GetGenericArguments()[0];
+                var typeProps = type.ResolveRecursiveNamesAndType().ToList();
+                var propNamesAndCollectionValues = typeProps.ToDictionary(tp => tp.Key,
+                    tp => Activator.CreateInstance(typeof(List<>).MakeGenericType(tp.Value)));
+
+                var allItems = prop.GetValue(obj) as IEnumerable ??
+                               throw new ArgumentNullException(
+                                   $"The {obj.GetType().Name}.{prop.Name} " +
+                                   "can't converted to IEnumarable");
+                foreach (var values in allItems)
+                {
+                    foreach (var nameValue in values.ResolveRecursiveNamesAndValue())
+                    {
+                        (propNamesAndCollectionValues[nameValue.Key] as ICollection<object>)?.Add(nameValue.Value);
+                    }
+                }
+
+                foreach (var namesAndCollectionValue in propNamesAndCollectionValues)
+                {
+                    yield return (prop.Name + namesAndCollectionValue.Key, namesAndCollectionValue.Value);
+                }
+            }
             else
             {
-                if (typeof(IEnumerable).IsAssignableFrom(type))
-                    type = type.GetGenericArguments()[0];
-
-                foreach (var namesAndValue in prop.GetValue(obj).ResolveRecursiveNamesAndValue().Select(p => (prop.Name + p.Key, p.Value)))
+                foreach (var namesAndValue in prop.GetValue(obj).ResolveRecursiveNamesAndValue()
+                    .Select(p => (prop.Name + p.Key, p.Value)))
                 {
                     yield return namesAndValue;
                 }
@@ -110,8 +132,9 @@ namespace AlgorithmManager.Extensions
         {
             if (obj == null) throw new ArgumentNullException(nameof(obj));
 
-            return obj.GetType().GetInstanceOrPublicProperties()
-                .SelectMany(ResolveRecursiveNamesAndValues)
+            var x = obj.GetType().GetInstanceOrPublicProperties()
+                .SelectMany(p => ResolveRecursiveNamesAndValues(p, obj)).ToList();
+            return x
                 .ToDictionary(t => t.Item1, t => t.Item2);
         }
 
@@ -122,7 +145,7 @@ namespace AlgorithmManager.Extensions
                 .ToDictionary(t => t.Item1, t => t.Item2);
         }
 
-        public static TFlatten CreateAndFillFlattenObject<TFlatten, TSource>(TSource source)
+        public static TFlatten CreateFilledFlattenObject<TFlatten, TSource>(TSource source)
             where TFlatten : new()
         {
             var values = source.ResolveRecursiveNamesAndValue();

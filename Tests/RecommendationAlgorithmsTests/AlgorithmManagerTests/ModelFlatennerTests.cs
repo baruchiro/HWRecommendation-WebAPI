@@ -14,21 +14,38 @@ namespace AlgorithmManagerTests
     public class ModelFlatennerTests
     {
         [Fact]
-        public void FlattenerClasses_PersonComputer_ValidateNamesAndTypes()
+        public void FlattenerModels_PersonComputer_ValidateNamesAndTypes()
         {
             AssertComparePropertyNamesTypesAgainstFlattenType<PersonComputerStructureModel, FlattenPersonComputer>();
         }
 
         [Fact]
-        public void FlattenerClasses_Computer_ValidateNamesAndTypes()
+        public void FlattenerModels_Computer_ValidateNamesAndTypes()
         {
             AssertComparePropertyNamesTypesAgainstFlattenType<Computer, FlattenComputer>();
         }
 
         [Fact]
-        public void FlattenerClasses_Gpu_ValidateNamesAndTypes()
+        public void FlattenerModels_Gpu_ValidateNamesAndTypes()
         {
            AssertComparePropertyNamesTypesAgainstFlattenType<Gpu, FlattenGpu>();
+        }
+
+        [Fact]
+        public void Flatten_Gpu_ShouldPass()
+        {
+            var gpu = TypeExtensions.CreateFilledFlattenObject<FlattenGpu, Gpu>(TestUtils.TestUtils.GenerateGpu());
+        }
+
+        [Fact]
+        public void Flatten_PersonComputer_ShouldPass()
+        {
+            var personComputer = new PersonComputerStructureModel
+            {
+                Computer = TestUtils.TestUtils.GenerateComputer(),
+                Person = TestUtils.TestUtils.GeneratePerson()
+            };
+            var flattenPersonComputer = TypeExtensions.CreateFilledFlattenObject<FlattenPersonComputer, PersonComputerStructureModel>(personComputer);
         }
 
         private void AssertComparePropertyNamesTypesAgainstFlattenType<TType, TFlatten>()

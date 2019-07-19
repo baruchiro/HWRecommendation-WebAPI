@@ -41,21 +41,7 @@ namespace TestUtils
                 Manufacturer = "IBM", 
                 Product = "BLA"
             };
-            var gpu = new Gpu
-            {
-                Cores = 2,
-                Manufacturer = "Nvidia",
-                Memory = new Memory
-                {
-                    Capacity = 4000000,
-                    Generation = 5,
-                    Ghz = 40000,
-                    Type = RamType.DDR4
-                },
-                Name = "Nvidia Xport",
-                Processor = "BBB",
-                Version = 530
-            };
+            var gpu = GenerateGpu();
 
             var computer = new Computer
             {
@@ -68,6 +54,26 @@ namespace TestUtils
             };
 
             return computer;
+        }
+
+        public static Gpu GenerateGpu()
+        {
+            return new Gpu
+            {
+                Cores = 2,
+                Manufacturer = "Nvidia",
+                Memory = new Memory
+                {
+                    Capacity = 4000000,
+                    Generation = 5,
+                    Ghz = 40000,
+                    Type = RamType.DDR4,
+                    BankLabel = "BANK0"
+                },
+                Name = "Nvidia Xport",
+                Processor = "BBB",
+                Version = 530
+            };
         }
 
         public static Computer GenerateEmptyComponentsComputer()
@@ -102,6 +108,19 @@ namespace TestUtils
         {
             return new DbContextOptionsBuilder<T>()
                 .UseInMemoryDatabase(databaseName: DateTime.Now.Ticks.ToString());
+        }
+
+        public static Person GeneratePerson()
+        {
+            return new Person()
+            {
+                Age = 23,
+                Gender = Gender.FEMALE,
+                MainUse = "gaming",
+                Name = "Baruch",
+                Price = 2500,
+                WorkArea = "Programming"
+            };
         }
     }
 }
