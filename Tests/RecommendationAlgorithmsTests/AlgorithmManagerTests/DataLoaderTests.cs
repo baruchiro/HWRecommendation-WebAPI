@@ -51,6 +51,4 @@ namespace AlgorithmManagerTests
             Assert.NotNull(computer.Memories.FirstOrDefault());
         }
     }
-
-
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using AlgorithmManager.Interfaces;
 using EnumsNET;
 
 namespace AlgorithmManager.Extensions
@@ -175,17 +176,17 @@ namespace AlgorithmManager.Extensions
                 .ToDictionary(t => t.Item1, t => t.Item2);
         }
 
-        public static TFlatten CreateFilledFlattenObject<TFlatten, TSource>(TSource source)
-            where TFlatten : new()
+        public static TMLModel CreateFilledMLObject<TMLModel, TSource>(TSource source)
+            where TMLModel : IMLModel, new()
         {
             var values = source.ResolveRecursiveNamesAndValue(true);
-            var flatten = new TFlatten();
+            var mlModel = new TMLModel();
             foreach (var keyValue in values)
             {
-                typeof(TFlatten).GetProperty(keyValue.Key)?.SetValue(flatten, keyValue.Value);
+                typeof(TMLModel).GetProperty(keyValue.Key)?.SetValue(mlModel, keyValue.Value);
             }
 
-            return flatten;
+            return mlModel;
         }
     }
 }

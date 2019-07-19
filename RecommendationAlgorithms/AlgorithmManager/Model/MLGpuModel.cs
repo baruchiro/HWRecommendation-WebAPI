@@ -1,8 +1,9 @@
-﻿using Models;
+﻿using AlgorithmManager.Interfaces;
+using Models;
 
 namespace AlgorithmManager.Model
 {
-    public class FlattenGpu
+    public class MLGpuModel : IMLModel
     {
         public long Id { get; set; }
         public string Manufacturer { get; set; }

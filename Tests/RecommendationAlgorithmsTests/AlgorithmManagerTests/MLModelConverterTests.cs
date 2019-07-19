@@ -12,28 +12,28 @@ using TypeExtensions = AlgorithmManager.Extensions.TypeExtensions;
 
 namespace AlgorithmManagerTests
 {
-    public class ModelFlatennerTests
+    public class MLModelConverterTests
     {
         [Fact]
-        public void FlattenerModels_PersonComputer_ValidateNamesAndTypes()
+        public void MLModels_PersonComputer_ValidateNamesAndTypes()
         {
-            AssertComparePropertyNamesTypesAgainstFlattenType<PersonComputerStructureModel, FlattenPersonComputer>();
+            AssertComparePropertyNamesTypesAgainstMLType<PersonComputerStructureModel, MLPersonComputerModel>();
         }
 
         [Fact]
-        public void FlattenerModels_Computer_ValidateNamesAndTypes()
+        public void MLModels_Computer_ValidateNamesAndTypes()
         {
-            AssertComparePropertyNamesTypesAgainstFlattenType<Computer, FlattenComputer>();
+            AssertComparePropertyNamesTypesAgainstMLType<Computer, MLComputerModel>();
         }
 
         [Fact]
-        public void FlattenerModels_Gpu_ValidateNamesAndTypes()
+        public void MLModels_Gpu_ValidateNamesAndTypes()
         {
-           AssertComparePropertyNamesTypesAgainstFlattenType<Gpu, FlattenGpu>();
+           AssertComparePropertyNamesTypesAgainstMLType<Gpu, MLGpuModel>();
         }
 
         [Fact]
-        public void Flatten_Gpu_ValidateMemberOfMember()
+        public void MLModelConverter_Gpu_ValidateMemberOfMember()
         {
             var gpu = TestUtils.TestUtils.GenerateGpu();
             var memoryCapacity = gpu.Memory.Capacity;
@@ -41,13 +41,13 @@ namespace AlgorithmManagerTests
             Assert.True(memoryCapacity > 0);
             Assert.NotEqual(default, memoryType);
             
-            var flattenGpu = TypeExtensions.CreateFilledFlattenObject<FlattenGpu, Gpu>(TestUtils.TestUtils.GenerateGpu());
-            Assert.Equal(memoryCapacity, flattenGpu.MemoryCapacity);
-            Assert.Equal(Enums.ToInt32(memoryType), flattenGpu.MemoryType);
+            var gpuMLModel = TypeExtensions.CreateFilledMLObject<MLGpuModel, Gpu>(TestUtils.TestUtils.GenerateGpu());
+            Assert.Equal(memoryCapacity, gpuMLModel.MemoryCapacity);
+            Assert.Equal(Enums.ToInt32(memoryType), gpuMLModel.MemoryType);
         }
 
         [Fact]
-        public void Flatten_PersonComputer_ValidateCollections()
+        public void MLModelConverter_PersonComputer_ValidateCollections()
         {
             var personComputer = new PersonComputerStructureModel
             {
@@ -64,18 +64,18 @@ namespace AlgorithmManagerTests
             Assert.True(diskCapacityFirst > 0);
             Assert.NotEqual(default, diskCapacityFirst);
 
-            var flattenPersonComputer =
-                TypeExtensions.CreateFilledFlattenObject<FlattenPersonComputer, PersonComputerStructureModel>(
+            var personComputerMLModel =
+                TypeExtensions.CreateFilledMLObject<MLPersonComputerModel, PersonComputerStructureModel>(
                     personComputer);
 
-            Assert.Contains(diskCapacityFirst, flattenPersonComputer.ComputerDisksCapacity);
-            Assert.Contains(Enums.ToInt32(diskTypeNullableFirst), flattenPersonComputer.ComputerDisksType);
+            Assert.Contains(diskCapacityFirst, personComputerMLModel.ComputerDisksCapacity);
+            Assert.Contains(Enums.ToInt32(diskTypeNullableFirst), personComputerMLModel.ComputerDisksType);
         }
 
-        private void AssertComparePropertyNamesTypesAgainstFlattenType<TType, TFlatten>()
+        private void AssertComparePropertyNamesTypesAgainstMLType<TType, TMLModel>()
         {
             var expectedPropsNames = typeof(TType).ResolveRecursiveNamesAndType(true);
-            var actualPropsNames = typeof(TFlatten).GetInstanceOrPublicProperties()
+            var actualPropsNames = typeof(TMLModel).GetInstanceOrPublicProperties()
                 .ToDictionary(p => p.Name, p => p.PropertyType);
 
             var expectedButNotInActual = expectedPropsNames.Except(actualPropsNames).ToList();

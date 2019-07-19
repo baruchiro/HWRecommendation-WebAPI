@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using AlgorithmManager.Interfaces;
 using Models;
 
 namespace AlgorithmManager.Model
 {
-    public class FlattenComputer
+    public class MLComputerModel : IMLModel
     {
         public long Id { get; set; }
         public long ProcessorId { get; set; }
