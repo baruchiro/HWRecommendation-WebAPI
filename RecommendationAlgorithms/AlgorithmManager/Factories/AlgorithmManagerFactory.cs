@@ -19,16 +19,20 @@ namespace AlgorithmManager.Factories
             MLModelConverter = new MLModelConverter();
         }
 
-        public PipelineBuilder CreatePipelineBuilder(IEnumerable<(Person, Computer)> personComputerPairs)
+        public IDataView CreateDataView(IEnumerable<(Person, Computer)> personComputerPairs)
         {
-            var mlPersonComputerModels = MLModelConverter.Convert(personComputerPairs);
-            return CreatePipelineBuilder(mlPersonComputerModels);
+            return CreateDataView(MLModelConverter.Convert(personComputerPairs));
         }
 
-        public PipelineBuilder CreatePipelineBuilder(IEnumerable<MLPersonComputerModel> mlPersonComputerModels)
+        public IDataView CreateDataView(IEnumerable<MLPersonComputerModel> mlPersonComputerModels)
         {
-            var dataView = _mlContext.Data.LoadFromEnumerable(mlPersonComputerModels);
-            return new PipelineBuilder(_mlContext, dataView);
+            return _mlContext.Data.LoadFromEnumerable(mlPersonComputerModels);
+        }
+
+        public IDataView CreateDataViewFromCsv(string csvFilePath, string csvDtypesFilePath)
+        {
+            var dataLoader = new DataLoader(_mlContext, csvFilePath, csvDtypesFilePath);
+            return CreateDataView(dataLoader.EnumerateData());
         }
     }
 }

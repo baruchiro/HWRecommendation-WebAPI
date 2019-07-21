@@ -10,12 +10,5 @@ namespace AlgorithmManagerTests
 {
     public class AlgorithmManagerFactoryTests
     {
-        [Fact]
-        public void CreatePipeline_LoadDataView_FromSimpleObject()
-        {
-            var mlContext = new MLContext();
-            var factory = new AlgorithmManagerFactory(mlContext);
-            var dataView = factory.CreatePipelineBuilder(new[] {new MLPersonComputerModel()}).GetData();
-        }
     }
 }

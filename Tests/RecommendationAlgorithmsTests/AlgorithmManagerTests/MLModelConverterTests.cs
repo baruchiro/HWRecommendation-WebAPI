@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
+using AlgoTestUtils;
 using EnumsNET;
 using Models;
 using Xunit;
@@ -36,14 +37,10 @@ namespace AlgorithmManagerTests
         public void MLModelConverter_Gpu_ValidateMemberOfMember()
         {
             var gpu = TestUtils.TestUtils.GenerateGpu();
-            var memoryCapacity = gpu.Memory.Capacity;
-            var memoryType = gpu.Memory.Type;
-            Assert.True(memoryCapacity > 0);
-            Assert.NotEqual(default, memoryType);
-            
-            var gpuMLModel = TypeExtensions.CreateFilledMLObject<MLGpuModel, Gpu>(TestUtils.TestUtils.GenerateGpu());
-            Assert.Equal(memoryCapacity, gpuMLModel.MemoryCapacity);
-            Assert.Equal(Enums.ToInt32(memoryType), gpuMLModel.MemoryType);
+            gpu.AssertNotDefault();
+
+            var gpuMLModel = TypeExtensions.CreateFilledMLObject<MLGpuModel, Gpu>(gpu);
+            gpuMLModel.AssertEqual(gpu);
         }
 
         [Fact]
@@ -54,22 +51,48 @@ namespace AlgorithmManagerTests
                 Computer = TestUtils.TestUtils.GenerateComputer(),
                 Person = TestUtils.TestUtils.GeneratePerson()
             };
+            personComputer.AssertNotDefault();
 
-            var diskTypeNullableFirst = personComputer.Computer.Disks.FirstOrDefault()?.Type ??
-                                          throw new ArgumentNullException(
-                                              $"The test must run with value in personComputer.Computer.Disks");
-            var diskCapacityFirst = personComputer.Computer.Disks.FirstOrDefault()?.Capacity ??
-                                    throw new ArgumentNullException(
-                                        $"The test must run with value in personComputer.Computer.Disks");
-            Assert.True(diskCapacityFirst > 0);
-            Assert.NotEqual(default, diskCapacityFirst);
 
             var personComputerMLModel =
                 TypeExtensions.CreateFilledMLObject<MLPersonComputerModel, PersonComputerStructureModel>(
                     personComputer);
 
-            Assert.Contains(diskCapacityFirst, personComputerMLModel.ComputerDisksCapacity);
-            Assert.Contains(Enums.ToInt32(diskTypeNullableFirst), personComputerMLModel.ComputerDisksType);
+            personComputerMLModel.AssertEqual(personComputer);
+        }
+
+        [Fact]
+        public void MLModelConverter_PersonComputer_ValidateEmptyComponents()
+        {
+            var personComputer = new PersonComputerStructureModel
+            {
+                Computer = TestUtils.TestUtils.GenerateEmptyComponentsComputer(),
+                Person = TestUtils.TestUtils.GeneratePerson()
+            };
+
+
+            var personComputerMLModel =
+                TypeExtensions.CreateFilledMLObject<MLPersonComputerModel, PersonComputerStructureModel>(
+                    personComputer);
+
+            personComputerMLModel.AssertEqual(personComputer);
+        }
+
+        [Fact]
+        public void MLModelConverter_PersonComputer_ValidateEmpty()
+        {
+            var personComputer = new PersonComputerStructureModel
+            {
+                Computer = TestUtils.TestUtils.GenerateEmptyComputer(),
+                Person = TestUtils.TestUtils.GeneratePerson()
+            };
+
+
+            var personComputerMLModel =
+                TypeExtensions.CreateFilledMLObject<MLPersonComputerModel, PersonComputerStructureModel>(
+                    personComputer);
+
+            personComputerMLModel.AssertEqual(personComputer);
         }
 
         private void AssertComparePropertyNamesTypesAgainstMLType<TType, TMLModel>()

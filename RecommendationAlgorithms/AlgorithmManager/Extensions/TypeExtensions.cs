@@ -66,7 +66,8 @@ namespace AlgorithmManager.Extensions
             if (!realType.IsComplexObject())
             {
                 var resultValue = prop.GetValue(obj);
-                if (realType.IsEnum && enumToInt)
+                // ReSharper disable once UseNullPropagation
+                if (realType.IsEnum && enumToInt && resultValue != null)
                 {
                     resultValue = (int) resultValue;
                 }
@@ -105,7 +106,10 @@ namespace AlgorithmManager.Extensions
             }
             else
             {
-                foreach (var namesAndValue in prop.GetValue(obj).ResolveRecursiveNamesAndValue(enumToInt)
+                var propertyValue = prop.GetValue(obj);
+                if (propertyValue == null) yield break;
+
+                foreach (var namesAndValue in propertyValue.ResolveRecursiveNamesAndValue(enumToInt)
                     .Select(p => (prop.Name + p.Key, p.Value)))
                 {
                     yield return namesAndValue;

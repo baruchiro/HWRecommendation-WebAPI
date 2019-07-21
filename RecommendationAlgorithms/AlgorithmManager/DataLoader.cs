@@ -118,11 +118,11 @@ namespace AlgorithmManager
             }
         }
 
-        private T ParseEnum<T>(string field)where T:struct, Enum
+        private T ParseEnum<T>(string field) where T : struct, Enum
         {
             try
             {
-                Enums.TryParse(field, true, out T t) ;
+                Enums.TryParse(field, true, out T t);
                 return t;
             }
             catch (ArgumentException e)

@@ -4,20 +4,12 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
-
-    <CodeAnalysisRuleSet>../../../HWRecommendation-WebAPI.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\RecommendationAlgorithms\AlgorithmManager\AlgorithmManager.csproj" />
-    <ProjectReference Include="..\..\..\TestUtils\TestUtils.csproj" />
-    <ProjectReference Include="..\AlgoTestUtils\AlgoTestUtils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +23,11 @@
     <None Include="..\..\..\DataPreparing\data\fake-data-out.dtypes.csv" Link="Resources\fake-data-out.dtypes.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\RecommendationAlgorithms\AlgorithmManager\AlgorithmManager.csproj" />
+    <ProjectReference Include="..\AlgoTestUtils\AlgoTestUtils.csproj" />
   </ItemGroup>
 
 </Project>
