@@ -72,7 +72,7 @@ namespace Trainer
 
         private IEnumerable<(Person, Computer)> BuildEnumerationForTrain()
         {
-            return _dataLoader.EnumerateData();
+            return _dataLoader.EnumerateData().ToList();
         }
 
         private void SaveResultsToDir(LearningResult learningResult, string name)
