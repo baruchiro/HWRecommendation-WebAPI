@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AlgorithmManager.Interfaces;
+using AlgorithmManager.ModelAttributes;
 using Microsoft.ML.Data;
 using Models;
 
@@ -9,10 +10,15 @@ namespace AlgorithmManager.Model
     {
         public long PersonId { get; set; }
         public string PersonName { get; set; }
+        [Feature]
         public string PersonWorkArea { get; set; }
+        [Feature]
         public int PersonAge { get; set; }
+        [Feature]
         public int PersonGender { get; set; }
+        [Feature]
         public string PersonMainUse { get; set; }
+        [Feature]
         public int PersonPrice { get; set; }
         public long ComputerId { get; set; }
         public long ComputerProcessorId { get; set; }
@@ -53,6 +59,7 @@ namespace AlgorithmManager.Model
         public string[] ComputerGpusMemoryDeviceLocator { get; set; }
         public int[] ComputerGpusMemoryGeneration { get; set; }
         public int[] ComputerGpusVersion { get; set; }
+        [Feature]
         public int ComputerComputerType { get; set; }
     }
 

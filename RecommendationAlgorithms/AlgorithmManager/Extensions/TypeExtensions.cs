@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using AlgorithmManager.Interfaces;
+using AlgorithmManager.ModelAttributes;
 using EnumsNET;
 
 namespace AlgorithmManager.Extensions
@@ -191,6 +192,12 @@ namespace AlgorithmManager.Extensions
             }
 
             return mlModel;
+        }
+
+        public static List<string> GetFeatureColumns<T>() where T : IMLModel
+        {
+            return typeof(T).GetProperties().Where(p => p.GetCustomAttribute<FeatureAttribute>() != null)
+                .Select(p => p.Name).ToList();
         }
     }
 }

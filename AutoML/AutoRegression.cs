@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using AlgorithmManager;
+using AlgorithmManager.Extensions;
 using AlgorithmManager.Factories;
 using AlgorithmManager.Interfaces;
+using AlgorithmManager.Model;
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
-using Microsoft.ML.Data;
 using Models;
 
-namespace RegressionAutoML
+namespace AutoML
 {
     public class AutoRegression : IRecommendationAlgorithmLearner
     {
         public LearningResult TrainModel(MLContext mlContext, IEnumerable<(Person, Computer)> personComputerPairs, string label, uint timeoutInMinutes)
         {
             var factory = new AlgorithmManagerFactory(mlContext);
-            var dataView = factory.CreatePipelineBuilder(personComputerPairs)
-                .ConvertIntToSingle()
+            var dataView = factory.CreateDataView(personComputerPairs);
+
+            dataView = new PipelineBuilder(mlContext, dataView.Schema)
                 .ConvertNumberToSingle()
-                .SelectFeatureColumns()
+                .SelectColumns(TypeExtensions.GetFeatureColumns<MLPersonComputerModel>().ToArray())
                 .SelectColumns(label)
-                .GetData();
+                .TransformData(dataView);
 
             var cts = new CancellationTokenSource();
             var experimentSettings = new RegressionExperimentSettings
@@ -36,6 +35,7 @@ namespace RegressionAutoML
             var experiment = mlContext.Auto().CreateRegressionExperiment(experimentSettings);
 
             var experimentResult = experiment.Execute(dataView, label);
+
             var bestResult = experimentResult.BestRun;
             return new LearningResult
             {

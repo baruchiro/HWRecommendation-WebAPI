@@ -10,16 +10,6 @@ namespace AlgorithmManager
 {
     public class PipelineBuilder
     {
-        private readonly string[] _featureColumns =
-        {
-            "age",
-            "computertype",
-            "fieldinterest",
-            "mainuse",
-            "price",
-            "gender"
-        };
-
         private readonly List<DataViewSchema.DetachedColumn> _schema;
         private IEstimator<ITransformer> _pipeline;
         private readonly MLContext _mlContext;
@@ -36,8 +26,6 @@ namespace AlgorithmManager
             _schema = dataViewSchema.Select(d=>new DataViewSchema.DetachedColumn(d)).ToList();
 
         }
-
-        public PipelineBuilder SelectFeatureColumns() => SelectColumns(_featureColumns);
 
         public PipelineBuilder SelectColumns(params string[] columnsNames)
         {
@@ -117,9 +105,11 @@ namespace AlgorithmManager
             if (dataView == null) throw new ArgumentNullException(nameof(dataView));
 
             var resultPipeline = _pipeline;
+            // ReSharper disable once InvertIf
             if (_selectedColumns.Count > 0)
             {
-                resultPipeline?.Append(_mlContext.Transforms.SelectColumns(_selectedColumns.ToArray()));
+                IEstimator<ITransformer> estimator = _mlContext.Transforms.SelectColumns(_selectedColumns.ToArray());
+                resultPipeline = resultPipeline?.Append(estimator) ?? estimator;
             }
             
             return resultPipeline?.Fit(dataView).Transform(dataView) ?? dataView;

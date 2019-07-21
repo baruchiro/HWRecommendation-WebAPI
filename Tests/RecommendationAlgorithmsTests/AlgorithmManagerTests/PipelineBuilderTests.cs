@@ -15,11 +15,41 @@ namespace AlgorithmManagerTests
     {
         private readonly string _fakeDataFilePath = Path.Combine("Resources", "fake-data-out.csv");
         private readonly string _fakeDataDtypesFilePath = Path.Combine("Resources", "fake-data-out.dtypes.csv");
-        private MLContext _mlContext;
+        private readonly MLContext _mlContext;
 
         public PipelineBuilderTests()
         {
             _mlContext = new MLContext(0);
+        }
+
+        [Fact]
+        public void SelectColumns_FeatureColumns_OnlyThem()
+        {
+            var schemaBuilder = new DataViewSchema.Builder();
+            schemaBuilder.AddColumn("Test1", TextDataViewType.Instance);
+            schemaBuilder.AddColumn("Test2", TextDataViewType.Instance);
+            var schema = schemaBuilder.ToSchema();
+
+            var dataView = _mlContext.Data.LoadFromEnumerable(new[]
+            {
+                new
+                {
+                    Test1 = "Hii", Test2 = "Xii"
+
+                },
+                new
+                {
+                    Test1 = "GGG", Test2 = "kkk"
+                }
+            }, schema);
+
+            var actualSchema = new PipelineBuilder(_mlContext, schema)
+                .SelectColumns("Test1")
+                .TransformData(dataView)
+                .Schema;
+
+            Assert.Single(actualSchema);
+            Assert.Contains("Test1", actualSchema.Select(c => c.Name));
         }
 
         [Fact]
