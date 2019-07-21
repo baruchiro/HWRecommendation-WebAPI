@@ -53,9 +53,12 @@ namespace AlgorithmManager
         /// Add <see cref="IEstimator{TTransformer}"/> to convert all <see cref="NumberDataViewType"/> columns to <see cref="DataKind.Single"/>. (Known as <seealso cref="Single"/> or <seealso cref="float"/>
         /// </summary>
         /// <returns>Called <see cref="PipelineBuilder"/></returns>
-        public PipelineBuilder ConvertNumberToSingle()
+        public PipelineBuilder ConvertNumberToSingle(bool convertVectors = true)
         {
-            ConvertColumnsToType(SelectSchemaIndex(column => column.Type is NumberDataViewType),
+            ConvertColumnsToType(SelectSchemaIndex(column => column.Type is NumberDataViewType ||
+                                                             convertVectors &&
+                                                             column.Type is VectorDataViewType vector &&
+                                                             vector.ItemType is NumberDataViewType),
                 DataKind.Single);
 
             return this;

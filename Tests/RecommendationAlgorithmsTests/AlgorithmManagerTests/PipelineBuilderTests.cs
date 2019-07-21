@@ -60,11 +60,30 @@ namespace AlgorithmManagerTests
             var originalSchema = dataView.Schema.OrderBy(c=>c.Name).ToList();
 
             var convertedDataView = new PipelineBuilder(_mlContext, originalSchema)
-                .ConvertNumberToSingle()
+                .ConvertNumberToSingle(false)
                 .TransformData(dataView);
 
             var zip = originalSchema.Zip(convertedDataView.Schema.OrderBy(c=>c.Name),
                 (orig, convert) => (orig.Type, convert.Type));
+
+            Assert.All(zip, ConvertedFromTo<NumberDataViewType, float>);
+        }
+
+        [Fact]
+        public void ConvertTypeToType_VectorNumberToVectorSingle_ValidateResources()
+        {
+            var dataView = new AlgorithmManagerFactory(_mlContext)
+                .CreateDataViewFromCsv(_fakeDataFilePath, _fakeDataDtypesFilePath);
+            var originalSchema = dataView.Schema.OrderBy(c => c.Name).ToList();
+
+            var convertedDataView = new PipelineBuilder(_mlContext, originalSchema)
+                .ConvertNumberToSingle()
+                .TransformData(dataView);
+
+            var zip = originalSchema.Zip(convertedDataView.Schema.OrderBy(c => c.Name),
+                (orig, convert) =>
+                    (orig.Type is VectorDataViewType origVector ? origVector.ItemType : orig.Type,
+                        convert.Type is VectorDataViewType convertVector ? convertVector.ItemType : convert.Type));
 
             Assert.All(zip, ConvertedFromTo<NumberDataViewType, float>);
         }
