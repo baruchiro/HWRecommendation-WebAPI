@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -188,7 +189,19 @@ namespace AlgorithmManager.Extensions
             var mlModel = new TMLModel();
             foreach (var keyValue in values)
             {
-                typeof(TMLModel).GetProperty(keyValue.Key)?.SetValue(mlModel, keyValue.Value);
+                var property = typeof(TMLModel).GetProperty(keyValue.Key) ??
+                               throw new MissingMemberException(typeof(TMLModel).FullName, keyValue.Key);
+
+                var arrayAttribute = property.GetCustomAttribute<ArrayAttribute>();
+                if (arrayAttribute != null)
+                {
+                    var result = arrayAttribute.ApplyMethod(keyValue.Value);
+                    property.SetValue(mlModel, result);
+                }
+                else
+                {
+                    property.SetValue(mlModel, keyValue.Value);
+                }
             }
 
             return mlModel;

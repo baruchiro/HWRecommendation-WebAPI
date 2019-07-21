@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using AlgorithmManager.Factories;
+using AlgorithmManager.Model;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using Microsoft.ML.Transforms;
 using Models;
 
 namespace AlgorithmManager
@@ -23,7 +25,7 @@ namespace AlgorithmManager
         public PipelineBuilder(MLContext mlContext, IEnumerable<DataViewSchema.Column> dataViewSchema)
         {
             _mlContext = mlContext;
-            _schema = dataViewSchema.Select(d=>new DataViewSchema.DetachedColumn(d)).ToList();
+            _schema = dataViewSchema.Select(d => new DataViewSchema.DetachedColumn(d)).ToList();
 
         }
 
@@ -44,7 +46,7 @@ namespace AlgorithmManager
         {
             return _schema
                 .Select((c, i) => (Column: c, Index: i))
-                .Where(t=>func(t.Column))
+                .Where(t => func(t.Column))
                 .Select(t => t.Item2)
                 .ToList();
         }
@@ -85,15 +87,15 @@ namespace AlgorithmManager
         {
             var prefix = "Temp" + new Random().Next(100) + "__";
             var columnsNames = columnsToConvertIndex.Select(i => _schema[i].Name).ToList();
-            
+
             AddPipelineStage(estimatorAction(columnsNames.Select(c =>
                 new InputOutputColumnPair(prefix + c, c)).ToArray()));
 
             AddPipelineStage(_mlContext.Transforms.DropColumns(columnsNames.ToArray()));
-            
+
             columnsNames.ForEach(c =>
                 AddPipelineStage(_mlContext.Transforms.CopyColumns(c, prefix + c)));
-            
+
             AddPipelineStage(
                 _mlContext.Transforms.DropColumns(columnsNames.Select(c => prefix + c).ToArray()));
         }
@@ -114,7 +116,7 @@ namespace AlgorithmManager
                 IEstimator<ITransformer> estimator = _mlContext.Transforms.SelectColumns(_selectedColumns.ToArray());
                 resultPipeline = resultPipeline?.Append(estimator) ?? estimator;
             }
-            
+
             return resultPipeline?.Fit(dataView).Transform(dataView) ?? dataView;
         }
 

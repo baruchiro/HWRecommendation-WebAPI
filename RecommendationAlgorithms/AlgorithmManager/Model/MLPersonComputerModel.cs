@@ -28,17 +28,21 @@ namespace AlgorithmManager.Model
         public int ComputerProcessorArchitecture { get; set; }
         public string ComputerProcessorManufacturer { get; set; }
         public long[] ComputerMemoriesId { get; set; }
-        public long[] ComputerMemoriesCapacity { get; set; }
+        [Sum]
+        public long ComputerMemoriesCapacity { get; set; }
         public int[] ComputerMemoriesType { get; set; }
-        public long[] ComputerMemoriesGhz { get; set; }
+        [Min]
+        public long ComputerMemoriesGhz { get; set; }
         public string[] ComputerMemoriesBankLabel { get; set; }
         public string[] ComputerMemoriesDeviceLocator { get; set; }
         public int[] ComputerMemoriesGeneration { get; set; }
         public long[] ComputerDisksId { get; set; }
         public string[] ComputerDisksModel { get; set; }
         public int[] ComputerDisksType { get; set; }
-        public int[] ComputerDisksRpm { get; set; }
-        public long[] ComputerDisksCapacity { get; set; }
+        [Min]
+        public int ComputerDisksRpm { get; set; }
+        [Sum]
+        public long ComputerDisksCapacity { get; set; }
         public long ComputerMotherBoardId { get; set; }
         public int ComputerMotherBoardDdrSockets { get; set; }
         public long ComputerMotherBoardMaxRam { get; set; }

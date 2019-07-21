@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
+using AlgorithmManager.ModelAttributes;
 using AlgoTestUtils;
 using EnumsNET;
 using Models;
@@ -86,8 +87,7 @@ namespace AlgorithmManagerTests
                 Computer = TestUtils.TestUtils.GenerateEmptyComputer(),
                 Person = TestUtils.TestUtils.GeneratePerson()
             };
-
-
+            
             var personComputerMLModel =
                 TypeExtensions.CreateFilledMLObject<MLPersonComputerModel, PersonComputerStructureModel>(
                     personComputer);
@@ -99,7 +99,11 @@ namespace AlgorithmManagerTests
         {
             var expectedPropsNames = typeof(TType).ResolveRecursiveNamesAndType(true);
             var actualPropsNames = typeof(TMLModel).GetInstanceOrPublicProperties()
-                .ToDictionary(p => p.Name, p => p.PropertyType);
+                .ToDictionary(p =>
+                    p.Name,
+                    p => p.GetCustomAttribute<ArrayAttribute>() != null ?
+                        p.PropertyType.MakeArrayType() :
+                        p.PropertyType);
 
             var expectedButNotInActual = expectedPropsNames.Except(actualPropsNames).ToList();
             var actualButNotInExpected = actualPropsNames.Except(expectedPropsNames);

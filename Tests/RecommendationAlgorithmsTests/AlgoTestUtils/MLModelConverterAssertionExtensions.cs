@@ -35,19 +35,19 @@ namespace AlgoTestUtils
 
             if (personComputerStructureModel.Computer.Disks.Count == 0)
             {
-                Assert.Empty(mlPersonComputerModel.ComputerDisksCapacity);
+                Assert.Empty(mlPersonComputerModel.ComputerDisksModel);
                 Assert.Empty(mlPersonComputerModel.ComputerDisksType);
             }
             else
             {
-                Assert.NotEmpty(mlPersonComputerModel.ComputerDisksCapacity);
+                Assert.NotEmpty(mlPersonComputerModel.ComputerDisksModel);
                 Assert.NotEmpty(mlPersonComputerModel.ComputerDisksType);
 
                 var diskTypeNullableFirst = personComputerStructureModel.Computer.Disks.First().Type?? default;
-                var diskCapacityFirst = personComputerStructureModel.Computer.Disks.First().Capacity ?? default;
+                var diskModelFirst = personComputerStructureModel.Computer.Disks.First().Model ?? default;
 
 
-                Assert.Contains(diskCapacityFirst, mlPersonComputerModel.ComputerDisksCapacity);
+                Assert.Contains(diskModelFirst, mlPersonComputerModel.ComputerDisksModel);
                 Assert.Contains(Enums.ToInt32(diskTypeNullableFirst), mlPersonComputerModel.ComputerDisksType);
             }
         }
