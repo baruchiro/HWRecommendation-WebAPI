@@ -21,13 +21,12 @@ namespace Trainer
         private readonly MLContext _mlContext;
         private readonly AlgorithmLoader _loader;
         private readonly DataLoader _dataLoader;
-        private readonly string _outputDir;
         private ModelSaver _modelSaver;
 
         public Trainer(string outputDir)
-        {
-            _modelSaver = new ModelSaver(_mlContext, outputDir);
+        {           
             _mlContext = new MLContext(0);
+            _modelSaver = new ModelSaver(_mlContext, outputDir);
             _loader = new AlgorithmLoader();
             _dataLoader = new DataLoader(_mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath);
         }

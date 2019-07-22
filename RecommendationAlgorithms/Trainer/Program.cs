@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using DocoptNet;
 
 namespace Trainer
@@ -13,7 +11,7 @@ namespace Trainer
         private const string usage = @"Trainer.
 
     Usage:
-      Trainer.exe <minutes> [-o PATH] [DLLs]
+      Trainer.exe <minutes> <output>
 
     Options:
       -h --help     Show this screen.
@@ -47,7 +45,7 @@ namespace Trainer
             var arguments = new Docopt().Apply(usage, args, exit: true);
 
             minutes = Convert.ToUInt32(arguments["<minutes>"].AsInt);
-            outputDir = arguments["[OUTPUTDIR]"].Value as string;
+            outputDir = arguments["<output>"].Value as string;
         }
     }
 }
