@@ -7,19 +7,13 @@ namespace AlgorithmManager
 {
     public class ModelSaver
     {
-        private readonly LearningResult _learningResult;
-        private readonly string _modelPath;
-        private readonly string _resultsPath;
         private readonly MLContext _mlContext;
+        private readonly string _outputDir;
 
-        public ModelSaver(string learningName, LearningResult learningResult, MLContext mlContext)
+        public ModelSaver(MLContext mlContext, string outputDir)
         {
-            var now = new DateTime().ToString("yyMMdd_hhmmss");
-            var dirname = learningName + "Results";
-            CreateDir(dirname);
-            _resultsPath = Path.Combine(dirname, $"{learningName}_{now}.result");
-            _modelPath = Path.Combine(dirname, $"{learningName}_{now}.zip");
-            _learningResult = learningResult;
+            _outputDir = outputDir;
+            CreateDir(outputDir);
             _mlContext = mlContext;
         }
 
@@ -31,14 +25,20 @@ namespace AlgorithmManager
             }
         }
 
-        public void SaveResults()
+        public void SaveModel(string learningName, LearningResult learningResult, bool includeResults = true)
         {
-            File.WriteAllText(_resultsPath, _learningResult.Result);
-        }
+            var now = new DateTime().ToString("yyMMdd_hhmmss");
 
-        public void SaveModel()
-        {
-            _mlContext.Model.Save(_learningResult.TrainedModel, _learningResult.Schema, _modelPath);
+            var currentPath = Path.Combine(_outputDir, learningName + "Results");
+            CreateDir(currentPath);
+            var resultsPath = Path.Combine(currentPath, $"{learningName}_{now}.result");
+            var modelPath = Path.Combine(currentPath, $"{learningName}_{now}.zip");
+
+            _mlContext.Model.Save(learningResult.TrainedModel, learningResult.Schema, modelPath);
+            if (includeResults)
+            {
+                File.WriteAllText(resultsPath, learningResult.Result);
+            }
         }
     }
 }

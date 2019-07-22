@@ -8,34 +8,37 @@ namespace Trainer
     class Program
     {
         private static uint minutes;
+        private static string outputDir;
 
         private const string usage = @"Trainer.
 
     Usage:
-      Trainer.exe <minutes> [DLLs]
+      Trainer.exe <minutes> [-o PATH] [DLLs]
 
     Options:
       -h --help     Show this screen.
       --version     Show version.
-
+      --output      Output dir to publish trained models
     ";
 
         private static void Main(string[] args)
         {
             ParseArguments(args);
 
-            var trainer = new Trainer();
-            try
+            using (var trainer = new Trainer(outputDir))
             {
-                trainer.TrainAll(minutes);
+                try
+                {
+                    trainer.TrainAll(minutes);
 
-                trainer.WaitAll();
-            }
-            catch (Exception e)
-            {
-                trainer.Cancel();
-                Console.WriteLine(e);
-                throw;
+                    trainer.WaitAll();
+                }
+                catch (Exception e)
+                {
+                    trainer.Cancel();
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
         }
 
@@ -44,6 +47,7 @@ namespace Trainer
             var arguments = new Docopt().Apply(usage, args, exit: true);
 
             minutes = Convert.ToUInt32(arguments["<minutes>"].AsInt);
+            outputDir = arguments["[OUTPUTDIR]"].Value as string;
         }
     }
 }

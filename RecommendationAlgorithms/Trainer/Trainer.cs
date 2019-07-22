@@ -21,10 +21,12 @@ namespace Trainer
         private readonly MLContext _mlContext;
         private readonly AlgorithmLoader _loader;
         private readonly DataLoader _dataLoader;
-        private const string LABEL = "memory_capacity_as_kb";
+        private readonly string _outputDir;
+        private ModelSaver _modelSaver;
 
-        public Trainer()
+        public Trainer(string outputDir)
         {
+            _modelSaver = new ModelSaver(_mlContext, outputDir);
             _mlContext = new MLContext(0);
             _loader = new AlgorithmLoader();
             _dataLoader = new DataLoader(_mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath);
@@ -59,7 +61,7 @@ namespace Trainer
                     TaskScheduler.Default)
                 .ContinueWith(
                     task =>
-                        algorithm.TrainModel(_mlContext, task.Result, LABEL, timeoutInMinutes),
+                        algorithm.TrainModel(_mlContext, task.Result, "ComputerMemoriesCapacity", timeoutInMinutes),
                     _cancellationTokenSource.Token,
                     TaskContinuationOptions.LongRunning, TaskScheduler.Current)
                 .ContinueWith(
@@ -77,9 +79,7 @@ namespace Trainer
 
         private void SaveResultsToDir(LearningResult learningResult, string name)
         {
-            var saver = new ModelSaver(name, learningResult, _mlContext);
-            saver.SaveResults();
-            saver.SaveModel();
+            _modelSaver.SaveModel(name, learningResult);
         }
 
         public void WaitAll()
