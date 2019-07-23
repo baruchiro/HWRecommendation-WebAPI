@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using AlgorithmManager;
+using AlgoTestUtils;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Models;
@@ -14,15 +15,17 @@ namespace AlgorithmManagerTests
 {
     public class DataLoaderTests
     {
-        private readonly string _fakeDataFilePath = Path.Combine("Resources", "fake-data-out.csv");
-        private readonly string _fakeDataDtypesFilePath = Path.Combine("Resources", "fake-data-out.dtypes.csv");
+        private readonly FakeData _fakeData;
+
+        public DataLoaderTests()
+        {
+            _fakeData = new FakeData();
+        }
 
         [Fact]
         public void LoadCsv_CreatePersonAndComputer()
         {
-            var mlContext = new MLContext();
-            var dataLoader = new DataLoader(mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath);
-            var firstObject = dataLoader.EnumerateData().First();
+            var firstObject = _fakeData.DataLoader.EnumerateData().First();
 
             AssertTuple(firstObject);
         }
@@ -30,9 +33,7 @@ namespace AlgorithmManagerTests
         [Fact]
         public void LoadCsv_ValidateAllCsvFile()
         {
-            var mlContext = new MLContext();
-            var dataLoader = new DataLoader(mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath);
-            var all = dataLoader.EnumerateData();
+            var all = _fakeData.DataLoader.EnumerateData();
 
             foreach (var tuple in all)
             {

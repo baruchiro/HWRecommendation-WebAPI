@@ -37,9 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmManagerTests", "Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RecommendationAlgorithms", "RecommendationAlgorithms", "{78AC58F0-0F7D-44E9-A816-A2AAF506923F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmManagerIntegration", "Tests\RecommendationAlgorithmsTests\AlgorithmManagerIntegration\AlgorithmManagerIntegration.csproj", "{408542CE-D92B-4ACF-BFDC-389CFC7E7C4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmManagerIntegration", "Tests\RecommendationAlgorithmsTests\AlgorithmManagerIntegration\AlgorithmManagerIntegration.csproj", "{408542CE-D92B-4ACF-BFDC-389CFC7E7C4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoTestUtils", "Tests\RecommendationAlgorithmsTests\AlgoTestUtils\AlgoTestUtils.csproj", "{961112B6-5158-4F54-BAB7-690505C58081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgoTestUtils", "Tests\RecommendationAlgorithmsTests\AlgoTestUtils\AlgoTestUtils.csproj", "{961112B6-5158-4F54-BAB7-690505C58081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMLTests", "Tests\RecommendationAlgorithmsTests\AutoMLTests\AutoMLTests.csproj", "{2DAF138B-4701-485F-937B-0C1DDAD336DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -243,6 +245,18 @@ Global
 		{961112B6-5158-4F54-BAB7-690505C58081}.Release|x64.Build.0 = Release|Any CPU
 		{961112B6-5158-4F54-BAB7-690505C58081}.Release|x86.ActiveCfg = Release|Any CPU
 		{961112B6-5158-4F54-BAB7-690505C58081}.Release|x86.Build.0 = Release|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Debug|x64.Build.0 = Debug|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Release|x64.ActiveCfg = Release|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Release|x64.Build.0 = Release|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -257,6 +271,7 @@ Global
 		{78AC58F0-0F7D-44E9-A816-A2AAF506923F} = {D3673D6D-3F57-4636-8E11-7A50D96A9530}
 		{408542CE-D92B-4ACF-BFDC-389CFC7E7C4B} = {78AC58F0-0F7D-44E9-A816-A2AAF506923F}
 		{961112B6-5158-4F54-BAB7-690505C58081} = {78AC58F0-0F7D-44E9-A816-A2AAF506923F}
+		{2DAF138B-4701-485F-937B-0C1DDAD336DB} = {78AC58F0-0F7D-44E9-A816-A2AAF506923F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF23D904-2AB4-4F3E-9D55-3C4F9D2400C1}

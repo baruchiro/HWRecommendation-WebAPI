@@ -20,15 +20,16 @@ namespace Trainer
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly MLContext _mlContext;
         private readonly AlgorithmLoader _loader;
-        private readonly DataLoader _dataLoader;
         private ModelSaver _modelSaver;
+        private readonly ICollection<(Person, Computer)> _data;
 
         public Trainer(string outputDir)
-        {           
+        {
             _mlContext = new MLContext(0);
             _modelSaver = new ModelSaver(_mlContext, outputDir);
             _loader = new AlgorithmLoader();
-            _dataLoader = new DataLoader(_mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath);
+            _data = new DataLoader(_mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath)
+                .EnumerateData().ToList();
         }
 
         public void TrainAll(uint minutes)
@@ -53,27 +54,17 @@ namespace Trainer
 
         private Task StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
-            return new TaskFactory().StartNew(
-                    BuildEnumerationForTrain,
+            return new TaskFactory<ICollection<LearningResult>>().StartNew(() =>
+                        algorithm.TrainModelParallel(_mlContext, _data, timeoutInMinutes, _cancellationTokenSource.Token),
                     _cancellationTokenSource.Token,
-                    TaskCreationOptions.None,
-                    TaskScheduler.Default)
+                    TaskCreationOptions.LongRunning,
+                    TaskScheduler.Current)
                 .ContinueWith(
-                    task =>
-                        algorithm.TrainModel(_mlContext, task.Result, "ComputerMemoriesCapacity", timeoutInMinutes),
-                    _cancellationTokenSource.Token,
-                    TaskContinuationOptions.LongRunning, TaskScheduler.Current)
-                .ContinueWith(
-                    (task, name) =>
-                        SaveResultsToDir(task.Result, name as string),
+                    (task, name) =>// TODO: foreach
+                        SaveResultsToDir(task.Result.FirstOrDefault(), name as string),
                     algorithm.GetType().Name,
                     _cancellationTokenSource.Token,
                     TaskContinuationOptions.None, TaskScheduler.Current);
-        }
-
-        private IEnumerable<(Person, Computer)> BuildEnumerationForTrain()
-        {
-            return _dataLoader.EnumerateData().ToList();
         }
 
         private void SaveResultsToDir(LearningResult learningResult, string name)

@@ -81,8 +81,8 @@ namespace AlgorithmManager.Extensions
                 realType = realType.GetGenericArguments()[0];
                 var typeProps = realType.ResolveRecursiveNamesAndType(enumToInt).ToList();
                 var propNamesAndCollectionValues = typeProps.ToDictionary(tp => tp.Key,
-                    tp =>CreateCollectionOfType(tp.Value, enumToInt));
-                
+                    tp => CreateCollectionOfType(tp.Value, enumToInt));
+
                 var allItems = prop.GetValue(obj) as IEnumerable ??
                                throw new ArgumentNullException(
                                    $"The {obj.GetType().Name}.{prop.Name} " +
@@ -93,7 +93,7 @@ namespace AlgorithmManager.Extensions
                     foreach (var nameValue in item.ResolveRecursiveNamesAndValue(enumToInt))
                     {
                         propNamesAndCollectionValues[nameValue.Key].GetType().GetMethod("Add")
-                                ?.Invoke(propNamesAndCollectionValues[nameValue.Key], new[] {nameValue.Value});
+                            ?.Invoke(propNamesAndCollectionValues[nameValue.Key], new[] {nameValue.Value});
                     }
                 }
 
@@ -125,6 +125,7 @@ namespace AlgorithmManager.Extensions
             {
                 type = typeof(int);
             }
+
             return Activator.CreateInstance(typeof(List<>).MakeGenericType(type));
         }
 
@@ -178,7 +179,7 @@ namespace AlgorithmManager.Extensions
         public static IDictionary<string, Type> ResolveRecursiveNamesAndType(this Type type, bool enumToInt = false)
         {
             return type.GetInstanceOrPublicProperties()
-                .SelectMany(p=> ResolveRecursiveNamesAndTypes(p, enumToInt))
+                .SelectMany(p => ResolveRecursiveNamesAndTypes(p, enumToInt))
                 .ToDictionary(t => t.Item1, t => t.Item2);
         }
 
@@ -211,6 +212,14 @@ namespace AlgorithmManager.Extensions
         {
             return typeof(T).GetProperties().Where(p => p.GetCustomAttribute<FeatureAttribute>() != null)
                 .Select(p => p.Name).ToList();
+        }
+
+        public static IEnumerable<string> GetPropertiesNamesByAttribute<TAttr>(this Type type)
+            where TAttr : Attribute
+        {
+            return type.GetInstanceOrPublicProperties()
+                .Where(p => p.GetCustomAttribute<TAttr>() != null)
+                .Select(p => p.Name);
         }
     }
 }

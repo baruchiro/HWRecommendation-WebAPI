@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.ML;
 using Models;
 
@@ -7,6 +9,7 @@ namespace AlgorithmManager.Interfaces
 {
     public interface IRecommendationAlgorithmLearner
     {
-        LearningResult TrainModel(MLContext mlContext, IEnumerable<(Person, Computer)> personComputerPairs, string label, uint timeoutInMinutes);
+        IEnumerable<LearningResult> TrainModel(MLContext mlContext, IEnumerable<(Person, Computer)> personComputerPairs, uint timeoutInMinutes);
+        ICollection<LearningResult> TrainModelParallel(MLContext mlContext, IEnumerable<(Person, Computer)> personComputerPairs, uint timeoutInMinutes, CancellationToken cancellationToken);
     }
 }
