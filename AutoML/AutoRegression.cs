@@ -70,14 +70,9 @@ namespace AutoML
             var experiment = _mlContext.Auto().CreateRegressionExperiment(experimentSettings);
 
             var experimentResult = experiment.Execute(dataView, label);
-
-            var bestResult = experimentResult.BestRun;
-            return new LearningResult
-            {
-                Result = bestResult.ValidationMetrics.ToString(),
-                Schema = dataView.Schema,
-                TrainedModel = bestResult.Model
-            };
+            return LearningResult.CreateFromRunDetail(experimentResult.BestRun,
+                dataView.Schema,
+                experimentResult.BestRun.ValidationMetrics.LossFunction);
         }
     }
 }

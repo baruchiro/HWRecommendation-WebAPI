@@ -34,10 +34,10 @@ namespace AlgorithmManager
             var resultsPath = Path.Combine(currentPath, $"{learningName}_{now}.result");
             var modelPath = Path.Combine(currentPath, $"{learningName}_{now}.zip");
 
-            _mlContext.Model.Save(learningResult.TrainedModel, learningResult.Schema, modelPath);
+            _mlContext.Model.Save(learningResult.Model, learningResult.Schema, modelPath);
             if (includeResults)
             {
-                File.WriteAllText(resultsPath, learningResult.Result);
+                File.WriteAllText(resultsPath, learningResult.Result.ToString());
             }
         }
     }
