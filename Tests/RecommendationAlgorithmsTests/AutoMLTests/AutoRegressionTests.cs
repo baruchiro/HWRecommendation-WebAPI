@@ -11,7 +11,7 @@ namespace AutoMLTests
 {
     public class AutoRegressionTests
     {
-        [Fact]
+        [Fact(Skip = "Very long test, should be with injection")]
         public void TrainAll_ZeroTime_ValidateResultsCount()
         {
             var mlContext =  new MLContext(0);
