@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="xunit" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
 
@@ -24,6 +20,10 @@
     <None Include="..\..\..\DataPreparing\data\fake-data-out.dtypes.csv" Link="Resources\fake-data-out.dtypes.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.assert" Version="2.4.1" />
   </ItemGroup>
 
 </Project>
