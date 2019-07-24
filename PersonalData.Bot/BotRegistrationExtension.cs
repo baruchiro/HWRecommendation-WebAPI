@@ -1,65 +1,30 @@
-﻿using System;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using HW.Bot.Interfaces;
 using HW.Bot.Middleware;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.BotFramework;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Configuration;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace HW.Bot
 {
     public static class BotRegistrationExtension
     {
         [Localizable(false)]
-        public static void AddRecommendationBot<T>(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
-            where T : IDbContext
+        public static void AddRecommendationBot<T>(this IServiceCollection services)
+            where T : class, IDbContext
         {
-            services.AddBot<RecommendationBot>(options =>
-            {
-                var secretKey = configuration.GetSection("botFileSecret")?.Value;
-                var botFilePath = configuration.GetSection("botFilePath")?.Value;
-
-                // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
-                var botConfig = BotConfiguration.Load(botFilePath ?? @"HWRecommendationBot.bot", secretKey);
-                services.AddSingleton(sp =>
-                    botConfig ??
-                    throw new InvalidOperationException(
-                        $"The .bot configuration file could not be loaded. ({botFilePath ?? @"HWRecommendationBot.bot"})"));
-
-                // Retrieve current endpoint.
-                var environment = env.IsProduction() ? "production" : "development";
-                var service = botConfig.Services.FirstOrDefault(s => s.Type == "endpoint" && s.Name == environment);
-                if (!(service is EndpointService endpointService))
-                {
-                    throw new InvalidOperationException("The .bot file does not contain an endpoint.");
-                }
-
-                options.CredentialProvider =
-                    new SimpleCredentialProvider(configuration[MicrosoftAppCredentials.MicrosoftAppIdKey],
-                        configuration[MicrosoftAppCredentials.MicrosoftAppPasswordKey]);
-
-                // Creates a logger for the application to use.
-                ILogger logger = new LoggerFactory().CreateLogger<RecommendationBot>();
-
-                // Catches any errors that occur during a conversation turn and logs them.
-                options.OnTurnError = async (context, exception) =>
-                {
-                    logger.LogError($"Exception caught : {exception}");
-                    await context.SendActivityAsync("Sorry, it looks like something went wrong.");
-                };
-
-                options.Middleware.Add(new SetLocaleMiddleware("he-il"));
-            });
-
-            services.AddScoped(typeof(IDbContext), typeof(T));
+            services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>();
+            services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
+            services.AddScoped<IDbContext, T>();
             services.AddSingleton<IStorage>(new MemoryStorage());
             services.AddSingleton<StateManager>();
+
+            services.AddBot<RecommendationBot>(options => 
+                options.Middleware.Add(new SetLocaleMiddleware("he-il")));
         }
 
         public static IBot GetBotForTest(IDbContext dbContext)
