@@ -14,7 +14,7 @@ namespace HW.Bot.Dialogs.Steps
                 var channelId = stepContext.Context.Activity.ChannelId;
                 var userId = stepContext.Context.Activity.From.Id;
 
-                var personalInfo = dbContext.GetPersonalDetails(channelId, userId);
+                var personalInfo = dbContext.GetPerson(channelId, userId);
 
                 if (personalInfo == null)
                 {

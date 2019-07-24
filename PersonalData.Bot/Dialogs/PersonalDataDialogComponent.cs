@@ -87,7 +87,7 @@ namespace HW.Bot.Dialogs
 
             await stepContext.Context.SendActivityAsync(string.Format(BotStrings.Saving_info_of_user, userId, channelId), cancellationToken: cancellationToken);
 
-            if (_dbContext.SavePersonalDetails(channelId, userId, personalData))
+            if (_dbContext.SavePerson(channelId, userId, personalData))
             {
                 await stepContext.Context.SendActivityAsync(
                     BotStrings.Saving_your_data +

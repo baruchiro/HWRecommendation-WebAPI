@@ -8,8 +8,8 @@ namespace HW.Bot.Interfaces
     public interface IDbContext
     {
         IEnumerable<string> GetOrderedWorkList();
-        bool SavePersonalDetails(string channelId, string userId, Person personalData);
-        Person GetPersonalDetails(string channelId, string userId);
+        bool SavePerson(string channelId, string userId, Person person);
+        Person GetPerson(string channelId, string userId);
         IEnumerable<string> GetRecommendationsForScan(Guid guid);
     }
 }

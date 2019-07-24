@@ -20,10 +20,10 @@ namespace HW.Bot.UnitTests
         public FullConversation()
         {
             _dbContext = A.Fake<IDbContext>();
-            A.CallTo(() => _dbContext.GetPersonalDetails(A<string>.Ignored, A<string>.Ignored))
+            A.CallTo(() => _dbContext.GetPerson(A<string>.Ignored, A<string>.Ignored))
                 .Returns(null);
             A.CallTo(
-                    () => _dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored,
+                    () => _dbContext.SavePerson(A<string>.Ignored, A<string>.Ignored,
                         A<Person>.Ignored))
                 .Returns(true);
             _adapter = new TestAdapter()

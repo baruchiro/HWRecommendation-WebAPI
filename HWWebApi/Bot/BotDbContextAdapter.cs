@@ -27,7 +27,7 @@ namespace HWWebApi.Bot
                 .Select(w=>w.Key);
         }
 
-        public bool SavePersonalDetails(string channelId, string userId, Person personalData)
+        public bool SavePerson(string channelId, string userId, Person person)
         {
             var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
             var user = GetUserByUserChannel(userChannel);
@@ -41,15 +41,15 @@ namespace HWWebApi.Bot
                 _dbContext.Users.Add(user);
             }
 
-            user.Name = personalData.Name;
-            user.WorkArea = personalData.WorkArea;
-            user.Age = personalData.Age;
-            user.Gender = personalData.Gender;
+            user.Name = person.Name;
+            user.WorkArea = person.WorkArea;
+            user.Age = person.Age;
+            user.Gender = person.Gender;
 
             return _dbContext.SaveChanges() > 0;
         }
 
-        public Person GetPersonalDetails(string channelId, string userId)
+        public Person GetPerson(string channelId, string userId)
         {
             var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
             return GetUserByUserChannel(userChannel);
