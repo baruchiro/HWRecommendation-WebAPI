@@ -16,7 +16,6 @@ namespace Trainer
         private readonly string _fakeDataFilePath = Path.Combine("Resources", "fake-data-out.csv");
         private readonly string _fakeDataDtypesFilePath = Path.Combine("Resources", "fake-data-out.dtypes.csv");
         private IEnumerable<IRecommendationAlgorithmLearner> _algorithms;
-        private readonly List<Task> _running = new List<Task>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly MLContext _mlContext;
         private readonly AlgorithmLoader _loader;
@@ -48,33 +47,26 @@ namespace Trainer
 
         private void RunAllAlgorithms(uint minutes)
         {
-            var tasks = _algorithms.Select(a=> StartAlgorithmTask(a, minutes));
-            _running.AddRange(tasks);
+            var po = new ParallelOptions
+            {
+                CancellationToken = _cancellationTokenSource.Token,
+                MaxDegreeOfParallelism = System.Environment.ProcessorCount
+            };
+
+            Parallel.ForEach(_algorithms,po, algorithm => StartAlgorithmTask(algorithm, minutes));
         }
 
-        private Task StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
+        private void StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
-            return new TaskFactory<ICollection<LearningResult>>().StartNew(() =>
-                        algorithm.TrainModelParallel(_mlContext, _data, timeoutInMinutes, _cancellationTokenSource.Token),
-                    _cancellationTokenSource.Token,
-                    TaskCreationOptions.LongRunning,
-                    TaskScheduler.Current)
-                .ContinueWith(
-                    (task, name) =>// TODO: foreach
-                        SaveResultsToDir(task.Result.FirstOrDefault(), name as string),
-                    algorithm.GetType().Name,
-                    _cancellationTokenSource.Token,
-                    TaskContinuationOptions.None, TaskScheduler.Current);
-        }
+            var results = algorithm.TrainModelParallel(_mlContext, _data, timeoutInMinutes,
+                _cancellationTokenSource.Token);
 
-        private void SaveResultsToDir(LearningResult learningResult, string name)
-        {
-            _modelSaver.SaveModel(name, learningResult);
-        }
+            var parallelOptions = new ParallelOptions
+            {
+                CancellationToken = _cancellationTokenSource.Token
+            };
 
-        public void WaitAll()
-        {
-            Task.WaitAll(_running.ToArray(), _cancellationTokenSource.Token);
+            Parallel.ForEach(results, parallelOptions, _modelSaver.SaveModel);
         }
 
         public void Cancel()

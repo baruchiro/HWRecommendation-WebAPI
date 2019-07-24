@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using AlgorithmManager;
@@ -11,7 +11,6 @@ using AlgorithmManager.Model;
 using AlgorithmManager.ModelAttributes;
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
-using Microsoft.ML.Data;
 using Models;
 
 namespace AutoML
@@ -23,8 +22,8 @@ namespace AutoML
             .GetPropertiesNamesByAttribute<RegressionLabelAttribute>()
             .ToList();
 
-        private IDataView _dataView;
         private MLContext _mlContext;
+        private AlgorithmManagerFactory _factory;
 
         public IEnumerable<LearningResult> TrainModel(MLContext mlContext,
             IEnumerable<(Person, Computer)> personComputerPairs, uint timeoutInMinutes)
@@ -44,8 +43,8 @@ namespace AutoML
             uint timeoutInMinutes, CancellationToken cancellationToken, bool parallel = false)
         {
             _mlContext = mlContext;
-            var factory = new AlgorithmManagerFactory(mlContext);
-            _dataView = factory.CreateDataView(personComputerPairs);
+            _factory = new AlgorithmManagerFactory(mlContext);
+            var data = personComputerPairs.ToList();
 
             var experimentSettings = new RegressionExperimentSettings
             {
@@ -54,25 +53,37 @@ namespace AutoML
                 OptimizingMetric = RegressionMetric.MeanSquaredError
             };
 
-            var enumeration =
-                parallel ? _labels.AsParallel().WithCancellation(cancellationToken) : _labels.AsEnumerable();
+            if (!parallel) return _labels.Select(l => TrainOneLabel(l, experimentSettings, data));
 
-            return enumeration.Select(l => TrainOneLabel(l, experimentSettings));
+            var parallelOptions = new ParallelOptions {CancellationToken = cancellationToken};
+            var results = new BlockingCollection<LearningResult>();
+            Parallel.ForEach(_labels,
+                parallelOptions,
+                label =>
+                    results.Add(
+                        TrainOneLabel(label, experimentSettings, data),
+                        cancellationToken)
+            );
+            return results;
         }
 
-        private LearningResult TrainOneLabel(string label, RegressionExperimentSettings experimentSettings)
+        private LearningResult TrainOneLabel(string label, RegressionExperimentSettings experimentSettings,
+            IEnumerable<(Person, Computer)> data)
         {
-            var dataView = new PipelineBuilder(_mlContext, _dataView.Schema)
+            var dataView = _factory.CreateDataView(data);
+            dataView = new PipelineBuilder(_mlContext, dataView.Schema)
                 .ConvertNumberToSingle()
                 .SelectColumns(TypeExtensions.GetFeatureColumns<MLPersonComputerModel>().ToArray())
                 .SelectColumns(label)
-                .TransformData(_dataView);
+                .TransformData(dataView);
             var experiment = _mlContext.Auto().CreateRegressionExperiment(experimentSettings);
 
             var experimentResult = experiment.Execute(dataView, label);
+            
             return LearningResult.CreateFromRunDetail(experimentResult.BestRun,
+                experimentResult.BestRun.ValidationMetrics.LossFunction,
                 dataView.Schema,
-                experimentResult.BestRun.ValidationMetrics.LossFunction);
+                label);
         }
     }
 }

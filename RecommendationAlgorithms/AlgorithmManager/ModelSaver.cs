@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using AlgorithmManager.Interfaces;
 using Microsoft.ML;
+using Newtonsoft.Json;
 
 namespace AlgorithmManager
 {
@@ -12,33 +14,24 @@ namespace AlgorithmManager
 
         public ModelSaver(MLContext mlContext, string outputDir)
         {
-            _outputDir = outputDir;
-            CreateDir(outputDir);
+            _outputDir = Directory.CreateDirectory(outputDir).FullName;
+            
             _mlContext = mlContext;
         }
 
-        private void CreateDir(string dirname)
+        public void SaveModel(LearningResult learningResult)
         {
-            if (!Directory.Exists(dirname))
-            {
-                Directory.CreateDirectory(dirname);
-            }
-        }
+            if (learningResult == null) throw new ArgumentNullException(nameof(learningResult));
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            var filename = Path.Combine(_outputDir,
+                $"{learningResult.Name}_{new DateTime():yyMMdd_hhmmss}");
 
-        public void SaveModel(string learningName, LearningResult learningResult, bool includeResults = true)
-        {
-            var now = new DateTime().ToString("yyMMdd_hhmmss");
+            var jsonFile = $"{filename}.json";
+            var modelPath = $"{filename}.zip";
 
-            var currentPath = Path.Combine(_outputDir, learningName + "Results");
-            CreateDir(currentPath);
-            var resultsPath = Path.Combine(currentPath, $"{learningName}_{now}.result");
-            var modelPath = Path.Combine(currentPath, $"{learningName}_{now}.zip");
-
+            var json = JsonConvert.SerializeObject(learningResult, Formatting.Indented);
+            File.WriteAllText(jsonFile, json);
             _mlContext.Model.Save(learningResult.Model, learningResult.Schema, modelPath);
-            if (includeResults)
-            {
-                File.WriteAllText(resultsPath, learningResult.Result.ToString());
-            }
         }
     }
 }

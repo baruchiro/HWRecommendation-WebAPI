@@ -28,8 +28,6 @@ namespace Trainer
                 try
                 {
                     trainer.TrainAll(minutes);
-
-                    trainer.WaitAll();
                 }
                 catch (Exception e)
                 {

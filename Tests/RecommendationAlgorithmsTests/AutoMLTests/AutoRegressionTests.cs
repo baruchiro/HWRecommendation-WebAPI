@@ -1,14 +1,10 @@
-using System;
 using System.Linq;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
 using AlgorithmManager.ModelAttributes;
 using AlgoTestUtils;
 using AutoML;
-using FakeItEasy;
 using Microsoft.ML;
-using Microsoft.ML.AutoML;
-using Microsoft.ML.Data;
 using Xunit;
 
 namespace AutoMLTests
