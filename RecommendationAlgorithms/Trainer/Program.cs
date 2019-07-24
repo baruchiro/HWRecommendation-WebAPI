@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using DocoptNet;
 
 namespace Trainer
@@ -8,34 +6,35 @@ namespace Trainer
     class Program
     {
         private static uint minutes;
+        private static string outputDir;
 
         private const string usage = @"Trainer.
 
     Usage:
-      Trainer.exe <minutes> [DLLs]
+      Trainer.exe <minutes> <output>
 
     Options:
       -h --help     Show this screen.
       --version     Show version.
-
+      --output      Output dir to publish trained models
     ";
 
         private static void Main(string[] args)
         {
             ParseArguments(args);
 
-            var trainer = new Trainer();
-            try
+            using (var trainer = new Trainer(outputDir))
             {
-                trainer.TrainAll(minutes);
-
-                trainer.WaitAll();
-            }
-            catch (Exception e)
-            {
-                trainer.Cancel();
-                Console.WriteLine(e);
-                throw;
+                try
+                {
+                    trainer.TrainAll(minutes);
+                }
+                catch (Exception e)
+                {
+                    trainer.Cancel();
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
         }
 
@@ -44,6 +43,7 @@ namespace Trainer
             var arguments = new Docopt().Apply(usage, args, exit: true);
 
             minutes = Convert.ToUInt32(arguments["<minutes>"].AsInt);
+            outputDir = arguments["<output>"].Value as string;
         }
     }
 }

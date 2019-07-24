@@ -15,7 +15,7 @@ namespace HWWebApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -62,7 +62,11 @@ namespace HWWebApi.Migrations
 
                     b.Property<int>("Gender");
 
+                    b.Property<string>("MainUse");
+
                     b.Property<string>("Name");
+
+                    b.Property<int>("Price");
 
                     b.Property<string>("WorkArea");
 
@@ -99,6 +103,8 @@ namespace HWWebApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ComputerType");
 
                     b.Property<long?>("MotherBoardId");
 
@@ -146,13 +152,21 @@ namespace HWWebApi.Migrations
 
                     b.Property<int?>("Cores");
 
+                    b.Property<string>("Manufacturer");
+
+                    b.Property<long?>("MemoryId");
+
                     b.Property<string>("Name");
 
                     b.Property<string>("Processor");
 
+                    b.Property<int>("Version");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ComputerId");
+
+                    b.HasIndex("MemoryId");
 
                     b.ToTable("GPUs");
                 });
@@ -170,6 +184,8 @@ namespace HWWebApi.Migrations
                     b.Property<long?>("ComputerId");
 
                     b.Property<string>("DeviceLocator");
+
+                    b.Property<int>("Generation");
 
                     b.Property<long>("Ghz");
 
@@ -214,6 +230,8 @@ namespace HWWebApi.Migrations
                     b.Property<int?>("Architecture");
 
                     b.Property<long?>("GHz");
+
+                    b.Property<string>("Manufacturer");
 
                     b.Property<string>("Name");
 
@@ -265,6 +283,10 @@ namespace HWWebApi.Migrations
                     b.HasOne("Models.Computer")
                         .WithMany("Gpus")
                         .HasForeignKey("ComputerId");
+
+                    b.HasOne("Models.Memory", "Memory")
+                        .WithMany()
+                        .HasForeignKey("MemoryId");
                 });
 
             modelBuilder.Entity("Models.Memory", b =>

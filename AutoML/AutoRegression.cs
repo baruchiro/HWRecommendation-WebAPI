@@ -1,39 +1,89 @@
-﻿using System;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using AlgorithmManager;
+using AlgorithmManager.Extensions;
+using AlgorithmManager.Factories;
 using AlgorithmManager.Interfaces;
+using AlgorithmManager.Model;
+using AlgorithmManager.ModelAttributes;
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
-using Microsoft.ML.Data;
+using Models;
 
-namespace RegressionAutoML
+namespace AutoML
 {
     public class AutoRegression : IRecommendationAlgorithmLearner
     {
-        public LearningResult TrainModel(IDataView dataView, string label, uint minutes)
-        {
-            if (dataView == null) throw new ArgumentNullException(nameof(dataView));
-                var mlContext = new MLContext();
+        private readonly ICollection<string> _labels = 
+            typeof(MLPersonComputerModel)
+            .GetPropertiesNamesByAttribute<RegressionLabelAttribute>()
+            .ToList();
 
-            var cts = new CancellationTokenSource();
+        private MLContext _mlContext;
+        private AlgorithmManagerFactory _factory;
+
+        public IEnumerable<LearningResult> TrainModel(MLContext mlContext,
+            IEnumerable<(Person, Computer)> personComputerPairs, uint timeoutInMinutes)
+        {
+            return TrainAllLabels(mlContext, personComputerPairs, timeoutInMinutes, CancellationToken.None, false);
+        }
+
+        public ICollection<LearningResult> TrainModelParallel(MLContext mlContext,
+            IEnumerable<(Person, Computer)> personComputerPairs,
+            uint timeoutInMinutes, CancellationToken cancellationToken)
+        {
+            return TrainAllLabels(mlContext, personComputerPairs, timeoutInMinutes, cancellationToken, true).ToList();
+        }
+
+        private IEnumerable<LearningResult> TrainAllLabels(MLContext mlContext,
+            IEnumerable<(Person, Computer)> personComputerPairs,
+            uint timeoutInMinutes, CancellationToken cancellationToken, bool parallel = false)
+        {
+            _mlContext = mlContext;
+            _factory = new AlgorithmManagerFactory(mlContext);
+            var data = personComputerPairs.ToList();
+
             var experimentSettings = new RegressionExperimentSettings
             {
-                MaxExperimentTimeInSeconds = minutes * 60,
-                CancellationToken = cts.Token,
+                MaxExperimentTimeInSeconds = timeoutInMinutes * 60,
+                CancellationToken = cancellationToken,
                 OptimizingMetric = RegressionMetric.MeanSquaredError
             };
 
-            var experiment = mlContext.Auto().CreateRegressionExperiment(experimentSettings);
+            if (!parallel) return _labels.Select(l => TrainOneLabel(l, experimentSettings, data));
+
+            var parallelOptions = new ParallelOptions {CancellationToken = cancellationToken};
+            var results = new BlockingCollection<LearningResult>();
+            Parallel.ForEach(_labels,
+                parallelOptions,
+                label =>
+                    results.Add(
+                        TrainOneLabel(label, experimentSettings, data),
+                        cancellationToken)
+            );
+            return results;
+        }
+
+        private LearningResult TrainOneLabel(string label, RegressionExperimentSettings experimentSettings,
+            IEnumerable<(Person, Computer)> data)
+        {
+            var dataView = _factory.CreateDataView(data);
+            dataView = new PipelineBuilder(_mlContext, dataView.Schema)
+                .ConvertNumberToSingle()
+                .SelectColumns(TypeExtensions.GetFeatureColumns<MLPersonComputerModel>().ToArray())
+                .SelectColumns(label)
+                .TransformData(dataView);
+            var experiment = _mlContext.Auto().CreateRegressionExperiment(experimentSettings);
 
             var experimentResult = experiment.Execute(dataView, label);
-            var bestResult = experimentResult.BestRun;
-            return new LearningResult
-            {
-                Result = bestResult.ValidationMetrics.ToString(),
-                Schema = dataView.Schema,
-                TrainedModel = bestResult.Model
-            };
+            
+            return LearningResult.CreateFromRunDetail(experimentResult.BestRun,
+                experimentResult.BestRun.ValidationMetrics.LossFunction,
+                dataView.Schema,
+                label);
         }
     }
 }

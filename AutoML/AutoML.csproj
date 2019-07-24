@@ -6,7 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="1.2.0" />
-    <PackageReference Include="Microsoft.ML.AutoML" Version="0.3.0" />
+    <PackageReference Include="Microsoft.ML.AutoML" Version="0.14.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
   </ItemGroup>
 
   <ItemGroup>

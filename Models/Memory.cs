@@ -10,14 +10,17 @@ namespace Models
         public long Ghz { get; set; }
         public string BankLabel { get; set; }
         public string DeviceLocator { get; set; }
+        public int Generation { get; set; }
 
         public bool EqualByMembers(Memory memory)
         {
-            return Capacity == memory.Capacity &&
+            return memory != null &&
+                   Capacity == memory.Capacity &&
                    Type == memory.Type &&
                    Ghz == memory.Ghz &&
                    string.Equals(BankLabel, memory.BankLabel, StringComparison.CurrentCultureIgnoreCase) &&
-                   string.Equals(DeviceLocator, memory.DeviceLocator, StringComparison.CurrentCultureIgnoreCase);
+                   string.Equals(DeviceLocator, memory.DeviceLocator, StringComparison.CurrentCultureIgnoreCase) &&
+                   Generation == memory.Generation;
         }
 
         public int GetHashCodeWithMembers()
@@ -30,6 +33,7 @@ namespace Models
                 hashCode = (hashCode * 397) ^ Ghz.GetHashCode();
                 hashCode = (hashCode * 397) ^ (BankLabel?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (DeviceLocator?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ Generation.GetHashCode();
                 return hashCode;
             }
         }
