@@ -19,7 +19,7 @@ namespace HW.Bot.Dialogs
     {
         private readonly IDbContext _dbContext;
 
-        public ExistedComputerDialogComponent(string dialogId, IPersonalDataStateManager personalDataStateManager, IDbContext dbContext, string menuItemOptionText) : base(dialogId)
+        public ExistedComputerDialogComponent(string dialogId, IPersonStateManager personStateManager, IDbContext dbContext, string menuItemOptionText) : base(dialogId)
         {
             _dbContext = dbContext;
             MenuItemOptionText = menuItemOptionText ?? dialogId;
@@ -28,7 +28,7 @@ namespace HW.Bot.Dialogs
                 .AddStep(RequestForScanId)
                 .AddStep(HandleScanIdResult));
 
-            AddDialog(new PersonalDataDialogComponent(PERSONAL_DATA_DIALOG, personalDataStateManager, dbContext));
+            AddDialog(new PersonalDataDialogComponent(PERSONAL_DATA_DIALOG, personStateManager, dbContext));
 
             AddDialog(new TextPrompt(SCAN_ID_PROMPT, Validator));
         }

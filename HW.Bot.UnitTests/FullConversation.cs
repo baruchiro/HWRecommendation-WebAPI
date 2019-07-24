@@ -31,7 +31,7 @@ namespace HW.Bot.UnitTests
         }
 
         [Fact]
-        public async Task FullConversation_PersonalData()
+        public async Task FullConversation_PersonData()
         {
             await new TestFlow(_adapter, BotRegistrationExtension.GetBotForTest(_dbContext))
                 .Send("Hi")

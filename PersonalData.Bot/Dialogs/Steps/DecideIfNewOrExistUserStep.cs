@@ -14,9 +14,9 @@ namespace HW.Bot.Dialogs.Steps
                 var channelId = stepContext.Context.Activity.ChannelId;
                 var userId = stepContext.Context.Activity.From.Id;
 
-                var personalInfo = dbContext.GetPerson(channelId, userId);
+                var person = dbContext.GetPerson(channelId, userId);
 
-                if (personalInfo == null)
+                if (person == null)
                 {
                     await stepContext.Context.SendActivityAsync(
                         string.Format(BotStrings.There_is_No_info_about_user, userId, channelId) +
@@ -29,7 +29,7 @@ namespace HW.Bot.Dialogs.Steps
 
                 if (existUserMenuId != null)
                 {
-                    return await stepContext.BeginDialogAsync(existUserMenuId, personalInfo,
+                    return await stepContext.BeginDialogAsync(existUserMenuId, person,
                         cancellationToken: cancellationToken);
                 }
 

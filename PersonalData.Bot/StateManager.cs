@@ -10,7 +10,7 @@ using Models;
 namespace HW.Bot
 {
     [Localizable(false)]
-    internal class StateManager : IPersonalDataStateManager
+    internal class StateManager : IPersonStateManager
     {
         public StateManager(IStorage storage)
         {
@@ -18,7 +18,7 @@ namespace HW.Bot
             ConversationDataAccessor = ConversationState.CreateProperty<DialogState>(ConversationDataName);
 
             UserState = new UserState(storage);
-            PersonalDataAccessor = UserState.CreateProperty<Person>(UserProfileName);
+            PersonAccessor = UserState.CreateProperty<Person>(UserProfileName);
         }
 
         public static string ConversationDataName { get; } = "ConversationData";
@@ -28,25 +28,25 @@ namespace HW.Bot
 
         public ConversationState ConversationState { get; }
         
-        public IStatePropertyAccessor<Person> PersonalDataAccessor { get; set; }
+        public IStatePropertyAccessor<Person> PersonAccessor { get; set; }
         
         public UserState UserState { get; }
-        public Task<Person> GetPersonalDataAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+        public Task<Person> GetPersonAsync(ITurnContext turnContext, CancellationToken cancellationToken)
         {
-            return PersonalDataAccessor.GetAsync(turnContext, () => new Person(), cancellationToken);
+            return PersonAccessor.GetAsync(turnContext, () => new Person(), cancellationToken);
         }
 
-        public async Task SavePersonalDataAsync(ITurnContext turnContext, Person personalData, CancellationToken cancellationToken)
+        public async Task SavePersonAsync(ITurnContext turnContext, Person person, CancellationToken cancellationToken)
         {
-             await PersonalDataAccessor.SetAsync(turnContext, personalData, cancellationToken);
+             await PersonAccessor.SetAsync(turnContext, person, cancellationToken);
              await UserState.SaveChangesAsync(turnContext, cancellationToken: cancellationToken);
         }
 
-        public async Task UpdatePersonalDataAsync(ITurnContext turnContext, Action<Person> updateAction, CancellationToken cancellationToken)
+        public async Task UpdatePersonAsync(ITurnContext turnContext, Action<Person> updateAction, CancellationToken cancellationToken)
         {
-            var personalData = await GetPersonalDataAsync(turnContext, cancellationToken);
-            updateAction(personalData);
-            await SavePersonalDataAsync(turnContext, personalData, cancellationToken);
+            var person = await GetPersonAsync(turnContext, cancellationToken);
+            updateAction(person);
+            await SavePersonAsync(turnContext, person, cancellationToken);
         }
     }
 }
