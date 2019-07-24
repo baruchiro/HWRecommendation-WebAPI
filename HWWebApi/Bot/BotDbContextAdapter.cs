@@ -6,6 +6,7 @@ using ComputerUpgradeStrategies;
 using HW.Bot.Interfaces;
 using HWWebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Models;
 
 namespace HWWebApi.Bot
 {
@@ -26,7 +27,7 @@ namespace HWWebApi.Bot
                 .Select(w=>w.Key);
         }
 
-        public bool SavePersonalDetails(string channelId, string userId, IPersonalData personalData)
+        public bool SavePersonalDetails(string channelId, string userId, Person personalData)
         {
             var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
             var user = GetUserByUserChannel(userChannel);
@@ -48,7 +49,7 @@ namespace HWWebApi.Bot
             return _dbContext.SaveChanges() > 0;
         }
 
-        public IPersonalData GetPersonalDetails(string channelId, string userId)
+        public Person GetPersonalDetails(string channelId, string userId)
         {
             var userChannel = new UserChannel { ChannelId = channelId, UserId = userId };
             return GetUserByUserChannel(userChannel);

@@ -1,20 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ComputerUpgradeStrategies;
 using ComputerUpgradeStrategies.Recommendations.Disk;
-using EnumsNET;
 using FakeItEasy;
 using HW.Bot.Interfaces;
-using HW.Bot.Model;
 using HW.Bot.Resources;
 using HW.Bot.UnitTests.Extensions;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Adapters;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Schema;
+using Models;
 using Xunit;
 
 namespace HW.Bot.UnitTests
@@ -31,7 +24,7 @@ namespace HW.Bot.UnitTests
                 .Returns(null);
             A.CallTo(
                     () => _dbContext.SavePersonalDetails(A<string>.Ignored, A<string>.Ignored,
-                        A<IPersonalData>.Ignored))
+                        A<Person>.Ignored))
                 .Returns(true);
             _adapter = new TestAdapter()
                 .Use(new AutoSaveStateMiddleware(new ConversationState(new MemoryStorage())));

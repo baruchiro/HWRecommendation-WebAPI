@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using HW.Bot.Interfaces;
-using HW.Bot.Model;
+﻿using System.Collections.Generic;
 using HWWebApi.Helpers;
 using Models;
 using Models.ModelEqualityComparer;
 
 namespace HWWebApi.Models
 {
-    public class User : Person, IPersonalData
+    public class User : Person
     {
         public ICollection<UserChannel> Channels { get; set; }
         public ICollection<Scan> Scans { get; set; }

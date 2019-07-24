@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using EnumsNET;
-using HW.Bot.Model;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder.Adapters;
 using Models;

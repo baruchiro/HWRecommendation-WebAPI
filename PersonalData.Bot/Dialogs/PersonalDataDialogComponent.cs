@@ -9,7 +9,6 @@ using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Dialogs.Steps;
 using HW.Bot.Extensions;
 using HW.Bot.Interfaces;
-using HW.Bot.Model;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
@@ -107,7 +106,7 @@ namespace HW.Bot.Dialogs
 
         private async Task<DialogTurnResult> HandlePersonalDataStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            stepContext.Values[DATA_ID] = stepContext.Options as IPersonalData ?? new PersonalData();
+            stepContext.Values[DATA_ID] = stepContext.Options as Person ?? new Person();
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
@@ -115,7 +114,7 @@ namespace HW.Bot.Dialogs
         {
             if (stepContext.Result is FoundChoice foundChoice)
             {
-                var personalData = stepContext.Values[DATA_ID] as IPersonalData ?? new PersonalData();
+                var personalData = stepContext.Values[DATA_ID] as Person ?? new Person();
                 Enum.TryParse<Gender>(foundChoice.Value, true, out var result);
                 personalData.Gender = result;
 
@@ -127,21 +126,21 @@ namespace HW.Bot.Dialogs
 
         private async Task<DialogTurnResult> HandleAgeStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            ((IPersonalData)stepContext.Values[DATA_ID]).Age = stepContext.Result is int age ? age : -1;
+            ((Person)stepContext.Values[DATA_ID]).Age = stepContext.Result is int age ? age : -1;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandleWorkStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            ((IPersonalData)stepContext.Values[DATA_ID]).WorkArea = stepContext.Result as string;
+            ((Person)stepContext.Values[DATA_ID]).WorkArea = stepContext.Result as string;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> EndWaterfallStep(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            if (stepContext.Values[DATA_ID] is IPersonalData personalData)
+            if (stepContext.Values[DATA_ID] is Person personalData)
             {
                 await _personalDataStateManager.SavePersonalDataAsync(stepContext.Context, personalData, cancellationToken);
             }

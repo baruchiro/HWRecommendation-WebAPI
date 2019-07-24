@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Interfaces;
-using HW.Bot.Model;
+﻿using HW.Bot.Interfaces;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder.Dialogs;
+using Models;
 
 namespace HW.Bot.Dialogs.Steps
 {
@@ -28,7 +23,7 @@ namespace HW.Bot.Dialogs.Steps
                         BotStrings.We_need_some_information,
                         cancellationToken: cancellationToken);
 
-                    return await stepContext.BeginDialogAsync(newUserDialogId, new PersonalData(),
+                    return await stepContext.BeginDialogAsync(newUserDialogId, new Person(),
                         cancellationToken: cancellationToken);
                 }
 
