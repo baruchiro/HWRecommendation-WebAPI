@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AutoML\AutoML.csproj" />
+    <ProjectReference Include="..\..\..\RecommendationAlgorithms\AutoML\AutoML.csproj" />
     <ProjectReference Include="..\AlgoTestUtils\AlgoTestUtils.csproj" />
   </ItemGroup>
 

@@ -21,11 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerUpgradeStrategies",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RecommendationAlgorithms", "RecommendationAlgorithms", "{319F76D9-068E-42A7-8D1E-334031DFDC87}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regression", "Regression\Regression.csproj", "{AD9377C2-B689-4438-9E28-DE1770974892}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regression", "RecommendationAlgorithms\Regression\Regression.csproj", "{AD9377C2-B689-4438-9E28-DE1770974892}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegressionBuilder", "RegressionBuilder\RegressionBuilder.csproj", "{2B58C25C-6CD5-46BF-96D0-415280E2E851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegressionBuilder", "RecommendationAlgorithms\RegressionBuilder\RegressionBuilder.csproj", "{2B58C25C-6CD5-46BF-96D0-415280E2E851}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoML", "AutoML\AutoML.csproj", "{6D8D9151-ACBF-4F85-87FD-1D9C609DFA68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoML", "RecommendationAlgorithms\AutoML\AutoML.csproj", "{6D8D9151-ACBF-4F85-87FD-1D9C609DFA68}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trainer", "RecommendationAlgorithms\Trainer\Trainer.csproj", "{EB359452-E737-44EB-ACB7-94A2E8B2655E}"
 EndProject
