@@ -49,7 +49,7 @@ namespace HWWebApi
                 
             });
 
-            services.AddRecommendationBot<BotDbContextAdapter>(Configuration, _environment);
+            services.AddRecommendationBot<BotDbContextAdapter>();
 
         }
 
