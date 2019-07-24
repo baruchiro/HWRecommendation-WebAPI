@@ -17,7 +17,7 @@ namespace HW.Bot
     public static class BotRegistrationExtension
     {
         [Localizable(false)]
-        public static void AddPersonalDataBot<T>(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
+        public static void AddRecommendationBot<T>(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
             where T : IDbContext
         {
             services.AddBot<RecommendationBot>(options =>

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Interfaces;
-using HW.Bot.Model;
+﻿using HW.Bot.Interfaces;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder.Dialogs;
+using Models;
 
 namespace HW.Bot.Dialogs.Steps
 {
@@ -19,22 +14,22 @@ namespace HW.Bot.Dialogs.Steps
                 var channelId = stepContext.Context.Activity.ChannelId;
                 var userId = stepContext.Context.Activity.From.Id;
 
-                var personalInfo = dbContext.GetPersonalDetails(channelId, userId);
+                var person = dbContext.GetPerson(channelId, userId);
 
-                if (personalInfo == null)
+                if (person == null)
                 {
                     await stepContext.Context.SendActivityAsync(
                         string.Format(BotStrings.There_is_No_info_about_user, userId, channelId) +
                         BotStrings.We_need_some_information,
                         cancellationToken: cancellationToken);
 
-                    return await stepContext.BeginDialogAsync(newUserDialogId, new PersonalData(),
+                    return await stepContext.BeginDialogAsync(newUserDialogId, new Person(),
                         cancellationToken: cancellationToken);
                 }
 
                 if (existUserMenuId != null)
                 {
-                    return await stepContext.BeginDialogAsync(existUserMenuId, personalInfo,
+                    return await stepContext.BeginDialogAsync(existUserMenuId, person,
                         cancellationToken: cancellationToken);
                 }
 
