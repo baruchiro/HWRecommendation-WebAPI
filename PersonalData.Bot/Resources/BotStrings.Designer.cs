@@ -324,5 +324,14 @@ namespace HW.Bot.Resources {
                 return ResourceManager.GetString("We_need_some_information", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We are now taking your personal information and retrieve our recommendations from the ML algorithms.
+        /// </summary>
+        public static string We_taking_personal_info_retrieve_recommendations {
+            get {
+                return ResourceManager.GetString("We_taking_personal_info_retrieve_recommendations", resourceCulture);
+            }
+        }
     }
 }

@@ -208,4 +208,7 @@
   <data name="Github_issues" xml:space="preserve">
     <value>https://github.com/baruchiro/HWRecommendation-webapi/issues</value>
   </data>
+  <data name="We_taking_personal_info_retrieve_recommendations" xml:space="preserve">
+    <value>We are now taking your personal information and retrieve our recommendations from the ML algorithms</value>
+  </data>
 </root>
