@@ -19,7 +19,7 @@ namespace AutoML
 
         public IEnumerable<IRecommend> GetNewComputerRecommendations(Person person)
         {
-            return null;
+            return _regression.GetResults(person).Select(r => new Recommend(r.Field, r.PredictedValue));
         }
     }
 

@@ -9,7 +9,14 @@ namespace AlgorithmManager.Interfaces
 {
     public interface IRecommendationAlgorithmLearner
     {
-        IEnumerable<LearningResult> TrainModel(MLContext mlContext, IEnumerable<(Person, Computer)> personComputerPairs, uint timeoutInMinutes);
-        ICollection<LearningResult> TrainModelParallel(MLContext mlContext, IEnumerable<(Person, Computer)> personComputerPairs, uint timeoutInMinutes, CancellationToken cancellationToken);
+        IEnumerable<LearningResult> TrainModel(MLContext mlContext, 
+            ModelSaver modelSaver,
+            IEnumerable<(Person, Computer)> personComputerPairs,
+            uint timeoutInMinutes);
+        ICollection<LearningResult> TrainModelParallel(MLContext mlContext, 
+            ModelSaver modelSaver,
+            IEnumerable<(Person, Computer)> personComputerPairs,
+            uint timeoutInMinutes,
+            CancellationToken cancellationToken);
     }
 }

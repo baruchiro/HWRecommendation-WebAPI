@@ -11,7 +11,7 @@ using Models;
 namespace AlgorithmManager.Factories
 {
     // TODO: Move to root folder
-    class MLModelConverter
+    public class MLModelConverter
     {
         public TOut Convert<T, TOut>(T model) where TOut : IMLModel, new()
         {

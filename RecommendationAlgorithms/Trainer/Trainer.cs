@@ -58,15 +58,14 @@ namespace Trainer
 
         private void StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
-            var results = algorithm.TrainModelParallel(_mlContext, _data, timeoutInMinutes,
+            var results = algorithm.TrainModelParallel(_mlContext, _modelSaver,
+                _data, timeoutInMinutes,
                 _cancellationTokenSource.Token);
 
             var parallelOptions = new ParallelOptions
             {
                 CancellationToken = _cancellationTokenSource.Token
             };
-
-            Parallel.ForEach(results, parallelOptions, _modelSaver.SaveModel);
         }
 
         public void Cancel()
