@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using ComputerUpgradeStrategies.Recommendations.Disk;
 using FakeItEasy;
+using HW.Bot.Dialogs;
 using HW.Bot.Interfaces;
 using HW.Bot.Resources;
 using HW.Bot.UnitTests.Extensions;
@@ -18,6 +20,7 @@ namespace HW.Bot.UnitTests
         private readonly IDbContext _dbContext;
         private readonly TestAdapter _adapter;
         private readonly IBot _bot;
+        private readonly IRecommender _recommender;
 
         public FullConversation()
         {
@@ -29,12 +32,14 @@ namespace HW.Bot.UnitTests
                         A<Person>.Ignored))
                 .Returns(true);
 
+            _recommender = A.Fake<IRecommender>();
+
             _adapter = new TestAdapter()
                 .Use(new AutoSaveStateMiddleware(new ConversationState(new MemoryStorage())));
 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddRecommendationBot(provider => _dbContext, 
-                provider => A.Fake<IRecommender>());
+                provider => _recommender);
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             _bot = serviceProvider.GetService<IBot>();
@@ -76,6 +81,36 @@ namespace HW.Bot.UnitTests
                 .Send(Guid.NewGuid().ToString())
                 .AssertReplyContain(BotStrings.Here_our_recommendations_for_you)
                 .AssertReplyContain(DiskRecommendations.Replace_HDD_SDD)
+
+                .StartTestAsync();
+        }
+
+        [Fact]
+        public async Task FullConversation_NewComputerRecommendation()
+        {
+            var recommendations = new[]
+            {
+                "DDR: 3",
+                "Processor: 4"
+            };
+            var recommendFake = A.Fake<IRecommend>();
+            A.CallTo(()=>recommendFake.RecommendMessage()).ReturnsNextFromSequence(recommendations);
+
+            A.CallTo(() => _recommender.GetNewComputerRecommendations(A<Person>.Ignored))
+                .Returns(Enumerable.Repeat(recommendFake, recommendations.Length));
+            
+            await new TestFlow(_adapter, _bot)
+                .Send("Hi")
+                .AssertReplyContain(BotStrings.MainMenuTitle, "Main menu")
+
+                .Send("NewComputerDialogComponent")
+
+                // TODO: Bug, duplicate message
+                .AssertReplyContain(BotStrings.We_need_some_information, "The user not exist")
+                .AssertNewUserInsertData()
+
+                .AssertReplyContain(BotStrings.We_taking_personal_info_retrieve_recommendations)
+                .AssertEachReplyContainOneOf(recommendations)
 
                 .StartTestAsync();
         }
