@@ -6,10 +6,11 @@ namespace HW.Bot.Interfaces
 {
     public interface IRecommender
     {
-        IEnumerable<Task<IRecommend>> GetNewComputerRecommendations(Person person);
+        IEnumerable<IRecommend> GetNewComputerRecommendations(Person person);
     }
 
     public interface IRecommend
     {
+        string RecommendMessage();
     }
 }

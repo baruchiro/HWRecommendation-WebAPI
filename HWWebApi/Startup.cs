@@ -1,4 +1,5 @@
 using System.IO;
+using AutoML;
 using HW.Bot;
 using HWWebApi.Bot;
 using HWWebApi.Models;
@@ -49,7 +50,8 @@ namespace HWWebApi
                 
             });
 
-            services.AddRecommendationBot<BotDbContextAdapter>();
+            
+            services.AddRecommendationBot<BotDbContextAdapter, AutoMLRecommender>();
 
         }
 
