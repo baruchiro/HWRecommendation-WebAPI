@@ -1,27 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Dialogs.Steps;
 using HW.Bot.Interfaces;
+using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Schema;
 
 namespace HW.Bot.Dialogs
 {
+    [Localizable(true)]
     internal class NewComputerDialogComponent : ComponentDialog, IMenuItemDialog
     {
         private IDbContext _dbContext;
         private IPersonStateManager _accessors;
+        private readonly IRecommender _recommender;
         private const string NEW_USER_DIALOG = nameof(NewComputerDialogComponent) + "_" + nameof(NEW_USER_DIALOG);
         private const string MAIN_WATERFALL = nameof(NewComputerDialogComponent) + "_" + nameof(MAIN_WATERFALL);
 
         public NewComputerDialogComponent(string dialogId, IPersonStateManager accessors, IDbContext dbContext,
+            IRecommender recommender,
             string menuItemOptionText = null)
         :base(dialogId)
         {
             _dbContext = dbContext;
             _accessors = accessors;
+            _recommender = recommender;
             MenuItemOptionText = menuItemOptionText ?? dialogId;
 
             AddDialog(new WaterfallDialog(MAIN_WATERFALL)
@@ -31,9 +40,22 @@ namespace HW.Bot.Dialogs
             AddDialog(new PersonalDataDialogComponent(NEW_USER_DIALOG, _accessors, _dbContext));
         }
 
-        private Task<DialogTurnResult> GetComputerRecommendations(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
+        private async Task<DialogTurnResult> GetComputerRecommendations(WaterfallStepContext stepContext,
+            CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await stepContext.Context.SendActivityAsync(
+                BotStrings.We_taking_personal_info_retrieve_recommendations,
+                cancellationToken: cancellationToken);
+
+            var person = _accessors.GetPersonAsync(stepContext.Context, cancellationToken);
+
+            _recommender.GetNewComputerRecommendations(await person)
+                .AsParallel()
+                .ForAll(async r =>
+                    await stepContext.Context.SendActivityAsync(r.RecommendMessage(),
+                        cancellationToken: cancellationToken));
+
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
         public string MenuItemOptionText { get; }
