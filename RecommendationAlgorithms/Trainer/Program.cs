@@ -1,12 +1,15 @@
 ﻿using System;
+using AlgorithmManager;
 using DocoptNet;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace Trainer
 {
     class Program
     {
         private static uint minutes;
-        private static string outputDir;
+        private static IConfigurationRoot _configuration;
 
         private const string usage = @"Trainer.
 
@@ -21,9 +24,10 @@ namespace Trainer
 
         private static void Main(string[] args)
         {
+            BuildConfiguration();
             ParseArguments(args);
 
-            using (var trainer = new Trainer(outputDir))
+            using (var trainer = new Trainer(_configuration))
             {
                 try
                 {
@@ -38,12 +42,23 @@ namespace Trainer
             }
         }
 
+        private static void BuildConfiguration()
+        {
+            _configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+        }
+
         private static void ParseArguments(string[] args)
         {
             var arguments = new Docopt().Apply(usage, args, exit: true);
 
             minutes = Convert.ToUInt32(arguments["<minutes>"].AsInt);
-            outputDir = arguments["<output>"].Value as string;
+
+            if (arguments["<output>"].Value is string output)
+            {
+                _configuration[ModelSaver.KEY_MODEL_SAVE_PATH] = output;
+            }
         }
     }
 }

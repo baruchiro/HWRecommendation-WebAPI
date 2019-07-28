@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AlgorithmManager;
 using Microsoft.ML;
 using AlgorithmManager.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Models;
 
 namespace Trainer
@@ -22,10 +23,10 @@ namespace Trainer
         private ModelSaver _modelSaver;
         private readonly ICollection<(Person, Computer)> _data;
 
-        public Trainer(string outputDir)
+        public Trainer(IConfiguration configuration)
         {
             _mlContext = new MLContext(0);
-            _modelSaver = new ModelSaver(_mlContext, outputDir);
+            _modelSaver = new ModelSaver(_mlContext, configuration);
             _loader = new AlgorithmLoader();
             _data = new DataLoader(_mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath)
                 .EnumerateData().ToList();
@@ -58,15 +59,14 @@ namespace Trainer
 
         private void StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)
         {
-            var results = algorithm.TrainModelParallel(_mlContext, _data, timeoutInMinutes,
+            var results = algorithm.TrainModelParallel(_mlContext, _modelSaver,
+                _data, timeoutInMinutes,
                 _cancellationTokenSource.Token);
 
             var parallelOptions = new ParallelOptions
             {
                 CancellationToken = _cancellationTokenSource.Token
             };
-
-            Parallel.ForEach(results, parallelOptions, _modelSaver.SaveModel);
         }
 
         public void Cancel()

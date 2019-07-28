@@ -34,12 +34,12 @@ namespace AlgorithmManager.Interfaces
 
             return learningResult;
         }
-        public string Name { get; private set; }
+        public virtual string Name { get; private set; }
         
         public double Result {  private set; get; }
 
         [JsonIgnore]
-        public ITransformer Model {  private set; get; }
+        public ITransformer Model {  internal set; get; }
 
         [JsonConverter(typeof(ExceptionConverter))]
         public Exception Exception {  private set; get; }

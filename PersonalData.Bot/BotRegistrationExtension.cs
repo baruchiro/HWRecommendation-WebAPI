@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using HW.Bot.Interfaces;
 using HW.Bot.Middleware;
 using Microsoft.AspNetCore.Hosting;
@@ -13,23 +14,38 @@ namespace HW.Bot
 {
     public static class BotRegistrationExtension
     {
-        [Localizable(false)]
-        public static void AddRecommendationBot<T>(this IServiceCollection services)
-            where T : class, IDbContext
+        private static void Register(this IServiceCollection services)
         {
             services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>();
             services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
-            services.AddScoped<IDbContext, T>();
             services.AddSingleton<IStorage>(new MemoryStorage());
             services.AddSingleton<StateManager>();
 
-            services.AddBot<RecommendationBot>(options => 
+            services.AddBot<RecommendationBot>(options =>
                 options.Middleware.Add(new SetLocaleMiddleware("he-il")));
         }
 
-        public static IBot GetBotForTest(IDbContext dbContext)
+        [Localizable(false)]
+        public static void AddRecommendationBot<TDbContext, TRecommender>(this IServiceCollection services)
+            where TDbContext : class, IDbContext
+            where TRecommender : class, IRecommender
         {
-            return new RecommendationBot(new StateManager(new MemoryStorage()), dbContext);
+            services.Register();
+
+            services.AddScoped<IDbContext, TDbContext>();
+            services.AddSingleton<IRecommender, TRecommender>();
+        }
+
+        public static void AddRecommendationBot<TDbContext, TRecommender>(this IServiceCollection services,
+            Func<IServiceProvider,TDbContext> dbContextImplementationFactory,
+            Func<IServiceProvider, TRecommender> recommenderImplementationFactory)
+            where TDbContext : class, IDbContext
+            where TRecommender : class, IRecommender
+        {
+            services.Register();
+
+            services.AddScoped<IDbContext>(dbContextImplementationFactory);
+            services.AddSingleton<IRecommender>(recommenderImplementationFactory);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EnumsNET;
 using HW.Bot.Resources;
@@ -60,6 +61,13 @@ namespace HW.Bot.UnitTests.Extensions
 
                 .AssertReplyContain(string.Format(BotStrings.Saving_info_of_user, "user1", "test"))
                 .AssertReplyContainAll(new[] {BotStrings.Saving_your_data, gender, age, work});
+        }
+
+        public static TestFlow AssertEachReplyContainOneOf(this TestFlow testFlow, string[] messages,
+            string description = null,
+            uint timeout = 3000)
+        {
+            return messages.Aggregate(testFlow, (current, t) => current.AssertReplyOneOf(messages, description, timeout));
         }
     }
 }

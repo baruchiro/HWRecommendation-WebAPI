@@ -21,7 +21,7 @@ namespace HW.Bot
 
         private const string MENU_DIALOG = "menu";
 
-        public RecommendationBot(StateManager accessors, IDbContext dbContext)
+        public RecommendationBot(StateManager accessors, IDbContext dbContext, IRecommender recommender)
         {
             _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
 
@@ -31,6 +31,10 @@ namespace HW.Bot
             _menuDialogs.Add(
                 new ExistedComputerDialogComponent(EXISTED_COMPUTER_DIALOG, _accessors, dbContext,
                     BotStrings.RecommendationMenuItemTitle));
+            _menuDialogs.Add(
+                new NewComputerDialogComponent(NEW_COMPUTER_DIALOG, _accessors, dbContext,
+                    recommender,
+                    nameof(NewComputerDialogComponent)));
 
 
             _dialogSet = new DialogSet(accessors.ConversationDataAccessor);
@@ -41,6 +45,7 @@ namespace HW.Bot
 
         public const string PERSONAL_DATA_DIALOG = nameof(RecommendationBot) + "_" + nameof(PERSONAL_DATA_DIALOG);
         public const string EXISTED_COMPUTER_DIALOG = nameof(RecommendationBot) + "_" + nameof(EXISTED_COMPUTER_DIALOG);
+        public const string NEW_COMPUTER_DIALOG = nameof(RecommendationBot) + "_" + nameof(NEW_COMPUTER_DIALOG);
 
         public async Task OnTurnAsync(ITurnContext turnContext,
             CancellationToken cancellationToken = new CancellationToken())

@@ -22,7 +22,10 @@ namespace AutoMLTests
                 .ToList();
             Assert.NotEmpty(labels);
 
-            var results = autoRegression.TrainModel(mlContext, fakeData.EnumerateData(), 0)
+            var results = autoRegression.TrainModel(mlContext,
+                    null,
+                    fakeData.EnumerateData(),
+                    0)
                 .ToList();
 
             Assert.NotEmpty(results);

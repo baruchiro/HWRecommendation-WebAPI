@@ -10,8 +10,11 @@
   <ItemGroup>
     <PackageReference Include="Enums.NET" Version="2.3.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.ML" Version="1.2.0" />
     <PackageReference Include="Microsoft.ML.AutoML" Version="0.14.0" />
+    <PackageReference Include="System.IO.Abstractions" Version="6.0.15" />
   </ItemGroup>
 
 

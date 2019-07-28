@@ -216,6 +216,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currently there is no recommendation engines.
+        /// </summary>
+        public static string No_Recommendation_engine {
+            get {
+                return ResourceManager.GetString("No_Recommendation_engine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We have no recommendations for you, probably your computer is good! If you think there is something to improve on your computer, feel free to open us a bug in Github:.
         /// </summary>
         public static string NoRecommendationsForYou {
@@ -322,6 +331,15 @@ namespace HW.Bot.Resources {
         public static string We_need_some_information {
             get {
                 return ResourceManager.GetString("We_need_some_information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We are now taking your personal information and retrieve our recommendations from the ML algorithms.
+        /// </summary>
+        public static string We_taking_personal_info_retrieve_recommendations {
+            get {
+                return ResourceManager.GetString("We_taking_personal_info_retrieve_recommendations", resourceCulture);
             }
         }
     }
