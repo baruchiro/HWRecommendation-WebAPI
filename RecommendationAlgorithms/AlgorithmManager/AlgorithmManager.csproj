@@ -6,6 +6,39 @@
 
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="..\TrainedModels\ComputerDisksCapacity_190728-095945.json" Link="SavedModels\ComputerDisksCapacity_190728-095945.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerDisksRpm_190728-095945.json" Link="SavedModels\ComputerDisksRpm_190728-095945.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerMemoriesCapacity_190728-095945.json" Link="SavedModels\ComputerMemoriesCapacity_190728-095945.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerMemoriesGeneration_190728-095945.json" Link="SavedModels\ComputerMemoriesGeneration_190728-095945.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerMemoriesGhz_190728-095946.json" Link="SavedModels\ComputerMemoriesGhz_190728-095946.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerMotherBoardDdrSockets_190728-095945.json" Link="SavedModels\ComputerMotherBoardDdrSockets_190728-095945.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerMotherBoardMaxRam_190728-100002.json" Link="SavedModels\ComputerMotherBoardMaxRam_190728-100002.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerMotherBoardSataConnections_190728-100018.json" Link="SavedModels\ComputerMotherBoardSataConnections_190728-100018.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerProcessorGHz_190728-100000.json" Link="SavedModels\ComputerProcessorGHz_190728-100000.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TrainedModels\ComputerProcessorNumOfCores_190728-095945.json" Link="SavedModels\ComputerProcessorNumOfCores_190728-095945.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Enums.NET" Version="2.3.2" />
@@ -20,6 +53,45 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Models\Models.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="SavedModels\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="..\TrainedModels\ComputerDisksCapacity_190728-095945.zip" Link="SavedModels\ComputerDisksCapacity_190728-095945.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerDisksRpm_190728-095945.zip" Link="SavedModels\ComputerDisksRpm_190728-095945.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerMemoriesCapacity_190728-095945.zip" Link="SavedModels\ComputerMemoriesCapacity_190728-095945.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerMemoriesGeneration_190728-095945.zip" Link="SavedModels\ComputerMemoriesGeneration_190728-095945.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerMemoriesGhz_190728-095946.zip" Link="SavedModels\ComputerMemoriesGhz_190728-095946.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerMotherBoardDdrSockets_190728-095945.zip" Link="SavedModels\ComputerMotherBoardDdrSockets_190728-095945.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerMotherBoardMaxRam_190728-100002.zip" Link="SavedModels\ComputerMotherBoardMaxRam_190728-100002.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerMotherBoardSataConnections_190728-100018.zip" Link="SavedModels\ComputerMotherBoardSataConnections_190728-100018.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerProcessorGHz_190728-100000.zip" Link="SavedModels\ComputerProcessorGHz_190728-100000.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\TrainedModels\ComputerProcessorNumOfCores_190728-095945.zip" Link="SavedModels\ComputerProcessorNumOfCores_190728-095945.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
