@@ -112,14 +112,15 @@ namespace AutoML
             IEnumerable<(Person, Computer)> data, ModelSaver modelSaver)
         {
             var dataView = _factory.CreateDataView(data);
-            dataView = new PipelineBuilder(_mlContext, dataView.Schema)
-                .ConvertNumberToSingle()
+            var pipeline = new PipelineBuilder(_mlContext, dataView.Schema)
+                //.ConvertNumberToSingle()
                 .SelectColumns(TypeExtensions.GetFeatureColumns<MLPersonComputerModel>().ToArray())
                 .SelectColumns(label)
-                .TransformData(dataView);
+                .GetEstimator();
+
             var experiment = _mlContext.Auto().CreateRegressionExperiment(experimentSettings);
 
-            var experimentResult = experiment.Execute(dataView, label);
+            var experimentResult = experiment.Execute(dataView, label, preFeaturizer:pipeline);
 
             if (experimentResult.BestRun == null)
                 throw new AggregateException(experimentResult.RunDetails.Select(r => r.Exception));

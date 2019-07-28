@@ -105,10 +105,8 @@ namespace AlgorithmManager
             _pipeline = _pipeline?.Append(estimator) ?? estimator;
         }
 
-        public IDataView TransformData(IDataView dataView)
+        private IEstimator<ITransformer> GetPipelineWithSelectedColumns()
         {
-            if (dataView == null) throw new ArgumentNullException(nameof(dataView));
-
             var resultPipeline = _pipeline;
             // ReSharper disable once InvertIf
             if (_selectedColumns.Count > 0)
@@ -117,12 +115,19 @@ namespace AlgorithmManager
                 resultPipeline = resultPipeline?.Append(estimator) ?? estimator;
             }
 
-            return resultPipeline?.Fit(dataView).Transform(dataView) ?? dataView;
+            return resultPipeline;
+        }
+
+        public IDataView TransformData(IDataView dataView)
+        {
+            if (dataView == null) throw new ArgumentNullException(nameof(dataView));
+
+            return GetPipelineWithSelectedColumns()?.Fit(dataView).Transform(dataView) ?? dataView;
         }
 
         public IEstimator<ITransformer> GetEstimator()
         {
-            return _pipeline;
+            return GetPipelineWithSelectedColumns();
         }
     }
 }
