@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using AlgorithmManager.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +24,10 @@ namespace AlgorithmManager
         {
             _fileSystem = fileSystem ?? new FileSystem();
             var modelSavePath = configuration?["MODEL_SAVE_PATH"] ?? MODEL_SAVE_PATH;
-            _outputDir = _fileSystem.Directory.CreateDirectory(modelSavePath).FullName;
+            var fullPath = _fileSystem.Path.Combine(
+                _fileSystem.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                modelSavePath);
+            _outputDir = _fileSystem.Directory.CreateDirectory(fullPath).FullName;
 
             _mlContext = mlContext;
         }
@@ -63,11 +67,7 @@ namespace AlgorithmManager
 
             using (var stream = _fileSystem.FileStream.Create(newestZip, FileMode.Open))
             {
-                learningResult.Model = _mlContext.Model.Load(stream, out var inputSchema);
-
-                if (inputSchema != learningResult.Schema)
-                    throw new JsonSerializationException(
-                        "Input schema loaded by MLContext is different from the Input schema loaded by Json");
+                learningResult.Model = _mlContext.Model.Load(stream, out _);
             }
 
             return learningResult;

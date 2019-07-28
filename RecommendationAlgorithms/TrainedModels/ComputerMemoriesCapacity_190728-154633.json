@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerMemoriesCapacity",
+  "Result": 14810178746089.693,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 2510004.7207207209,
+    "MeanSquaredError": 14810178017960.309,
+    "RootMeanSquaredError": 3848399.4098794251,
+    "LossFunction": 14810178746089.693,
+    "RSquared": 0.46998946068408864
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 142.2485312
+}

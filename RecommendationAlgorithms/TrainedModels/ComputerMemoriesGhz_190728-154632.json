@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerMemoriesGhz",
+  "Result": 131852.14494802384,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 262.69110630580354,
+    "MeanSquaredError": 131852.14429091327,
+    "RootMeanSquaredError": 363.11450575667351,
+    "LossFunction": 131852.14494802384,
+    "RSquared": 0.11312654130182065
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 141.4799658
+}

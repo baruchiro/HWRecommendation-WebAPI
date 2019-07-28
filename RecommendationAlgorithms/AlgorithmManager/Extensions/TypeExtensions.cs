@@ -201,7 +201,31 @@ namespace AlgorithmManager.Extensions
                 }
                 else
                 {
-                    property.SetValue(mlModel, keyValue.Value);
+                    var sourceType = keyValue.Value?.GetType();
+                    if (sourceType != null && sourceType.IsNumeric(true) &&
+                        (sourceType != typeof(float[]) || sourceType != typeof(float)))
+                    {
+                        if (sourceType.IsArray)
+                        {
+                            var array = (Array) keyValue.Value;
+
+                            var newArray = new float[array.Length];
+                            for (var i = 0; i < array.Length; i++)
+                            {
+                                newArray[i] = Convert.ToSingle(array.GetValue(i));
+                            }
+
+                            property.SetValue(mlModel, newArray);
+                        }
+                        else
+                        {
+                            property.SetValue(mlModel, Convert.ToSingle(keyValue.Value));
+                        }
+                    }
+                    else
+                    {
+                        property.SetValue(mlModel, keyValue.Value);
+                    }
                 }
             }
 
@@ -220,6 +244,33 @@ namespace AlgorithmManager.Extensions
             return type.GetInstanceOrPublicProperties()
                 .Where(p => p.GetCustomAttribute<TAttr>() != null)
                 .Select(p => p.Name);
+        }
+
+        public static bool IsNumeric(this Type type, bool includeArray = false)
+        {
+            var validateType = type;
+            if (includeArray)
+            {
+                validateType = type.IsArray ? type.GetElementType() : type;
+            }
+            
+            switch (Type.GetTypeCode(validateType))
+            {
+                case TypeCode.Byte:
+                case TypeCode.SByte:
+                case TypeCode.UInt16:
+                case TypeCode.UInt32:
+                case TypeCode.UInt64:
+                case TypeCode.Int16:
+                case TypeCode.Int32:
+                case TypeCode.Int64:
+                case TypeCode.Decimal:
+                case TypeCode.Double:
+                case TypeCode.Single:
+                    return true;
+                default:
+                    return false;
+            }
         }
     }
 }

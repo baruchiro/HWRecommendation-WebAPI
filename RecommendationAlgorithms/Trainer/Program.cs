@@ -45,7 +45,7 @@ namespace Trainer
         private static void BuildConfiguration()
         {
             _configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", true, true)
+                .AddInMemoryCollection()
                 .Build();
         }
 

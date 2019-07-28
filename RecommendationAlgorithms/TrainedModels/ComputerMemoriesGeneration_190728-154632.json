@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerMemoriesGeneration",
+  "Result": 0.0949187750386325,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 0.19589370030623215,
+    "MeanSquaredError": 0.0949187755647872,
+    "RootMeanSquaredError": 0.30808890853905663,
+    "LossFunction": 0.0949187750386325,
+    "RSquared": 0.070071126350772839
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 140.910032
+}

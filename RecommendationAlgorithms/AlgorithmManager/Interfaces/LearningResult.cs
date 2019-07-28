@@ -53,6 +53,7 @@ namespace AlgorithmManager.Interfaces
         [JsonIgnore]
         public IEstimator<ITransformer> Estimator {  private set; get; }
 
+        [JsonIgnore]
         public DataViewSchema Schema {  private set; get; }
     }
 

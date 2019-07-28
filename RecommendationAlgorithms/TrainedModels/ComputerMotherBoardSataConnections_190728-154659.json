@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerMotherBoardSataConnections",
+  "Result": 0.0,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 0.0,
+    "MeanSquaredError": 0.0,
+    "RootMeanSquaredError": 0.0,
+    "LossFunction": 0.0,
+    "RSquared": "NaN"
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 132.6741548
+}

@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerMotherBoardDdrSockets",
+  "Result": 1.2113628154335454,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 0.88216075056889021,
+    "MeanSquaredError": 1.2113628257625644,
+    "RootMeanSquaredError": 1.1006192919273059,
+    "LossFunction": 1.2113628154335454,
+    "RSquared": 0.056271955056267364
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 140.2501165
+}
