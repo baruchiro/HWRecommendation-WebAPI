@@ -57,7 +57,6 @@ namespace AutoML
                     Console.WriteLine($"Failed to load model: {label}");
                     Console.WriteLine(e);
                 }
-
             }
         }
 
@@ -149,9 +148,10 @@ namespace AutoML
         }
     }
 
-    internal class ComputerPrediction : MLPersonComputerModel
+    internal class ComputerPrediction
     {
         [ColumnName("Score")]
         public float PredictedPrice { get; set; }
     }
+
 }
