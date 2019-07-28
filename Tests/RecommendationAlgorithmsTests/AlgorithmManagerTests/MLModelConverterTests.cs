@@ -97,7 +97,10 @@ namespace AlgorithmManagerTests
 
         private void AssertComparePropertyNamesTypesAgainstMLType<TType, TMLModel>()
         {
-            var expectedPropsNames = typeof(TType).ResolveRecursiveNamesAndType(true);
+            var expectedPropsNames = typeof(TType).ResolveRecursiveNamesAndType(true)
+                .ToDictionary(
+                    pair => pair.Key,
+                    pair => ConvertNumericToSingle(pair.Value));
             var actualPropsNames = typeof(TMLModel).GetInstanceOrPublicProperties()
                 .ToDictionary(p =>
                     p.Name,
@@ -111,6 +114,16 @@ namespace AlgorithmManagerTests
             var toWrite = string.Join('\n', expectedButNotInActual.Select(s => $"public {s.Value} {s.Key} {{get; set;}}"));
             Assert.Empty(expectedButNotInActual);
             Assert.Empty(actualButNotInExpected);
+        }
+
+        private Type ConvertNumericToSingle(Type type)
+        {
+            if (type.IsNumeric(true))
+            {
+                return type.IsArray ? typeof(float).MakeArrayType() : typeof(float);
+            }
+
+            return type;
         }
     }
 }
