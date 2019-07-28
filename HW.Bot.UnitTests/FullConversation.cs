@@ -38,7 +38,7 @@ namespace HW.Bot.UnitTests
                 .Use(new AutoSaveStateMiddleware(new ConversationState(new MemoryStorage())));
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddRecommendationBot(provider => _dbContext, 
+            serviceCollection.AddRecommendationBot(provider => _dbContext,
                 provider => _recommender);
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
@@ -62,7 +62,7 @@ namespace HW.Bot.UnitTests
         public async Task FullConversation_ExistComputerRecommendation()
         {
             A.CallTo(() => _dbContext.GetRecommendationsForScan(A<Guid>.Ignored))
-                .Returns(new[] { DiskRecommendations.Replace_HDD_SDD });
+                .Returns(new[] {DiskRecommendations.Replace_HDD_SDD});
 
             await new TestFlow(_adapter, _bot)
                 .Send("Hi")
@@ -76,7 +76,7 @@ namespace HW.Bot.UnitTests
 
                 .AssertReplyContainAll(new[]
                     {BotStrings.DownloadOurSoftware_windows_withoutLink, BotStrings.LinkToLateasSoftware_windows})
-                .AssertReplyContainAll(new[] { BotStrings.ScanIdOrExit })
+                .AssertReplyContainAll(new[] {BotStrings.ScanIdOrExit})
 
                 .Send(Guid.NewGuid().ToString())
                 .AssertReplyContain(BotStrings.Here_our_recommendations_for_you)
@@ -94,11 +94,12 @@ namespace HW.Bot.UnitTests
                 "Processor: 4"
             };
             var recommendFake = A.Fake<IRecommend>();
-            A.CallTo(()=>recommendFake.RecommendMessage()).ReturnsNextFromSequence(recommendations);
+            A.CallTo(() => recommendFake.RecommendMessage()).ReturnsNextFromSequence(recommendations);
 
+            A.CallTo(() => _recommender.IsReadyToGiveRecommendation()).Returns(true);
             A.CallTo(() => _recommender.GetNewComputerRecommendations(A<Person>.Ignored))
                 .Returns(Enumerable.Repeat(recommendFake, recommendations.Length));
-            
+
             await new TestFlow(_adapter, _bot)
                 .Send("Hi")
                 .AssertReplyContain(BotStrings.MainMenuTitle, "Main menu")

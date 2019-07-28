@@ -1,5 +1,7 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,6 +28,7 @@ namespace AutoML
         private MLContext _mlContext;
         private AlgorithmManagerFactory _factory;
         private readonly ModelSaver _modelSaver;
+        private IDictionary<string, PredictionEngine<MLPersonComputerModel, ComputerPrediction>> _savedModels = new ConcurrentDictionary<string, PredictionEngine<MLPersonComputerModel, ComputerPrediction>>();
 
         public AutoRegression(){}
 
@@ -34,6 +37,28 @@ namespace AutoML
             _mlContext = mlContext;
             _modelSaver = modelSaver;
             _factory = factory;
+
+            LoadModels();
+        }
+
+        private void LoadModels()
+        {
+            foreach (var label in _labels)
+            {
+                try
+                {
+                    var model = _modelSaver.LoadLearningResult(label);
+                    
+                    _savedModels[label] = _mlContext.Model.CreatePredictionEngine<MLPersonComputerModel, ComputerPrediction>(
+                    model.Model);
+                }
+                catch (FileNotFoundException e)
+                {
+                    Console.WriteLine($"Failed to load model: {label}");
+                    Console.WriteLine(e);
+                }
+
+            }
         }
 
         public IEnumerable<LearningResult> TrainModel(MLContext mlContext,
@@ -110,11 +135,12 @@ namespace AutoML
         {
             var dataInsert = _factory.PersonToMLModelPersonComputer(person);
 
-            return _labels
-                .Select(l =>
-                    (l,
-                        _mlContext.Model.CreatePredictionEngine<MLPersonComputerModel, ComputerPrediction>(
-                            _modelSaver.LoadModel(l).Model).Predict(dataInsert).PredictedPrice));
+            return _savedModels.Select(pair => (pair.Key, pair.Value.Predict(dataInsert).PredictedPrice));
+        }
+
+        public bool IsEngineLoaded()
+        {
+            return _savedModels.Count > 0;
         }
     }
 

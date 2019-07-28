@@ -211,4 +211,7 @@
   <data name="We_taking_personal_info_retrieve_recommendations" xml:space="preserve">
     <value>We are now taking your personal information and retrieve our recommendations from the ML algorithms</value>
   </data>
+  <data name="No_Recommendation_engine" xml:space="preserve">
+    <value>Currently there is no recommendation engines</value>
+  </data>
 </root>

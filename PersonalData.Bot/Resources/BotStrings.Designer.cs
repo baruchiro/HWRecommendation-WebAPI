@@ -216,6 +216,15 @@ namespace HW.Bot.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currently there is no recommendation engines.
+        /// </summary>
+        public static string No_Recommendation_engine {
+            get {
+                return ResourceManager.GetString("No_Recommendation_engine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We have no recommendations for you, probably your computer is good! If you think there is something to improve on your computer, feel free to open us a bug in Github:.
         /// </summary>
         public static string NoRecommendationsForYou {

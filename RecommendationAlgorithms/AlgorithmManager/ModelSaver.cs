@@ -49,10 +49,14 @@ namespace AlgorithmManager
             }
         }
 
-        public LearningResult LoadModel(string modelName)
+        public LearningResult LoadLearningResult(string modelName)
         {
-            var newestJson = GetNewestFile(modelName, "json");
-            var newestZip = GetNewestFile(modelName, "zip");
+            var newestJson = GetNewestFile(modelName, "json") ?? throw new FileNotFoundException(
+                                 $"The saved model: {modelName} is not exist",
+                                 _fileSystem.Path.Combine(_outputDir, modelName + "*.json"));
+            var newestZip = GetNewestFile(modelName, "zip") ?? throw new FileNotFoundException(
+                                $"The saved model: {modelName} is not exist",
+                                _fileSystem.Path.Combine(_outputDir, modelName + "*.zip"));;
 
             var json = _fileSystem.File.ReadAllText(newestJson);
             var learningResult = JsonConvert.DeserializeObject<LearningResult>(json);
@@ -72,7 +76,7 @@ namespace AlgorithmManager
         private string GetNewestFile(string fileStartWith, string extension)
         {
             return _fileSystem.Directory.EnumerateFiles(_outputDir, $"{fileStartWith}_*.{extension}")
-                .OrderBy(GetModelCreationTime).First();
+                .OrderBy(GetModelCreationTime).FirstOrDefault();
         }
 
         public DateTime GetModelCreationTime(string filename)

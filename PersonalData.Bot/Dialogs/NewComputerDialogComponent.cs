@@ -49,11 +49,19 @@ namespace HW.Bot.Dialogs
 
             var person = _accessors.GetPersonAsync(stepContext.Context, cancellationToken);
 
-            _recommender.GetNewComputerRecommendations(await person)
-                .AsParallel()
-                .ForAll(async r =>
-                    await stepContext.Context.SendActivityAsync(r.RecommendMessage(),
-                        cancellationToken: cancellationToken));
+            if (_recommender.IsReadyToGiveRecommendation())
+            {
+                _recommender.GetNewComputerRecommendations(await person)
+                    .AsParallel()
+                    .ForAll(async r =>
+                        await stepContext.Context.SendActivityAsync(r.RecommendMessage(),
+                            cancellationToken: cancellationToken));
+            }
+            else
+            {
+                await stepContext.Context.SendActivityAsync(BotStrings.No_Recommendation_engine,
+                    cancellationToken: cancellationToken);
+            }
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }

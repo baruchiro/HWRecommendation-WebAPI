@@ -25,6 +25,11 @@ namespace AutoML
             return _regression.GetResults(person).Select(r => 
                 new Recommend(r.Field, r.PredictedValue));
         }
+
+        public bool IsReadyToGiveRecommendation()
+        {
+            return _regression.IsEngineLoaded();
+        }
     }
 
     internal class Recommend : IRecommend

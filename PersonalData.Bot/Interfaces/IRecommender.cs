@@ -6,6 +6,7 @@ namespace HW.Bot.Interfaces
 {
     public interface IRecommender
     {
+        bool IsReadyToGiveRecommendation();
         IEnumerable<IRecommend> GetNewComputerRecommendations(Person person);
     }
 
