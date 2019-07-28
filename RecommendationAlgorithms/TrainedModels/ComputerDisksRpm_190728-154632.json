@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerDisksRpm",
+  "Result": 6958897.5791579029,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 2269.8019080528848,
+    "MeanSquaredError": 6958897.4739599228,
+    "RootMeanSquaredError": 2637.9722276703224,
+    "LossFunction": 6958897.5791579029,
+    "RSquared": 0.23724880935884551
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 140.6324344
+}

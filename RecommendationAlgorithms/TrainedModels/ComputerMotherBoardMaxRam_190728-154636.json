@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerMotherBoardMaxRam",
+  "Result": 1429309036199.3013,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 457336.763671875,
+    "MeanSquaredError": 1429309000628.145,
+    "RootMeanSquaredError": 1195537.1180470078,
+    "LossFunction": 1429309036199.3013,
+    "RSquared": 0.058432956430193306
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 130.7118476
+}

@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerProcessorGHz",
+  "Result": 448637.18912484305,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 549.50826822916667,
+    "MeanSquaredError": 448637.18969537871,
+    "RootMeanSquaredError": 669.8038441927448,
+    "LossFunction": 448637.18912484305,
+    "RSquared": 0.038399099411799531
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 142.5372098
+}

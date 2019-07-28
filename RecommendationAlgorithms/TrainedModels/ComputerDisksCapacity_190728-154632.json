@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerDisksCapacity",
+  "Result": 1.2247471448066045E+17,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 275397243.00917429,
+    "MeanSquaredError": 1.2247471460160806E+17,
+    "RootMeanSquaredError": 349963876.13810664,
+    "LossFunction": 1.2247471448066045E+17,
+    "RSquared": 0.053221179164239629
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 141.47348209999998
+}

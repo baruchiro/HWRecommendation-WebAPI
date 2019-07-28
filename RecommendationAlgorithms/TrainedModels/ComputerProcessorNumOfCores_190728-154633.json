@@ -1,0 +1,14 @@
+{
+  "Name": "ComputerProcessorNumOfCores",
+  "Result": 1.7012003939053455,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 0.97922523507794135,
+    "MeanSquaredError": 1.701200394630785,
+    "RootMeanSquaredError": 1.3043007301350349,
+    "LossFunction": 1.7012003939053455,
+    "RSquared": 0.34437536375188904
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 142.956028
+}
