@@ -6,6 +6,7 @@ using System.Text;
 using AlgorithmManager;
 using AlgorithmManager.Interfaces;
 using FakeItEasy;
+using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
 using Xunit;
 
@@ -22,8 +23,14 @@ namespace AlgorithmManagerTests
             var mlContext = new MLContext(0);
             _fileSystem = new MockFileSystem();
             _outputDir = _fileSystem.Path.GetTempPath();
+            IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+            configurationBuilder.AddInMemoryCollection(new[]
+            {
+                new KeyValuePair<string, string>(ModelSaver.KEY_MODEL_SAVE_PATH, _fileSystem.Path.GetTempPath())
+            });
 
-            _modelSaver = new ModelSaver(mlContext, _outputDir, _fileSystem);
+                
+            _modelSaver = new ModelSaver(mlContext, configurationBuilder.Build(), _fileSystem);
         }
 
         [Fact]

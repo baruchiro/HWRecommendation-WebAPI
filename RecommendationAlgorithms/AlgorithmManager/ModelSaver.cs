@@ -4,6 +4,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Threading;
 using AlgorithmManager.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
 using Newtonsoft.Json;
 
@@ -11,15 +12,18 @@ namespace AlgorithmManager
 {
     public class ModelSaver
     {
+        public const string KEY_MODEL_SAVE_PATH = "MODEL_SAVE_PATH";
+        private const string MODEL_SAVE_PATH = "Models";
         private readonly MLContext _mlContext;
         private readonly string _outputDir;
         private readonly string _dateFormat = "yyMMdd-HHmmss";
         private readonly IFileSystem _fileSystem;
 
-        public ModelSaver(MLContext mlContext, string outputDir, IFileSystem fileSystem = null)
+        public ModelSaver(MLContext mlContext, IConfiguration configuration, IFileSystem fileSystem = null)
         {
             _fileSystem = fileSystem ?? new FileSystem();
-            _outputDir = _fileSystem.Directory.CreateDirectory(outputDir).FullName;
+            var modelSavePath = configuration?["MODEL_SAVE_PATH"] ?? MODEL_SAVE_PATH;
+            _outputDir = _fileSystem.Directory.CreateDirectory(modelSavePath).FullName;
 
             _mlContext = mlContext;
         }

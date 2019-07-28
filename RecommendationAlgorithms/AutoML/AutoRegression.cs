@@ -25,16 +25,15 @@ namespace AutoML
 
         private MLContext _mlContext;
         private AlgorithmManagerFactory _factory;
-        private MLModelConverter _converter;
         private readonly ModelSaver _modelSaver;
 
         public AutoRegression(){}
 
-        public AutoRegression(MLContext mlContext, MLModelConverter converter, ModelSaver modelSaver)
+        public AutoRegression(MLContext mlContext, AlgorithmManagerFactory factory, ModelSaver modelSaver)
         {
             _mlContext = mlContext;
-            _converter = converter;
             _modelSaver = modelSaver;
+            _factory = factory;
         }
 
         public IEnumerable<LearningResult> TrainModel(MLContext mlContext,
