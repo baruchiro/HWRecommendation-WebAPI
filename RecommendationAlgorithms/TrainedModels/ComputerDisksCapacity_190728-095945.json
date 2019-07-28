@@ -1,0 +1,93 @@
+{
+  "Name": "ComputerDisksCapacity",
+  "Result": 1.2152602826034621E+17,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 275765588.25688076,
+    "MeanSquaredError": 1.2152602801447043E+17,
+    "RootMeanSquaredError": 348605834.73956722,
+    "LossFunction": 1.2152602826034621E+17,
+    "RSquared": 0.060554908181160161
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 161.3495134,
+  "Schema": [
+    {
+      "Name": "PersonWorkArea",
+      "Index": 0,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonAge",
+      "Index": 1,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonGender",
+      "Index": 2,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonMainUse",
+      "Index": 3,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonPrice",
+      "Index": 4,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerComputerType",
+      "Index": 5,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerDisksCapacity",
+      "Index": 6,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    }
+  ]
+}

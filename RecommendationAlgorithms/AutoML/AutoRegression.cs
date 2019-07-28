@@ -121,6 +121,9 @@ namespace AutoML
 
             var experimentResult = experiment.Execute(dataView, label);
 
+            if (experimentResult.BestRun == null)
+                throw new AggregateException(experimentResult.RunDetails.Select(r => r.Exception));
+
             var learningResult = LearningResult.CreateFromRunDetail(experimentResult.BestRun,
                 experimentResult.BestRun.ValidationMetrics.LossFunction,
                 dataView.Schema,
@@ -129,6 +132,7 @@ namespace AutoML
             modelSaver?.SaveModel(learningResult);
 
             return learningResult;
+
         }
 
         public IEnumerable<(string Field, float PredictedValue)> GetResults(Person person)

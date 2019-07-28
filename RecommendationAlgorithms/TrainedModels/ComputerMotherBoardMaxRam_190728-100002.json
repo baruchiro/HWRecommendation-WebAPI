@@ -1,0 +1,93 @@
+{
+  "Name": "ComputerMotherBoardMaxRam",
+  "Result": 1428738149571.5293,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 456783.4473805147,
+    "MeanSquaredError": 1428738149694.1321,
+    "RootMeanSquaredError": 1195298.351749107,
+    "LossFunction": 1428738149571.5293,
+    "RSquared": 0.05880900837279035
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 165.8757096,
+  "Schema": [
+    {
+      "Name": "PersonWorkArea",
+      "Index": 0,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonAge",
+      "Index": 1,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonGender",
+      "Index": 2,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonMainUse",
+      "Index": 3,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonPrice",
+      "Index": 4,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerComputerType",
+      "Index": 5,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerMotherBoardMaxRam",
+      "Index": 6,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    }
+  ]
+}

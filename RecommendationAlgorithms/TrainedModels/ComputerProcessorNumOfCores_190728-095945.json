@@ -1,0 +1,93 @@
+{
+  "Name": "ComputerProcessorNumOfCores",
+  "Result": 1.6975502029172365,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 0.9787259958322766,
+    "MeanSquaredError": 1.6975502009655563,
+    "RootMeanSquaredError": 1.3029006872995179,
+    "LossFunction": 1.6975502029172365,
+    "RSquared": 0.34578210977755064
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 161.7238078,
+  "Schema": [
+    {
+      "Name": "PersonWorkArea",
+      "Index": 0,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonAge",
+      "Index": 1,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonGender",
+      "Index": 2,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonMainUse",
+      "Index": 3,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonPrice",
+      "Index": 4,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerComputerType",
+      "Index": 5,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerProcessorNumOfCores",
+      "Index": 6,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    }
+  ]
+}

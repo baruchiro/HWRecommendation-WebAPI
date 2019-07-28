@@ -1,0 +1,93 @@
+{
+  "Name": "ComputerMemoriesGeneration",
+  "Result": 0.0954808638034767,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 0.20380650575344378,
+    "MeanSquaredError": 0.0954808634880176,
+    "RootMeanSquaredError": 0.30899977910674564,
+    "LossFunction": 0.0954808638034767,
+    "RSquared": 0.064564293943472073
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 161.8013442,
+  "Schema": [
+    {
+      "Name": "PersonWorkArea",
+      "Index": 0,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonAge",
+      "Index": 1,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonGender",
+      "Index": 2,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonMainUse",
+      "Index": 3,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonPrice",
+      "Index": 4,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerComputerType",
+      "Index": 5,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerMemoriesGeneration",
+      "Index": 6,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "Name": "ComputerMotherBoardSataConnections",
+  "Result": 0.0,
+  "Exception": null,
+  "ValidationMetrics": {
+    "MeanAbsoluteError": 0.0,
+    "MeanSquaredError": 0.0,
+    "RootMeanSquaredError": 0.0,
+    "LossFunction": 0.0,
+    "RSquared": "NaN"
+  },
+  "TrainerName": "SdcaRegression",
+  "RuntimeInSeconds": 165.3304862,
+  "Schema": [
+    {
+      "Name": "PersonWorkArea",
+      "Index": 0,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonAge",
+      "Index": 1,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonGender",
+      "Index": 2,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonMainUse",
+      "Index": 3,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.ReadOnlyMemory`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "PersonPrice",
+      "Index": 4,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerComputerType",
+      "Index": 5,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    },
+    {
+      "Name": "ComputerMotherBoardSataConnections",
+      "Index": 6,
+      "IsHidden": false,
+      "Type": {
+        "RawType": "System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      },
+      "Annotations": {
+        "Schema": []
+      }
+    }
+  ]
+}
