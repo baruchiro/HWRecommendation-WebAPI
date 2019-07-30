@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HWWebApi\HWWebApi.csproj" />
+    <ProjectReference Include="..\..\HWWebApi\HWWebApi.csproj" />
     <ProjectReference Include="..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
 

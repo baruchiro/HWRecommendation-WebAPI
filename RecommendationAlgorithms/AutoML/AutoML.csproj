@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PersonalData.Bot\HW.Bot.csproj" />
+    <ProjectReference Include="..\..\HW.Bot\HW.Bot.csproj" />
     <ProjectReference Include="..\AlgorithmManager\AlgorithmManager.csproj" />
   </ItemGroup>
 

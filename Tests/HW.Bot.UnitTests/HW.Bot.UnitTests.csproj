@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ComputerUpgradeStrategies\ComputerUpgradeStrategies.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
-    <ProjectReference Include="..\PersonalData.Bot\HW.Bot.csproj" />
+    <ProjectReference Include="..\..\ComputerUpgradeStrategies\ComputerUpgradeStrategies.csproj" />
+    <ProjectReference Include="..\..\Models\Models.csproj" />
+    <ProjectReference Include="..\..\HW.Bot\HW.Bot.csproj" />
     <ProjectReference Include="..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
 
