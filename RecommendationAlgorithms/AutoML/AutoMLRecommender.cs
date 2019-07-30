@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AlgorithmManager;
 using AlgorithmManager.Factories;
 using HW.Bot.Interfaces;

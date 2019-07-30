@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using AlgorithmManager;
-using AlgorithmManager.Factories;
 using Microsoft.ML;
 using Models;
 

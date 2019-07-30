@@ -12,7 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Models;
 using Models.ModelEqualityComparer;
 using Newtonsoft.Json;
-using TestUtils;
 using Xunit;
 
 namespace HWWebApi.IntegrationTest

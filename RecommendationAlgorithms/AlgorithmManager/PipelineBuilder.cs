@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AlgorithmManager.Factories;
-using AlgorithmManager.Model;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using Microsoft.ML.Transforms;
-using Models;
 
 namespace AlgorithmManager
 {

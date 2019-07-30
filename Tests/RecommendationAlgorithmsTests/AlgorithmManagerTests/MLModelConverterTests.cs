@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
 using AlgorithmManager.ModelAttributes;
 using AlgoTestUtils;
-using EnumsNET;
 using Models;
 using Xunit;
 using TypeExtensions = AlgorithmManager.Extensions.TypeExtensions;

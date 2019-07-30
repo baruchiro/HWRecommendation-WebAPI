@@ -1,12 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Dialogs.MenuDialog;
+﻿using System.Linq;
 using HW.Bot.Extensions;
-using HW.Bot.Factories;
-using HW.Bot.Resources;
-using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 

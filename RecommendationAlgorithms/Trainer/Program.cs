@@ -2,7 +2,6 @@
 using AlgorithmManager;
 using DocoptNet;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
 
 namespace Trainer
 {

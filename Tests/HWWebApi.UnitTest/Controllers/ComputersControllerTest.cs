@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using FakeItEasy;
 using HWWebApi.Controllers;
 using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;

@@ -3,7 +3,6 @@ using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using AlgorithmManager.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.ML;

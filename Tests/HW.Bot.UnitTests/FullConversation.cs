@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using ComputerUpgradeStrategies.Recommendations.Disk;
 using FakeItEasy;
-using HW.Bot.Dialogs;
 using HW.Bot.Interfaces;
 using HW.Bot.Resources;
 using HW.Bot.UnitTests.Extensions;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ComputerUpgradeStrategies;
 using HW.Bot.Interfaces;
 using HWWebApi.Models;

@@ -1,5 +1,4 @@
 ﻿using ComputerUpgradeStrategies.DevicesInterfaces;
-using Models;
 
 namespace ComputerUpgradeStrategies.Recommendations.Disk
 {

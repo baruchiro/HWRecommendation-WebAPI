@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using HWWebApi.Controllers;
 using HWWebApi.Models;
 using HWWebApi.UnitTest.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Models;
-using Models.ModelEqualityComparer;
-using TestUtils;
 using Xunit;
 
 namespace HWWebApi.UnitTest

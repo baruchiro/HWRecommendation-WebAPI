@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO.Abstractions.TestingHelpers;
 using System.Linq;
-using System.Text;
 using AlgorithmManager;
 using AlgorithmManager.Interfaces;
 using FakeItEasy;

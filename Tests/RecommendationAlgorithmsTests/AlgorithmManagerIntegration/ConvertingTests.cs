@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using AlgorithmManager;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
 using AlgoTestUtils;
-using EnumsNET;
 using Xunit;
 using Microsoft.ML;
-using Models;
 
 namespace AlgorithmManagerIntegration
 {
