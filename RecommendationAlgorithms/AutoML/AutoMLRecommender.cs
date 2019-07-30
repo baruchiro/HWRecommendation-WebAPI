@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AlgorithmManager;
+﻿using AlgorithmManager;
 using AlgorithmManager.Factories;
 using HW.Bot.Interfaces;
 using Microsoft.ML;
 using Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AutoML
 {
@@ -19,7 +19,7 @@ namespace AutoML
 
         public IEnumerable<IRecommend> GetNewComputerRecommendations(Person person)
         {
-            return _regression.GetResults(person).Select(r => 
+            return _regression.GetResults(person).Select(r =>
                 new Recommend(r.Field, r.PredictedValue));
         }
 

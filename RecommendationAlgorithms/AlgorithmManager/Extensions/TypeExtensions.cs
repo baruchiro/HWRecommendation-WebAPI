@@ -1,10 +1,10 @@
-﻿using System;
+﻿using AlgorithmManager.Interfaces;
+using AlgorithmManager.ModelAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AlgorithmManager.Interfaces;
-using AlgorithmManager.ModelAttributes;
 
 namespace AlgorithmManager.Extensions
 {
@@ -67,7 +67,7 @@ namespace AlgorithmManager.Extensions
                 // ReSharper disable once UseNullPropagation
                 if (realType.IsEnum && enumToInt && resultValue != null)
                 {
-                    resultValue = (int) resultValue;
+                    resultValue = (int)resultValue;
                 }
 
                 yield return (prop.Name, resultValue);
@@ -89,7 +89,7 @@ namespace AlgorithmManager.Extensions
                     foreach (var nameValue in item.ResolveRecursiveNamesAndValue(enumToInt))
                     {
                         propNamesAndCollectionValues[nameValue.Key].GetType().GetMethod("Add")
-                            ?.Invoke(propNamesAndCollectionValues[nameValue.Key], new[] {nameValue.Value});
+                            ?.Invoke(propNamesAndCollectionValues[nameValue.Key], new[] { nameValue.Value });
                     }
                 }
 
@@ -203,7 +203,7 @@ namespace AlgorithmManager.Extensions
                     {
                         if (sourceType.IsArray)
                         {
-                            var array = (Array) keyValue.Value;
+                            var array = (Array)keyValue.Value;
 
                             var newArray = new float[array.Length];
                             for (var i = 0; i < array.Length; i++)
@@ -249,7 +249,7 @@ namespace AlgorithmManager.Extensions
             {
                 validateType = type.IsArray ? type.GetElementType() : type;
             }
-            
+
             switch (Type.GetTypeCode(validateType))
             {
                 case TypeCode.Byte:

@@ -7,5 +7,6 @@ namespace ComputerUpgradeStrategies.Adapters
     {
         public DiskAdapter(Disk disk) : base(disk)
         {
-        } }
+        }
+    }
 }

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AlgorithmManager.Extensions;
+﻿using AlgorithmManager.Extensions;
 using AlgorithmManager.Interfaces;
 using AlgorithmManager.Model;
 using Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AlgorithmManager.Factories
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Dialogs.AtomicDialogs;
+﻿using HW.Bot.Dialogs.AtomicDialogs;
 using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Dialogs.Steps;
 using HW.Bot.Extensions;
@@ -14,6 +8,12 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot.Dialogs
 {

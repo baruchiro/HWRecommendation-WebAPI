@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Models;
+using System;
 
 namespace TestUtils
 {
@@ -38,7 +38,7 @@ namespace TestUtils
                 MaxRam = 400000,
                 SataConnections = 2,
                 Architecture = Architecture.X64,
-                Manufacturer = "IBM", 
+                Manufacturer = "IBM",
                 Product = "BLA"
             };
             var gpu = GenerateGpu();

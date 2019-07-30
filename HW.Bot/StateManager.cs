@@ -1,11 +1,11 @@
-﻿using System;
-using System.ComponentModel;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Interfaces;
+﻿using HW.Bot.Interfaces;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Models;
+using System;
+using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot
 {
@@ -27,9 +27,9 @@ namespace HW.Bot
         public IStatePropertyAccessor<DialogState> ConversationDataAccessor { get; set; }
 
         public ConversationState ConversationState { get; }
-        
+
         public IStatePropertyAccessor<Person> PersonAccessor { get; set; }
-        
+
         public UserState UserState { get; }
         public Task<Person> GetPersonAsync(ITurnContext turnContext, CancellationToken cancellationToken)
         {
@@ -38,8 +38,8 @@ namespace HW.Bot
 
         public async Task SavePersonAsync(ITurnContext turnContext, Person person, CancellationToken cancellationToken)
         {
-             await PersonAccessor.SetAsync(turnContext, person, cancellationToken);
-             await UserState.SaveChangesAsync(turnContext, cancellationToken: cancellationToken);
+            await PersonAccessor.SetAsync(turnContext, person, cancellationToken);
+            await UserState.SaveChangesAsync(turnContext, cancellationToken: cancellationToken);
         }
 
         public async Task UpdatePersonAsync(ITurnContext turnContext, Action<Person> updateAction, CancellationToken cancellationToken)

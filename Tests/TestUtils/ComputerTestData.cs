@@ -12,6 +12,9 @@ namespace TestUtils
             yield return new object[] { TestUtils.GenerateEmptyComputer() };
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

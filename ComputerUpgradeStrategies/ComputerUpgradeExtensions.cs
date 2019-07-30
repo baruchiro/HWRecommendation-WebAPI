@@ -1,6 +1,6 @@
-﻿using Models;
+﻿using ComputerUpgradeStrategies.Recommendations;
+using Models;
 using System.Collections.Generic;
-using ComputerUpgradeStrategies.Recommendations;
 
 namespace ComputerUpgradeStrategies
 {

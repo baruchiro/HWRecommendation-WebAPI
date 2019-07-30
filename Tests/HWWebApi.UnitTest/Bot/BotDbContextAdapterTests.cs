@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using HWWebApi.Bot;
+﻿using HWWebApi.Bot;
 using HWWebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace HWWebApi.UnitTest.Bot
@@ -26,7 +26,7 @@ namespace HWWebApi.UnitTest.Bot
                 {"FFF", 3 }
             };
 
-            dbContext.Users.AddRange(worksDict.SelectMany(kv=>GenerateUsersForWork(kv.Key,kv.Value)));
+            dbContext.Users.AddRange(worksDict.SelectMany(kv => GenerateUsersForWork(kv.Key, kv.Value)));
             dbContext.SaveChanges();
 
             var orderedList = adapter.GetOrderedWorkList().ToArray();
@@ -42,7 +42,7 @@ namespace HWWebApi.UnitTest.Bot
         {
             for (var i = 0; i < count; i++)
             {
-                yield return new User {WorkArea = work};
+                yield return new User { WorkArea = work };
             }
         }
     }

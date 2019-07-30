@@ -10,7 +10,7 @@ namespace AlgorithmManager.Extensions
         {
             services.AddSingleton(provider => new MLContext(0));
             services.AddSingleton<AlgorithmManagerFactory>();
-            
+
             services.AddSingleton<ModelSaver>();
         }
     }

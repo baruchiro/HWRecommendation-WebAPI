@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ComputerUpgradeStrategies;
+﻿using ComputerUpgradeStrategies;
 using HW.Bot.Interfaces;
 using HWWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HWWebApi.Bot
 {
@@ -23,7 +23,7 @@ namespace HWWebApi.Bot
             return _dbContext.Users.Select(u => u.WorkArea)
                 .GroupBy(w => w)
                 .OrderByDescending(g => g.Count())
-                .Select(w=>w.Key);
+                .Select(w => w.Key);
         }
 
         public bool SavePerson(string channelId, string userId, Person person)
@@ -57,8 +57,8 @@ namespace HWWebApi.Bot
         public IEnumerable<string> GetRecommendationsForScan(Guid guid)
         {
             var scan = _dbContext.Scans
-                .Include(s=>s.Computer)
-                .Include(s=>s.Computer.Disks)
+                .Include(s => s.Computer)
+                .Include(s => s.Computer.Disks)
                 .Include(s => s.Computer.Gpus)
                 .Include(s => s.Computer.Memories)
                 .Include(s => s.Computer.MotherBoard)
@@ -66,7 +66,7 @@ namespace HWWebApi.Bot
                 .FirstOrDefault(ss => ss.Id == guid);
             var computer = scan?.Computer;
 
-            return computer?.GetUpgradeRecommendations().Select(r=>r.ToString());
+            return computer?.GetUpgradeRecommendations().Select(r => r.ToString());
         }
 
         private User GetUserByUserChannel(UserChannel userChannel)

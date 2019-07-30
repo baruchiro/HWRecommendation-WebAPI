@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Dialogs.MenuDialog;
+﻿using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {

@@ -11,13 +11,15 @@ namespace HWWebApi
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureLogging(builder =>
-                {
-                    builder.AddConsole();
-                    builder.AddDebug();
-                })
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
+.ConfigureLogging(builder =>
+{
+    builder.AddConsole();
+    builder.AddDebug();
+})
+.UseStartup<Startup>();
+        }
     }
 }

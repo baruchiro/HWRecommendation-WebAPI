@@ -1,14 +1,14 @@
-﻿using System;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Dialogs.MenuDialog;
+﻿using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Dialogs.Steps;
 using HW.Bot.Interfaces;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot.Dialogs
 {
@@ -24,7 +24,7 @@ namespace HW.Bot.Dialogs
         public NewComputerDialogComponent(string dialogId, IPersonStateManager accessors, IDbContext dbContext,
             IRecommender recommender,
             string menuItemOptionText = null)
-        :base(dialogId)
+        : base(dialogId)
         {
             _dbContext = dbContext;
             _accessors = accessors;

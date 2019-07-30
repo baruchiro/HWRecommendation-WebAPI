@@ -7,7 +7,7 @@ namespace AlgorithmManager.ModelAttributes
     {
         public FeatureAttribute()
         {
-            
+
         }
     }
 }

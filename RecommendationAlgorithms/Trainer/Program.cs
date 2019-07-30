@@ -1,7 +1,7 @@
-﻿using System;
-using AlgorithmManager;
+﻿using AlgorithmManager;
 using DocoptNet;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Trainer
 {

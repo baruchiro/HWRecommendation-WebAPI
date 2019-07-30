@@ -1,9 +1,3 @@
-using System;
-using System.Globalization;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using HWWebApi.Models;
 using HWWebApi.UnitTest.Utils;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -12,6 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Models;
 using Models.ModelEqualityComparer;
 using Newtonsoft.Json;
+using System;
+using System.Globalization;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace HWWebApi.IntegrationTest

@@ -1,14 +1,14 @@
-﻿using System;
+﻿using AlgorithmManager;
+using AlgorithmManager.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.ML;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AlgorithmManager;
-using Microsoft.ML;
-using AlgorithmManager.Interfaces;
-using Microsoft.Extensions.Configuration;
-using Models;
 
 namespace Trainer
 {
@@ -54,7 +54,7 @@ namespace Trainer
                 MaxDegreeOfParallelism = System.Environment.ProcessorCount
             };
 
-            Parallel.ForEach(_algorithms,po, algorithm => StartAlgorithmTask(algorithm, minutes));
+            Parallel.ForEach(_algorithms, po, algorithm => StartAlgorithmTask(algorithm, minutes));
         }
 
         private void StartAlgorithmTask(IRecommendationAlgorithmLearner algorithm, uint timeoutInMinutes)

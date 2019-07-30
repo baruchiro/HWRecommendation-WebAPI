@@ -1,11 +1,11 @@
-using System.IO;
-using System.Linq;
 using AlgorithmManager;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
 using AlgoTestUtils;
-using Xunit;
 using Microsoft.ML;
+using System.IO;
+using System.Linq;
+using Xunit;
 
 namespace AlgorithmManagerIntegration
 {
@@ -26,11 +26,11 @@ namespace AlgorithmManagerIntegration
             var dataLoader = new DataLoader(_mlContext, _fakeDataFilePath, _fakeDataDtypesFilePath);
             var expected = dataLoader.EnumerateData()
                 .Select(t => new PersonComputerStructureModel
-            {
-                Computer = t.Item2,
-                Person = t.Item1
+                {
+                    Computer = t.Item2,
+                    Person = t.Item1
 
-            }).ToList();
+                }).ToList();
 
             var actual = expected
                 .Select(TypeExtensions.CreateFilledMLObject<MLPersonComputerModel, PersonComputerStructureModel>);

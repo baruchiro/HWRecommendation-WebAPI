@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.ML.Data;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.ML.Data;
 
 namespace AlgorithmManager
 {

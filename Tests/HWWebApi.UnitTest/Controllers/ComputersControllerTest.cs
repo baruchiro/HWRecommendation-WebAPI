@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using HWWebApi.Controllers;
+﻿using HWWebApi.Controllers;
 using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Models.ModelEqualityComparer;
+using System.Linq;
 using TestUtils;
 using Xunit;
 
@@ -40,7 +40,7 @@ namespace HWWebApi.UnitTest.Controllers
             using (var context = new HardwareContext(_options))
             {
                 var computersController = new ComputersController(context);
-                result = computersController.Get(computer.Id);     
+                result = computersController.Get(computer.Id);
             }
 
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
@@ -64,7 +64,7 @@ namespace HWWebApi.UnitTest.Controllers
                 Assert.Equal(1, context.Computers.Count());
                 Assert.Equal(computer, context.Computers.Include(c => c.Disks)
                     .Include(c => c.Gpus)
-                    .ThenInclude(g=> g.Memory)
+                    .ThenInclude(g => g.Memory)
                     .Include(c => c.Memories)
                     .Include(c => c.MotherBoard)
                     .Include(c => c.Processor)

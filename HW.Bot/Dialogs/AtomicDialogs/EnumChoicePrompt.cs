@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using HW.Bot.Extensions;
+﻿using HW.Bot.Extensions;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
+using System.Linq;
 
 namespace HW.Bot.Dialogs.AtomicDialogs
 {

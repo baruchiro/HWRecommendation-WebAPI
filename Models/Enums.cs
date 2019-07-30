@@ -1,7 +1,7 @@
-using System.ComponentModel;
 using Newtonsoft.Json;
-using System.Runtime.Serialization;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Models
 {

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Models;
+﻿using Models;
+using System.Collections.Generic;
 
 namespace HW.Bot.Interfaces
 {

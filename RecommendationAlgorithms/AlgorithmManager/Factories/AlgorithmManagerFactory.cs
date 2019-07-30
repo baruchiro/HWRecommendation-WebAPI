@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using AlgorithmManager.Model;
+﻿using AlgorithmManager.Model;
 using Microsoft.ML;
 using Models;
+using System;
+using System.Collections.Generic;
 
 namespace AlgorithmManager.Factories
 {

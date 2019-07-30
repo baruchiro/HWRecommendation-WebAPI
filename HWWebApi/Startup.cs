@@ -1,4 +1,3 @@
-using System.IO;
 using AlgorithmManager.Extensions;
 using AutoML;
 using HW.Bot;
@@ -13,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace HWWebApi
 {
@@ -43,12 +43,12 @@ namespace HWWebApi
                 {
                     c.IncludeXmlComments("HWWebApi.xml");
                 }
-                else if (File.Exists(Path.Combine("..","HWWebApi.xml")))
+                else if (File.Exists(Path.Combine("..", "HWWebApi.xml")))
                 {
                     c.IncludeXmlComments(Path.Combine("..", "HWWebApi.xml"));
 
                 }
-                
+
             });
 
             services.RegisterRecommendationAlgorithm();

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using HWWebApi.Controllers;
+﻿using HWWebApi.Controllers;
 using HWWebApi.Models;
 using HWWebApi.UnitTest.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace HWWebApi.UnitTest

@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Dialogs;
+﻿using HW.Bot.Dialogs;
 using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Interfaces;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot
 {

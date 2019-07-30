@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HWWebApi.Models;
+﻿using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HWWebApi.Controllers
 {
@@ -70,7 +70,7 @@ namespace HWWebApi.Controllers
         [HttpPost("DataOnly")]
         public async Task<ActionResult<TestString>> PostTestString([FromForm]string data)
         {
-            var testString = new TestString {Data = data};
+            var testString = new TestString { Data = data };
             _context.TestStrings.Add(testString);
             await _context.SaveChangesAsync();
 

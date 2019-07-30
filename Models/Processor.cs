@@ -5,7 +5,7 @@ namespace Models
 
         public long Id { get; set; }
         public string Name { get; set; }
-        public long? GHz { get; set; } 
+        public long? GHz { get; set; }
         public int? NumOfCores { get; set; }
         public Architecture? Architecture { get; set; }
         public string Manufacturer { get; set; }

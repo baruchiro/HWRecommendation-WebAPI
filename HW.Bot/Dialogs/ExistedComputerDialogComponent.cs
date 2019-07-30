@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Dialogs.MenuDialog;
+﻿using HW.Bot.Dialogs.MenuDialog;
 using HW.Bot.Dialogs.Steps;
 using HW.Bot.Interfaces;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot.Dialogs
 {
@@ -31,7 +31,7 @@ namespace HW.Bot.Dialogs
 
         private Task<bool> Validator(PromptValidatorContext<string> promptcontext, CancellationToken cancellationtoken)
         {
-            var exitSynonyms = new[] {"exit", "done", "return"};
+            var exitSynonyms = new[] { "exit", "done", "return" };
             switch (promptcontext.Recognized.Value)
             {
                 case var s1 when exitSynonyms.Contains(s1.ToLower()):
@@ -103,7 +103,7 @@ namespace HW.Bot.Dialogs
         public const string SCAN_ID_PROMPT = nameof(ExistedComputerDialogComponent) + "_" + nameof(SCAN_ID_PROMPT);
         public const string PERSONAL_DATA_DIALOG = nameof(ExistedComputerDialogComponent) + "_" + nameof(PERSONAL_DATA_DIALOG);
         public const string EXIST_USER_MENU = nameof(ExistedComputerDialogComponent) + "_" + nameof(EXIST_USER_MENU);
-        public const string NEW_USER_DIALOG  = nameof(ExistedComputerDialogComponent) + "_" + nameof(NEW_USER_DIALOG);
+        public const string NEW_USER_DIALOG = nameof(ExistedComputerDialogComponent) + "_" + nameof(NEW_USER_DIALOG);
         public const string MAIN_WATERFALL = nameof(ExistedComputerDialogComponent) + "_" + nameof(MAIN_WATERFALL);
         public string MenuItemOptionText { get; }
         public Func<ITurnContext, object, CancellationToken, Task> HandleResult { get; }

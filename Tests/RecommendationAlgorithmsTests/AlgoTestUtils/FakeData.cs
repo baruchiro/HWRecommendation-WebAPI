@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using AlgorithmManager;
+﻿using AlgorithmManager;
 using Microsoft.ML;
 using Models;
+using System.Collections.Generic;
+using System.IO;
 
 namespace AlgoTestUtils
 {

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ComputerUpgradeStrategies.Adapters;
+﻿using ComputerUpgradeStrategies.Adapters;
 using ComputerUpgradeStrategies.DevicesInterfaces;
 using ComputerUpgradeStrategies.Recommendations;
 using ComputerUpgradeStrategies.Strategies;
 using ComputerUpgradeStrategies.Strategies.Simple;
 using Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ComputerUpgradeStrategies
 {
@@ -18,7 +18,7 @@ namespace ComputerUpgradeStrategies
         public UpgradeRecommend(Computer computer, IRecommendationStrategy<IDiskDevice> diskStrategy = null, IRecommendationStrategy<IMemoryDevice> memoryStrategy = null)
         {
             _computer = new ComputerAdapter(computer);
-            _diskStrategy = diskStrategy?? new SimpleDiskStrategy();
+            _diskStrategy = diskStrategy ?? new SimpleDiskStrategy();
             _memoryStrategy = memoryStrategy ?? new SimpleMemoryStrategy();
         }
 

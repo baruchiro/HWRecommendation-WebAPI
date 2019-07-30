@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using HW.Bot.Resources;
+﻿using HW.Bot.Resources;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HW.Bot.Dialogs.MenuDialog
 {
@@ -16,7 +16,7 @@ namespace HW.Bot.Dialogs.MenuDialog
         private readonly Dictionary<string, Dialog> _mapTitleToDialog;
         private readonly Dictionary<string, IMenuItemDialog> _mapDialogIdToMenuItem;
         private readonly ICollection<string> _menuItemTitles;
-        
+
         private const string SELECTED_DIALOG_ID = nameof(MenuDialogComponent) + "_selectedDialog";
         private const string WATERFALL_DIALOG = nameof(MenuDialogComponent) + "_waterfall";
         private const string CHOICE_DIALOG = nameof(MenuDialogComponent) + "_choice";

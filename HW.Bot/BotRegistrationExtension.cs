@@ -1,12 +1,12 @@
-﻿using System;
-using System.ComponentModel;
-using HW.Bot.Interfaces;
+﻿using HW.Bot.Interfaces;
 using HW.Bot.Middleware;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.BotFramework;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.ComponentModel;
 
 namespace HW.Bot
 {
@@ -35,7 +35,7 @@ namespace HW.Bot
         }
 
         public static void AddRecommendationBot<TDbContext, TRecommender>(this IServiceCollection services,
-            Func<IServiceProvider,TDbContext> dbContextImplementationFactory,
+            Func<IServiceProvider, TDbContext> dbContextImplementationFactory,
             Func<IServiceProvider, TRecommender> recommenderImplementationFactory)
             where TDbContext : class, IDbContext
             where TRecommender : class, IRecommender

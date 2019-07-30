@@ -1,6 +1,6 @@
-using System.Linq;
 using AlgoTestUtils;
 using Models;
+using System.Linq;
 using Xunit;
 
 namespace AlgorithmManagerTests

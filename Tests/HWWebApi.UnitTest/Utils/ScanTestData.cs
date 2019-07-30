@@ -1,12 +1,12 @@
-﻿using System;
+﻿using HWWebApi.Models;
+using Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using HWWebApi.Models;
-using Models;
 
 namespace HWWebApi.UnitTest.Utils
 {
-    public class ScanTestData: IEnumerable<object[]>
+    public class ScanTestData : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()
         {
@@ -15,7 +15,10 @@ namespace HWWebApi.UnitTest.Utils
             yield return new object[] { GenerateEmptyScan() };
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         public static Scan GenerateScan()
         {

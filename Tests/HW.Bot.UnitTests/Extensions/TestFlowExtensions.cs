@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using EnumsNET;
+﻿using EnumsNET;
 using HW.Bot.Resources;
 using Microsoft.Bot.Builder.Adapters;
 using Models;
+using System;
+using System.Linq;
 
 namespace HW.Bot.UnitTests.Extensions
 {
@@ -59,7 +59,7 @@ namespace HW.Bot.UnitTests.Extensions
                 .Send(work)
 
                 .AssertReplyContain(string.Format(BotStrings.Saving_info_of_user, "user1", "test"))
-                .AssertReplyContainAll(new[] {BotStrings.Saving_your_data, gender, age, work});
+                .AssertReplyContainAll(new[] { BotStrings.Saving_your_data, gender, age, work });
         }
 
         public static TestFlow AssertEachReplyContainOneOf(this TestFlow testFlow, string[] messages,

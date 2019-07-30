@@ -9,9 +9,9 @@ namespace AlgorithmManager.ModelAttributes
         protected override object Invoke(object array)
         {
             var method = typeof(Enumerable).GetMethod("Min",
-                    new[] {array.GetType()}) ??
+                    new[] { array.GetType() }) ??
                 throw new MissingMethodException(typeof(Enumerable).FullName, "Min");
-            return method.Invoke(array, new[] {array});
+            return method.Invoke(array, new[] { array });
         }
     }
 }

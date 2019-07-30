@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Dialogs;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
 
 namespace HW.Bot.Dialogs.MenuDialog
 {

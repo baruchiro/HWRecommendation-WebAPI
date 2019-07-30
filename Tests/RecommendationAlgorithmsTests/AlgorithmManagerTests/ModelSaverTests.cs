@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Abstractions.TestingHelpers;
-using System.Linq;
-using AlgorithmManager;
+﻿using AlgorithmManager;
 using AlgorithmManager.Interfaces;
 using FakeItEasy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
+using System;
+using System.Collections.Generic;
+using System.IO.Abstractions.TestingHelpers;
+using System.Linq;
 using Xunit;
 
 namespace AlgorithmManagerTests
@@ -28,7 +28,7 @@ namespace AlgorithmManagerTests
                 new KeyValuePair<string, string>(ModelSaver.KEY_MODEL_SAVE_PATH, _fileSystem.Path.GetTempPath())
             });
 
-                
+
             _modelSaver = new ModelSaver(mlContext, configurationBuilder.Build(), _fileSystem);
         }
 
@@ -42,7 +42,7 @@ namespace AlgorithmManagerTests
             var now = DateTime.Now;
             _modelSaver.SaveModel(learningResult);
 
-            var extensions = new List<string> {".zip", ".json"};
+            var extensions = new List<string> { ".zip", ".json" };
             var files = _fileSystem.Directory.GetFiles(_outputDir, $"{label}*")
                 .Where(f => extensions.Contains(_fileSystem.Path.GetExtension(f)))
                 .ToList();
@@ -50,7 +50,7 @@ namespace AlgorithmManagerTests
             Assert.Equal(2, files.Count);
             Assert.Equal(now, _modelSaver.GetModelCreationTime(files[0]),
                 TimeSpan.FromSeconds(1));
-            Assert.Equal(now, _modelSaver.GetModelCreationTime(files[1]), 
+            Assert.Equal(now, _modelSaver.GetModelCreationTime(files[1]),
                 TimeSpan.FromSeconds(1));
         }
     }

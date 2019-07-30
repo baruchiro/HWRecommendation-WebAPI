@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using ComputerUpgradeStrategies.Recommendations.Disk;
 using FakeItEasy;
 using HW.Bot.Interfaces;
@@ -10,6 +7,9 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Adapters;
 using Microsoft.Extensions.DependencyInjection;
 using Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace HW.Bot.UnitTests
@@ -61,7 +61,7 @@ namespace HW.Bot.UnitTests
         public async Task FullConversation_ExistComputerRecommendation()
         {
             A.CallTo(() => _dbContext.GetRecommendationsForScan(A<Guid>.Ignored))
-                .Returns(new[] {DiskRecommendations.Replace_HDD_SDD});
+                .Returns(new[] { DiskRecommendations.Replace_HDD_SDD });
 
             await new TestFlow(_adapter, _bot)
                 .Send("Hi")
@@ -75,7 +75,7 @@ namespace HW.Bot.UnitTests
 
                 .AssertReplyContainAll(new[]
                     {BotStrings.DownloadOurSoftware_windows_withoutLink, BotStrings.LinkToLateasSoftware_windows})
-                .AssertReplyContainAll(new[] {BotStrings.ScanIdOrExit})
+                .AssertReplyContainAll(new[] { BotStrings.ScanIdOrExit })
 
                 .Send(Guid.NewGuid().ToString())
                 .AssertReplyContain(BotStrings.Here_our_recommendations_for_you)
