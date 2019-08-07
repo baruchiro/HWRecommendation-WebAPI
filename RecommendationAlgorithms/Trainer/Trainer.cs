@@ -51,7 +51,7 @@ namespace Trainer
             var po = new ParallelOptions
             {
                 CancellationToken = _cancellationTokenSource.Token,
-                MaxDegreeOfParallelism = System.Environment.ProcessorCount
+                MaxDegreeOfParallelism = Environment.ProcessorCount
             };
 
             Parallel.ForEach(_algorithms, po, algorithm => StartAlgorithmTask(algorithm, minutes));
