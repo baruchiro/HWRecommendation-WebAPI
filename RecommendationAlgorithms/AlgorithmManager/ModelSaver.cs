@@ -1,13 +1,12 @@
-﻿using System;
+﻿using AlgorithmManager.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.ML;
+using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
-using AlgorithmManager.Interfaces;
-using Microsoft.Extensions.Configuration;
-using Microsoft.ML;
-using Newtonsoft.Json;
 
 namespace AlgorithmManager
 {
@@ -60,7 +59,7 @@ namespace AlgorithmManager
                                  _fileSystem.Path.Combine(_outputDir, modelName + "*.json"));
             var newestZip = GetNewestFile(modelName, "zip") ?? throw new FileNotFoundException(
                                 $"The saved model: {modelName} is not exist",
-                                _fileSystem.Path.Combine(_outputDir, modelName + "*.zip"));;
+                                _fileSystem.Path.Combine(_outputDir, modelName + "*.zip")); ;
 
             var json = _fileSystem.File.ReadAllText(newestJson);
             var learningResult = JsonConvert.DeserializeObject<LearningResult>(json);
@@ -83,7 +82,7 @@ namespace AlgorithmManager
         {
             var filenameWithoutExtension = _fileSystem.Path.GetFileNameWithoutExtension(filename);
             return DateTime.ParseExact(filenameWithoutExtension?.Split('_').Last(),
-                _dateFormat, null); 
+                _dateFormat, null);
         }
     }
 }

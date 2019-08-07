@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using AlgorithmManager.Interfaces;
+﻿using AlgorithmManager.Interfaces;
 using AlgorithmManager.ModelAttributes;
-using Microsoft.ML.Data;
 using Models;
 
 namespace AlgorithmManager.Model

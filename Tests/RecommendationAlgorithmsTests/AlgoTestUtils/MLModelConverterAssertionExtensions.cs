@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using AlgorithmManager.Model;
+﻿using AlgorithmManager.Model;
 using EnumsNET;
 using Models;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace AlgoTestUtils
@@ -43,7 +43,7 @@ namespace AlgoTestUtils
                 Assert.NotEmpty(mlPersonComputerModel.ComputerDisksModel);
                 Assert.NotEmpty(mlPersonComputerModel.ComputerDisksType);
 
-                var diskTypeNullableFirst = personComputerStructureModel.Computer.Disks.First().Type?? default;
+                var diskTypeNullableFirst = personComputerStructureModel.Computer.Disks.First().Type ?? default;
                 var diskModelFirst = personComputerStructureModel.Computer.Disks.First().Model ?? default;
 
 

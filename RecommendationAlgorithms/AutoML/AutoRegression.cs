@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AlgorithmManager;
+﻿using AlgorithmManager;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Factories;
 using AlgorithmManager.Interfaces;
@@ -15,12 +8,19 @@ using Microsoft.ML;
 using Microsoft.ML.AutoML;
 using Microsoft.ML.Data;
 using Models;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutoML
 {
     public class AutoRegression : IRecommendationAlgorithmLearner
     {
-        private readonly ICollection<string> _labels = 
+        private readonly ICollection<string> _labels =
             typeof(MLPersonComputerModel)
             .GetPropertiesNamesByAttribute<RegressionLabelAttribute>()
             .ToList();
@@ -30,7 +30,7 @@ namespace AutoML
         private readonly ModelSaver _modelSaver;
         private IDictionary<string, PredictionEngine<MLPersonComputerModel, ComputerPrediction>> _savedModels = new ConcurrentDictionary<string, PredictionEngine<MLPersonComputerModel, ComputerPrediction>>();
 
-        public AutoRegression(){}
+        public AutoRegression() { }
 
         public AutoRegression(MLContext mlContext, AlgorithmManagerFactory factory, ModelSaver modelSaver)
         {
@@ -48,7 +48,7 @@ namespace AutoML
                 try
                 {
                     var model = _modelSaver.LoadLearningResult(label);
-                    
+
                     _savedModels[label] = _mlContext.Model.CreatePredictionEngine<MLPersonComputerModel, ComputerPrediction>(
                     model.Model);
                 }
@@ -95,7 +95,7 @@ namespace AutoML
 
             if (!parallel) return _labels.Select(l => TrainOneLabel(l, experimentSettings, data, modelSaver));
 
-            var parallelOptions = new ParallelOptions {CancellationToken = cancellationToken};
+            var parallelOptions = new ParallelOptions { CancellationToken = cancellationToken };
             var results = new BlockingCollection<LearningResult>();
             Parallel.ForEach(_labels,
                 parallelOptions,
@@ -119,7 +119,7 @@ namespace AutoML
 
             var experiment = _mlContext.Auto().CreateRegressionExperiment(experimentSettings);
 
-            var experimentResult = experiment.Execute(dataView, label, preFeaturizer:pipeline);
+            var experimentResult = experiment.Execute(dataView, label, preFeaturizer: pipeline);
 
             if (experimentResult.BestRun == null)
                 throw new AggregateException(experimentResult.RunDetails.Select(r => r.Exception));

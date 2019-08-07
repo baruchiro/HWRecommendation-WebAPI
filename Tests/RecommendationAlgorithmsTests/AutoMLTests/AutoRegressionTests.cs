@@ -1,10 +1,10 @@
-using System.Linq;
 using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
 using AlgorithmManager.ModelAttributes;
 using AlgoTestUtils;
 using AutoML;
 using Microsoft.ML;
+using System.Linq;
 using Xunit;
 
 namespace AutoMLTests
@@ -14,7 +14,7 @@ namespace AutoMLTests
         [Fact(Skip = "Very long test, should be with injection")]
         public void TrainAll_ZeroTime_ValidateResultsCount()
         {
-            var mlContext =  new MLContext(0);
+            var mlContext = new MLContext(0);
             var fakeData = new FakeData(mlContext);
             var autoRegression = new AutoRegression();
             var labels = typeof(MLPersonComputerModel)

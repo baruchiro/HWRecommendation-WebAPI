@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HWWebApi.Models;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HWWebApi.Controllers
 {
@@ -29,8 +26,8 @@ namespace HWWebApi.Controllers
             if (_context.Scans.Any(c => c.Id == id))
             {
                 return Ok(await _context.Scans
-                    .Include(s=>s.User)
-                    .Include(s=>s.Computer)
+                    .Include(s => s.User)
+                    .Include(s => s.Computer)
                     .SingleAsync(c => c.Id == id));
             }
 

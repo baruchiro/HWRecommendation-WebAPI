@@ -1,8 +1,5 @@
-﻿using System;
+﻿using ComputerUpgradeStrategies.Recommendations;
 using System.Collections.Generic;
-using System.Text;
-using ComputerUpgradeStrategies.Recommendations;
-using Models;
 
 namespace ComputerUpgradeStrategies.Strategies
 {

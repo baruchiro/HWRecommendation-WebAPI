@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <CodeAnalysisRuleSet>..\..\HWRecommendation-WebAPI.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
 
   </PropertyGroup>
 

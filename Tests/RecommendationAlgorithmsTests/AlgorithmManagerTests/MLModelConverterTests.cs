@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using AlgorithmManager.Extensions;
+﻿using AlgorithmManager.Extensions;
 using AlgorithmManager.Model;
 using AlgorithmManager.ModelAttributes;
 using AlgoTestUtils;
-using EnumsNET;
 using Models;
+using System;
+using System.Linq;
+using System.Reflection;
 using Xunit;
 using TypeExtensions = AlgorithmManager.Extensions.TypeExtensions;
 
@@ -31,7 +28,7 @@ namespace AlgorithmManagerTests
         [Fact]
         public void MLModels_Gpu_ValidateNamesAndTypes()
         {
-           AssertComparePropertyNamesTypesAgainstMLType<Gpu, MLGpuModel>();
+            AssertComparePropertyNamesTypesAgainstMLType<Gpu, MLGpuModel>();
         }
 
         [Fact]
@@ -87,7 +84,7 @@ namespace AlgorithmManagerTests
                 Computer = TestUtils.TestUtils.GenerateEmptyComputer(),
                 Person = TestUtils.TestUtils.GeneratePerson()
             };
-            
+
             var personComputerMLModel =
                 TypeExtensions.CreateFilledMLObject<MLPersonComputerModel, PersonComputerStructureModel>(
                     personComputer);

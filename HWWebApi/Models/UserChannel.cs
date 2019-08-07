@@ -1,5 +1,5 @@
-﻿using System;
-using Models;
+﻿using Models;
+using System;
 
 namespace HWWebApi.Models
 {

@@ -11,7 +11,7 @@ namespace HWWebApi.Controllers
 
         protected GenericControllerBase(HardwareContext context)
         {
-            this.Context = context;
+            Context = context;
         }
 
         [HttpPost]

@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\RecommendationAlgorithms\AlgorithmManager\AlgorithmManager.csproj" />
-    <ProjectReference Include="..\..\..\TestUtils\TestUtils.csproj" />
+    <ProjectReference Include="..\..\TestUtils\TestUtils.csproj" />
     <ProjectReference Include="..\AlgoTestUtils\AlgoTestUtils.csproj" />
   </ItemGroup>
 </Project>

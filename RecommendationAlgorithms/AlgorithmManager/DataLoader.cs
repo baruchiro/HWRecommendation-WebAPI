@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using EnumsNET;
+﻿using EnumsNET;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace AlgorithmManager
 {
@@ -16,10 +16,13 @@ namespace AlgorithmManager
         private readonly MLContext _mlContext;
         private readonly TextLoader.Column[] _columns;
 
-        public IEnumerable<(Person, Computer)> EnumerateData() => File.ReadLines(_dataFilePath)
-            .Skip(1)
-            .Select(l => l.Split(','))
-            .Select(CreateTupleFromStringArray);
+        public IEnumerable<(Person, Computer)> EnumerateData()
+        {
+            return File.ReadLines(_dataFilePath)
+.Skip(1)
+.Select(l => l.Split(','))
+.Select(CreateTupleFromStringArray);
+        }
 
         public DataLoader(MLContext mlContext, string dataCsvPath, string dtypesCsvPath)
         {
@@ -101,9 +104,9 @@ namespace AlgorithmManager
                 var computer = new Computer
                 {
                     ComputerType = ParseEnum<ComputerType>(arg[1]),
-                    Disks = new List<Disk> {disk},
-                    Gpus = new List<Gpu> {gpu},
-                    Memories = new List<Memory> {memory},
+                    Disks = new List<Disk> { disk },
+                    Gpus = new List<Gpu> { gpu },
+                    Memories = new List<Memory> { memory },
                     MotherBoard = motherBoard,
                     Processor = processor
                 };

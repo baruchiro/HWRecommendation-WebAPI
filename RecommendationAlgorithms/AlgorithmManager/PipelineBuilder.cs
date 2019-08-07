@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Microsoft.ML;
+using Microsoft.ML.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using AlgorithmManager.Factories;
-using AlgorithmManager.Model;
-using Microsoft.ML;
-using Microsoft.ML.Data;
-using Microsoft.ML.Transforms;
-using Models;
 
 namespace AlgorithmManager
 {
@@ -52,7 +48,7 @@ namespace AlgorithmManager
         }
 
         /// <summary>
-        /// Add <see cref="IEstimator{TTransformer}"/> to convert all <see cref="NumberDataViewType"/> columns to <see cref="DataKind.Single"/>. (Known as <seealso cref="Single"/> or <seealso cref="float"/>
+        /// Add <see cref="IEstimator{TTransformer}"/> to convert all <see cref="NumberDataViewType"/> columns to <see cref="DataKind.Single"/>. (Known as <seealso cref="float"/> or <seealso cref="float"/>
         /// </summary>
         /// <returns>Called <see cref="PipelineBuilder"/></returns>
         public PipelineBuilder ConvertNumberToSingle(bool convertVectors = true)

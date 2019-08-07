@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Abstractions;
-using System.Text;
-using AlgorithmManager.Factories;
+﻿using AlgorithmManager.Factories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.ML;
 
@@ -14,7 +10,7 @@ namespace AlgorithmManager.Extensions
         {
             services.AddSingleton(provider => new MLContext(0));
             services.AddSingleton<AlgorithmManagerFactory>();
-            
+
             services.AddSingleton<ModelSaver>();
         }
     }

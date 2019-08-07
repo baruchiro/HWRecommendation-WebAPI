@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using AlgorithmManager;
+﻿using AlgorithmManager;
 using AlgorithmManager.Factories;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using System.IO;
+using System.Linq;
 using Xunit;
 
 namespace AlgorithmManagerTests
@@ -57,13 +54,13 @@ namespace AlgorithmManagerTests
         {
             var dataView = new AlgorithmManagerFactory(_mlContext)
                 .CreateDataViewFromCsv(_fakeDataFilePath, _fakeDataDtypesFilePath);
-            var originalSchema = dataView.Schema.OrderBy(c=>c.Name).ToList();
+            var originalSchema = dataView.Schema.OrderBy(c => c.Name).ToList();
 
             var convertedDataView = new PipelineBuilder(_mlContext, originalSchema)
                 .ConvertNumberToSingle(false)
                 .TransformData(dataView);
 
-            var zip = originalSchema.Zip(convertedDataView.Schema.OrderBy(c=>c.Name),
+            var zip = originalSchema.Zip(convertedDataView.Schema.OrderBy(c => c.Name),
                 (orig, convert) => (orig.Type, convert.Type));
 
             Assert.All(zip, ConvertedFromTo<NumberDataViewType, float>);

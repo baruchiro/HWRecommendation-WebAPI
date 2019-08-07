@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AlgorithmManager.ModelAttributes
 {
@@ -9,7 +7,7 @@ namespace AlgorithmManager.ModelAttributes
     {
         public FeatureAttribute()
         {
-            
+
         }
     }
 }

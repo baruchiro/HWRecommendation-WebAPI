@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ComputerUpgradeStrategies.DevicesInterfaces;
+﻿using ComputerUpgradeStrategies.DevicesInterfaces;
 using ComputerUpgradeStrategies.Recommendations;
 using ComputerUpgradeStrategies.Recommendations.Memory;
-using Models;
+using System.Collections.Generic;
 
 namespace ComputerUpgradeStrategies.Strategies.Simple
 {

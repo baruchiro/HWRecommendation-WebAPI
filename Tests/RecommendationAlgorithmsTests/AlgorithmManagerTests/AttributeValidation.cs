@@ -1,17 +1,16 @@
-﻿using System;
+﻿using AlgorithmManager.Interfaces;
+using AlgorithmManager.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using AlgorithmManager.Interfaces;
-using AlgorithmManager.Model;
 using Xunit;
 
 namespace AlgorithmManagerTests
 {
     public class AttributeValidation
     {
-        public static IEnumerable<object[]> Models =new List<IMLModel[]>{
+        public static IEnumerable<object[]> Models = new List<IMLModel[]>{
             new IMLModel[]{new MLGpuModel()},
-            new IMLModel[]{new MLComputerModel()}, 
+            new IMLModel[]{new MLComputerModel()},
             new IMLModel[]{new MLPersonComputerModel()}
         };
 

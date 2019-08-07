@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using ComputerUpgradeStrategies.Adapters;
-using ComputerUpgradeStrategies.DevicesInterfaces;
+﻿using ComputerUpgradeStrategies.DevicesInterfaces;
 using ComputerUpgradeStrategies.Recommendations;
 using ComputerUpgradeStrategies.Recommendations.Disk;
 using Models;
+using System.Collections.Generic;
 
 namespace ComputerUpgradeStrategies.Strategies.Simple
 {

@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using HWWebApi.Models;
+﻿using HWWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using System.Linq;
 
 namespace HWWebApi.Controllers
 {
@@ -36,7 +36,7 @@ namespace HWWebApi.Controllers
                 return Ok(Context.Computers
                 .Include(c => c.Disks)
                 .Include(c => c.Gpus)
-                .ThenInclude(g=> g.Memory)
+                .ThenInclude(g => g.Memory)
                 .Include(c => c.Memories)
                 .Include(c => c.MotherBoard)
                 .Include(c => c.Processor)

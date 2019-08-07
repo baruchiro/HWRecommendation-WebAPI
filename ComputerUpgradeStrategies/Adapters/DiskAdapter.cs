@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ComputerUpgradeStrategies.DevicesInterfaces;
+﻿using ComputerUpgradeStrategies.DevicesInterfaces;
 using Models;
 
 namespace ComputerUpgradeStrategies.Adapters
@@ -10,5 +7,6 @@ namespace ComputerUpgradeStrategies.Adapters
     {
         public DiskAdapter(Disk disk) : base(disk)
         {
-        } }
+        }
+    }
 }

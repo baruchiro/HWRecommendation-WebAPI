@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using HWWebApi.Helpers;
+﻿using HWWebApi.Helpers;
 using Models;
 using Models.ModelEqualityComparer;
+using System.Collections.Generic;
 
 namespace HWWebApi.Models
 {

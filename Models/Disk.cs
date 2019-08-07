@@ -15,7 +15,7 @@ namespace Models
         public long Id { get; set; }
         public string Model { get; set; }
         public DiskType? Type { get; set; }
-        public int? Rpm { get; set; } 
+        public int? Rpm { get; set; }
         public long? Capacity { get; set; }
 
         public bool EqualByMembers(Disk disk)
@@ -32,7 +32,7 @@ namespace Models
             {
                 var hashCode = 397;
                 hashCode = (hashCode * 397) ^ Type.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Model?.GetHashCode()?? 0);
+                hashCode = (hashCode * 397) ^ (Model?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ Rpm.GetHashCode();
                 hashCode = (hashCode * 397) ^ Capacity.GetHashCode();
                 return hashCode;

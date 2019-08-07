@@ -14,7 +14,7 @@ namespace Models.ModelEqualityComparer
 
         public int GetHashCode(IModel<T> obj)
         {
-            return (obj.GetHashCodeWithMembers() * 397) ^ obj.GetHashCode(); 
+            return (obj.GetHashCodeWithMembers() * 397) ^ obj.GetHashCode();
         }
     }
 }

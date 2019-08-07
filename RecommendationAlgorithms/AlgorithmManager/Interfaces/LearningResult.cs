@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
-using Microsoft.ML;
+﻿using Microsoft.ML;
 using Microsoft.ML.AutoML;
 using Newtonsoft.Json;
+using System;
 
 namespace AlgorithmManager.Interfaces
 {
@@ -15,8 +14,8 @@ namespace AlgorithmManager.Interfaces
             var learningResult = new LearningResult
             {
                 Estimator = runDetail.Estimator,
-                RuntimeInSeconds= runDetail.RuntimeInSeconds,
-                TrainerName= runDetail.TrainerName,
+                RuntimeInSeconds = runDetail.RuntimeInSeconds,
+                TrainerName = runDetail.TrainerName,
                 Result = result,
                 Schema = schema,
                 Name = name
@@ -35,26 +34,26 @@ namespace AlgorithmManager.Interfaces
             return learningResult;
         }
         public virtual string Name { get; private set; }
-        
-        public double Result {  private set; get; }
+
+        public double Result { private set; get; }
 
         [JsonIgnore]
-        public ITransformer Model {  internal set; get; }
+        public ITransformer Model { internal set; get; }
 
         [JsonConverter(typeof(ExceptionConverter))]
-        public Exception Exception {  private set; get; }
+        public Exception Exception { private set; get; }
 
-        public object ValidationMetrics {  private set; get; }
+        public object ValidationMetrics { private set; get; }
 
-        public string TrainerName {  private set; get; }
+        public string TrainerName { private set; get; }
 
-        public double RuntimeInSeconds {  private set; get; }
-
-        [JsonIgnore]
-        public IEstimator<ITransformer> Estimator {  private set; get; }
+        public double RuntimeInSeconds { private set; get; }
 
         [JsonIgnore]
-        public DataViewSchema Schema {  private set; get; }
+        public IEstimator<ITransformer> Estimator { private set; get; }
+
+        [JsonIgnore]
+        public DataViewSchema Schema { private set; get; }
     }
 
     public class ExceptionConverter : JsonConverter<Exception>

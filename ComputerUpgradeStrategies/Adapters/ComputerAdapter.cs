@@ -1,9 +1,7 @@
-﻿using System;
+﻿using ComputerUpgradeStrategies.DevicesInterfaces;
+using Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using ComputerUpgradeStrategies.DevicesInterfaces;
-using Models;
 
 namespace ComputerUpgradeStrategies.Adapters
 {

@@ -1,8 +1,7 @@
-﻿using System;
-using AlgorithmManager;
+﻿using AlgorithmManager;
 using DocoptNet;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
+using System;
 
 namespace Trainer
 {

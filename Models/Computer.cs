@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using HWWebApi.Helpers;
+﻿using HWWebApi.Helpers;
 using Models.ModelEqualityComparer;
+using System.Collections.Generic;
 
 namespace Models
 {
@@ -19,10 +18,10 @@ namespace Models
         }
 
         public long Id { get; set; }
-        public Processor Processor { get; set; } 
+        public Processor Processor { get; set; }
         public ICollection<Memory> Memories { get; set; } = new List<Memory>();
         public ICollection<Disk> Disks { get; set; } = new List<Disk>();
-        public MotherBoard MotherBoard { get; set; } 
+        public MotherBoard MotherBoard { get; set; }
         public ICollection<Gpu> Gpus { get; set; } = new List<Gpu>();
         public ComputerType ComputerType { get; set; }
 
